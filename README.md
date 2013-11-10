@@ -147,7 +147,7 @@ $message-extend: true !default;
   @include message-core($extend: false);
 }
 
-.message--status {
+.message-status {
   @include message-core;
   @include message-coloring(green);
 }
@@ -165,7 +165,7 @@ $message-extend: true !default;
 
 ```css
 /* CSS */
-.message--status, .message-warning, .message-error {
+.message-status, .message-warning, .message-error {
   box-sizing: border-box;
   padding: 0.25em 0.5em;
   width: 80%;
@@ -173,7 +173,7 @@ $message-extend: true !default;
   border: 2px solid;
 }
 
-.message--status {
+.message-status {
   border-color: green;
   background: #3f9f3f;
   color: #006000;
