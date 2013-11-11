@@ -21,11 +21,13 @@ North is meant to be a living document. Standards and best practices change, and
 
 ## CSS
 
-### Selector Naming Conventions
+### Naming Conventions
+
+
 
 ### Sass
 
-When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://compass-style.org/) authoring framework. When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems. There are also a number of Compass extensions that should be used as a standard for a variety of needs.
+When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://compass-style.org/) authoring framework. When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems. The `scss` syntax should be used exclusively when writing and sharing Sass. In order to ensure that all environments are the same, the minimum version of Ruby that should be used is `2.0.0` (standard on OS X version 10.9 and up) and all gems should be installed and versions managed by [Bundler](http://bundler.io/). When writing a [Gemfile](http://bundler.io/v1.5/gemfile.html), versions should all be specified using the `~>` specifier to ensure that gems stay on the same major and minor versions, making upgrades in minor versions purposeful. Gems can either be installed in to either the ruby system or in to a folder in your project named `vendor` which should be ignored from your version control. In addition to Bundler, there are a number of Compass extensions that should be used as a standard for a variety of needs.
 
 * [Singularity](https://github.com/Team-Sass/Singularity) - Grid framework
 * [Breakpoint](https://github.com/Team-Sass/breakpoint) - Media query framework
