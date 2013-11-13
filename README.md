@@ -23,7 +23,25 @@ North is meant to be a living document. Standards and best practices change, and
 
 ### Naming Conventions
 
-Selectors, mixins, variables, and placeholder selectors should all share a similar naming convention. 
+Selectors, mixins, variables, and placeholder selectors should all share a similar naming convention.
+
+The following items need to be represented uniquely, with the numbers representing how often they will (probably) be used.
+
+```table
+_______________________________
+|           | Phase | Element |  
+------------------------------|
+| Component |   2   |    1    |
+------------------------------|
+| Layout    |   4   |    3    |
+-------------------------------
+```
+
+States should be handled through data attributes. 
+
+Requirements for naming convention: Something easy to write, easy to visually distinguish hierarchy, easy to distinguish nesting.
+
+[Various naming conventions under consideration](http://sassmeister.com/gist/7428308).
 
 ### Sass+Compass
 
