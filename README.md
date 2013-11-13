@@ -23,9 +23,9 @@ North is meant to be a living document. Standards and best practices change, and
 
 ### Naming Conventions
 
+Selectors, mixins, variables, and placeholder selectors should all share a similar naming convention. 
 
-
-### Sass
+### Sass+Compass
 
 When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://compass-style.org/) authoring framework. When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems. The `scss` syntax should be used exclusively when writing and sharing Sass. In order to ensure that all environments are the same, the minimum version of Ruby that should be used is `2.0.0` (standard on OS X version 10.9 and up) and all gems should be installed and versions managed by [Bundler](http://bundler.io/). When writing a [Gemfile](http://bundler.io/v1.5/gemfile.html), versions should all be specified using the `~>` specifier to ensure that gems stay on the same major and minor versions, making upgrades in minor versions purposeful. Gems can either be installed in to either the ruby system or in to a folder in your project named `vendor` which should be ignored from your version control. In addition to Bundler, there are a number of Compass extensions that should be used as a standard for a variety of needs.
 
@@ -35,6 +35,28 @@ When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://co
 * [Jacket](https://github.com/Team-Sass/jacket) - Tool for deciding what gets printed in a given stylesheet
 * [Color Schemer](https://github.com/Team-Sass/color-schemer) - Advanced color functions
 * [Modular Scale](https://github.com/Team-Sass/modular-scale) - Numeric relationships, especially for typography
+
+The following should be using the standard [Compass configuration](http://compass-style.org/help/tutorials/configuration-reference/) for all projects:
+
+```ruby
+# Set this to the root of your project when deployed:
+http_path = "/"
+css_dir = "css"
+sass_dir = "sass"
+images_dir = "images"
+javascripts_dir = "js"
+fonts_dir = "fonts"
+
+# You can select your preferred output style here (can be overridden via the command line):
+# output_style = :compressed
+
+# To enable relative paths to assets via compass helper functions. Uncomment:
+relative_assets = true
+
+# To disable debugging comments that display the original location of your selectors. Uncomment:
+line_comments = false
+```
+
 
 ### Mixin/Extend Pattern
 
@@ -121,7 +143,7 @@ $message-extend: true !default;
     width: $width;
     margin: 0 auto;
     
-    // Border's color is based off of the `color` property, so we can write valid shorthand without the color
+    // Border's color is based off of the `color` property, so we can write valid shorthand without the color. Border options aren't dynamic to clearly show a succinctly show this short hand method.
     border: 2px solid;
   }
   @else {
