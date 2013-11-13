@@ -1,0 +1,34 @@
+//////////////////////////////
+// Message Component Mixins
+//////////////////////////////
+@mixin message--core($padding: $message-padding, $width: $message-width, $extend: $message-extend) {
+  // If we're not extending ($extend == false), we write properties directly
+  @if not $extend {
+    @include box-sizing(border-box);
+    padding: $padding;
+
+    width: $width;
+    margin: 0 auto;
+
+    // Border's color is based off of the `color` property, so we can write valid shorthand without the color. Border options aren't dynamic to clearly show a succinctly show this short hand method.
+    border: 2px solid;
+  }
+  @else {
+    // If we are extending ($extend == true), we extend the placeholder selector
+    @extend %message--core;
+    // If $padding is different than our default padding, we write that property
+    @if $padding != $message-padding {
+        padding: $padding;
+    }
+    // If $width is different than our default width, we write that property
+    @if $width != $message-width {
+      width: $width;
+    }
+  }
+}
+
+@mixin message--coloring($color) {
+  border-color: $color;
+  background: mix(white, $color, 25%);
+  color: mix(black, $color, 25%);
+}

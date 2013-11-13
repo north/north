@@ -1,0 +1,25 @@
+//////////////////////////////
+// Message Component Extends
+//////////////////////////////
+
+@include exports('message component') {
+  %message--core {
+    // We include the message-core mixin with $extend == false to force the properties to be written
+    @include message--core($extend: false);
+  }
+
+  %message--status {
+    @include message--core;
+    @include message--coloring($message-color-status);
+  }
+
+  %message--warning {
+    @include message--core;
+    @include message--coloring($message-color-warning);
+  }
+
+  %message--error {
+    @include message--core;
+    @include message--coloring($message-color-error);
+  }
+}

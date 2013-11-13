@@ -1,0 +1,11 @@
+//////////////////////////////
+// Message Component Variables
+//////////////////////////////
+
+$message-padding: $std-padding !default;
+$message-width: 80% !default;
+$message-extend: true !default;
+
+$message-color-status: $color-good !default;
+$message-color-warning: $color-warning !default;
+$message-color-error: $color-error !default;

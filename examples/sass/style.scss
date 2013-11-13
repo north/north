@@ -1,0 +1,47 @@
+//////////////////////////////
+// Compass Cross-Browser Configuration
+//////////////////////////////
+// This will print out how Compass came to its conclusions on prefixing. Set to `false` to disable
+$debug-browser-support: true;
+
+// When using $browser-minimum-versions, we can set these to 100 to force our browser versions to dictate prefixing
+$graceful-usage-threshold: 100;
+$critical-usage-threshold: 100;
+
+$browser-minimum-versions: (
+  "ie": "9",
+  "chrome": "30",
+  "firefox": "17",
+  "safari": "6",
+  "opera": "17",
+  "ios-safari":  "7",
+  "android": "2.3",
+  "opera-mobile": "12.1",
+  "blackberry": "7",
+  "ie-mobile": "10"
+);
+
+//////////////////////////////
+// Compass Imports
+//////////////////////////////
+@import "compass/reset";
+@import "compass/support";
+@import "compass/css3/box-sizing";
+
+//////////////////////////////
+// Compass Extensions
+//////////////////////////////
+
+
+//////////////////////////////
+// Global Imports
+//////////////////////////////
+@import "partials/global/variables";
+@import "partials/global/functions";
+@import "partials/global/mixins";
+@import "partials/global/extends";
+
+//////////////////////////////
+// Component Imports
+//////////////////////////////
+@import "partials/components/message";
