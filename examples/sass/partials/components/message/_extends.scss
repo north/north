@@ -3,23 +3,23 @@
 //////////////////////////////
 
 @include exports('message component') {
-  %message--core {
+  %message--CORE {
     // We include the message-core mixin with $extend == false to force the properties to be written
-    @include message--core($extend: false);
+    @include message--CORE($extend: false);
   }
 
-  %message--status {
-    @include message--core;
+  %message--STATUS {
+    @include message--CORE;
     @include message--coloring($message-color-status);
   }
 
-  %message--warning {
-    @include message--core;
+  %message--WARNING {
+    @include message--CORE;
     @include message--coloring($message-color-warning);
   }
 
-  %message--error {
-    @include message--core;
+  %message--ERROR {
+    @include message--CORE;
     @include message--coloring($message-color-error);
   }
 }

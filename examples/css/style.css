@@ -54,7 +54,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-.message--status, .message--warning, .message--error {
+.message--STATUS, .message--WARNING, .message--ERROR {
   /* Capability css3-boxsizing is prefixed with -moz because firefox "17" is required. */
   /* Creating new -moz context. */
   -moz-box-sizing: border-box;
@@ -70,19 +70,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border: 2px solid;
 }
 
-.message--status {
+.message--STATUS {
   border-color: green;
   background: #3f9f3f;
   color: #006000;
 }
 
-.message--warning {
+.message--WARNING {
   border-color: yellow;
   background: #ffff3f;
   color: #bfbf00;
 }
 
-.message--error {
+.message--ERROR {
   border-color: red;
   background: #ff3f3f;
   color: #bf0000;

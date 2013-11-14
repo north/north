@@ -15,40 +15,30 @@
 @import "message/extends";
 
 //////////////////////////////
-// @{message}
-// Styling for Message Component
-.message {
-
-}
-// {message}@
-//////////////////////////////
-
-
-//////////////////////////////
-// @{message--status}
+// @{message--STATUS}
 // Status styling for Message Component
-.message--status {
-  @extend %message--status;
+.message--STATUS {
+  @extend %message--STATUS;
 }
-// {message--status}@
+// {message--STATUS}@
 //////////////////////////////
 
 
 //////////////////////////////
-// @{message--warning}
+// @{message--WARNING}
 // Warning styling for Message Component
-.message--warning {
-  @extend %message--warning;
+.message--WARNING {
+  @extend %message--WARNING;
 }
-// {message--warning}@
+// {message--WARNING}@
 //////////////////////////////
 
 
 //////////////////////////////
-// @{message--error}
+// @{message--ERROR}
 // Error styling for Message Component
-.message--error {
-  @extend %message--error;
+.message--ERROR {
+  @extend %message--ERROR;
 }
-// {message--error}@
+// {message--ERROR}@
 //////////////////////////////

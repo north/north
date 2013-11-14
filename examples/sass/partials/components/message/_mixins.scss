@@ -1,7 +1,7 @@
 //////////////////////////////
 // Message Component Mixins
 //////////////////////////////
-@mixin message--core($padding: $message-padding, $width: $message-width, $extend: $message-extend) {
+@mixin message--CORE($padding: $message-padding, $width: $message-width, $extend: $message-extend) {
   // If we're not extending ($extend == false), we write properties directly
   @if not $extend {
     @include box-sizing(border-box);
@@ -15,7 +15,7 @@
   }
   @else {
     // If we are extending ($extend == true), we extend the placeholder selector
-    @extend %message--core;
+    @extend %message--CORE;
     // If $padding is different than our default padding, we write that property
     @if $padding != $message-padding {
         padding: $padding;
