@@ -1,0 +1,16 @@
+//////////////////////////////
+// Functions
+//////////////////////////////
+@function component($name) {
+  @return to-lower-case($name);
+}
+
+//////////////////////////////
+// Mixins
+//////////////////////////////
+@mixin component($name) {
+  @at-root #{component($name)} {
+    @content;
+  }
+}
+

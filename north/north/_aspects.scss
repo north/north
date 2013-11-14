@@ -1,0 +1,16 @@
+//////////////////////////////
+// Functions
+//////////////////////////////
+@function aspect($name) {
+  @return to-upper-case($name);
+}
+
+//////////////////////////////
+// Mixins
+//////////////////////////////
+@mixin aspect($name) {
+  @at-root #{&}--#{aspect($name)} {
+    @content;
+  }
+}
+
