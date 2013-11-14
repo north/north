@@ -68,15 +68,15 @@ Components and layouts form prefixes the prefixes for aspects and elements, sepa
   </article>
   <!-- Secondary element of Article layout  -->
   <aside class="_article--secondary">
-    <!-- Related aspect of Block component -->
-    <div class="block--RELATED">
-      <!-- Heading element of Block component -->
-      <div class="block--heading">
+    <!-- Popular aspect of Related component -->
+    <div class="related--POPULAR">
+      <!-- Heading element of Related component -->
+      <div class="related--heading">
         <!-- Tertiary Heading aspect of Typography component -->
 	     <h2 class="typography--TERTIARY-HEADING">Block Title</h2>
 	   </div>
-	   <!-- Body element of Block component -->
-	   <div class="block--body">
+	   <!-- Body element of Related component -->
+	   <div class="related--body">
 	     <p>Yay Copy!</p>
 	   </div>
 	 </div>
