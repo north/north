@@ -19,9 +19,88 @@ North is meant to be a living document. Standards and best practices change, and
 7. JavaScript
 8. Progressive Enhancement
 
+
+# Building Websites
+
+While in the past it may have been good enough to see a high-res Desktop sized Photoshop comp to build a website, the vast and varying landscape of the modern web makes 
+
+## Components
+
+Components are the primary building block of any interface. They are the bits and bobs that you combine to form a cohesive user interface; from menus to messages, pagers to pictures. Blocks, 
+
+## Layouts
+
+## Aspects
+
+## Elements
+
+## States
+
 ## CSS
 
-### Naming Conventions
+### Naming Conventions and Build Philosophy
+
+Components and layouts form prefixes the prefixes for aspects and elements, separated by double dash (`--`). Layouts start with an underscore (`_`) to distinguish them from components, and aspects are written in all caps (`CAPS`) to distinguish them from elements, written in all lowercase (`lowercase`). States are applied to the state data attribute (`data-state`) and queried using attribute selectors as they have the strong tendency to either be manipulated by JavaScript or be used as a hook for JavaScript. A sample document written up using this naming convention could look like the following:
+
+```markup
+<!-- Article layout with Big Media aspect -->
+<div class="_article--BIG-MEDIA">
+  <!-- Main element of Article layout -->
+  <article class="_article--main">
+    <!-- Heading element of Article layout -->
+    <div class="_article--heading">
+      <!-- PRIMARY Heading aspect of Typography component -->
+      <h1 class="typography--PRIMARY-HEADING">Article Title</h1>
+    </div>
+    <!-- Media element of Article layout -->
+    <figure class="_article--media">
+      <!-- Video components, Full HD aspect -->
+      <div class="video--FULL-HD">
+        <!-- Video element of Video component -->
+        <video class="video--video" />
+      </div>
+    </figure>
+    <!-- Body element of Article layout, Area aspect of Typography component  -->
+    <div class="_article--body typography--AREA">
+      <h2>Some user entered copy goes here</h2>
+      <p>Yay Copy!</p>
+    </div>
+  </article>
+  <!-- Secondary element of Article layout  -->
+  <aside class="_article--secondary">
+    <!-- Related aspect of Block component -->
+    <div class="block--RELATED">
+      <!-- Heading element of Block component -->
+      <div class="block--heading">
+        <!-- Tertiary Heading aspect of Typography component -->
+	     <h2 class="typography--TERTIARY-HEADING">Block Title</h2>
+	   </div>
+	   <!-- Body element of Block component -->
+	   <div class="block--body">
+	     <p>Yay Copy!</p>
+	   </div>
+	 </div>
+  <aside>
+</div>
+```
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Selectors, mixins, variables, and placeholder selectors should all share a similar naming convention.
 
@@ -45,7 +124,7 @@ Requirements for naming convention: Something easy to write, easy to visually di
 
 ### Sass+Compass
 
-When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://compass-style.org/) authoring framework. When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems. The `scss` syntax should be used exclusively when writing and sharing Sass. In order to ensure that all environments are the same, the minimum version of Ruby that should be used is `2.0.0` (standard on OS X version 10.9 and up) and all gems should be installed and versions managed by [Bundler](http://bundler.io/). When writing a [Gemfile](http://bundler.io/v1.5/gemfile.html), versions should all be specified using the `~>` specifier to ensure that gems stay on the same major and minor versions, making upgrades in minor versions purposeful. Gems can either be installed in to either the ruby system or in to a folder in your project named `vendor` which should be ignored from your version control. In addition to Bundler, there are a number of Compass extensions that should be used as a standard for a variety of needs.
+When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://compass-style.org/) authoring framework. When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems. The `scss` syntax should be used exclusively when writing and sharing Sass. In order to ensure that all environments are the same, the minimum version of Ruby that should be used is `2.0.0` (standard on OS X version 10.9 and up) and all gems should be installed and versions managed by [Bundler](http://bundler.io/). When writing a [Gemfile](http://bundler.io/v1.5/gemfile.html), versions should all be specified using the `~>` specifier to ensure that gems stay on the same major and minor versions, making upgrades in minor versions purposeful. Gems should be installed in to a `vendor` folder in each project, which should be ignored from version control. In addition to Bundler, there are a number of Compass extensions that should be used as a standard for a variety of needs.
 
 * [Singularity](https://github.com/Team-Sass/Singularity) - Grid framework
 * [Breakpoint](https://github.com/Team-Sass/breakpoint) - Media query framework
