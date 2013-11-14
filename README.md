@@ -26,13 +26,19 @@ While in the past it may have been good enough to see a high-res Desktop sized P
 
 ## Components
 
-Components are the primary building block of any interface. They are the bits and bobs that you combine to form a cohesive user interface; from menus to messages, pagers to pictures. Blocks, 
+Components are the primary building block of any interface. They are the bits and bobs that combine to form a cohesive user interface; from menus to messages, pagers to pictures, and everything else in between. Components should be written to be able to be dropped in to any position in a layout. The way to accomplish this is to build components using [**eq.js**](https://github.com/snugug/eq.js). This will allow a component and its elements to respond appropriately regardless of where they land in a given document flow. Components should simple layouts to position elements inside of themselves either through extends or by constructing a component with elements placed inside an internal layout (decide before starting a project and carry that decision through the lifespan of the project) if the layout is not component specific. They may choose to control their overall sizing and one-off sizing and positioning, but those choices should be relative the container they are dropped in to and not layout or position specific.
 
 ## Layouts
 
+Layouts are the structure of an interface. Providing structure to pages and components, layouts are responsible for sizing and positioning of their elements. There are two kinds of layouts, simple and complex. The distinguishing factor between simple and complex layouts is that complex layouts adapt and change their sizing and positioning based on media queries whereas simple layouts do not. Complex layouts are generally used for laying out pages and regions within pages, with simple layouts being used for laying out sub-sections inside complex layouts and providing common layouts for components. While simple layouts may be used within components or even within other simple or complex layouts, complex layouts should never be used within one another.
+
 ## Aspects
 
+
+
 ## Elements
+
+
 
 ## States
 
@@ -40,15 +46,15 @@ Components are the primary building block of any interface. They are the bits an
 
 ### Naming Conventions and Build Philosophy
 
-Components and layouts form prefixes the prefixes for aspects and elements, separated by double dash (`--`). Layouts start with an underscore (`_`) to distinguish them from components, and aspects are written in all caps (`CAPS`) to distinguish them from elements, written in all lowercase (`lowercase`). States are applied to the state data attribute (`data-state`) and queried using attribute selectors as they have the strong tendency to either be manipulated by JavaScript or be used as a hook for JavaScript. A sample document written up using this naming convention could look like the following:
+Components and layouts form prefixes the prefixes for aspects and elements, separated by double dash (`--`). Simple layouts start with an underscore (`_`) and complex layouts start with two underscores (`__`) to distinguish them from components, and aspects are written in all caps (`CAPS`) to distinguish them from elements, written in all lowercase (`lowercase`). States are applied to the state data attribute (`data-state`) and queried using attribute selectors as they have the strong tendency to either be manipulated by JavaScript or be used as a hook for JavaScript. A sample document written up using this naming convention could look like the following:
 
 ```html
 <!-- Article layout with Big Media aspect -->
-<div class="_article--BIG-MEDIA">
+<div class="__article--BIG-MEDIA">
   <!-- Main element of Article layout -->
-  <article class="_article--main">
+  <article class="__article--main">
     <!-- Heading element of Article layout -->
-    <div class="_article--heading">
+    <div class="__article--heading">
       <!-- PRIMARY Heading aspect of Typography component -->
       <h1 class="typography--PRIMARY-HEADING">Article Title</h1>
     </div>
@@ -61,13 +67,13 @@ Components and layouts form prefixes the prefixes for aspects and elements, sepa
       </div>
     </figure>
     <!-- Body element of Article layout, Area aspect of Typography component  -->
-    <div class="_article--body typography--AREA">
+    <div class="__article--body typography--AREA">
       <h2>Some user entered copy goes here</h2>
       <p>Yay Copy!</p>
     </div>
   </article>
   <!-- Secondary element of Article layout  -->
-  <aside class="_article--secondary">
+  <aside class="__article--secondary">
     <!-- Popular aspect of Related component -->
     <div class="related--POPULAR">
       <!-- Heading element of Related component -->
@@ -290,7 +296,3 @@ The `partials` directory should be divided up into 3 sub directories, `global`, 
 Both your components and your layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for `variables`, `functions`, `mixins`, and `extendables`. Each of these partials should hold styling knowledge specific to that component; for instance, `variables` could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in in the example `sass` folder.
 
 All extendable classes should be wrapped in a solution to only have the selector written once to ensure that selectors don't get needlessly duplicated. Mixins should share their naming convention with the object they are used to style. The solution provided by the North Compass extension is derived from Wilson Page's [Sass Import Once](https://github.com/wilsonpage/sass-import-once) partial.
-
-### Component Styling
-
-Components should be written to be able to be dropped in to any position in a layout. The way to accomplish this is to build components using [**eq.js**](https://github.com/snugug/eq.js).
