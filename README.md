@@ -12,14 +12,15 @@ North is meant to be a living document. Standards and best practices change, and
 2. Content Strategy
 3. Visual Design
 5. [Building Websites](#building-websites)
- * [Components](#components)
- * [Layouts](#layouts)
- * [Aspects](#aspects)
- * [Elements](#elements)
- * [CSS Naming Conventions](#css-naming-conventions)
- * [Sass and Compass](#sass-and-compass)
-   * [Mixin/Extend Pattern](#mixinextend-pattern)
-   * [Partial Structure](#partial-structure)
+  * [Components](#components)
+  * [Layouts](#layouts)
+  * [Aspects](#aspects)
+  * [Elements](#elements)
+  * [CSS Naming Conventions](#css-naming-conventions)
+  * [Sass and Compass](#sass-and-compass)
+    * [Partial Structure](#partial-structure)
+    * [Mixin/Extend Pattern](#mixinextend-pattern)
+   
 6. JavaScript
 7. Progressive Enhancement
 
