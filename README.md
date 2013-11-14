@@ -83,44 +83,6 @@ Components and layouts form prefixes the prefixes for aspects and elements, sepa
   <aside>
 </div>
 ```
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Selectors, mixins, variables, and placeholder selectors should all share a similar naming convention.
-
-The following items need to be represented uniquely, with the numbers representing how often they will (probably) be used.
-
-```table
-_______________________________
-|           | Phase | Element |  
-------------------------------|
-| Component |   2   |    1    |
-------------------------------|
-| Layout    |   4   |    3    |
--------------------------------
-```
-
-States should be handled through data attributes. 
-
-Requirements for naming convention: Something easy to write, easy to visually distinguish hierarchy, easy to distinguish nesting.
-
-[Various naming conventions under consideration](http://sassmeister.com/gist/7428308).
 
 ### Sass+Compass
 
@@ -177,22 +139,22 @@ Let's take a look at a typical message component mixin as an example of how to r
   color: mix(black, $color, 25%);
 }
 
-.message-status {
+.message--STATUS {
     @include message(green);
 }
 
-.message-warning {
+.message--WARNING {
     @include message(yellow);
 }
 
-.message-error {
+.message--ERROR {
     @include message(red);
 }
 ```
 
 ```css
 /* CSS */
-.message-status {
+.message--STATUS {
   box-sizing: border-box;
   padding: .25em .5em;
   width: 80%;
@@ -202,7 +164,7 @@ Let's take a look at a typical message component mixin as an example of how to r
   color: #006000;
 }
 
-.message-warning {
+.message--WARNING {
   box-sizing: border-box;
   padding: .25em .5em;
   width: 80%;
@@ -212,7 +174,7 @@ Let's take a look at a typical message component mixin as an example of how to r
   color: #bfbf00;
 }
 
-.message-error {
+.message--ERROR {
   box-sizing: border-box;
   padding: .25em .5em;
   width: 80%;
@@ -231,7 +193,7 @@ $message-padding: .25em .5em !default;
 $message-width: 80% !default;
 $message-extend: true !default;
 
-@mixin message-core($padding: $message-padding, $width: $message-width, $extend: $message-extend) {
+@mixin message--CORE($padding: $message-padding, $width: $message-width, $extend: $message-extend) {
   // If we're not extending ($extend == false), we write properties directly
   @if not $extend {
     box-sizing: border-box;
@@ -245,7 +207,7 @@ $message-extend: true !default;
   }
   @else {
     // If we are extending ($extend == true), we extend the placeholder selector
-    @extend %message-core;
+    @extend %message--CORE;
     // If $padding is different than our default padding, we write that property
     @if $padding != $message-padding {
         padding: $padding;
@@ -263,30 +225,30 @@ $message-extend: true !default;
   color: mix(black, $color, 25%);
 }
 
-%message-core {
+%message--CORE {
   // We include the message-core mixin with $extend == false to force the properties to be written
-  @include message-core($extend: false);
+  @include message--CORE($extend: false);
 }
 
-.message-status {
-  @include message-core;
+.message--STATUS {
+  @include message--CORE;
   @include message-coloring(green);
 }
 
-.message-warning {
-  @include message-core;
+.message--WARNING {
+  @include message--CORE;
   @include message-coloring(yellow);
 }
 
-.message-error {
-  @include message-core;
+.message--ERROR {
+  @include message--CORE;
   @include message-coloring(red);
 }
 ```
 
 ```css
 /* CSS */
-.message-status, .message-warning, .message-error {
+.message--STATUS, .message--WARNING, .message--ERROR {
   box-sizing: border-box;
   padding: 0.25em 0.5em;
   width: 80%;
@@ -294,19 +256,19 @@ $message-extend: true !default;
   border: 2px solid;
 }
 
-.message-status {
+.message--STATUS {
   border-color: green;
   background: #3f9f3f;
   color: #006000;
 }
 
-.message-warning {
+.message--WARNING {
   border-color: yellow;
   background: #ffff3f;
   color: #bfbf00;
 }
 
-.message-error {
+.message--ERROR {
   border-color: red;
   background: #ff3f3f;
   color: #bf0000;
@@ -327,7 +289,7 @@ The `partials` directory should be divided up into 3 sub directories, `global`, 
 
 Both your components and your layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for `variables`, `functions`, `mixins`, and `extendables`. Each of these partials should hold styling knowledge specific to that component; for instance, `variables` could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in in the example `sass` folder.
 
-All extendable classes should be wrapped in a solution to only have the selector written once. to ensure that selectors don't get needlessly duplicated. Mixins should share their naming convention with the object they are used to style.
+All extendable classes should be wrapped in a solution to only have the selector written once to ensure that selectors don't get needlessly duplicated. Mixins should share their naming convention with the object they are used to style. The solution provided by the North Compass extension is derived from Wilson Page's [Sass Import Once](https://github.com/wilsonpage/sass-import-once) partial.
 
 ### Component Styling
 
