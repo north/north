@@ -34,12 +34,12 @@ When discussing and testing performance, it is important to do both with an eye 
 
 Load times and load sizes are extraordinary important and often overlooked. Ideal statistics are presented first, with maximums presented second that should only be broached under edge circumstances.
 
-**Time To First Byte:** *200ms* - 350ms
-**DOM Content Loaded:** *1000ms* - 2000ms
-**JS Load Event Fired:** *900ms* - 2200ms
-**Total Download Size:** *1MB* - 2MB
-**DNS Lookup:** *10ms* - 20ms
-**HTTP Requests:** *50* - 75
+* **Time To First Byte:** *200ms* - 350ms
+* **DOM Content Loaded:** *1000ms* - 2000ms
+* **JS Load Event Fired:** *900ms* - 2200ms
+* **Total Download Size:** *1MB* - 2MB
+* **DNS Lookup:** *10ms* - 20ms
+* **HTTP Requests:** *50* - 75
 
 
 # Building Websites
