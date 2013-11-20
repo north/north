@@ -71,7 +71,7 @@ Load times, load sizes, and number of requests are extraordinary important and o
 
 Once a site has been downloaded, performance of the user interactions is important as well. The goal to reach for is a site running at or above **60 frames per second**. Anything below this makes sites appear poorly built, sluggish, and unresponsive. When dealing with user input, interactions should be **under 100ms to feel instant** and **under 250ms to feel fast**. Anything longer and interactions begin to feel sluggish. Some good rules of thumb to avoid the user interface from feeling this way are:
 
-* Do not bind to scroll events in JavaScript
+* Do not bind expensive processes to document/window events (scroll, resize, etc…)
 * [Use CSS3 `translate`](http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/) instead of absolute position with top and left properties
 * Do not emulate fixed positioning using JavaScript
 * Animate through CSS3 instead of JavaScript
