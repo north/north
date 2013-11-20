@@ -56,8 +56,6 @@ In addition to the below, sites should be able to hit and maintain certain perfo
 	* Use a CDN for all static assets: 85
 * [YSlow](http://developer.yahoo.com/yslow/) - 85
 
-Getting a site to these performance numbers is a good indication that the site is indeed performant.
-
 ## Payload Performance
 
 Load times, load sizes, and number of requests are extraordinary important and often overlooked or left to the end of a development cycle to start to optimize. Ideal statistics are presented first, with maximums presented second that should only be broached under edge circumstances. It is always best to keep actual performance as much under these numbers as possible.
