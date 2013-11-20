@@ -26,20 +26,25 @@ North is meant to be a living document. Standards and best practices change, and
 
 # Performance
 
-When building modern websites, performance is a real design and development constraint and must be taken into account at every level of the development process. To provide some insight, according to [recent research](http://www.igvita.com/slides/2013/breaking-1s-mobile-barrier.pdf), a 400ms delay causes a 0.59% decrease in average daily searches at Google (which according to [Ilya Grigorik](https://www.youtube.com/watch?v=Il4swGfTOSM), Developer Advocate at Google, is nearly twice their "something terrible has happened and we need to fix this now" rate and based on [2012 average daily searches](http://www.statisticbrain.com/google-searches/) amounts to **30.3 million lost searches** a day or, [according to their average revenue per search](http://marketingland.com/yahoo-microsoft-rps-guarantee-42680), **$12,116,240 in lost revenue per day**) and a 500ms delay at Bing reduces revenue per user by 1.2% (estimated to be (with [$13.10 per 1000 searches in 2011](http://www.trefis.com/stock/msft/articles/75824/can-miscrosoft-improve-its-search-revenues-with-facebook/2011-10-03) , [24.3 searches per user in 2011](http://searchengineland.com/bings-facebook-fans-do-68-more-searches-than-average-bing-users-89917), and [2.7 billion search per month in July 2012](http://searchenginewatch.com/article/2199849/Bing-Grows-Search-Market-Share-Google-Repeats-High-Yahoo-Halts-Slide)), approximately a **$10,313,892 loss per month**). Millions of dollars lost all based on a half second delay or less.
+When building modern websites, performance is a real design and development constraint and must be taken into account at every level of the development process. The reason it is a design and development constraint is fairly simple: with the explosion of an everything-conencted world and the rise of the mobile-only user, the chances that a site is going to be viewed primarily by someone sitting at a workstation with a high speed internet connection diminishes daily. This constraint isn't new either; way back in 2006, Amazon reported that a [100ms delay cost them 1% of sales](https://sites.google.com/site/glinden/Home/StanfordDataMining.2006-11-28.ppt?attredirects=0). This was before the great reach of broadband took hold and before the current mobile computing boom came full swing, which have only lessened the patience of consumers. As [Compuware Reports](http://e-commercefacts.com/research/2011/07/what-usrs-want-from-mobil/19986_WhatMobileUsersWant_Wp.pdf), *75% of mobile web users expect a site to load as fast or faster* on their mobile devices as they do their desktop computers, with *60% of mobile web users leaving a site and not coming back if it takes more than 3 seconds to load, with 78% of users trying only one more time*. Moreover, if a user abandons your mobile site, *33% will go to a competitor's site*. What all this means is that **performance affects website revenue**. Google, helpfully, provides some interesting insight into how performance could have affected their 2011 revenue:
 
-When discussing and testing performance, it is important to do both with an eye toward mobile. This means that all performance testing needs to take place on actual devices, not just emulations, and on actual networks. Many of the standards have some wiggle room, but presented are the ideals and maximums for performance standards. The ideals and maximums have been chosen with an eye towards the realities of a media heavy site, including the realities of advertising and heavy multimedia usage.
+* Google made approximately [$18.8 Million](http://blog.hubspot.com/blog/tabid/6307/bid/33784/An-Industry-Breakdown-of-Google-s-100-Million-Per-Day-Advertising-Revenue-INFOGRAPHIC.aspx) per day on search advertising.
+* A 400ms delay (less than half of a second) [reduces average number of daily searches by 0.59%](http://www.igvita.com/slides/2013/breaking-1s-mobile-barrier.pdf)
+* That amounts to a **daily loss of $111,000**, or about **$40.5 Million a year**
+
+When discussing and testing performance, it is important to do both with an eye toward mobile. This means that all performance testing needs to take place on actual devices, not just emulations, and on actual networks. Many of the standards have some wiggle room, but presented are the ideals and maximums for performance standards. The ideals and maximums have been chosen with an eye towards the realities of a media heavy site, including the realities of advertising and heavy multimedia usage. As [80% of the end-user response time is spend on the front-end](http://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-1-fewer-http-requests-7163.html), most of the performance suggestions are front-end based.
 
 ### Load
 
 Load times and load sizes are extraordinary important and often overlooked. Ideal statistics are presented first, with maximums presented second that should only be broached under edge circumstances.
 
-* **Time To First Byte:** *200ms* - 350ms
-* **DOM Content Loaded:** *1000ms* - 2000ms
-* **JS Load Event Fired:** *900ms* - 2200ms
-* **Total Download Size:** *1MB* - 2MB
-* **DNS Lookup:** *10ms* - 20ms
-* **HTTP Requests:** *50* - 75
+* *Time To First Byte:* **200ms** - 350ms
+* *DOM Content Loaded:* **1000ms** - 2000ms
+* *JS Load Event Fired:* **900ms** - 2200ms
+* *Total Download Size:* **1MB** - 2MB
+* *DNS Lookup:* **10ms** - 20ms
+* *HTTP Requests:* **50** - 75
+
 
 
 # Building Websites
