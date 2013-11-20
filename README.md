@@ -11,6 +11,14 @@ North is meant to be a living document. Standards and best practices change, and
 1. Development Process
 2. Content Strategy
 3. Visual Design
+4. [Performance](#performance)
+	* [Testing and Grading Performance](#testing-and-grading-performance)
+	* [Payload Performance](#payload-performance)
+	* [Page Performance](#page-performance)
+	* [Front End Optimizations](#front-end-optimizations)
+		* [Critical Optimizations](#critical-optimizations)
+		* [Recommended Optimizations](#recommended-optimizations)
+		* [Experimental Optimizations](#experimental-optimizations)
 5. [Building Websites](#building-websites)
   * [Components](#components)
   * [Layouts](#layouts)
@@ -20,7 +28,6 @@ North is meant to be a living document. Standards and best practices change, and
   * [Sass and Compass](#sass-and-compass)
     * [Partial Structure](#partial-structure)
     * [Mixin/Extend Pattern](#mixinextend-pattern)
-   
 6. JavaScript
 7. Progressive Enhancement
 
@@ -29,14 +36,31 @@ North is meant to be a living document. Standards and best practices change, and
 When building modern websites, performance is a real design and development constraint and must be taken into account at every level of the development process. The reason it is a design and development constraint is fairly simple: with the explosion of an everything-conencted world and the rise of the mobile-only user, the chances that a site is going to be viewed primarily by someone sitting at a workstation with a high speed internet connection diminishes daily. This constraint isn't new either; way back in 2006, Amazon reported that a [100ms delay cost them 1% of sales](https://sites.google.com/site/glinden/Home/StanfordDataMining.2006-11-28.ppt?attredirects=0). This was before the great reach of broadband took hold and before the current mobile computing boom came full swing, which have only lessened the patience of consumers. As [Compuware Reports](http://e-commercefacts.com/research/2011/07/what-usrs-want-from-mobil/19986_WhatMobileUsersWant_Wp.pdf), *75% of mobile web users expect a site to load as fast or faster* on their mobile devices as they do their desktop computers, with *60% of mobile web users leaving a site and not coming back if it takes more than 3 seconds to load, with 78% of users trying only one more time*. Moreover, if a user abandons your mobile site, *33% will go to a competitor's site*. What all this means is that **performance affects website revenue**. Google, helpfully, provides some interesting insight into how performance could have affected their 2011 revenue:
 
 * Google made approximately [$18.8 Million](http://blog.hubspot.com/blog/tabid/6307/bid/33784/An-Industry-Breakdown-of-Google-s-100-Million-Per-Day-Advertising-Revenue-INFOGRAPHIC.aspx) per day on search advertising.
-* A 400ms delay (less than half of a second) [reduces average number of daily searches by 0.59%](http://www.igvita.com/slides/2013/breaking-1s-mobile-barrier.pdf)
+* A 400ms delay (less than half of a second) [reduces average number of daily searches by 0.59%](http://www.igvita.com/slides/2013/breaking-1s-mobile-barrier.pdf) (and is about twice their warning threshold)
 * That amounts to a **daily loss of $111,000**, or about **$40.5 Million a year**
 
 When discussing and testing performance, it is important to do both with an eye toward mobile. This means that all performance testing needs to take place on actual devices, not just emulations, and on actual networks. Many of the standards have some wiggle room, but presented are the ideals and maximums for performance standards. The ideals and maximums have been chosen with an eye towards the realities of a media heavy site, including the realities of advertising and heavy multimedia usage. As [80% of the end-user response time is spend on the front-end](http://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-1-fewer-http-requests-7163.html), most of the performance suggestions are front-end based.
 
-### Load
+## Testing and Grading Performance
 
-Load times and load sizes are extraordinary important and often overlooked. Ideal statistics are presented first, with maximums presented second that should only be broached under edge circumstances.
+In addition to the below, sites should be able to hit and maintain certain performance benchmarks from a variety of different resources across the internet. These systems are a good way of doing easy tests of a site to determine how they stack up. The following are good testing and grading resources, and the minimum target scores for each resource:
+
+* [Page Speed](https://developers.google.com/speed/pagespeed/insights) - 85
+* [Web Page Test](http://www.webpagetest.org/)
+	* First Byte Time: 85
+	* Use persistent connection: 85
+	* Use gzip compression for transferring compressable responses: 90
+	* Compress Images: 90
+	* Use Progressive JPEGs: 90
+	* Leverage browser caching of static assets: 90
+	* Use a CDN for all static assets: 85
+* [YSlow](http://developer.yahoo.com/yslow/) - 85
+
+Getting a site to these performance numbers is a good indication that the site is indeed performant.
+
+## Payload Performance
+
+Load times, load sizes, and number of requests are extraordinary important and often overlooked or left to the end of a development cycle to start to optimize. Ideal statistics are presented first, with maximums presented second that should only be broached under edge circumstances. It is always best to keep actual performance as much under these numbers as possible.
 
 * *Time To First Byte:* **200ms** - 350ms
 * *DOM Content Loaded:* **1000ms** - 2000ms
@@ -45,7 +69,56 @@ Load times and load sizes are extraordinary important and often overlooked. Idea
 * *DNS Lookup:* **10ms** - 20ms
 * *HTTP Requests:* **50** - 75
 
+## Page Performance
 
+Once a site has been downloaded, performance of the user interactions is important as well. The goal to reach for is a site running at or above **60 frames per second**. Anything below this makes sites appear poorly built, sluggish, and unresponsive. When dealing with user input, interactions should be **under 100ms to feel instant** and **under 250ms to feel fast**. Anything longer and interactions begin to feel sluggish. Some good rules of thumb to avoid the user interface from feeling this way are:
+
+* Do not bind to scroll events in JavaScript
+* [Use CSS3 `translate`](http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/) instead of absolute position with top and left properties
+* Do not emulate fixed positioning using JavaScript
+* Animate through CSS3 instead of JavaScript
+* Group JavaScript document reads and writes separately. Use [`requestAnimationFrame` to reduce layout thrashing](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) when reading and writing to the DOM
+* Avoid Internet Explorer's CSS expression selectors
+
+## Front End Optimizations
+
+There are a number of optimization techniques that can be employed in order to enhance overall performance on a site. Some of these are battle-hardened optimizations that should be employed on all sites, while others are more experimental. As such, they will be divided into categories based on which are most critical for success, and which can be played with.
+
+### Critical Optimizations
+
+* Avoid page redirects
+* Provide proper headers for all files
+	* Static files (fonts, js, css) should have sufficiently long cache, at least 30 days
+	* Images should have a slightly shorter cache, at least 15 days
+	* HTML should have a short cache, around 15 minutes
+	* Internet Explorer Edge header should always be passed
+* All JavaScript should be moved to the footer
+* `document.write` should be avoided
+* Images with no transparency should be served as progressive JPEGs, not as PNG files
+* CSS and JavaScript should be minified and aggregated
+* Reduce all blocking in the [critical path](http://sethgodin.typepad.com/seths_blog/2013/11/understanding-critical-path.html) to only page HTML and CSS
+* Do not group CSS by media in `<link>` tags; all of the CSS gets downloaded any. Instead, reduce number of aggregates and wrap internal CSS in media queries.
+* Use a CDN
+* Cache page requests
+* Utilize [progressive enhancement](http://alistapart.com/article/understandingprogressiveenhancement) with [feature detection](http://modernizr.com/) to server only what is needed to a user
+* Ensure that files that are only useful on particular pages only load on those pages, not all pages
+* Always load CSS before JavaScript
+
+### Recommended Optimizations
+
+* Lazy load non-critical content. See Filament Group's [Ajax-Include Pattern](https://github.com/filamentgroup/Ajax-Include-Pattern/)
+* Employ a Responsive Image solution. Until a standard exists, look for one based on image width over viewport size.
+* `ASYNC` and `DEFER` all on-page scripts (for instance, DART tags). See [$script.js](https://github.com/ded/script.js) for a light weight async JavaScript loader
+* `ASYNC` all ads
+* When utilizing a CDN such as Akami, use that to serve scripts such as jQuery instead of Google's CDN as it will be faster on a cold cache
+* Inline small but important files (generally <3Kb) to reduce HTTP requests. Aggregate other small files to reduce HTTP requests
+
+### Experimental Optimizations
+
+* Inline above-the-fold CSS into the HTML. Push additional CSS to the footer
+* Utilize [.webp](https://developers.google.com/speed/webp/) and [.webm](http://www.webmproject.org/) file formats
+* Employ the [spdy](http://www.chromium.org/spdy/spdy-whitepaper) protocol
+* Dynamically serve appropriately sized images from server side instead of relying upon a client side technique
 
 # Building Websites
 
