@@ -24,6 +24,23 @@ North is meant to be a living document. Standards and best practices change, and
 6. JavaScript
 7. Progressive Enhancement
 
+# Performance
+
+When building modern websites, performance is a real design and development constraint and must be taken into account at every level of the development process. To provide some insight, according to [recent research](http://www.igvita.com/slides/2013/breaking-1s-mobile-barrier.pdf), a 400ms delay causes a 0.59% decrease in average daily searches at Google (which according to [Ilya Grigorik](https://www.youtube.com/watch?v=Il4swGfTOSM), Developer Advocate at Google, is nearly twice their "something terrible has happened and we need to fix this now" rate and based on [2012 average daily searches](http://www.statisticbrain.com/google-searches/) amounts to **30.3 million lost searches** a day or, [according to their average revenue per search](http://marketingland.com/yahoo-microsoft-rps-guarantee-42680), **$12,116,240 in lost revenue per day**) and a 500ms delay at Bing reduces revenue per user by 1.2% (estimated to be (with [$13.10 per 1000 searches in 2011](http://www.trefis.com/stock/msft/articles/75824/can-miscrosoft-improve-its-search-revenues-with-facebook/2011-10-03) , [24.3 searches per user in 2011](http://searchengineland.com/bings-facebook-fans-do-68-more-searches-than-average-bing-users-89917), and [2.7 billion search per month in July 2012](http://searchenginewatch.com/article/2199849/Bing-Grows-Search-Market-Share-Google-Repeats-High-Yahoo-Halts-Slide)), approximately a **$10,313,892 loss per month**). Millions of dollars lost all based on a half second delay or less.
+
+When discussing and testing performance, it is important to do both with an eye toward mobile. This means that all performance testing needs to take place on actual devices, not just emulations, and on actual networks. Many of the standards have some wiggle room, but presented are the ideals and maximums for performance standards. The ideals and maximums have been chosen with an eye towards the realities of a media heavy site, including the realities of advertising and heavy multimedia usage.
+
+### Load
+
+Load times and load sizes are extraordinary important and often overlooked. Ideal statistics are presented first, with maximums presented second that should only be broached under edge circumstances.
+
+**Time To First Byte:** *200ms* - 350ms
+**DOM Content Loaded:** *1000ms* - 2000ms
+**JS Load Event Fired:** *900ms* - 2200ms
+**Total Download Size:** *1MB* - 2MB
+**DNS Lookup:** *10ms* - 20ms
+**HTTP Requests:** *50* - 75
+
 
 # Building Websites
 
