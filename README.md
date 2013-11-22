@@ -351,7 +351,9 @@ $message-extend: true !default;
     width: $width;
     margin: 0 auto;
     
-    // Border's color is based off of the `color` property, so we can write valid shorthand without the color. Border options aren't dynamic to clearly show a succinctly show this short hand method.
+    // Border's color is based off of the `color` property, so we can write valid 
+    //  shorthand without the color. Border options aren't dynamic to clearly show a 
+    //  succinctly show this short hand method.
     border: 2px solid;
   }
   @else {
