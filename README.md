@@ -19,15 +19,22 @@ North is meant to be a living document. Standards and best practices change, and
 		* [Critical Optimizations](#critical-optimizations)
 		* [Recommended Optimizations](#recommended-optimizations)
 		* [Experimental Optimizations](#experimental-optimizations)
-5. [Building Websites](#building-websites)
-  * [Components](#components)
-  * [Layouts](#layouts)
-  * [Aspects](#aspects)
-  * [Elements](#elements)
-  * [CSS Naming Conventions](#css-naming-conventions)
-  * [Sass and Compass](#sass-and-compass)
-    * [Partial Structure](#partial-structure)
-    * [Mixin/Extend Pattern](#mixinextend-pattern)
+5. [Website Building Blocks](#website-building-blocks)
+  * [Markup](#markup)
+	  * [HTML Semantics](#html-semantics)
+	  * [Accessibility](#]accessibility)
+	  * [RDFa](#rdfa)
+	  * [Viewport Meta Tag](#viewport-meta-tag)
+  * [Styling](#styling)
+	  * [Base Browser Styling](#base-browser-styling)
+	  * [Components](#components)
+	  * [Layouts](#layouts)
+	  * [Aspects](#aspects)
+	  * [Elements](#elements)
+	  * [CSS Naming Conventions](#css-naming-conventions)
+	  * [Sass and Compass](#sass-and-compass)
+	    * [Mixin/Extend Pattern](#mixinextend-pattern)
+	    * [Partial Structure](#partial-structure)
 6. JavaScript
 7. Progressive Enhancement
 
@@ -118,35 +125,67 @@ There are a number of optimization techniques that can be employed in order to e
 * Employ the [spdy](http://www.chromium.org/spdy/spdy-whitepaper) protocol
 * Dynamically serve appropriately sized images from server side instead of relying upon a client side technique
 
-# Building Websites
+# Website Building Blocks
 
-While in the past it may have been good enough to see a high-res Desktop sized Photoshop comp to build a website, the vast and varying landscape of the modern web makes 
+No matter what back end technology is used to generate a website, when it gets rendered to a page it always becomes HTML, CSS, and JavaScript when displayed in browser. As such, a common set of best practices can be employed to ensure that what the user gets is as good as it can be, regardless of the device or method they choose to browse the site with. The methodology described below presents a content focused, component based, semantic, and accessible approach for building web sites. Designing this way is challenging, and requires a different approach than traditional desktop-sized Photoshop documents. That will be covered in other sections of this document, but one of the best ways to design this way is in browser using [Style Prototypes](https://github.com/Team-Sass/generator-style-prototype).
 
-## Components
+## Markup
+
+The core of every website is the underlying markup that, through [styling](#styling) and [interaction](#interaction), gets transformed into a web experience. This underlying code is the heart and soul of every site and should be treated as such. By properly utilizing HTML5 semantic markup and ensuring content is accessible and properly marked up with Resource Description Framework in Attributes (RDFa), websites will be able to achieve better search engine optimization (SEO) and ensure that the content will be highly available no matter the accessing system and last long in to the future.
+
+### HTML Semantics
+
+When developing websites, HTML semantic tags should be used and the HTML5 standard should be utilized. Any elements that are obsolete or deprecated as of HTML5 should not be used. For a complete listing of available HTML elements and their defined meaning, see the [Web Platform Elements Reference](http://docs.webplatform.org/wiki/html/elements). The proper semantics for each element should always be used, for instance, the `<table>` element should only be used to mark up tabular data, never for layout or lists. Elements designed for style, such as `<b>` and `<center>` should never be used and should be done through styling instead. Should confusion arise as to exactly how to use a given element, or if its definition is not clear, [HTML5 Doctor](http://html5doctor.com/)is an excellent supplementary resource to Web Platform. If support is needed for browsers that do not natively implement all semantic elements, the [HTML5 Shiv](https://github.com/aFarkas/html5shiv) should be conditionally made available.
+
+### Accessibility
+
+The accessibility of a web site's content, including its source order without any applied CSS or JavaScript, must be taken into account. [Web Platform's Accessibility Basics](http://docs.webplatform.org/wiki/concepts/accessibility) article is a good introduction to accessibility for those unfamiliar with them. During development, websites should be checked with a screen reader to ensure they are easy to use. All developers using Apple computers or that have access to iOS device have access to [VoiceOver](http://www.apple.com/accessibility/osx/voiceover/) as it is installed on both operating systems. VoiceOver, especially on iOS devices, is an extremely popular screen reading application and will allow for inexpensive accessibility testing on a product users actually use. Another popular screen reading application, especially for Windows machines, is [JAWS](http://www.freedomscientific.com/products/fs/jaws-product-page.asp), although that is proprietary software and fairly expensive at that. A final resource for testing accessibility is to access a website using the [Lynx Browser](http://lynx.browser.org/). As a text-only browser, it will strip out styling and interactions, leaving raw content in the order it is presented. As an added bonus, this is also a good analogue to how crawlers and search engines view a given page.
+
+### RDFa
+
+[Resource Description Framework in Attributes](http://www.w3.org/TR/rdfa-primer/), more commonly known as [RDFa](http://rdfa.info/), is an extension to HTML5 allowing for robust markup of objects in HTML, including items such as people, places, events, recipes, and reviews. They are used to precisely describe these objects, mostly to machines, by attaching metadata about each object as attributes. The most common immediate use for this metadata is in use by search engines and social networks, amongst others, allowing their crawlers to understand exactly what is on any given page. This, in turn, allows them to provide more accurate and higher ranked information about each piece of content. A useful side effect of marking up all content with RDFa information, especially when using a Content Management System (CMS), is that it ensures that all of the relevant metadata is readily available in individual chunks and thus becomes fine-grain points of control for each piece of content that can be syndicated outside of pure markup.
+
+### Viewport Meta Tag
+
+When building responsive websites, for the time being, a non-standard meta tag needs to be used in order to tell browsers how to react. This is colloquy known as a "viewport tag". While there are many options that can go in to the viewport tag, the tag, in its entirety, that should be used is as follows:
+
+`<meta name="viewport" content="initial-scale=1.0">`
+
+There is currently a [CSS Device Adaptation](http://dev.w3.org/csswg/css-device-adapt/) development specification in the works which, when done, will move this from a markup tag to a CSS directive known as the [`@viewport`](http://dev.w3.org/csswg/css-device-adapt/#the-atviewport-rule) directive. Currently, Internet Explorer 10 and up, including on mobile devices, does not use the viewport tag, but rather the viewport directive, so both should be included on all projects.
+
+## Styling
+
+If markup is the skeleton of a website, styling is the funny hat. Through CSS, a stack of content on a page can become flexible and fantastically flourished. With the introduction of CSS3, styling can now include such fanciful additions such as animations, perspective, and even 3D. But with all of this power, and all of this responsibility, a firm structure to create a system of style needs to be in place or else everything can run off of the tracks. Below represents a component based systematic approach to styling.
+
+### Base Browser Styling
+
+Due to lack of standards around it, each browser manufacturer creates their own styling for their browser, leaving each browser's default base rendering of elements different. This, of course, causes inconsistencies across browsers that must be fixed. The two most prominent ways of doing this is through either to [reset](http://meyerweb.com/eric/tools/css/reset/) or [normalize](http://necolas.github.io/normalize.css/) the appearance of all elements. While normalization has become the go-to method for many projects recently, it introduces can introduce new issues into the cascade. This is the same reason it is recommended to create a [base component](#base-component) instead of allowing site-specific base styling to cascade throughout the entire site. Because of this, it is recommended to use the **reset** method; preferable one that discreetly targets the elements that need resets, fixes the bugs that the common Normalize.css fixes, and adds the correct baselines for HTML5 elements if they are not otherwise recognized (for instance, applying `display: block` to the `<main>` element).
+
+### Components
 
 Components are the primary building block of any interface. They are the bits and bobs that combine to form a cohesive user interface; from menus to messages, pagers to pictures, and everything else in between. Components should be written to be able to be dropped in to any position in a layout. The way to accomplish this is to build components using [**eq.js**](https://github.com/snugug/eq.js). This will allow a component and its elements to respond appropriately regardless of where they land in a given document flow. Components should simple layouts to position elements inside of themselves either through extends or by constructing a component with elements placed inside an internal layout (decide before starting a project and carry that decision through the lifespan of the project) if the layout is not component specific. They may choose to control their overall sizing and one-off sizing and positioning, but those choices should be relative the container they are dropped in to and not layout or position specific.
 
-### Base Component
+#### Base Component
 
 Each project should contain a `base` component which contains base styling for raw tags (`h2`, `blockquote`, `p`, etc…). The `base` component's elements should be named after the tag they style, so basic styling for `h2` would provide both an extendable and full class `.base--h2`. To apply these styles, create a `styled` aspect, providing a `.base--STYLED` class. This aspect should have raw elements styled without classes, allowing it to be dropped into any section of a site and provide basic styling. Additional aspects can be created to create different base stylings.
 
-## Layouts
+### Layouts
 
 Layouts are the structure of an interface. Providing structure to pages and components, layouts are responsible for sizing and positioning of their elements. There are two kinds of layouts, simple and complex. The distinguishing factor between simple and complex layouts is that complex layouts adapt and change their sizing and positioning based on media queries whereas simple layouts do not. Complex layouts are generally used for laying out pages and regions within pages, with simple layouts being used for laying out sub-sections inside complex layouts and providing common layouts for components. While simple layouts may be used within components or even within other simple or complex layouts, complex layouts should never be used within one another.
 
-## Aspects
+### Aspects
 
 Aspects are a specific implementation of a component or layout. Components and layouts always should have an aspect when used to determine what kind implementation is being worked with. Aspects can be used as a way to pivot styling of elements if need be or to control implementation-specific styling, such as changing colors in a message component or determining exact sizing of a body element of a layout. It is preferable to use aspects as pivot points than to create unique classes for each element as it allows for the reuse of identical elements regardless of the aspect of a component or layout they are used in.
 
-## Elements
+### Elements
 
 Elements are the individual pieces that make up a component or layout, each being component or layout specific. Think of them as individual elements (`h2`, `blockquote`, `p`, etc…) in components and regions and items in layouts. When styling an item inside components or layouts, it is strongly discouraged to use raw tag selectors and instead use element classes for each. This is to avoid any potential conflicts, such as would happen if you have a pager component inside of a slider component (`.slider li` and `.pager li`). The only exception to this rule is for the [base component](#base-component).
 
-## States
+### States
 
 States provide a way to alter how a component, layout, element, or aspect behaves. Common states include `active`, `open`, and `closed`. Because states live in the in-between world of JavaScript and CSS, often changing with interactions from the user, states are controlled by data attributes and get attached to the components, layouts, elements, or aspects they are modifying. This provides easy to maintain states on a per-object basis without needing per-object states.
 
-## CSS Naming Conventions
+### CSS Naming Conventions
 
 Components and layouts form prefixes the prefixes for aspects and elements, separated by double dash (`--`). Simple layouts start with an underscore (`_`) and complex layouts start with two underscores (`__`) to distinguish them from components, and aspects are written in all caps (`CAPS`) to distinguish them from elements, written in all lowercase (`lowercase`). States are applied to the state data attribute (`data-state`) and queried using attribute selectors as they have the strong tendency to either be manipulated by JavaScript or be used as a hook for JavaScript. A sample document written up using this naming convention could look like the following:
 
@@ -192,7 +231,7 @@ Components and layouts form prefixes the prefixes for aspects and elements, sepa
 </div>
 ```
 
-## Sass and Compass
+### Sass and Compass
 
 When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://compass-style.org/) authoring framework. When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems. The `scss` syntax should be used exclusively when writing and sharing Sass. In order to ensure that all environments are the same, the minimum version of Ruby that should be used is `2.0.0` (standard on OS X version 10.9 and up) and all gems should be installed and versions managed by [Bundler](http://bundler.io/). When writing a [Gemfile](http://bundler.io/v1.5/gemfile.html), versions should all be specified using the `~>` specifier to ensure that gems stay on the same major and minor versions, making upgrades in minor versions purposeful. Gems should be installed in to a `vendor` folder in each project, which should be ignored from version control. In addition to Bundler, there are a number of Compass extensions that should be used as a standard for a variety of needs.
 
@@ -225,7 +264,7 @@ line_comments = false
 ```
 
 
-### Mixin/Extend Pattern
+#### Mixin/Extend Pattern
 
 Mixins are best used when they don't needlessly duplicate the properties they write. We can do this using placeholder selectors and `@extend`. The only properties that should be erectly written to the selector calling a mixin should be properties that have been directly altered due to mixin arguments. Any other properties should be extended. All arguments that have default values should have those default values controlled by globally namespaced `!default` variables to make overriding those defaults easy and accessible. All mixins that provide extends should also have an `$extend` optional argument, ideally as its last argument, also globally defaulted.
 
@@ -385,7 +424,7 @@ $message-extend: true !default;
 
 While this approach certainly requires more work up front to build the mixins and extendables, it produces much more controlled and succinct output CSS, which is what we're aiming to write. 
 
-### Partial Structure
+#### Partial Structure
 
 Sass partials are a way for us to organize our styling knowledge into maintainable and easily grokable chunks. An example Sass partial structure is available in the folder `sass`.
 
