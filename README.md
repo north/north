@@ -8,6 +8,8 @@ North is meant to be a living document. Standards and best practices change, and
 
 *This project is currently a work in progress*
 
+## Table of Contents
+
 1. Development Process
 2. Content Strategy
 3. Visual Design
