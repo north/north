@@ -37,6 +37,7 @@ North is meant to be a living document. Standards and best practices change, and
 	  * [Sass and Compass](#sass-and-compass)
 	    * [Mixin/Extend Pattern](#mixinextend-pattern)
 	    * [Partial Structure](#partial-structure)
+  * [Interaction](#interaction)
 6. JavaScript
 7. Progressive Enhancement
 
@@ -441,3 +442,16 @@ The `partials` directory should be divided up into 3 sub directories, `global`, 
 Both your components and your layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for `variables`, `functions`, `mixins`, and `extendables`. Each of these partials should hold styling knowledge specific to that component; for instance, `variables` could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in in the example `sass` folder.
 
 All extendable classes should be wrapped in a solution to only have the selector written once to ensure that selectors don't get needlessly duplicated. Mixins should share their naming convention with the object they are used to style. The solution provided by the North Compass extension is derived from Wilson Page's [Sass Import Once](https://github.com/wilsonpage/sass-import-once) partial.
+
+## Interaction
+
+* No scope leaking
+	* Annon/Self Execute all the things
+	  * pass in what's needed
+	  * pass back out if needed outside of a/se
+	* all vars must start with `var`
+* funds declared before usage
+* choose appropriate libraries
+	* weigh weight vs functionality
+	* is a jQuery plugin needed, or can vanilla be written and be thinner
+	* given browser support, is a heavy JS framework needed, or can something small like [Chibi](https://github.com/kylebarrow/chibi) work
