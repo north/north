@@ -38,7 +38,8 @@ North is meant to be a living document. Standards and best practices change, and
 	    * [Mixin/Extend Pattern](#mixinextend-pattern)
 	    * [Partial Structure](#partial-structure)
   * [Interaction](#interaction)
-6. JavaScript
+	  * [Style and Syntax](#style-and-syntax)
+	  * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
 7. Progressive Enhancement
 
 # Performance
@@ -445,13 +446,34 @@ All extendable classes should be wrapped in a solution to only have the selector
 
 ## Interaction
 
-* No scope leaking
-	* Annon/Self Execute all the things
-	  * pass in what's needed
-	  * pass back out if needed outside of a/se
-	* all vars must start with `var`
-* funds declared before usage
-* choose appropriate libraries
-	* weigh weight vs functionality
-	* is a jQuery plugin needed, or can vanilla be written and be thinner
-	* given browser support, is a heavy JS framework needed, or can something small like [Chibi](https://github.com/kylebarrow/chibi) work
+What is better than a funny hat? A funny hat that spins. JavaScript adds interactivity to web pages, transforming them from static documents into living ones. JavaScript is a very flexible and powerful tool, but as Stan Lee says, "with great power there must also come -- great responsibility".
+
+### Style and Syntax
+
+A most reasonable approach to JavaScript is the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript#functions). It provides an excellent set of rules and industry best practices for writing JavaScript, and it should be followed. In addition to the Airbnb guide, the following guidelines should also be followed:
+
+* Functions must be declared before they are used
+* All custom scripts should be wrapped in anonymous, self-executing functions with any external dependencies passed in.
+
+```javascript
+(function($) {
+  var intro = 'Once upon a time…',
+      $heading = $('#heading'),
+      $princess = $('#princess');
+  
+  function fairytale()
+  
+  heading.html(intro);
+})(jQuery);
+
+```
+
+### Libraries, Plugins, and Frameworks
+
+When building site, very often a point will come when a decision must be made as to if a certain JavaScript library, plugin, or framework should be used. In addition to evaluating 3rd party scripts based on the quality of their code and their adherence to the JavaScript Style Guide, the following criteria should also be used:
+
+* Is the added functionality worth the weight? A lot can be accomplished with very little in JavaScript. If a minified version of a script is larger than 5KB, seriously consider if everything that it offers is needed or if something smaller and lighter weight can be just as effective. Is a 21.5KB slider library plus the weight of jQuery really work the precious few bytes and HTTP requests needed for a fast and performant site?
+* If the script builds off of another framework, such as a jQuery Plugin, examine the problem and determine if writing a custom solution can be as effective and lighter. Not everything needs to be a jQuery Plugin.
+* If a script does not come with a minified version, determine if it can be minified. All scripts should be minified, so if a script being evaluated cannot, that should be taken into consideration.
+* Is the script performant? Does it have performance benchmarks? If not, can it be benchmarked? If a script, regardless of weight, slows down a site significantly its use should be reconsidered.
+* Given browser support, is a heavy JavaScript library like jQuery or Dojo needed? Can paired down versions of those libraries be used? Does usage require the full support behind one of these libraries, or can a small DOM/AJAX library such as [Chibi](https://github.com/kylebarrow/chibi) be effective?
