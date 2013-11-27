@@ -50,6 +50,7 @@ North is meant to be a living document. Standards and best practices change, and
 # Responsive Web Design
 
 > 'Responsive' is not a line item. It's Design
+>
 > *- Jason Pamental*
 
 Responsive web design (RWD) is an approach to design that, as [Brad Frost](http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/) eloquently puts it, attempts to "…create functional (and hopefully optimal) user experiences for a growing number of web-enabled devices and contexts." Users don't care if a site is responsive or not, what users care about is that all content is available, navigable, and predictable at the same place regardless of what device they choose to access a given site from. They care that it is fast, reliable, and accessible. [Performance](#performance) is of the upmost importance. This is especially true for mobile, where a [57% of users will abandon a site after waiting 3 seconds for a page to load](http://www.strangeloopnetworks.com/web-performance-infographics/) and 80% of those users will not return. So RWD is not about making a design squish to fit phones, tablets, and desktops; it is really a methodology to deliver content in a compelling and performant manner regardless of how a user chooses to access that content.
@@ -72,7 +73,7 @@ The set of suggestions from the Future Friendly manifesto that should not be fol
 
 ## Device Detection
 
-**Don't Do It.**
+####Don't Do It.
 
 Device detection is a bad and unsustainable practice. Relying upon current knowledge, device detection is a method of identifying a device based on its [User Agent String](http://en.wikipedia.org/wiki/User_agent). This is a poor method of identification in and of itself; it is based on current knowledge, meaning that lists need to be maintained and can only be updated after a device has been released, making said lists consistently out of date. Additionally, if used for categorizing devices, for instance into phone, tablet, and desktop devices, it requires subjective determinations that may or may not reflect the realities of the actual device and its user, and itself pushes lists out of date and can create divergent lists. Oh, and user agent strings can (and often times, especially on the mobile web, do) be faked to emulate the user agent string of another device and/or browser. It should go without saying that using user agent strings to determine and pivot on browsers and browser versions should also not be done.
 
@@ -80,11 +81,14 @@ The reason device and/or browser detection was used in the past, and some still 
 
 > Any time you say somebody won't want that on their phone, you're wrong.
 
+and
+
 > If it's not good for the mobile user, it's not good for any user. We're the same people.
 
 While talking about mobile, the point is as follows: users are the same regardless of the device they choose to use. Assuming a user has a different set of wants or needs exclusively based on the fact a user agent string says they are using a tablet device will always be wrong. Bring personal experience into decision making; when browsing a resultant website on your phone, are your wants and needs there all that different than when you do so on a desktop computer?
 
 > Mobile users want to see our menu, hours, and delivery number. Desktop users definitely want this 1MB .png of someone smiling at a salad.
+>
 > *- Mat Marquis*
 
 # Performance
