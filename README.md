@@ -18,7 +18,7 @@ North is meant to be a living document. Standards and best practices change, and
 	* [Device Detection](#device-detection)
 	* [Progressive Enhancement](#progressive-enhancement)
 		* [Feature Detection](#feature-detection)
-		* []
+		* [Graceful Degradation](#graceful-degradation)
 5. [Performance](#performance)
 	* [Testing and Grading Performance](#testing-and-grading-performance)
 	* [Payload Performance](#payload-performance)
@@ -51,7 +51,7 @@ North is meant to be a living document. Standards and best practices change, and
 
 > 'Responsive' is not a line item. It's Design
 >
-> *- Jason Pamental*
+> *Jason Pamental*
 
 Responsive web design (RWD) is an approach to design that, as [Brad Frost](http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/) eloquently puts it, attempts to "…create functional (and hopefully optimal) user experiences for a growing number of web-enabled devices and contexts." Users don't care if a site is responsive or not, what users care about is that all content is available, navigable, and predictable at the same place regardless of what device they choose to access a given site from. They care that it is fast, reliable, and accessible. [Performance](#performance) is of the upmost importance. This is especially true for mobile, where a [57% of users will abandon a site after waiting 3 seconds for a page to load](http://www.strangeloopnetworks.com/web-performance-infographics/) and 80% of those users will not return. So RWD is not about making a design squish to fit phones, tablets, and desktops; it is really a methodology to deliver content in a compelling and performant manner regardless of how a user chooses to access that content.
 
@@ -77,6 +77,8 @@ The set of suggestions from the Future Friendly manifesto that should not be fol
 
 Device detection is a bad and unsustainable practice. Relying upon current knowledge, device detection is a method of identifying a device based on its [User Agent String](http://en.wikipedia.org/wiki/User_agent). This is a poor method of identification in and of itself; it is based on current knowledge, meaning that lists need to be maintained and can only be updated after a device has been released, making said lists consistently out of date. Additionally, if used for categorizing devices, for instance into phone, tablet, and desktop devices, it requires subjective determinations that may or may not reflect the realities of the actual device and its user, and itself pushes lists out of date and can create divergent lists. Oh, and user agent strings can (and often times, especially on the mobile web, do) be faked to emulate the user agent string of another device and/or browser. It should go without saying that using user agent strings to determine and pivot on browsers and browser versions should also not be done.
 
+Device detection extends to choices made when designing sites as well, not just user agent strings. Common examples of non user agent string device detection include mimicking iOS native app visual styling and user experience patterns on the web, constraining designs to "phone", "tablet", and "desktop" sizes (or "small", "medium", and "large"), choosing media queries and breakpoints based on "common" device sizes, and making assumptions about features based on screen size (such as small screens have touch capabilities).
+
 The reason device and/or browser detection was used in the past, and some still believe it has a place in a modern web development workflow, is because it is often used as a means to make guesses at the features available to work with or at the stereotypical expected user behavior. Unfortunately, it is a pretty terrible tool for doing both. On the feature side, there is a widely accepted best practice of using [progressive enhancement](#progressive-enhancement) and [feature detection](#feature-detection) to "ask" a browser what features are available and enhance the experience with those features. This approach means that a web page can adapt to what is actually available in a way that works across all past, present, and future devices in a way that is much more reliable and hardy than device detection. On the expected user behavior side, as [Josh Clark points out](http://globalmoxie.com/jhc/prez/mobile-myths.pdf):
 
 > Any time you say somebody won't want that on their phone, you're wrong.
@@ -89,7 +91,31 @@ While talking about mobile, the point is as follows: users are the same regardle
 
 > Mobile users want to see our menu, hours, and delivery number. Desktop users definitely want this 1MB .png of someone smiling at a salad.
 >
-> *- Mat Marquis*
+> *Mat Marquis*
+
+## Progressive Enhancement
+
+Take away what we can't know: screen size, device capabilities, concurrent activities, depth of focus, purpose of visit.
+
+> Take away the make believe. Take away what we can't know. They're fantasies.
+>
+> *Jason Pamental*
+
+Since about 2003, [Progressive Enhancement](http://alistapart.com/article/understandingprogressiveenhancement) has been a technique that has been used to create sites that work across any and all browsers and devices, from screen readers and and search engine spiders to the most bleeding edge alpha browsers on the highest end computers. The technique can be boiled down fairly simply: start with content that is richly marked up semantic HTML and layer on everything else, from styling to interactions, after. By building websites content and markup first, it allows everything from the most sparse browser to the most robust one (and everything in between) to get an experience that works well for their capabilities.
+
+When building sites, they should always be built content first. Once the content is built, each enhancement that is added, from styling to interaction, should be added with this in mind. A good experience needs to be available to all users; do not design pages for the most cutting-edge browsers, design for the content.
+
+### Feature Detection
+
+Progressive Enhancement isn't regulated to broad features like all styling or all interactions, but can and should be done on a feature-by-feature level as well. They best way to determine what level of support a given browser has is to ask it. The most widely used feature detection library is [Modernizr](http://modernizr.com/). Modernizr is a tool built and maintained by some of the leading minds in web development today, and should be considered the go-to solution for feature detection.
+
+Where feature detection based progressive enhancement differs from standard progressive enhancement is that where standard progressive enhancement is concerned with the whole site and the overall user experience, feature detection based progressive enhancement is generally based around a single user experience enhancement, such as a flexbox powered layout or a location based enhancement to search.
+
+When adding in feature-specific enhancements, they should only be loaded in if that feature is available in a given browser. This should be done asynchronously. This provides a site with two levels of progressive enhancement, the core set of content to shared feature set and experience, followed by additional enhancements for feature-specific experience enhancements. Modernizr's [load](http://modernizr.com/docs/#load) option allows for asynchronous loading of resources, especially useful when used in conjunction with Modernizr feature tests.
+
+### Graceful Degradation
+
+Whereas progressive enhancement starts with content and enhances up the experience until a full web page is built, graceful degradation starts with a completed web page built to support the newsiest and most capable browsers and ensure the experience is passable in less capable browsers. While progressive enhancement is always the preferred route to take by default, there are times in projects where graceful degradation can be an approach worth considering, for instance when it comes to [polyfilling](http://remysharp.com/2010/10/08/what-is-a-polyfill/) support for HTML5's semantic tags for browsers that do not support them or providing styling that would be constrained to media queries to browsers that likewise do not support them.
 
 # Performance
 
