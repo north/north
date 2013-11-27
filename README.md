@@ -13,7 +13,13 @@ North is meant to be a living document. Standards and best practices change, and
 1. Development Process
 2. Content Strategy
 3. Visual Design
-4. [Performance](#performance)
+4. [Responsive Web Design](#responsive-web-design)
+	* [Future Friendly](#future-friendly)
+	* [Device Detection](#device-detection)
+	* [Progressive Enhancement](#progressive-enhancement)
+		* [Feature Detection](#feature-detection)
+		* []
+5. [Performance](#performance)
 	* [Testing and Grading Performance](#testing-and-grading-performance)
 	* [Payload Performance](#payload-performance)
 	* [Page Performance](#page-performance)
@@ -21,7 +27,7 @@ North is meant to be a living document. Standards and best practices change, and
 		* [Critical Optimizations](#critical-optimizations)
 		* [Recommended Optimizations](#recommended-optimizations)
 		* [Experimental Optimizations](#experimental-optimizations)
-5. [Website Building Blocks](#website-building-blocks)
+6. [Website Building Blocks](#website-building-blocks)
   * [Markup](#markup)
 	  * [HTML Semantics](#html-semantics)
 	  * [Accessibility](#]accessibility)
@@ -40,7 +46,46 @@ North is meant to be a living document. Standards and best practices change, and
   * [Interaction](#interaction)
 	  * [Style and Syntax](#style-and-syntax)
 	  * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
-7. Progressive Enhancement
+
+# Responsive Web Design
+
+> 'Responsive' is not a line item. It's Design
+> *- Jason Pamental*
+
+Responsive web design (RWD) is an approach to design that, as [Brad Frost](http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/) eloquently puts it, attempts to "…create functional (and hopefully optimal) user experiences for a growing number of web-enabled devices and contexts." Users don't care if a site is responsive or not, what users care about is that all content is available, navigable, and predictable at the same place regardless of what device they choose to access a given site from. They care that it is fast, reliable, and accessible. [Performance](#performance) is of the upmost importance. This is especially true for mobile, where a [57% of users will abandon a site after waiting 3 seconds for a page to load](http://www.strangeloopnetworks.com/web-performance-infographics/) and 80% of those users will not return. So RWD is not about making a design squish to fit phones, tablets, and desktops; it is really a methodology to deliver content in a compelling and performant manner regardless of how a user chooses to access that content.
+
+## Future Friendly
+
+The methodology of RWD is a methodology of creating sites that are [Future Friendly](http://futurefriend.ly/). The core tenants of being future friendly are as follows:
+
+1. Acknowledge and embrace unpredictability.
+2. Think and behave in a [future-friendly way](http://futurefriend.ly/thinking.html).
+	* We can't be all things to **all** devices.
+	* Create meaningful content and services.
+	* Design services and information architecture [content](http://adactio.com/journal/4523/) and [mobile](http://www.lukew.com/ff/entry.asp?933) first
+	* Design content models to be used across presentations (website, apps, APIs, etc…)
+	* Design content models around standards to be interoperable. Focus on its long term integrity
+	* Having well-structured content is essential to art direction. Structure and store content accordingly
+3. Help others do the same.
+
+The set of suggestions from the Future Friendly manifesto that should not be followed as written are those dealing with device categorization and [device detection](#device-detection). The sentiment is correct, enhance any given device with a user experience that is tailored to its capabilities, but that should be done using [progressive enhancement](#progressive-enhancement) and [feature detection](#feature-detection) instead. Creating enhanced experiences this way, and encouraging users to take advantage of those enhanced experiences (as opposed to forcing them upon users based on their user agent string) allows for a more sustainable and future looking approach to delivering these experiences.
+
+## Device Detection
+
+**Don't Do It.**
+
+Device detection is a bad and unsustainable practice. Relying upon current knowledge, device detection is a method of identifying a device based on its [User Agent String](http://en.wikipedia.org/wiki/User_agent). This is a poor method of identification in and of itself; it is based on current knowledge, meaning that lists need to be maintained and can only be updated after a device has been released, making said lists consistently out of date. Additionally, if used for categorizing devices, for instance into phone, tablet, and desktop devices, it requires subjective determinations that may or may not reflect the realities of the actual device and its user, and itself pushes lists out of date and can create divergent lists. Oh, and user agent strings can (and often times, especially on the mobile web, do) be faked to emulate the user agent string of another device and/or browser. It should go without saying that using user agent strings to determine and pivot on browsers and browser versions should also not be done.
+
+The reason device and/or browser detection was used in the past, and some still believe it has a place in a modern web development workflow, is because it is often used as a means to make guesses at the features available to work with or at the stereotypical expected user behavior. Unfortunately, it is a pretty terrible tool for doing both. On the feature side, there is a widely accepted best practice of using [progressive enhancement](#progressive-enhancement) and [feature detection](#feature-detection) to "ask" a browser what features are available and enhance the experience with those features. This approach means that a web page can adapt to what is actually available in a way that works across all past, present, and future devices in a way that is much more reliable and hardy than device detection. On the expected user behavior side, as [Josh Clark points out](http://globalmoxie.com/jhc/prez/mobile-myths.pdf):
+
+> Any time you say somebody won't want that on their phone, you're wrong.
+
+> If it's not good for the mobile user, it's not good for any user. We're the same people.
+
+While talking about mobile, the point is as follows: users are the same regardless of the device they choose to use. Assuming a user has a different set of wants or needs exclusively based on the fact a user agent string says they are using a tablet device will always be wrong. Bring personal experience into decision making; when browsing a resultant website on your phone, are your wants and needs there all that different than when you do so on a desktop computer?
+
+> Mobile users want to see our menu, hours, and delivery number. Desktop users definitely want this 1MB .png of someone smiling at a salad.
+> *- Mat Marquis*
 
 # Performance
 
@@ -450,7 +495,7 @@ What is better than a funny hat? A funny hat that spins. JavaScript adds interac
 
 ### Style and Syntax
 
-A most reasonable approach to JavaScript is the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript#functions). It provides an excellent set of rules and industry best practices for writing JavaScript, and it should be followed. In addition to the Airbnb guide, the following guidelines should also be followed:
+A most reasonable approach to JavaScript is the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript). It provides an excellent set of rules and industry best practices for writing JavaScript, and it should be followed. In addition to the Airbnb guide, the following guidelines should also be followed:
 
 * Functions must be declared before they are used
 * All custom scripts should be wrapped in anonymous, self-executing functions with any external dependencies passed in.
