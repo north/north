@@ -12,7 +12,16 @@ North is meant to be a living document. Standards and best practices change, and
 
 1. Development Process
 2. Content Strategy
-3. Visual Design
+3. [Visual Design](#visual-design)
+	* [Design in Browser](#design-in-browser)
+		* [Pair Design](#pair-design)
+		* [Sketching](#sketching)
+	* [Rapid Prototyping](#rapid-prototyping)
+	* [Style Prototyping](#style-prototyping)
+		* [Style Tiles](#style-tiles)
+		* [Style Guide](#style-guide)
+		* [Component Guide](#component-guide)
+		* [Layout Guide](#layout-guide)
 4. [Responsive Web Design](#responsive-web-design)
 	* [Future Friendly](#future-friendly)
 	* [Device Detection](#device-detection)
@@ -46,6 +55,64 @@ North is meant to be a living document. Standards and best practices change, and
   * [Interaction](#interaction)
 	  * [Style and Syntax](#style-and-syntax)
 	  * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
+	  
+# Content Strategy
+
+# Visual Design
+
+As the web comes into its own as a medium and the [rituals of print design](http://snugug.github.io/designing-the-modern-web/#/ritual) are cast off, websites can no longer be designed in the same tools built for print design. Websites have interaction, states change, items come in and out. The [differences in browsers browsers](#progressive-enhancement) force designs to change based on capabilities available. Even something as simple as screen size is not static. As [Brad Frost put it](https://twitter.com/brad_frost/status/195241868383092736), "You can't articulate fluidity on paper." The reality of the web has always been that a single, static bitmap representation of a page isn't what a final site will be, it's just taken the push of [responsive web design](#responsive-web-design) to bring the web into its own as a medium. In order to accommodate for the fluidity and flexibility of the medium of the web, new tools and techniques are needed to create a site's look and feel.
+
+## Design in Browser
+
+**Photoshop is not a web design tool.** It's even in the name; *photo*shop. All static website drawings (often called mockups, mocks, comps) are nothing more than a representation, many times a fairly inaccurate one, of what a site may look like when finally built. In the world of the fluid and flexible web, [a pixel is not a pixel](http://alistapart.com/article/a-pixel-identity-crisis/), in fact, **pixel perfect does not exist**.
+
+> Guess what. The web's not a laser printer.
+>
+> *Karen McGrane*
+
+To combat these inaccuracies, instead of designing websites in static graphic design tools, design should take place with the tools of the web; [HTML](#markup), [CSS](#styling), and [JavaScript](#interaction). This goes for both user interface design (UI) and user experience design (UX). UX should be sussed out utilizing [rapid prototyping](#rapid-prototyping) and UI utilizing [style prototyping](#style-prototyping). By doing so, what gets signed off on by the client is work that inherently conforms to the realities of the web as opposed to a picture that may or may not. In addition, by designing in browser, how design choices affect [performance](#performance) can be readily seen allowing for performance to be part of the design process, not an afterthought.
+
+Because design decisions will need to be made throughout the lifespan of a project, the designers (both UI and UX) responsible for the design of a site need to be part of the full lifecycle of a project and cannot simply hand off initial designs and walk away from a project when development starts.
+
+### Pair Design
+
+One proven method of transitioning design teams from designing in bitmap tools to designing in browser is to pair designers with front end developers in a method similar to [pair programing](http://en.wikipedia.org/wiki/Pair_programming). With pair design, the front end developer acts as hands and the designer acts as the eyes. The two then work together to create a design. As this is happening, the developer should encourage the designer write code and the designer should encourage the developer to give input into the design and suggest technical solutions to design challenges or decisions.
+
+During this process, it is also helpful for front end developers to create reusable patters in CSS (especially around creating functions and mixins in [Sass](#sass-and-compass)) and explain to and work with the designer to enhance these patterns, allowing the designer to get comfortable writing pattern-based code. This also lays the foundation for rapid iteration of a design idea.
+
+Eventually, the designer should be allowed to take over full responsibility of coding and designing with the front end developer moving on to focus their efforts on [semantics](#html-semantics), [accessibility](#accessibility), and [JavaScript](#interaction).
+
+### Sketching
+
+While designing in browser is the standard to achieve for, many times a designer will want to work out design ideas outside of browser. This may include a static graphic design tool, pencil and paper, tablet sketching app, or anything else they may find handy. This is encouraged! However, what is produced through these design sessions should be considered sketches and should not be a deliverable to be signed off on by the client. All work to be signed off on must be in browser.
+
+## Rapid Prototyping
+
+Rapid prototyping is a technique used to quickly create example interactions, styles, or flows. Traditionally done through code, although [paper prototyping](http://alistapart.com/article/paperprototyping) would fall under rapid prototyping, rapid prototypes are meant for demonstration purposes. Built as stand-alone projects to demonstrate a single purpose, they are used to demonstrate an idea or suss out a UI or UX problem. They also are a great tool for experimenting different options quickly. When finished, rapid prototypes can be used to create production ready code (once all gates for production ready code, including cross-browser testing, have been completed).
+
+## Style Prototyping
+
+Style prototyping is a technique used to create a typical instance of a design from which a final site can be assembled. A style prototype is a combination of a [style tile](#style-tiles), [style guide](#style-guide) a [component guide](#component-guide), and a [layout guide](#layout-guide). A tool for generating style prototypes, happily called [Style Prototypes](https://github.com/team-sass/generator-style-prototype), is a [Yeoman](http://yeoman.io/) generator for quickly and easily creating style prototypes and includes a [content strategy](#content-strategy) and a color guide as well as the standard set of items for a style prototype. It also is set up to create a Compass extension out of the prototype in order to drop the styling in to a project easily.
+
+### Style Tiles
+
+To quote the [style tiles site](http://styletil.es/):
+
+> Style Tiles are a design deliverable consisting of fonts, colors and interface elements that communicate the essence of a visual brand for the web.
+
+The main idea behind style tiles is that moodboards are too vague to get a real sense of look and feel and mockups are too precise, with clients and designers futzing over pixel-level precision instead of overall look and feel. Style tiles provide an abstracted but precise way of getting look and feel across that exists between the two extremes. They provide the core set of design decisions needed for a responsive site, fonts, coloring, and font size relations, without creating pages. When done in browser, it becomes trivial to see how these decisions work across browsers, devices, and operating systems. This is especially helpful for fonts which [render differently pretty much everywhere](http://blog.typekit.com/2010/10/05/type-rendering-on-the-web/). Style tiles also lay the groundwork for [style guides](#style-guide), and components from the [component guide](#component-guide) can be easily brought in to get a larger view of how style decisions affect components.
+
+### Style Guide
+
+A style guide is the core set of styling for each element on a page. It is the combined [base browser styling reset](#base-browser-styling) and the [base component](#base-component) styling, so it may be referred to as either the base guide or element guide as well. Items styled in the style guide should be contained under the `.base--STYLED` class as basic styling should not bleed outside of that class. Each element in in a style guide should include the markup required to create it as well as the styling applied to allow for easy reference and self documentation.
+
+### Component Guide
+
+A component guide is a listing of each [component](#components) for a project, grouped by component, with a rendered display of each aspect utilizing each of the component's elements. Accompanying each aspect display should be the markup and styling used. Each component group should include a listing of available element, the available extendable classes, mixins, and variables. If a component has JavaScript associated with it, the JavaScript filename should be included along with the source code.
+
+### Layout Guide
+
+A layout guide is a listing of each [layout](#layouts) for a project , grouped by layout, with a rendered display of each aspect utilizing each of the layout's elements. Accompanying each aspect display should be the markup and styling used. Each layout group should include a listing of available element, the available extendable classes, mixins, and variables. If a component has JavaScript associated with it, the JavaScript filename should be included along with the source code. Layout guides should not include components in their display, but should rather use placeholder components (generally, a grey box).
 
 # Responsive Web Design
 
@@ -73,7 +140,7 @@ The set of suggestions from the Future Friendly manifesto that should not be fol
 
 ## Device Detection
 
-####Don't Do It.
+#### Don't Do It.
 
 Device detection is a bad and unsustainable practice. Relying upon current knowledge, device detection is a method of identifying a device based on its [User Agent String](http://en.wikipedia.org/wiki/User_agent). This is a poor method of identification in and of itself; it is based on current knowledge, meaning that lists need to be maintained and can only be updated after a device has been released, making said lists consistently out of date. Additionally, if used for categorizing devices, for instance into phone, tablet, and desktop devices, it requires subjective determinations that may or may not reflect the realities of the actual device and its user, and itself pushes lists out of date and can create divergent lists. Oh, and user agent strings can (and often times, especially on the mobile web, do) be faked to emulate the user agent string of another device and/or browser. It should go without saying that using user agent strings to determine and pivot on browsers and browser versions should also not be done.
 
