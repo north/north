@@ -13,6 +13,18 @@ North is meant to be a living document. Standards and best practices change, and
 1. Development Process
 2. Content Strategy
 3. [Visual Design](#visual-design)
+	* [Grids](#grids)
+		* [Symmetric Grids](#symmetric-grids)
+		* [Asymmetric Grids](#asymmetric-grids)
+			* [Custom Grids](#custom-grids)
+			* [Compound Grids](#compound-grids)
+			* [Ratio Based Grids](#ratio-based-grids)
+			* [Spiral Based Grids](#spiral-based-grids)
+	* [Consistency and Predictability](#consistency-and-predictability)
+	* [Anti Patterns](#anti-patterns)
+		* [Dark Patterns](#dark-patterns)
+		* [Signal to Noise Ratio](#signal-to-noise-ratio)
+		* [Outdated User Experience Patterns](#outdated-user-experience-patterns)
 	* [Design in Browser](#design-in-browser)
 		* [Pair Design](#pair-design)
 		* [Sketching](#sketching)
@@ -62,6 +74,117 @@ North is meant to be a living document. Standards and best practices change, and
 
 As the web comes into its own as a medium and the [rituals of print design](http://snugug.github.io/designing-the-modern-web/#/ritual) are cast off, websites can no longer be designed in the same tools built for print design. Websites have interaction, states change, items come in and out. The [differences in browsers browsers](#progressive-enhancement) force designs to change based on capabilities available. Even something as simple as screen size is not static. As [Brad Frost put it](https://twitter.com/brad_frost/status/195241868383092736), "You can't articulate fluidity on paper." The reality of the web has always been that a single, static bitmap representation of a page isn't what a final site will be, it's just taken the push of [responsive web design](#responsive-web-design) to bring the web into its own as a medium. In order to accommodate for the fluidity and flexibility of the medium of the web, new tools and techniques are needed to create a site's look and feel.
 
+The first big change is moving away from designing pages. **The page metaphor is killing the web**. By thinking in pages instead of systems of design, design gets focused on the wrong thing; the big picture look and feel as opposed to the content; what a user actually comes to a site for. Designing reusable [components](#components) and [layouts](#layouts) instead of pages allow for a more modular design, providing better flexibility and a more consistent user interface (UI) and user experience (UX).
+
+The second big change is moving to [in-browser design](#design-in-browser), utilizing [rapid prototyping](#rapid-prototyping) and [style prototyping](#style-prototyping) as well as the web's [building blocks](#website-building-blocks) to build designs, no the static graphic design tools many clients and designers are use to. It's a big change, but it needs to happen in order to progress past thinking of web pages as extensions of printed material and create truly web-first experiences.
+
+## Grids
+
+When designing across multiple fluid sizes, grids should be utilized to keep order on a page. As described in [Responsive Grids](http://snugug.github.io/responsive-grids/#/), grids enforce proportion and constraint on a design and provide order and structure to information. The best grid is specific to the content and design of a site, as it is an extension of both. In print, grids are easy as everything from the the display size to the reading mode is fixed, but this is not true on the web, so a one-size-fits-all approach to grids doesn't work. While the [960 Grid](http://960.gs/) may have been a useful stopgap as the web was treated like print, but as it evolves, so must the grids used. The grids from Twitter Bootstrap or Zurb Foundation are no better; they are a single (if flexible) grid meant to cover everything in a generic way. Instead of using another designer's grid, create grids for the design and the content of the current site. The preferred grid framework to work in is [Singularity](https://github.com/team-sass/singularity) as it provides the flexibility needed to create complex and responsive grids that are truly custom to design and content.
+
+Grids are primarily [layouts](#layouts) in CSS.
+
+### Parts of a Grid
+
+There are three parts that make up a grid; they are the columns, the gutters, and the gutter style:
+
+* **Columns** - In Singularity defined by the `$grids` variable, columns represent the relationship between each major piece of a grid. When attaching items to a grid, they are attached to whole pieces of a column or multiple columns (which would then include gutters).
+* **Gutters** - In Singularity defined by the `$gutters` variable, gutters are the whitespace between each column. Content is never snapped to a gutter, and each gutter is the same width.
+* **Gutter Styles** - In Singularity defined by the `$gutter-styles` variable, gutters can either be placed opposite each column with the last column not receiving a gutter (`|C|G|C|G|C|`) or split in half with each column getting one half of a gutter's width on either side, including the first and last columns (`|g|C|g|C|g|C|g`). Gutters can also either be fluid or fixed in width.
+
+### Symmetric Grids
+
+The most common type of grid is a symmetric grid. A symmetric grid is defined as a grid where each column is the same size. The most common type of symmetric grid is the 12 column symmetric grid. Symmetric grids have a tendency to constrain creativity in negative ways mostly due to the fact that for the most part designs built on symmetric grids have a tendency to look the same. There is an interesting mix of freedom and constraint in symmetric grids that, when used to lay out content on anything other than a column-by-column basis (4 columns, 4 identically sized pieces of content), provides enough flexibility to allow designs to meander.
+
+![Symmetric Grid](http://snugug.github.io/responsive-grids/images/symmetric-grid-bootstrap.png)
+
+### Asymmetric Grids
+
+Unlike the common symmetric grid, the uncommon asymmetric grid provides for interesting design constraints based on content and design by having columns that are different sizes from each other. This allows for grids and design to align without the providing wiggle room to break a design. There are four types of asymmetric grids, custom, compound, ratio based, and spiral based. [Singularity Extras](https://github.com/team-sass/singularity-extras) provides an easy to create these different kinds of asymmetric grids for use in Singularity.
+
+#### Custom Grids
+
+Custom asymmetric grids are asymmetric grids where column sizes are determined by the designer. Any set of columns of differing sizes can be used to create an asymmetric grid. This example shows a split gutter grid with columns in relation of `1 4 1`.
+
+![Custom Asymmetric Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-custom.png)
+
+#### Compound Grids
+
+Compound grids are asymmetric grids that are created by overlaying two or more symmetric girds on top of each other to create a new asymmetric grid. The example shows a 3-4 compound grid, where a 3 column symmetric and a 4 column symmetric grid are overlaid to create a 6 column asymmetric grid. Why not simply use a 12 column grid? With this compound grid, spans are constrained to multiples of 1/4 and 1/3, meaning that a span of 5/12 or 7/12 could not happen. The orange is the final grid, with the red showing the 3 column grid and blue showing the 4 column grid.
+
+![Compound Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-compound.png)
+
+#### Ratio Based Grids
+
+Ratio based grids are grids where each column is based on a ratio of the previous column. This allows for interesting constraints, such as allowing the ratios for vertical rhythm (font size, line height) to also be used for horizontal rhythm (the grid).
+
+![Ratio Based Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-ratio.png)
+
+#### Spiral Based Grids
+
+Spiral based grids are similar to ratio based grids in that they are likewise based on a ratio, but instead of each column getting progressively larger or smaller, the columns are determined based on parallel lines running through a spiral that degrades based on the ratio. Twitter for a time [used a golden ratio based spiral design](http://mashable.com/2010/09/29/new-twitter-golden-ratio/). The 
+
+![Spiral Based Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-spiral.png)
+
+## Consistency and Predictability
+
+Users really like consistency in their design. Consistency and predictability in design allow users to feel safe and confident as they navigate. It reduced cognitive load for the user, allowing them to focus on the content of a site. This means that, when designing, instead of designing one-off pages for everything, systems should be designed and pieces of those systems reused throughout the site. Copy should be filled with trigger words, words that inspire users to act as the outcome is obvious. [Grids](#grids) go a long way in ensuring that a layout is consistent. Having a consistent and predictable design means that when something does not follow the predefined pattern that it will stand out. Some ways to promote consistency and predictability include:
+
+* Use [components](##components) of the same [aspect](#aspects) consistently and in roughly the same place.
+* Use as few [layouts](#layouts) as possible, especially complex layouts.
+* Create new aspects sparingly.
+* Don't change components based on what layout they are in.
+* Avoid design decisions that are not made by designers with knowledge of the system created, including user-generated styling.
+* Don't try and outsmart a user; let them choose what they would like to do.
+
+## Anti Patterns
+
+Anti patterns are patterns, many times common patters, that even if popular, are patterns that should be avoided as they are patterns that go against either best user intentions, best technological intentions, best business intentions, or a combination of all three. There are three big places where anti patterns tend to pop up, those are:
+
+* [Dark Patterns](#dark-patterns)
+* [Signal to Noise Ratio](#signal-to-noise-ratio)
+* [Outdated UX Patterns](#outdated-ux-patterns)
+
+As Brad Frost brilliantly put it in his Death to Bullshit talk ([slides](http://www.slideshare.net/bradfrostweb/death-to-bullshit), [video](https://www.youtube.com/watch?v=nE0CRMm59BY)), not using anti patterns comes down to one thing: respecting the user. While visual beauty is important, if the content and functionality is not there, what is being built is not useful. If what is being built does not work for the user, it does not work for business. As Josh Clark puts it, **presentations deprecate**.
+
+### Dark Patterns
+
+Dark patterns are UX patterns that are anti user. They include patterns such as ads disguised or inserted into content, using misdirection or trick questions to trick users into doing something, forcing users to disclose personal information (such as connecting to a social network) to do basic tasks, or preventing users from continuing because of something covering the screen. The [dark patterns library](http://darkpatterns.org/) has a large and growing list of dark patterns with examples to see what should be avoided.
+
+### Signal to Noise Ratio
+
+Signal to noise ratio (SNR or S/N) is a measure of what is being looked for (signal) to the background it is against (noise). If there is too much noise, the signal gets lost. In web design, signal is the content and noise is the chrome or extra items around the content. When designing sites, the goal is to have as high a signal to noise ratio as possible (lots of signal, little noise). This is not to say that there should be no chrome around content, but rather that the ratio is kept in check so the content is the most prominent piece of a design. Steven Bradley has a great writeup titles [What's The Signal to Noise Ratio Of Your Design](http://www.vanseodesign.com/web-design/signal-to-noise-ratio/) that goes in depth about how to improve the SNR in a design. In addition, there is a terrific Flickr photo set called [Noise-to-Noise Ratio](http://www.flickr.com/photos/merlin/sets/72157622077100537/) containing screenshots of websites that get SNR wrong and what is presented is mostly only noise.
+
+### Plugins
+
+More and more browsers and devices are shipping without plugin (Flash, Silverlight, ActiveX, etc…) support, so designs or functionality that rely upon plugins should be reconsidered. No mobile devices (iOS, Android, BlackBerry, Windows Phone) ship with any plugin support, and an increasing number of desktop computers and browser ship with either plugins [disabled by default](http://blog.mozilla.org/futurereleases/2013/09/24/plugin-activation-in-firefox/) or simply [not installed by default](http://daringfireball.net/2010/10/apple_no_longer_bundling_flash_with_mac_os_x). Any designs or functionality that, for business reasons and business reasons only, require a plugin, [progressive enhancement](#progressive-enhancement) should be used to provide that design or functionality across all browsers.
+
+### Outdated UX Patterns
+
+Just like how presentations deprecate, so do UX patterns. There are a plethora of outdated UX patterns currently being used that do not suit users or business well and their usage should be ceased. The following list is by no means comprehensive, but should be used as a guide (along with in-person testing and analytics) to determine if patterns being used should be updated.
+
+* **Carousels** - Consistently put on landing pages, carousels have been found [time and time again](http://shouldiuseacarousel.com/) to not be effective with only the first item getting any meaningful traction.
+* **Large Background Images** - Large background images add a large amount of weight to a page for very little actual gain. Any user whose screen is generally smaller than 1024px will absolutely not see the background image. Small screens simply don't have the screen real estate to display content and background images.
+* **Hover States for Additional Information** - Hiding additional information exclusively in hover states precludes that information from being accessible to users without fine pointers.
+* **Mega Menus** - Mega menus became popular for providing infinitely nested menus or, in the worst cases, micro sites for each menu. These create complexity issues for uses are are particularly hard to navigate without fine pointers.
+* **Mega Footer** - Usually thought of as a boon to search engine optimization (SEO), large footers usually with links and/or tertiary content are hard for most users to follow and become absolutely unwieldy for anything other than large screen sizes. Instead, if the content in those footers is important, it should be made prominent. Google's own [SEO Guidelines](https://support.google.com/webmasters/answer/35291?hl=en) suggest that the best way to improve search engine optimization is good content.
+* **Large Sticky Headers/Footers** - Sticky headers or footers (headers or footers that do not scroll with the page but rather stay put in their position) aren't necessarily bad in and of themselves, it's when they are large and take up a lot of screen real estate (regardless of the size of the screen). Having both sticky headers and sticky footers significantly reduces screen real estate and should likewise be avoided.
+* **Accordions and Tabs** - While fine if used for their designated purpose, accordions and tab panes used to contain sub-pages hide navigation and content and are generally hard to make work in a responsive manner.
+* **Overlays** - Overlays are a UX pattern popular for everything from insertional to modal content or interaction. Overlays, while seemingly a boon for user experience, wind up creating countless issues for users without keyboards, fine pointers, who resize their browser, or generally would like to exit one without going forward through the user interface.
+* **App-Like Interfaces** - While some app-like interface patterns can be transitioned to the web (such as the drawer slide out menu), websites are not apps the design conventions of native apps for a given platform should not be used to mimic their look and feel on the web. Examples of this happening include [jQuery Mobile](http://jquerymobile.com/) and mimicking iOS headers/bottom icon based navigation.
+* **Back Buttons** - Popularized by iOS, back buttons have become popular especially with designed that try to mimic app-like interfaces. Don't use them. Every browser has a native, easily accessible, well integrated back button; one that behaves better than any that could or should be built.
+* **Page Preloaders** - Users want to get to a site's content as quickly as possible. If instead of providing it a preloader is put up that is designed to halt a user from getting content until every piece that makes up that content is available, a user is likely to [leave and not come back](#performance)
+* **Social Integration** - While social integration is often seen as a great boon, more often than not the plethora of third party logos scattered throughout a page make a site look more like NASCAR than a finely crafted brand. While the effect of this hasn't been throughly researched yet, there is one truth; social integration provides free advertising for those social networks and ties the site's branding to those social networks, for better or worse.
+	* **Buttons** - Social share buttons are one of the worst additions one can make to a site. Besides being [terrible](http://zurb.com/article/883/small-painful-buttons-why-social-media-bu) for [performance](http://lastdropofink.co.uk/market-places/the-true-cost-of-adding-social-buttons/) (findings suggest that they they bloat load times enough to break ideal and maybe even maximum [page load times](#payload-performance)), they have a tendency to add lots of clutter to a page; Facebook, Twitter, and Google+ for the page, the article, the gallery, and each image at a given URL? As pointed out by [Oliver Reichenstein](http://theoatmeal.com/comics/facebook_likes), users who use these social networks already know how to find content and certainly know how to share URLs. In fact, Smashing Magazine removed Facebook buttons from their site and traffic from Facebook increased because [users shared the content organically instead](https://twitter.com/smashingmag/status/204955763368660992). As stated in Oliver's article, and reinforced (humorously) by [Matthew Inman](http://theoatmeal.com/comics/facebook_likes), the best way to increase social traffic to a site is to have good content that people organically want to share, not to have social media buttons.
+	* **Login** - While less harmful than social share buttons, social login buttons should be approached with a similar amount of caution, but for different reasons. Social login buttons put security into the hands of a 3rd party and tie users to that 3rd party; if either go down or are compromised for any reason, there is nothing that can be done on by a site owner. They also have the possibility of increasing cognitive load by making a user remember which method they used to log in last time. Finally, as MailChimp found out [after they added, then removed social login](http://blog.mailchimp.com/social-login-buttons-arent-worth-it/), that improving failed login attempts is more about good error handling and content than adding social login.
+* **Content Pagination** - Users are very comfortable scrolling vertically on a page and have a tendency to get frustrated when content is paginated unnecessarily. Only paginate content if it is absolutely necessary, and even then provide users a way of viewing the full contents on a single page. If pagination is required, give users the ability to view the entire contents on a single page.
+* **Content Insertionals** - Seen often in article views, content insertionals are usually links to other tangentially related content in-between paragraphs as a stand-alone paragraph or as non-hyperlink "links" in an article that produce a a hover or click modal of other, likewise tangentially related content. These items take the user's attention and prevent them from being immersed in the content.
+* **Auto Play Media** - Auto playing media, audio or video, is something a user never likes to see. The choice to play media should be triggered explicitly by the user.
+* **Non User Triggered Actions** - When actions take place that are disruptive to the user that the user did not trigger, it takes them out of being immersed in the content. Examples of non-disruptive, non user triggered actions that are OK are infinite pagination or bringing in a next article flag at the bottom of an article. Examples of disruptive non user triggered actions include loading content above where the user is, pushing the page down, and refreshing a gallery of images as a user is browsing them.
+* **Infinite Pagination** - Infinite pagination that truly is infinite should be reconsidered for a more measured approach where two to four pages are automatically loaded with additional loads being triggered by user interaction.
+* **Missing Navigational Trails** - While it may look nice or be trendy to have URL schemas or breadcrumbs that provide a general sense of where a user is, users much prefer to explicitly know where they are on a site. A URL constructed to be `site.com/show-name` provides no context to the user as to where they are on a site.
+* **Unexplained Merged Functionality** - Merged functionality, like Amazon's [Buy now with 1-Click](http://www.amazon.com/gp/help/customer/display.html?nodeId=468482), can be a big win for user experience, but any merged functionality must be explained. Registering for a website does not necessarily mean a user would like to sign up for that website's newsletter, so they shouldn't be. Logging in with Facebook to comment doesn't necessarily mean a user would like all of their browsing activity pushed to Facebook.
+
 ## Design in Browser
 
 **Photoshop is not a web design tool.** It's even in the name; *photo*shop. All static website drawings (often called mockups, mocks, comps) are nothing more than a representation, many times a fairly inaccurate one, of what a site may look like when finally built. In the world of the fluid and flexible web, [a pixel is not a pixel](http://alistapart.com/article/a-pixel-identity-crisis/), in fact, **pixel perfect does not exist**.
@@ -70,7 +193,7 @@ As the web comes into its own as a medium and the [rituals of print design](http
 >
 > *Karen McGrane*
 
-To combat these inaccuracies, instead of designing websites in static graphic design tools, design should take place with the tools of the web; [HTML](#markup), [CSS](#styling), and [JavaScript](#interaction). This goes for both user interface design (UI) and user experience design (UX). UX should be sussed out utilizing [rapid prototyping](#rapid-prototyping) and UI utilizing [style prototyping](#style-prototyping). By doing so, what gets signed off on by the client is work that inherently conforms to the realities of the web as opposed to a picture that may or may not. In addition, by designing in browser, how design choices affect [performance](#performance) can be readily seen allowing for performance to be part of the design process, not an afterthought.
+To combat these inaccuracies, instead of designing websites in static graphic design tools, design should take place with the tools of the web; [HTML](#markup), [CSS](#styling), and [JavaScript](#interaction). This goes for both UI and UX design. UX should be sussed out utilizing [rapid prototyping](#rapid-prototyping) and UI utilizing [style prototyping](#style-prototyping). By doing so, what gets signed off on by the client is work that inherently conforms to the realities of the web as opposed to a picture that may or may not. In addition, by designing in browser, how design choices affect [performance](#performance) can be readily seen allowing for performance to be part of the design process, not an afterthought.
 
 Because design decisions will need to be made throughout the lifespan of a project, the designers (both UI and UX) responsible for the design of a site need to be part of the full lifecycle of a project and cannot simply hand off initial designs and walk away from a project when development starts.
 
@@ -121,6 +244,8 @@ A layout guide is a listing of each [layout](#layouts) for a project , grouped b
 > *Jason Pamental*
 
 Responsive web design (RWD) is an approach to design that, as [Brad Frost](http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/) eloquently puts it, attempts to "…create functional (and hopefully optimal) user experiences for a growing number of web-enabled devices and contexts." Users don't care if a site is responsive or not, what users care about is that all content is available, navigable, and predictable at the same place regardless of what device they choose to access a given site from. They care that it is fast, reliable, and accessible. [Performance](#performance) is of the upmost importance. This is especially true for mobile, where a [57% of users will abandon a site after waiting 3 seconds for a page to load](http://www.strangeloopnetworks.com/web-performance-infographics/) and 80% of those users will not return. So RWD is not about making a design squish to fit phones, tablets, and desktops; it is really a methodology to deliver content in a compelling and performant manner regardless of how a user chooses to access that content.
+
+## Advertising
 
 ## Future Friendly
 
