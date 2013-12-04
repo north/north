@@ -11,7 +11,7 @@ North is meant to be a living document. Standards and best practices change, and
 ## Table of Contents
 
 1. Development Process
-2. Content Strategy
+2. [Content Strategy](#content-strategy)
 3. [Visual Design](#visual-design)
 	* [Website Needs](#website-needs)
 	* [Consistency and Predictability](#consistency-and-predictability)
@@ -68,8 +68,22 @@ North is meant to be a living document. Standards and best practices change, and
   * [Interaction](#interaction)
 	  * [Style and Syntax](#style-and-syntax)
 	  * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
-	  
+
+# Development Process
+
 # Content Strategy
+
+Content strategy is the process by which content is analyzed, sorted, 
+
+## Project Vision
+
+## Content Inventory
+
+## Content Audit
+
+## Content Modeling
+
+## Information Architecture
 
 # Visual Design
 
@@ -749,13 +763,17 @@ A most reasonable approach to JavaScript is the [Airbnb JavaScript Style Guide](
 
 ```javascript
 (function($) {
-  var intro = 'Once upon a time…',
-      $heading = $('#heading'),
-      $princess = $('#princess');
+  var intro = 'Once upon a time, ',
+      $princess = $('#princess'),
+      $button = $('#button');
   
-  function fairytale()
+  function fairytale(name) {
+    $princess.html(intro + name + '…');
+  }
   
-  heading.html(intro);
+  $button.click(function() {
+    fairytale($princess.text());
+  });
 })(jQuery);
 
 ```
