@@ -13,6 +13,8 @@ North is meant to be a living document. Standards and best practices change, and
 1. Development Process
 2. Content Strategy
 3. [Visual Design](#visual-design)
+	* [Website Needs](#website-needs)
+	* [Consistency and Predictability](#consistency-and-predictability)
 	* [Grids](#grids)
 		* [Symmetric Grids](#symmetric-grids)
 		* [Asymmetric Grids](#asymmetric-grids)
@@ -20,7 +22,6 @@ North is meant to be a living document. Standards and best practices change, and
 			* [Compound Grids](#compound-grids)
 			* [Ratio Based Grids](#ratio-based-grids)
 			* [Spiral Based Grids](#spiral-based-grids)
-	* [Consistency and Predictability](#consistency-and-predictability)
 	* [Anti Patterns](#anti-patterns)
 		* [Dark Patterns](#dark-patterns)
 		* [Signal to Noise Ratio](#signal-to-noise-ratio)
@@ -78,6 +79,41 @@ The first big change is moving away from designing pages. **The page metaphor is
 
 The second big change is moving to [in-browser design](#design-in-browser), utilizing [rapid prototyping](#rapid-prototyping) and [style prototyping](#style-prototyping) as well as the web's [building blocks](#website-building-blocks) to build designs, no the static graphic design tools many clients and designers are use to. It's a big change, but it needs to happen in order to progress past thinking of web pages as extensions of printed material and create truly web-first experiences.
 
+## Website Needs
+
+In much the same vein of [Maslow's hierarchy of needs](http://en.wikipedia.org/wiki/Maslow's_hierarchy_of_needs), there is a hierarchy of needs for websites as well. In Maslow's hierarchy, there is a core set of fundamental needs that humans must be met in order to achieve [self-actualization](http://en.wikipedia.org/wiki/Self-actualization) and realize their full potential. Maslow's hierarchy is as follows, from most fundamental to self-actualization:
+
+1. **Physiological** - Basic core needs for survival. In humans this includes breathing, food, water, and sleep.
+2. **Safety** - A sense of security. In humans this include personal and financial security as well as health and well-being.
+3. **Belonging** - A need to be an accepted member of a group. In humans this includes family, friendship, and intimacy.
+4. **Esteem** - Respect and evaluation of self. In humans this includes confidence and respect by and of others.
+5. **Self-Actualization** - To become the most one can be. In humans this includes morality, creativity, and problem solving.
+
+This hierarchy can be be applied to websites as well. 
+
+1. **Physiological** - Basic core needs for survival. For websites this is [content](#content-strategy) and navigation.
+2. **Safety** - A sense of security. For websites this is [information architecture](#information-architecture) and [predictability](#consistency-and-predictability).
+3. **Belonging** - A need to be an accepted member of a group. For websites this is [performance](#performance) and [progressive enhancement](#progressive-enhancement); accepting to any and all who come to the site.
+4. **Esteem** - Respect and evaluation of self. For websites this is content-first [branding](#style-tiles).
+5. **Self-Actualization** - To become the most one can be. For websites this is all additional bells and whistles to make a site stand out and be individual, from design flair and animations to interactions, advertising, and social integration.
+
+As with Maslow's hierarchy of needs as it relates to humans, a website's base needs must be fulfilled in order for self-actualization to occur. If any step negatively affects a step below it, that needs to be rethought. Self-actualization cannot have a negative impact on esteem, belonging, safety, or physiological needs, and so on.
+
+![Website Hierarchy of Needs](http://snugug.github.io/designing-the-modern-web/images/Website_Hierarchy-dark.svg)
+
+
+## Consistency and Predictability
+
+Users really like consistency in their design. Consistency and predictability in design allow users to feel safe and confident as they navigate. It reduces cognitive load for the user, allowing them to focus on the content of a site. This means that, when designing, instead of designing pages, component based systems should be designed and pieces of those systems reused to build pages throughout the site. Titles, button names, menu items, and other interaction related copy should be filled with trigger words, words that inspire users to act as the outcome is obvious. [Grids](#grids) go a long way in ensuring that a layout is consistent. Having a consistent and predictable design means that when something does not follow the predefined pattern that it will stand out. Some ways to promote consistency and predictability include:
+
+* Use [components](##components) of the same [aspect](#aspects) consistently and in roughly the same place.
+* Use as few [layouts](#layouts) as possible, especially complex layouts.
+* Create new aspects sparingly.
+* Don't change components based on what layout they are in.
+* Avoid design decisions that are not made by designers with knowledge of the system created, including user-generated styling.
+* Don't try and outsmart a user; let them choose what they would like to do.
+* Do not hide content based on screen size or [device](#device-detection). Users want all content, give them all content.
+
 ## Grids
 
 When designing across multiple fluid sizes, grids should be utilized to keep order on a page. As described in [Responsive Grids](http://snugug.github.io/responsive-grids/#/), grids enforce proportion and constraint on a design and provide order and structure to information. The best grid is specific to the content and design of a site, as it is an extension of both. In print, grids are easy as everything from the the display size to the reading mode is fixed, but this is not true on the web, so a one-size-fits-all approach to grids doesn't work. While the [960 Grid](http://960.gs/) may have been a useful stopgap as the web was treated like print, but as it evolves, so must the grids used. The grids from Twitter Bootstrap or Zurb Foundation are no better; they are a single (if flexible) grid meant to cover everything in a generic way. Instead of using another designer's grid, create grids for the design and the content of the current site. The preferred grid framework to work in is [Singularity](https://github.com/team-sass/singularity) as it provides the flexibility needed to create complex and responsive grids that are truly custom to design and content.
@@ -126,17 +162,6 @@ Spiral based grids are similar to ratio based grids in that they are likewise ba
 
 ![Spiral Based Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-spiral.png)
 
-## Consistency and Predictability
-
-Users really like consistency in their design. Consistency and predictability in design allow users to feel safe and confident as they navigate. It reduced cognitive load for the user, allowing them to focus on the content of a site. This means that, when designing, instead of designing one-off pages for everything, systems should be designed and pieces of those systems reused throughout the site. Copy should be filled with trigger words, words that inspire users to act as the outcome is obvious. [Grids](#grids) go a long way in ensuring that a layout is consistent. Having a consistent and predictable design means that when something does not follow the predefined pattern that it will stand out. Some ways to promote consistency and predictability include:
-
-* Use [components](##components) of the same [aspect](#aspects) consistently and in roughly the same place.
-* Use as few [layouts](#layouts) as possible, especially complex layouts.
-* Create new aspects sparingly.
-* Don't change components based on what layout they are in.
-* Avoid design decisions that are not made by designers with knowledge of the system created, including user-generated styling.
-* Don't try and outsmart a user; let them choose what they would like to do.
-
 ## Anti Patterns
 
 Anti patterns are patterns, many times common patters, that even if popular, are patterns that should be avoided as they are patterns that go against either best user intentions, best technological intentions, best business intentions, or a combination of all three. There are three big places where anti patterns tend to pop up, those are:
@@ -167,7 +192,7 @@ Just like how presentations deprecate, so do UX patterns. There are a plethora o
 * **Large Background Images** - Large background images add a large amount of weight to a page for very little actual gain. Any user whose screen is generally smaller than 1024px will absolutely not see the background image. Small screens simply don't have the screen real estate to display content and background images.
 * **Hover States for Additional Information** - Hiding additional information exclusively in hover states precludes that information from being accessible to users without fine pointers.
 * **Mega Menus** - Mega menus became popular for providing infinitely nested menus or, in the worst cases, micro sites for each menu. These create complexity issues for uses are are particularly hard to navigate without fine pointers.
-* **Mega Footer** - Usually thought of as a boon to search engine optimization (SEO), large footers usually with links and/or tertiary content are hard for most users to follow and become absolutely unwieldy for anything other than large screen sizes. Instead, if the content in those footers is important, it should be made prominent. Google's own [SEO Guidelines](https://support.google.com/webmasters/answer/35291?hl=en) suggest that the best way to improve search engine optimization is good content.
+* **Mega Footer** - Usually thought of as a boon to search engine optimization (SEO) or a place to stick long lists of secondary navigation, large footers with links and/or tertiary content are hard for most users to follow as they tend to not be conducive to [how users read](http://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/) and become absolutely unwieldy for anything other than large screen sizes. Instead, if the content in those footers is important, it should be made prominent. If secondary navigation is important, make it as usable as primary navigation, just in the footer. Google's own [SEO Guidelines](https://support.google.com/webmasters/answer/35291?hl=en) suggest that the best way to improve search engine optimization is good content.
 * **Large Sticky Headers/Footers** - Sticky headers or footers (headers or footers that do not scroll with the page but rather stay put in their position) aren't necessarily bad in and of themselves, it's when they are large and take up a lot of screen real estate (regardless of the size of the screen). Having both sticky headers and sticky footers significantly reduces screen real estate and should likewise be avoided.
 * **Accordions and Tabs** - While fine if used for their designated purpose, accordions and tab panes used to contain sub-pages hide navigation and content and are generally hard to make work in a responsive manner.
 * **Overlays** - Overlays are a UX pattern popular for everything from insertional to modal content or interaction. Overlays, while seemingly a boon for user experience, wind up creating countless issues for users without keyboards, fine pointers, who resize their browser, or generally would like to exit one without going forward through the user interface.
