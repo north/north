@@ -15,6 +15,7 @@ North is meant to be a living document. Standards and best practices change, and
 3. [Visual Design](#visual-design)
 	* [Website Needs](#website-needs)
 	* [Consistency and Predictability](#consistency-and-predictability)
+	* [Complexity and Complication](#complexity-and-complication)
 	* [Grids](#grids)
 		* [Symmetric Grids](#symmetric-grids)
 		* [Asymmetric Grids](#asymmetric-grids)
@@ -73,7 +74,7 @@ North is meant to be a living document. Standards and best practices change, and
 
 # Content Strategy
 
-Content strategy is the process by which content is analyzed, sorted, 
+Content strategy is the process by which content is analyzed, sorted, constructed, and placed. Users come to a site for its content first and foremost, it is the most important part of a site. 
 
 ## Project Vision
 
@@ -128,9 +129,20 @@ Users really like consistency in their design. Consistency and predictability in
 * Don't try and outsmart a user; let them choose what they would like to do.
 * Do not hide content based on screen size or [device](#device-detection). Users want all content, give them all content.
 
+## Complexity and Complication
+
+With a want to reduce often the Siren's cry of usability studies, a lot of emphasis recently has been recently put on the need to reduce complexity of interaction on sites. Complexity, however, is not the issue; it is complication. As [Josh Clark puts it](http://globalmoxie.com/jhc/prez/mobile-myths.pdf), there is a difference between complexity and complication:
+
+* **Complexity** - The richness of content and its experience
+* **Complication** - The difficulty of using and navigating content
+
+Where the challenge lies is in creating complex but comprehensible systems. Having a strong [content strategy](#content-strategy) and interfaces that are [consistent and predictable](#consistency-and-predictability) are the first steps to creating complex but comprehensible systems. In addition, drawing upon human's natural and rich tradition of story telling and conversation can assist in reducing complication in a complex system.
+
+For generations, humans have used conversation to pass down stories and learn about the world. Leverage this tradition. Instead of providing all information at once, allow a user to explore through the content, inviting conversation with them. This is often referred to as **Progressive Disclosure**. Respond to users as they ask for more information, don't throw it all at them at once. Focus on one item at a time and push secondary items off to the sides, waiting for user interaction. Jus as clarity will always trump density, tap or click quality will always trump quantity.
+
 ## Grids
 
-When designing across multiple fluid sizes, grids should be utilized to keep order on a page. As described in [Responsive Grids](http://snugug.github.io/responsive-grids/#/), grids enforce proportion and constraint on a design and provide order and structure to information. The best grid is specific to the content and design of a site, as it is an extension of both. In print, grids are easy as everything from the the display size to the reading mode is fixed, but this is not true on the web, so a one-size-fits-all approach to grids doesn't work. While the [960 Grid](http://960.gs/) may have been a useful stopgap as the web was treated like print, but as it evolves, so must the grids used. The grids from Twitter Bootstrap or Zurb Foundation are no better; they are a single (if flexible) grid meant to cover everything in a generic way. Instead of using another designer's grid, create grids for the design and the content of the current site. The preferred grid framework to work in is [Singularity](https://github.com/team-sass/singularity) as it provides the flexibility needed to create complex and responsive grids that are truly custom to design and content.
+Grids should be utilized to keep order on a page. As described in [Responsive Grids](http://snugug.github.io/responsive-grids/#/), grids enforce proportion and constraint on a design and provide order and structure to information. The best grid is specific to the content and design of a site, as it is an extension of both. In print, grids are easy as everything from the the display size to the reading mode is fixed, but this is not true on the web, so a one-size-fits-all approach to grids doesn't work. While the [960 Grid](http://960.gs/) may have been a useful stopgap as the web was treated like print, but as it evolves, so must the grids used. The grids from Twitter Bootstrap or Zurb Foundation are no better; they are a single (if flexible) grid meant to cover everything in a generic way. Instead of using another designer's grid, create grids for the design and the content of the current site. The preferred grid framework to work in is [Singularity](https://github.com/team-sass/singularity) as it provides the flexibility needed to create complex and responsive grids that are truly custom to design and content.
 
 Grids are primarily [layouts](#layouts) in CSS.
 
@@ -234,7 +246,23 @@ Just like how presentations deprecate, so do UX patterns. There are a plethora o
 
 To combat these inaccuracies, instead of designing websites in static graphic design tools, design should take place with the tools of the web; [HTML](#markup), [CSS](#styling), and [JavaScript](#interaction). This goes for both UI and UX design. UX should be sussed out utilizing [rapid prototyping](#rapid-prototyping) and UI utilizing [style prototyping](#style-prototyping). By doing so, what gets signed off on by the client is work that inherently conforms to the realities of the web as opposed to a picture that may or may not. In addition, by designing in browser, how design choices affect [performance](#performance) can be readily seen allowing for performance to be part of the design process, not an afterthought.
 
+Designing in browser also allows for creative opportunities that would otherwise be missed by designing in static drawing environments. From hover states to animation, text shadowing and drawing with CSS, there are many places where actually working in the medium of the web affords greater creative control and creative expression than simply working in static single-state environments. When building [responsive sites](#responsive-web-design), designs should be built [mobile first](#mobile-first) which simply cannot be done in static environments.
+
 Because design decisions will need to be made throughout the lifespan of a project, the designers (both UI and UX) responsible for the design of a site need to be part of the full lifecycle of a project and cannot simply hand off initial designs and walk away from a project when development starts.
+
+### Mobile First
+
+Mobile first is a term used to describe designing and building sites from a minimal base first. At its core, mobile first is about [progressive enhancement](#progressive-enhancement), but on a site-wide, design-up But it's more than just a mobile device (in fact, it's [not about devices at all](#device-detection)), mobile first is really an attempt to describe design and development in a content-centric way. As [Jeffery Zeldman puts it](http://www.ripariandata.com/mail-room-blog/blog/an-event-apart-sf-recap-the-message-is-the-medium):
+
+> It's not about mobile first (or just small screen first) - it's about content first. But it happens that thinking about what works for mobile does work for other things as well.
+
+Instead of thinking about mobile first as designing for a mobile device first, think of it as using mobile as a focusing lens. Luke Wroblewski has a phrase he uses when [describing this lens](http://alistapart.com/article/organizing-mobile): **One Eye, One Thumb**.
+
+> Mobile devices require software development teams to [focus on only the most important data and actions](http://www.lukew.com/ff/entry.asp?870) in an application. There simply isn't room in a 320 by 480 pixel screen for extraneous, unnecessary elements. You have to prioritize.
+> 
+> So when a team designs mobile first, the end result is an experience focused on the key tasks users want to accomplish without the extraneous detours and general interface debris that litter today's desktop-accessed Web sites. That's good user experience and good for business.
+
+Using mobile as a focusing lens will also help to inform a site's [information architecture](#information-architecture) and help to create [complex, but not complicated](#complexity-and-complication) interfaces. It is important to keep in mind that larger screens do not mean that the learnings gained by the mobile lens can be tossed away simply because there is more screen real estate. The goal is to improve the UX for *all* sizes of a site, not just the small version. Do not give in to the desire to fill up whitespace on larger screens with additional, unneeded items simply because there is more room that should be filled.
 
 ### Pair Design
 
@@ -246,7 +274,7 @@ Eventually, the designer should be allowed to take over full responsibility of c
 
 ### Sketching
 
-While designing in browser is the standard to achieve for, many times a designer will want to work out design ideas outside of browser. This may include a static graphic design tool, pencil and paper, tablet sketching app, or anything else they may find handy. This is encouraged! However, what is produced through these design sessions should be considered sketches and should not be a deliverable to be signed off on by the client. All work to be signed off on must be in browser.
+While designing in browser is the standard to achieve for, many times a designer will want to work out design ideas outside of browser. This may include a static graphic design tool, pencil and paper, tablet sketching app, or anything else a designer may find handy. This is encouraged! However, what is produced through these design sessions should be considered sketches and should not be a deliverable to be signed off on by the client. A picture is not a requirement statement. They are not useful to those building the final site as they are not an accurate representation of what will be built to the product owners and fail to capture the nuance actually required to produce what is being sketched. Pictures are nothing more than a good idea; they are not requirements until they are [prototyped](#rapid-prototyping), and prototypes are not production ready until they are [built to be so](#component-guide). Pictures and sketches are great ways to come up with ideas, but final sign off can only happen in browser.
 
 ## Rapid Prototyping
 
@@ -284,7 +312,17 @@ A layout guide is a listing of each [layout](#layouts) for a project , grouped b
 
 Responsive web design (RWD) is an approach to design that, as [Brad Frost](http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/) eloquently puts it, attempts to "…create functional (and hopefully optimal) user experiences for a growing number of web-enabled devices and contexts." Users don't care if a site is responsive or not, what users care about is that all content is available, navigable, and predictable at the same place regardless of what device they choose to access a given site from. They care that it is fast, reliable, and accessible. [Performance](#performance) is of the upmost importance. This is especially true for mobile, where a [57% of users will abandon a site after waiting 3 seconds for a page to load](http://www.strangeloopnetworks.com/web-performance-infographics/) and 80% of those users will not return. So RWD is not about making a design squish to fit phones, tablets, and desktops; it is really a methodology to deliver content in a compelling and performant manner regardless of how a user chooses to access that content.
 
+When starting projects, RWD should not be a line item, something to throw on at the end or not included. Responsive web design should be the standard for all projects from the beginning.
+
 ## Advertising
+
+Advertising on responsive sites is hard. Most ads are still sold fixed size and fixed position, with even more still being sold for only desktop or only mobile. When building responsive sites, these notions need to fall away as there is no longer a distinction between desktop and mobile, a design is a single fluid continuum.
+
+Fortunately, some advertising companies, such as Google, have started to offer [responsive ad units](https://support.google.com/adsense/answer/3213689?hl=en) that should be used. If asynchronous responsive ad units are not available, the following best practices should be followed:
+
+* **Device Specific Ads** - Do not do [device detection](#device-detection) to place ads sold for "mobile" or "desktop". Instead, even though it goes against the device detection best practice, determine a screen size that constitutes the switch between "mobile" ads and "desktop" ads and swap load ads based on that size instead. Work with ad sales to stop selling ads targeted to devices and instead sell general advertising.
+* **Asynchronously Ads** - A [performance](#performance) best practice, do not load ads in-line, load them asynchronously
+* **Background Ads** - Ads that are placed outside of the content area of a page, such as background ads or rail ads, encounter all of the same issues as [large background images](#outdated-ux-patterns) do and should be avoided for the same reason.
 
 ## Future Friendly
 
@@ -301,6 +339,32 @@ The methodology of RWD is a methodology of creating sites that are [Future Frien
 3. Help others do the same.
 
 The set of suggestions from the Future Friendly manifesto that should not be followed as written are those dealing with device categorization and [device detection](#device-detection). The sentiment is correct, enhance any given device with a user experience that is tailored to its capabilities, but that should be done using [progressive enhancement](#progressive-enhancement) and [feature detection](#feature-detection) instead. Creating enhanced experiences this way, and encouraging users to take advantage of those enhanced experiences (as opposed to forcing them upon users based on their user agent string) allows for a more sustainable and future looking approach to delivering these experiences.
+
+## Resolution Independence
+
+Unlike when designing for print, there is an ever growing array of resolutions, both pixel density and available viewable area, that a single design may show up on, and designs must be made to accommodate these varying resolutions. This huge swatch of simply resolutions that need to be taken into account can be extremely daunting to work with if a design is not done [in browser](#design-in-browser). Adapting designs for the available viewable area should be handled by media queries, whereas pixel density gets handled differently depending upon the item that needs to be resolution independent.
+
+### Media Queries
+
+Media queries are a [CSS3 directive](http://www.w3.org/TR/css3-mediaqueries/) aimed at allowing styling changes based on features of the media viewing the site. There are a variety of media query features available to query against, and all can be useful, however ones prefixed with `device-` should be avoided in favor of their non-device based versions which query the viewport instead.
+
+When choosing media queries, avoid falling into the indirect [device detection](#device-detection) trap of picking values based on devices. This includes both direct correlations, like widths of an iPhone and iPad, and indirect correlations, like a generalized width of a mobile and a tablet device. Sites should not be built to devices and should likewise not have 3 or 4 values (often called breakpoints) that are used for everything. Instead, build [components](#components) that react to their own needs and [layouts](#layouts) that change and adapt based on content. It is not uncommon to have 50+ breakpoints in any given project.
+
+Do not group like media queries together. Media queries should be written with the component or layout they are working for so ease maintainability and readability. Grouping media queries together makes it very hard to tweak individual media queries as needed and update styling to only specific items. Make each use of a media query meaningful and connected to the component or layout it is dealing with.
+
+### Iconography
+
+Iconography is usually an integral part of complex designs and therefore it is imperative that icons be resolution independent. Currently, the two best practices for resolution independent icons are as follows:
+
+* **Single Colored Icons** - Use an icon font with either [custom ligatures](http://en.wikipedia.org/wiki/Typographic_ligature) or the [Kellum method](http://scottkellum.com/2013/10/25/the-new-kellum-method.html) utilizing blank characters. In either case, be consistent throughout a project. When creating ligature based icon fonts, [IcoMoon](http://icomoon.io/app/) is a fantastic resource to use to create those fonts.
+* **Multi Colored Icons** - Use compressed `.svg` images with a [fallback](#graceful-degradation) ([optimized](http://www.smashingmagazine.com/2009/07/15/clever-png-optimization-techniques/) and compressed `.png` if transparent background is needed, `.jpg` or `.gif` if not, but be consistent).
+
+### Images
+
+Images, usually either content images or background images in CSS, need to be handled slightly differently depending on the situation. For all images, if they can be expressed as an `.svg` (logos are a good place to use an `.svg`), they should be, with a [fallback](#graceful-degradation). If they cannot be, or if a fallback needs to be generated, an [optimized](http://www.smashingmagazine.com/2009/07/15/clever-png-optimization-techniques/) and compressed `.png` file should be used if transparency is needed, an [optimized](http://www.smashingmagazine.com/2009/07/01/clever-jpeg-optimization-techniques/) and compressed [progressive](http://calendar.perfplanet.com/2012/progressive-jpegs-a-new-best-practice/) `.jpg` should be used. 
+
+* **Content Images** - Content images should be loaded in using a responsive image solution. Unfortunately, there is currently no standard for responsive images, so one of two responsive image solutions should be used. The primary solution should be [Borealis](https://github.com/Snugug/borealis) which provides for element query based, lazy loaded responsive images. Because it is element query based, it may not work for all instances where an image is needed. For those instances, use [Picturefill](https://github.com/scottjehl/picturefill).
+* **CSS Images** - Utilize one of the approaches outlined in the [media query asset downloading test](http://timkadlec.com/2012/04/media-query-asset-downloading-results/) that has the least amount of additional requests. Be consistent with choice in solution.
 
 ## Device Detection
 
