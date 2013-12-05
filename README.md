@@ -328,16 +328,6 @@ Responsive web design (RWD) is an approach to design that, as [Brad Frost](http:
 
 When starting projects, RWD should not be a line item, something to throw on at the end or not included. Responsive web design should be the standard for all projects from the beginning.
 
-## Advertising
-
-Advertising on responsive sites is hard. Most ads are still sold fixed size and fixed position, with even more still being sold for only desktop or only mobile. When building responsive sites, these notions need to fall away as there is no longer a distinction between desktop and mobile, a design is a single fluid continuum.
-
-Fortunately, some advertising companies, such as Google, have started to offer [responsive ad units](https://support.google.com/adsense/answer/3213689?hl=en) that should be used. If asynchronous responsive ad units are not available, the following best practices should be followed:
-
-* **Device Specific Ads** - Do not do [device detection](#device-detection) to place ads sold for "mobile" or "desktop". Instead, even though it goes against the device detection best practice, determine a screen size that constitutes the switch between "mobile" ads and "desktop" ads and swap load ads based on that size instead. Work with ad sales to stop selling ads targeted to devices and instead sell general advertising.
-* **Asynchronously Ads** - A [performance](#performance) best practice, do not load ads in-line, load them asynchronously
-* **Background Ads** - Ads that are placed outside of the content area of a page, such as background ads or rail ads, encounter all of the same issues as [large background images](#outdated-ux-patterns) do and should be avoided for the same reason.
-
 ## Future Friendly
 
 The methodology of RWD is a methodology of creating sites that are [Future Friendly](http://futurefriend.ly/). The core tenants of being future friendly are as follows:
@@ -353,32 +343,6 @@ The methodology of RWD is a methodology of creating sites that are [Future Frien
 3. Help others do the same.
 
 The set of suggestions from the Future Friendly manifesto that should not be followed as written are those dealing with device categorization and [device detection](#device-detection). The sentiment is correct, enhance any given device with a user experience that is tailored to its capabilities, but that should be done using [progressive enhancement](#progressive-enhancement) and [feature detection](#feature-detection) instead. Creating enhanced experiences this way, and encouraging users to take advantage of those enhanced experiences (as opposed to forcing them upon users based on their user agent string) allows for a more sustainable and future looking approach to delivering these experiences.
-
-## Resolution Independence
-
-Unlike when designing for print, there is an ever growing array of resolutions, both pixel density and available viewable area, that a single design may show up on, and designs must be made to accommodate these varying resolutions. This huge swatch of simply resolutions that need to be taken into account can be extremely daunting to work with if a design is not done [in browser](#design-in-browser). Adapting designs for the available viewable area should be handled by media queries, whereas pixel density gets handled differently depending upon the item that needs to be resolution independent.
-
-### Media Queries
-
-Media queries are a [CSS3 directive](http://www.w3.org/TR/css3-mediaqueries/) aimed at allowing styling changes based on features of the media viewing the site. There are a variety of media query features available to query against, and all can be useful, however ones prefixed with `device-` should be avoided in favor of their non-device based versions which query the viewport instead.
-
-When choosing media queries, avoid falling into the indirect [device detection](#device-detection) trap of picking values based on devices. This includes both direct correlations, like widths of an iPhone and iPad, and indirect correlations, like a generalized width of a mobile and a tablet device. Sites should not be built to devices and should likewise not have 3 or 4 values (often called breakpoints) that are used for everything. Instead, build [components](#components) that react to their own needs and [layouts](#layouts) that change and adapt based on content. It is not uncommon to have 50+ breakpoints in any given project.
-
-Do not group like media queries together. Media queries should be written with the component or layout they are working for so ease maintainability and readability. Grouping media queries together makes it very hard to tweak individual media queries as needed and update styling to only specific items. Make each use of a media query meaningful and connected to the component or layout it is dealing with.
-
-### Iconography
-
-Iconography is usually an integral part of complex designs and therefore it is imperative that icons be resolution independent. Currently, the two best practices for resolution independent icons are as follows:
-
-* **Single Colored Icons** - Use an icon font with either [custom ligatures](http://en.wikipedia.org/wiki/Typographic_ligature) or the [Kellum method](http://scottkellum.com/2013/10/25/the-new-kellum-method.html) utilizing blank characters. In either case, be consistent throughout a project. When creating ligature based icon fonts, [IcoMoon](http://icomoon.io/app/) is a fantastic resource to use to create those fonts.
-* **Multi Colored Icons** - Use compressed `.svg` images with a [fallback](#graceful-degradation) ([optimized](http://www.smashingmagazine.com/2009/07/15/clever-png-optimization-techniques/) and compressed `.png` if transparent background is needed, `.jpg` or `.gif` if not, but be consistent).
-
-### Images
-
-Images, usually either content images or background images in CSS, need to be handled slightly differently depending on the situation. For all images, if they can be expressed as an `.svg` (logos are a good place to use an `.svg`), they should be, with a [fallback](#graceful-degradation). If they cannot be, or if a fallback needs to be generated, an [optimized](http://www.smashingmagazine.com/2009/07/15/clever-png-optimization-techniques/) and compressed `.png` file should be used if transparency is needed, an [optimized](http://www.smashingmagazine.com/2009/07/01/clever-jpeg-optimization-techniques/) and compressed [progressive](http://calendar.perfplanet.com/2012/progressive-jpegs-a-new-best-practice/) `.jpg` should be used. 
-
-* **Content Images** - Content images should be loaded in using a responsive image solution. Unfortunately, there is currently no standard for responsive images, so one of two responsive image solutions should be used. The primary solution should be [Borealis](https://github.com/Snugug/borealis) which provides for element query based, lazy loaded responsive images. Because it is element query based, it may not work for all instances where an image is needed. For those instances, use [Picturefill](https://github.com/scottjehl/picturefill).
-* **CSS Images** - Utilize one of the approaches outlined in the [media query asset downloading test](http://timkadlec.com/2012/04/media-query-asset-downloading-results/) that has the least amount of additional requests. Be consistent with choice in solution.
 
 ## Device Detection
 
@@ -425,6 +389,42 @@ When adding in feature-specific enhancements, they should only be loaded in if t
 ### Graceful Degradation
 
 Whereas progressive enhancement starts with content and enhances up the experience until a full web page is built, graceful degradation starts with a completed web page built to support the newsiest and most capable browsers and ensure the experience is passable in less capable browsers. While progressive enhancement is always the preferred route to take by default, there are times in projects where graceful degradation can be an approach worth considering, for instance when it comes to [polyfilling](http://remysharp.com/2010/10/08/what-is-a-polyfill/) support for HTML5's semantic tags for browsers that do not support them or providing styling that would be constrained to media queries to browsers that likewise do not support them.
+
+## Advertising
+
+Advertising on responsive sites is hard. Most ads are still sold fixed size and fixed position, with even more still being sold for only desktop or only mobile. When building responsive sites, these notions need to fall away as there is no longer a distinction between desktop and mobile, a design is a single fluid continuum.
+
+Fortunately, some advertising companies, such as Google, have started to offer [responsive ad units](https://support.google.com/adsense/answer/3213689?hl=en) that should be used. If asynchronous responsive ad units are not available, the following best practices should be followed:
+
+* **Device Specific Ads** - Do not do [device detection](#device-detection) to place ads sold for "mobile" or "desktop". Instead, even though it goes against the device detection best practice, determine a screen size that constitutes the switch between "mobile" ads and "desktop" ads and swap load ads based on that size instead. Work with ad sales to stop selling ads targeted to devices and instead sell general advertising.
+* **Asynchronously Ads** - A [performance](#performance) best practice, do not load ads in-line, load them asynchronously
+* **Background Ads** - Ads that are placed outside of the content area of a page, such as background ads or rail ads, encounter all of the same issues as [large background images](#outdated-ux-patterns) do and should be avoided for the same reason.
+
+## Resolution Independence
+
+Unlike when designing for print, there is an ever growing array of resolutions, both pixel density and available viewable area, that a single design may show up on, and designs must be made to accommodate these varying resolutions. This huge swatch of simply resolutions that need to be taken into account can be extremely daunting to work with if a design is not done [in browser](#design-in-browser). Adapting designs for the available viewable area should be handled by media queries, whereas pixel density gets handled differently depending upon the item that needs to be resolution independent.
+
+### Media Queries
+
+Media queries are a [CSS3 directive](http://www.w3.org/TR/css3-mediaqueries/) aimed at allowing styling changes based on features of the media viewing the site. There are a variety of media query features available to query against, and all can be useful, however ones prefixed with `device-` should be avoided in favor of their non-device based versions which query the viewport instead.
+
+When choosing media queries, avoid falling into the indirect [device detection](#device-detection) trap of picking values based on devices. This includes both direct correlations, like widths of an iPhone and iPad, and indirect correlations, like a generalized width of a mobile and a tablet device. Sites should not be built to devices and should likewise not have 3 or 4 values (often called breakpoints) that are used for everything. Instead, build [components](#components) that react to their own needs and [layouts](#layouts) that change and adapt based on content. It is not uncommon to have 50+ breakpoints in any given project.
+
+Do not group like media queries together. Media queries should be written with the component or layout they are working for so ease maintainability and readability. Grouping media queries together makes it very hard to tweak individual media queries as needed and update styling to only specific items. Make each use of a media query meaningful and connected to the component or layout it is dealing with.
+
+### Iconography
+
+Iconography is usually an integral part of complex designs and therefore it is imperative that icons be resolution independent. Currently, the two best practices for resolution independent icons are as follows:
+
+* **Single Colored Icons** - Use an icon font with either [custom ligatures](http://en.wikipedia.org/wiki/Typographic_ligature) or the [Kellum method](http://scottkellum.com/2013/10/25/the-new-kellum-method.html) utilizing blank characters. In either case, be consistent throughout a project. When creating ligature based icon fonts, [IcoMoon](http://icomoon.io/app/) is a fantastic resource to use to create those fonts.
+* **Multi Colored Icons** - Use compressed `.svg` images with a [fallback](#graceful-degradation) ([optimized](http://www.smashingmagazine.com/2009/07/15/clever-png-optimization-techniques/) and compressed `.png` if transparent background is needed, `.jpg` or `.gif` if not, but be consistent).
+
+### Images
+
+Images, usually either content images or background images in CSS, need to be handled slightly differently depending on the situation. For all images, if they can be expressed as an `.svg` (logos are a good place to use an `.svg`), they should be, with a [fallback](#graceful-degradation). If they cannot be, or if a fallback needs to be generated, an [optimized](http://www.smashingmagazine.com/2009/07/15/clever-png-optimization-techniques/) and compressed `.png` file should be used if transparency is needed, an [optimized](http://www.smashingmagazine.com/2009/07/01/clever-jpeg-optimization-techniques/) and compressed [progressive](http://calendar.perfplanet.com/2012/progressive-jpegs-a-new-best-practice/) `.jpg` should be used. 
+
+* **Content Images** - Content images should be loaded in using a responsive image solution. Unfortunately, there is currently no standard for responsive images, so one of two responsive image solutions should be used. The primary solution should be [Borealis](https://github.com/Snugug/borealis) which provides for element query based, lazy loaded responsive images. Because it is element query based, it may not work for all instances where an image is needed. For those instances, use [Picturefill](https://github.com/scottjehl/picturefill).
+* **CSS Images** - Utilize one of the approaches outlined in the [media query asset downloading test](http://timkadlec.com/2012/04/media-query-asset-downloading-results/) that has the least amount of additional requests. Be consistent with choice in solution.
 
 # Performance
 
