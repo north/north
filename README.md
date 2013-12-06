@@ -126,7 +126,7 @@ When creating user personas, do not fall into the trap of assigning stereotypes 
 
 A content inventory takes an objective, broad strokes look at content that is currently available. If content is not currently available, create a content inventory based on perceived content needs. Built as a spreadsheet, it can include both intrinsic (title, owner, last updated) and analytics (page views, rank, notes) data. Content inventories are not just about pages or screens but rather the different pieces, or chunks, that go into making those larger items. Content is not just about long blobs of text; content is also images, videos, charts, and any other form of information a user may want. It is important to understand that not every single piece of content available must be inventoried, but rather the enough representative pieces to get a holistic view of each type of content available. By inventorying all the different types of content as well as the chunks that make up the content, a deep understanding of the content can be achieved that will make [modeling the content](#content-modeling) easier.
 
-![Content Inventory](https://photos-5.dropbox.com/t/0/AADclhOw_rCcd0buqLPEJYvZ_3awQXOk8kja98ENZMAwkw/12/12410559/png/2048x1536/3/1386349200/0/2/Screenshot%202013-12-06%2010.06.46.png/FA7gpuN7hvRhKVdY5OIRK1Aoeijl_ykmPjnAyd2XMbM)
+![Content Inventory](https://dl.dropboxusercontent.com/u/12410559/content%20inventory.png)
 
 ## Content Audit
 
