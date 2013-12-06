@@ -88,18 +88,273 @@ North is meant to be a living document. Standards and best practices change, and
 
 # Content Strategy
 
-Content strategy is the process by which content is analyzed, sorted, constructed, and placed. Users come to a site for its content first and foremost, it is the most important part of a site. 
+Content strategy is the process by which content is analyzed, sorted, constructed, and placed. Users come to a site for its content first and foremost, so it is the most important part of a site. Before any discussion of [design](#visual-design) or [development](#website-building-blocks), an understanding of a product owner's content is imperative in order to produce not only an effective website, but lay an effective foundation for any and all future endeavors, from apps to ads to printed material. The entirety of a finished product is determined by this initial step, from what content actually is put onto pages to what [components](#components) get built to what the final site [looks like](#visual-design).
 
 ## Project Vision
 
+Before knowing what content will best serve a site, and therefore what features will best serve the content, a goal for the project should be decided upon. This can be accomplished by writing a **Vision Statement**, and should be the first content strategy deliverable. Vision statements should answer the following questions:
+
+* Who will use, buy, or consume the product?
+* Who is the target customer?
+* Who will administer and maintain the product?
+* What needs will the product address?
+* What attributes are critical to success?
+* How does the product compare with existing products?
+* What are the unique selling points?
+
+Vision statement provide a single grounding point for all decisions needed to create a successful product. The following is an example vision statement for a made-up news organization:
+
+> In order to provide for a well-informed electorate who want to stay up-to-date and relate to high quality relevant worldwide news and information on an ever growing array of platforms, our editorial team will utilize an easy-to-use platform that can be accessed from any device from across the world to quickly and effortlessly updated and create new stories.
+
+## User Personas
+
+User personas are a tool to distill different types of people who may interact with a product into caricatures in order to work with the different types of people effectively. *Product owner*, *editor*, and *user* personas should be built for each product, with additional user personas or expanded base user personas as needed. In order to create user personas, interviews (ideally in person one-on-one or focus groups) should be conducted with different types of users in order to get a statistically relevant overview of each user type. The creation of user personas can happen in parallel along with the creation of a product's [vision statement](#vision-statement), [content inventory](#content-inventory), and [content audit](#content-audit).
+
+User persona research should begin with a hypothesis of what the various final user types will be and what those user types wants and needs are. These hypotheses should be based on analytics of the current site (if available) and demographic information of target audience. Analytics will provide insight into what is important to users, but not why. Similarly, demographic information will provide insight into who to start with, but not necessarily describe everyone who may use a product.
+
+Once rough sketches of starting user types are determined, it is time for interviews. Ask users questions about what they find most valuable about the existing product and similar, including competitors', products. Determine if anything of value is missing from the existing product and the similar products. Ask how they most often access the product, gather pain points and demographic information. Interview not only users that meet the starting user types, but users from outside those initial types as it may come to light that users outside of the initial types actually make use of the product. Once all user interviews have been finished, it is time to create final user personas.
+
+When creating user personas, do not fall into the trap of assigning stereotypes to personas, such as young adults only know how to write through text message shorthand or that [mobile users](#mobile-first) are rushed and distracted. Personas should be generated based on statistically analysis of the interviews performed. Take all of the information gathered from all of the interviews and, based on analysis, break up the results into similar groups of people. What should divide users into similar groups are significant areas where multiple users use the product in similar ways, not small differences (or potentially even seemingly large differences like demographic). User personas are about how users *use* a product and what they expect from it. Finally, create a profile representing each group to be used as a final user persona. Each profile should contain the following information:
+
+* Name
+* Description of typical use of the product
+* Motivator for use of the product (primary, secondary, tertiary needs)
+* Pain points with the product
+
 ## Content Inventory
+
+A content inventory takes an objective, broad strokes look at content that is currently available. If content is not currently available, create a content inventory based on perceived content needs. Built as a spreadsheet, it can include both intrinsic (title, owner, last updated) and analytics (page views, rank, notes) data. Content inventories are not just about pages or screens but rather the different pieces, or chunks, that go into making those larger items. Content is not just about long blobs of text; content is also images, videos, charts, and any other form of information a user may want. It is important to understand that not every single piece of content available must be inventoried, but rather the enough representative pieces to get a holistic view of each type of content available. By inventorying all the different types of content as well as the chunks that make up the content, a deep understanding of the content can be achieved that will make [modeling the content](#content-modeling) easier.
+
+![Content Inventory](https://photos-5.dropbox.com/t/0/AADclhOw_rCcd0buqLPEJYvZ_3awQXOk8kja98ENZMAwkw/12/12410559/png/2048x1536/3/1386349200/0/2/Screenshot%202013-12-06%2010.06.46.png/FA7gpuN7hvRhKVdY5OIRK1Aoeijl_ykmPjnAyd2XMbM)
 
 ## Content Audit
 
+A content audit provides a first look at what content is available and how it is written as a way of sussing out if what is currently available is worth keeping, editing, or removing. Ask the following questions about the content and content types gathered from a [content inventory](#content-inventory).
+
+* Is the content too long, too short, or just right? Can longer content be cut into shorter chunks and still make sense?
+* Is the copy wordy? Does it ramble? Can it be cleaned up without loosing its meaning?
+* Does each page or chunk get to the point quickly?
+* Is content even broken up into chunks?
+* Is the content relevant and important?
+
+After asking these questions of the content, do a **Gap Analysis** of the content. All content should fall into one of four categories:
+
+* **Keep** as-is
+* **Revise** and edit to tighten up copy and content types
+* **Delete** because it's irrelevant, not useful, or outdated
+* **Create New** where new business goals don't meet existing content. New content types may be gleaned from needs discovered in [user interviews](#user-personas).
+
 ## Content Modeling
+
+A content model is an overview of the different types of content available for the product. Each type of content is modeled to include its attributes (what make it up, its chunks). A good content model includes both visible and structural attributes. Analyze the [content inventory](#content-inventory) and [content audit](#content-audit) to determine final content types. A content type per variation in content type is not necessarily needed, some attributes may be required, some not. It is important in a content model to emerge with a holistic understanding of each type of content and each content type's attributes in order to effectively build out any presentation. [Presentations deprecate](http://globalmoxie.com/jhc/prez/mobile-myths.pdf), but content lives on, so it is important for the content to be modeled to be reusable across any presentation and not contain [presentation-specific](#device-detection) attributes (such as iPhone Title or Desktop Image). Each content type modeled should contain the following information:
+
+* **Title** of the content type
+* **Description** of the content type
+* **Benefit Statement** written in the form of *As [persona], I want [desire] so that [rationale]*. The persona comes from the compiled [user personas](#user-personas). Each content type can have multiple benefit statements for multiple personas.
+* **Value** of the content type. This is used to aid in creating a [backlog](#backlog) during the development process. Determine a [value](#value) for the aspects of the content. A determination of how closely each benefit statement aligns with the [vision statement](#vision-statement) should always be included. Additional aspects could include advertising revenue, page rank, page views, and resources requires to build versus value built (which if included, should be counted as negative value)
+* **Attributes** that make up the content type. Each attribute should that attribute's data limits, such as character limit or date format.
+* **Relationships** that the content type has to other types of content.
+
+The following is an example of two content types related to the example [vision statement](#vision-statement).
+
+```
+## Article
+
+**Description:**
+
+* Short to long form text with possible accompanying images of recent factual stories 
+
+**Benefits:**
+
+* *As a* reader, *I want* the most up-to-date information about the state of the world *so that* I stay an informed citizen
+* *As a* site owner, *I want* to increase traffic to our site during peak news stories *so that* we enhance our standing as a world leading news source
+
+**Value**
+
+* Reader benefit statement: *13*
+* Site Owner benefit statement: *3*
+* Nett Ad Revenue: *8*
+* **Total Value: 24**
+
+**Attributes:**
+
+* **Title**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* text input
+	* *Character Limit:* 127
+	* *Description:* A descriptive title of the content
+* **Body**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* long text input
+	* *Character Limit:* false
+	* *Description:* Long Form text box of main content
+* **Author**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* reference (person)
+	* *Description:* Author who wrote article
+* **Published Date**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* datestamp
+	* *Formatting:* mm/dd/yyyy hh:mm
+	* *Description:* Date, including hour and minute, of when article was published
+* **Summary**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* text input
+	* *Character Limit:* 200
+	* *Description:* Summary of article
+* **Primary Image**
+	* *Total:* 1
+	* *Required:* false
+	* *Type:* reference (image)
+	* *Description:* Primary image for article
+* **Related Images**
+	* *Total:* multiple
+	* *Required:* false
+	* *Type:* reference (image)
+	* *Minimum*: 0
+	* *Maximum:* 5
+	* *Description:* Images related to article
+* **Related Human Interest Story**
+	* *Total:* multiple (no limit)
+	* *Required:* false
+	* *Type:* reference (human interest story)
+	* *Minimum:* 0
+	* *Maximum:* 3
+	* *Description:* Related Human Interest Story
+* **Taxonomy**
+	* *Total:* multiple
+	* *Required:* true
+	* *Type:* reference (term)
+	* *Minimum:* 1
+	* *Maximum:* 5
+	* *Description:* Taxonomy allows content types to be related to each other in a meta sense
+	
+
+**Relationships**
+
+* Person
+* Image
+* Term
+
+## Human Interest Story
+
+**Description**
+
+* Short to long form text with primary media of emotional stories
+
+**Benefits:**
+
+* *As a* reader, *I want* to connect to the people effected by events in the world *so that* I can identify more closely with those events
+* *As a* site owner, *I want* to provide additional engagement opportunities to readers *so that* I can reduce bounce rate and increase ad revenue
+
+**Value:**
+
+* Reader benefit statement: *8*
+* Site Owner benefit statement: *8*
+* Nett Ad Revenue: *3*
+* **Total Value: 19**
+
+**Attributes:**
+
+* **Title**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* text input
+	* *Character Limit:* 127
+	* *Description:* A descriptive title of the content
+* **Body**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* long text input
+	* *Character Limit:* false
+	* *Description:* Long Form text box of main content
+* **Author**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* reference (person)
+	* *Description:* Author who wrote article
+* **Published Date**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* datestamp
+	* *Formatting:* mm/dd/yyyy hh:mm
+	* *Description:* Date, including hour and minute, of when article was published
+* **Summary**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* text input
+	* *Character Limit:* 200
+	* *Description:* Summary of article
+* **Primary Media**
+	* *Total:* 1
+	* *Required:* true
+	* *Type:* reference (image, video, audio)
+	* *Description:* Primary media for article
+* **Related Media Gallery**
+	* *Total:* 1
+	* *Required:* false
+	* *Type:* reference (media gallery)
+	* *Description:* Related media gallery
+* **Taxonomy**
+	* *Total:* multiple
+	* *Required:* true
+	* *Type:* reference (term)
+	* *Minimum:* 1
+	* *Maximum:* 5
+	* *Description:* Taxonomy allows content types to be related to each other in a meta sense
+	
+**Relationships**
+
+* Person
+* Image
+* Video
+* Audio
+* Media Gallery
+* Term
+```
 
 ## Information Architecture
 
+Information architecture (IA) is a process that determines what pieces of what content gets used when, where, and why. Each presentation (native app, web site, etc…) has its own IA, but each should share the same underlying content.
+
+Architectures should be constructed so that the [most valuable content](#content-modeling) is most prominent, with less valuable content less prominent. When devising architectures, make sure they are [consistent and predictable](#consistency-and-predictability). They should be [comprehensible](#complexity-and-complication), [uncluttered](#signal-to-noise-ratio), and follow the [hierarchy of website needs](#website-needs). Like with [visual design](#visual-design), pictures are not requirements; architectures should be sketched in outlines and [HTML](#design-in-browser). Determine why content items should be where they are and how they interact with each other; don't just start drawing pictures or playing with cutouts. One important thing to keep in mind when creating IAs, the product owner is not the audience. Lean upon what [users](#user-personas) actually want.
+
+While building out an IA, the product's [content mode](#content-mode) may need to be revised. When building IAs, especially when the content model needs to be revised, keep the following rules of thumb in mind.
+
+* **Truncation is not a content strata…**
+	* Content that is truncated is usually not written for summary or reuse
+	* Truncated content usually doesn't contain [trigger words](#consistency-and-predictability)
+	* Never truncate headlines
+	* Always provide summaries for long copy
+	* Provide alternative copy when needed
+* **Build systems of content**
+	* Content isn't always one-size-fits-all, allow for different sizes and styles of content attributes
+		* Small, medium, large images
+		* Short and long human readable and SEO friendly headlines
+	* *DO NOT* build content for [specific contexts](#device-detection) such as iPhones, Androids, Tablets, or Desktops
+* **Content should be easy to navigate**
+	* Don't paginate long pieces of content unnecessarily
+	* Make it easy to navigate to sections in long pieces of content
+	* Always provide enough context for a user to make their own navigation decisions
+		* A user wit location services might not exclusively want location-based information
+		* Provide plenty of [trigger words](#consistency-and-predictability)
+	* Keep navigation uncluttered
+		* More than 5 main navigation categories gets hard to scan
+		* Only provide secondary navigation when absolutely necessary
+		* Try to avoid having more than three levels of navigation
+		* If navigation gets cluttered, stop and rework to make the architecture more [comprehensible](#complexity-and-complication)
+	* Think about if headlines can be used as links, or if alternative copy should be used
+* **Content should be available**
+	* Don't restrict content, especially [based on device](#device-detection)
+	* Provide [alternative formats of content](#progressive-enhancement) if one format can't be made available, such as through device capabilities or business needs
+	* Do not store content as HTML, but rather as raw attributes that can be presented in multiple ways. This is especially true for tabular data and images related to long copy
+	* Make all content available and in a way best suited for the display at hand
+	
 # Visual Design
 
 As the web comes into its own as a medium and the [rituals of print design](http://snugug.github.io/designing-the-modern-web/#/ritual) are cast off, websites can no longer be designed in the same tools built for print design. Websites have interaction, states change, items come in and out. The [differences in browsers browsers](#progressive-enhancement) force designs to change based on capabilities available. Even something as simple as screen size is not static. As [Brad Frost put it](https://twitter.com/brad_frost/status/195241868383092736), "You can't articulate fluidity on paper." The reality of the web has always been that a single, static bitmap representation of a page isn't what a final site will be, it's just taken the push of [responsive web design](#responsive-web-design) to bring the web into its own as a medium. In order to accommodate for the fluidity and flexibility of the medium of the web, new tools and techniques are needed to create a site's look and feel.
