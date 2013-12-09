@@ -87,6 +87,13 @@ North is meant to be a living document. Standards and best practices change, and
 
 # Development Process
 
+## Backlog
+
+## Value
+
+Value should be determined by assigning a [Fibonacci number](http://en.wikipedia.org/wiki/Fibonacci_sequence) for each aspect that provides value, generally not to exceed 13 per aspect. A determination of how closely each benefit statement aligns with the [vision statement](#vision-statement) should always be included, with additional aspects
+
+
 # Content Strategy
 
 Content strategy is the process by which content is analyzed, sorted, constructed, and placed. Users come to a site for its content first and foremost, so it is the most important part of a site. Before any discussion of [design](#visual-design) or [development](#website-building-blocks), an understanding of a product owner's content is imperative in order to produce not only an effective website, but lay an effective foundation for any and all future endeavors, from apps to ads to printed material. The entirety of a finished product is determined by this initial step, from what content actually is put onto pages to what [components](#components) get built to what the final site [looks like](#visual-design).
@@ -357,6 +364,8 @@ While building out an IA, the product's [content mode](#content-mode) may need t
 	* Make all content available and in a way best suited for the display at hand
 	
 # Visual Design
+
+![The Treachery of Images, René Magritte](http://upload.wikimedia.org/wikipedia/en/b/b9/MagrittePipe.jpg)
 
 As the web comes into its own as a medium and the [rituals of print design](http://snugug.github.io/designing-the-modern-web/#/ritual) are cast off, websites can no longer be designed in the same tools built for print design. Websites have interaction, states change, items come in and out. The [differences in browsers browsers](#progressive-enhancement) force designs to change based on capabilities available. Even something as simple as screen size is not static. As [Brad Frost put it](https://twitter.com/brad_frost/status/195241868383092736), "You can't articulate fluidity on paper." The reality of the web has always been that a single, static bitmap representation of a page isn't what a final site will be, it's just taken the push of [responsive web design](#responsive-web-design) to bring the web into its own as a medium. In order to accommodate for the fluidity and flexibility of the medium of the web, new tools and techniques are needed to create a site's look and feel.
 
