@@ -854,7 +854,7 @@ Components and layouts form prefixes the prefixes for aspects and elements, sepa
       <h1 class="typography--PRIMARY-HEADING">Article Title</h1>
     </div>
     <!-- Media element of Article layout -->
-    <figure class="_article--media">
+    <figure class="__article--media">
       <!-- Video components, Full HD aspect -->
       <div class="video--FULL-HD">
         <!-- Video element of Video component -->
