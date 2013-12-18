@@ -6,11 +6,28 @@ North is a set of standards and best practices for developing modern web based p
 
 North is meant to be a living document. Standards and best practices change, and as they do and have been vetted, North will grow and change with them. North will be versioned using [SEMVER](http://semver.org/) to provide a way for you to specify what version of North you are using for your project.
 
-*This project is currently a work in progress*
+*Currently open to review, first SEMVER version coming soon*
 
 ## Table of Contents
 
-1. Development Process
+1. [Development Process](#development-process)
+	* [Roles and Responsibilities](#roles-and-responsibilities)
+		* [Product Owner](#product-owner)
+		* [Project Manager](#project-manager)
+		* [Designer](#designer)
+		* [Developer](#developer)
+		* [Quality Assurance](#quality-assurance)
+	* [User Stories](#user-stories)
+		* [Benefit Statement](#benefit-statement)
+		* [Requirements](#requirements)
+		* [Size and Value](#size-and-value)
+		* [Iterations](#iterations)
+		* [Backlog](#backlog)
+	* [Version Control](#version-control)
+		* [Feature Branches](#feature-branches)
+		* [Tags and Releases](#feature-branches)
+		* [Preprocessed Languages](#preprocessed-languages)
+	* [Brooks's Law](#brookss-law)
 2. [Content Strategy](#content-strategy)
 	* [Project Vision](#project-vision)
 	* [User Personas](#user-personas)
@@ -99,7 +116,7 @@ In any given project, there are a variety of roles that each play a part in the 
 
 ### Product Owner
 
-Either the individual who directly owns the product or company the product is being developed for, or a designated representative for the product or company who has been given direct permission to make decisions for the product being developed. This individual needs to be able to make decisions on their own without consulting others and acts a fully involved individual in the lifecycle of a project. They are responsible for prioritizing the [backlog](#backlog) and determine [requirements](#requirements) for, and assist in writing [user stories](#user-story). There should only be a single product owner per project.
+Either the individual who directly owns the product or company the product is being developed for, or a designated representative for the product or company who has been given direct permission to make decisions for the product being developed. This individual needs to be able to make decisions on their own without consulting others and acts a fully involved individual in the lifecycle of a project. They are responsible for prioritizing the [backlog](#backlog) and determine [requirements](#requirements) for, and assist in writing [user stories](#user-stories). There should only be a single product owner per project.
 
 ### Project Manager
 
@@ -115,9 +132,9 @@ Much like designers, there are two types of developers, front end developers and
 
 ### Quality Assurance
 
-Individuals working on quality assurance (QA) ensure that new code created during a [sprint](#iterations) matches the [requirements](#requirements) of the [user story](#user-story) and does not break the functionality already in place from previous sprints. QA needs to understand how functionality may differ across platforms (on the web, [browsers and devices](#progresive-enhancement)) and work with developers when this is unclear. No code should be [released](#tags-and-releases) until QA has given sign off.
+Individuals working on quality assurance (QA) ensure that new code created during a [sprint](#iterations) matches the [requirements](#requirements) of the [user story](#user-stories) and does not break the functionality already in place from previous sprints. QA needs to understand how functionality may differ across platforms (on the web, [browsers and devices](#progresive-enhancement)) and work with developers when this is unclear. No code should be [released](#tags-and-releases) until QA has given sign off.
 
-## User Story
+## User Stories
 
 A user story describes work that needs to be done for a feature of a particular product. User stories contain benefit statements, requirements, a size, and a value. [Project Managers](#project-manager) and [product owners](#product-owner) should work together to create the basics of a user story (benefit statements, requirements, value; often called a **stub**), flush out requirements with a [user experience designer](#designer), and have work with the team to ensure stories are sized. Once all of these items are complete, a user story is considered **defined**. Once a product owner has prioritized them in the [backlog](#backlog), they are considered **consumable**. It behooves teams to have enough user stories defined and consumable to cover the current iteration and one to two iterations in the future at any given time.
 
@@ -161,7 +178,7 @@ The version control system of choice is [Git](http://en.wikipedia.org/wiki/Git_(
 
 ### Feature Branches
 
-When developing using Git, there should be one canonical branch, usually called `master`. No developer should ever commit code directly into `master`; instead, each developer should branch off of `master` named after the feature they are working (usually from a [user story](#user-story)) and develop in that branch. These are called **feature branches**. Feature branches should only contain once feature. When a feature is complete, a request to merge that branch into `master` should take place (in [GitHub](https://github.com/) parlance, a *pull request*). At that point, a developer who did not write the code should review the request and make sure it meets the development standards of the group and, primarily, that it works. Assuming it meets all of the basic requirements, it should be merged by the reviewing developer. A [continuous integration system](http://en.wikipedia.org/wiki/Continuous_integration) can assist greatly in this merge request process by automating most of it, including running tests against the developed code. At no point should a developer merge their own code into `master`.
+When developing using Git, there should be one canonical branch, usually called `master`. No developer should ever commit code directly into `master`; instead, each developer should branch off of `master` named after the feature they are working (usually from a [user story](#user-stories)) and develop in that branch. These are called **feature branches**. Feature branches should only contain once feature. When a feature is complete, a request to merge that branch into `master` should take place (in [GitHub](https://github.com/) parlance, a *pull request*). At that point, a developer who did not write the code should review the request and make sure it meets the development standards of the group and, primarily, that it works. Assuming it meets all of the basic requirements, it should be merged by the reviewing developer. A [continuous integration system](http://en.wikipedia.org/wiki/Continuous_integration) can assist greatly in this merge request process by automating most of it, including running tests against the developed code. At no point should a developer merge their own code into `master`.
 
 ### Tags and Releases
 
@@ -177,12 +194,12 @@ When working with preprocessed languages, such as [Sass](#sass-and-compass), the
 > 
 > *Fred Brooks*
 
-[Brooks's Law](http://en.wikipedia.org/wiki/Brooks's_law), which was coined in his 1975 book [The Mythical Man-Month](http://en.wikipedia.org/wiki/The_Mythical_Man-Month), states that "adding manpower to a late software project makes it later". The law, while described even by Brooks as an oversimplification, captures two factors of a general rule of software development (as from the Wikipedia article):
+[Brooks's Law](http://en.wikipedia.org/wiki/Brooks's_law), which was coined in Fred Brooks's 1975 book [The Mythical Man-Month](http://en.wikipedia.org/wiki/The_Mythical_Man-Month), states that "adding manpower to a late software project makes it later". The law, while described even by Brooks as an oversimplification, captures two factors of a general rule of software development (as from the Wikipedia article):
 
 1. It takes some time for the people added to a project to become productive. Brooks calls this the "ramp up" time. Software projects are complex engineering endeavors, and new workers on the project must first become educated about the work that has preceded them; this education requires diverting resources already working on the project, temporarily diminishing their productivity while the new workers are not yet contributing meaningfully. Each new worker also needs to integrate with a team composed of multiple engineers who must educate the new worker in their area of expertise in the code base, day by day. In addition to reducing the contribution of experienced workers (because of the need to train), new workers may even have negative contributions – for example, if they introduce bugs that move the project further from completion.
 2. Communication overheads increase as the number of people increases. The number of different communication channels increases rapidly with the number of people. Everyone working on the same task needs to keep in sync, so as more people are added they spend more time trying to find out what everyone else is doing.
 
-To combat these issues with large and expanding teams, those individuals involved with a project, from [project managers](#project-manager) to [product owners](#product-owner) to [designers](#visual-designer) and [developers](#developer), should remain as constant as possible throughout each major release of a project. They should each stay on a project for the duration of a project, from the kick off of a project to a major release. The team should be kept small and flexible and communication channels between all involved should be open and available throughout the duration of a project.
+To combat these issues with large and expanding teams, those individuals involved with a project, from [project managers](#project-manager) to [product owners](#product-owner) to [designers](#visual-designer) and [developers](#developer), should remain as constant as possible throughout each major [release](#tags-and-releases) of a project. They should each stay on a project for the duration of a project, from the kick off of a project to a major release. The team should be kept small and flexible and communication channels between all involved should be open and available throughout the duration of a project.
 
 # Content Strategy
 
@@ -257,7 +274,7 @@ A content model is an overview of the different types of content available for t
 
 * **Title** of the content type
 * **Description** of the content type
-* **Benefit Statement** written in the form of *As [persona], I want [desire] so that [rationale]* (similar to [user stories](#user-story)). The persona comes from the compiled [user personas](#user-personas). Each content type can have multiple benefit statements for multiple personas.
+* **Benefit Statement** written in the form of *As [persona], I want [desire] so that [rationale]* (similar to [user stories](#user-stories)). The persona comes from the compiled [user personas](#user-personas). Each content type can have multiple benefit statements for multiple personas.
 * **Value** of the content type. This is used to aid in creating a [backlog](#backlog) during the development process. Determine a [value](#size-and-value) for the aspects of the content. A determination of how closely each benefit statement aligns with the [vision statement](#vision-statement) should always be included. Additional aspects could include advertising revenue, page rank, page views, and resources requires to build versus value built (which if included, should be counted as negative value)
 * **Attributes** that make up the content type. Each attribute should that attribute's data limits, such as character limit or date format.
 * **Relationships** that the content type has to other types of content.
