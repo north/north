@@ -87,16 +87,106 @@ North is meant to be a living document. Standards and best practices change, and
 
 # Development Process
 
-## Backlog
+Much like [visual design](#visual-design), the process of developing a product has changed as the understanding of the medium being worked in has changed from an extension of print design to a its own entity. Whereas in print design a final product was always the deliverable and designs for that product would be handed from one role to another without back and forth communication, the web requires a new process better suited for the complex and interactive nature of the final product.
 
-## Value
+Often referred to as *waterfall*, the old method of a designer creating a static page, being approved by a product owner, then being handed off to developers without further communication channels will not produce results in the best interest of anyone involved. The product owner wouldn't see the final product until it was all finished and time for launch, much too late to make any corrections or alter the path of the project.
 
-Value should be determined by assigning a [Fibonacci number](http://en.wikipedia.org/wiki/Fibonacci_sequence) for each aspect that provides value, generally not to exceed 13 per aspect. A determination of how closely each benefit statement aligns with the [vision statement](#vision-statement) should always be included, with additional aspects
+Instead, a more *agile* process where product owners, designers, and developers all work in conjunction with one another to build value in a product throughout its development cycle is needed. One where a small amount of work and constant feedback between all parties can build a large project out of small parts. One where the final project may not have every bell and whistle hoped for, but rather has an array of features that maximize the cost of the development based on business and user needs is produced. This is a large change in the way most individuals and organizations have done this type of work in the past, but by sticking to this process, a better product will be built in the long run (and those involved in the build will not be exhausted or burnt out as a result).
 
+## Roles and Responsibilities
+
+In any given project, there are a variety of roles that each play a part in the success of a project. The following is a list of the basic roles required to accomplish a project. Some individuals may fall into multiple categories, that's okay. The key is that each role has certain responsibilities and these roles need to have members throughout the entire development process, ideally with each role filled by the [same individuals](#brookss-law) for the duration of a project. Projects work best when the the total number of individuals are kept to a minimum (but that is not to say that it is better to have one of each, rather make sure that there aren't too many individuals on a project at once).
+
+### Product Owner
+
+Either the individual who directly owns the product or company the product is being developed for, or a designated representative for the product or company who has been given direct permission to make decisions for the product being developed. This individual needs to be able to make decisions on their own without consulting others and acts a fully involved individual in the lifecycle of a project. They are responsible for prioritizing the [backlog](#backlog) and determine [requirements](#requirements) for, and assist in writing [user stories](#user-story). There should only be a single product owner per project.
+
+### Project Manager
+
+The individual in charge of the ensuring the product cycle is being kept on track. They take charge in managing expectations of  product owners, ensuring that designers and developers are able to deliver what they have [committed to](#commitment) during a [sprint](#iterations), and working with the product owner to ensure there are enough defined, consumable, prioritized [user stories](#user-stories) to work on for the upcoming [iterations](#iterations). Project managers often run [scrums](#scrum) if there is not a dedicated person to do so. There should only be a single project manager per project.
+
+### Designer
+
+There are two types of [designs](#visual-design) that need to happen during a typical product lifecycle: user interface design, the look and feel of a product, and user experience design, how users interact with the product. User experience designers should be working with [rapid prototypes](#rapid-prototyping) to flush out interaction patterns and create rough flows, where user interface designers should be working with [style prototypes](#style-prototyping) to determine the look and feel of components that are developed by user experience designers' work. Both should work closely with developers. User experience designers should take their queues and be part of the creation process of a product's [content strategy](#content-strategy)
+
+### Developer
+
+Much like designers, there are two types of developers, front end developers and back end developers. Front end developers primarily deal with what is actually put in front of users, in the case of web projects the [HTML](#markup), [CSS](#styling), and [JavaScript](#interaction), whereas backend developers primarily work on the systems needed to store, retrieve, and manipulate the data on the server side (what users do not see). Both types of developers need to work together to create the final product that will be consumed by the user. Front end developers will spend a lot of time working with designers to ensure the final product meets their expectations while still being workable and [performant](#performance) based on the realities of the medium being developed for. Because of this close working relationship, front end developers often straddle the line between designer and developer and should be given the leeway to do so.
+
+### Quality Assurance
+
+Individuals working on quality assurance (QA) ensure that new code created during a [sprint](#iterations) matches the [requirements](#requirements) of the [user story](#user-story) and does not break the functionality already in place from previous sprints. QA needs to understand how functionality may differ across platforms (on the web, [browsers and devices](#progresive-enhancement)) and work with developers when this is unclear. No code should be [released](#tags-and-releases) until QA has given sign off.
+
+## User Story
+
+A user story describes work that needs to be done for a feature of a particular product. User stories contain benefit statements, requirements, a size, and a value. [Project Managers](#project-manager) and [product owners](#product-owner) should work together to create the basics of a user story (benefit statements, requirements, value; often called a **stub**), flush out requirements with a [user experience designer](#designer), and have work with the team to ensure stories are sized. Once all of these items are complete, a user story is considered **defined**. Once a product owner has prioritized them in the [backlog](#backlog), they are considered **consumable**. It behooves teams to have enough user stories defined and consumable to cover the current iteration and one to two iterations in the future at any given time.
+
+When determining what user stories to stub out first, it is important to look to the [content strategy](#content-strategy) of a product. [Content types](#content-modeling) that are most valuable should have their features prioritized when it comes to creating user stories. The [information architecture](#information-architecture) will also assist in determining what features are needed and therefore what user stories should be generated. Features based off of content strategy should have the value of their content types associated to them in order to provide insight into overall value being generated by a given feature.
+
+### Benefit Statement
+
+Benefit statements describe why a feature is important to be built based on [user personas](#user-personas) and business needs. Useful in helping to determine value for a feature and can thus help in organizing the [backlog](#backlog), benefit statements are written in the form *As [persona], I want [desire] so that [rationale].*
+
+### Requirements
+
+The functional requirements of a user story are based on the desired user experience of a feature and should be thorough enough to be completed by a [designer](#designer) or [developer](#developer) without additional question. An example of incomplete requirements would be "Create a photo gallery". On the other hand, "Create a rotating display that holds five items, paginates with swipe or mouse click, draws in an image from the Image content type displayed at a 16:9 ratio with the title and short description and can resize fluidly, ordered by most recent item" is much more thorough and can be built and designed without further input.
+
+### Size and Value
+
+The size of a story is how much effort it will take to complete based on a relative scale of other similar features built, whereas value is a relative determination of how aligned with business needs a given feature is. Both size and value should be a [Fibonacci number](http://en.wikipedia.org/wiki/Fibonacci_sequence).
+
+For sizes, any size above 21 is usually too much to work on in a single iteration and the work should be split into smaller pieces and an epic, or overarching story, should be created. Size is not just baed on development difficulty; it includes difficulty for all [team members](#roles-and-responsibilities) that would work on a feature for an iteration, including design and QA. Size should also account for risk, which could increase size for features that otherwise require little actual work to do. The size of a story should be agreed upon by consensus by all team members working on a feature. Sizing should happen throughout an iteration.
+
+Value should be determined for each aspect that provides value, generally not to exceed 13 per aspect. A determination of how closely each benefit statement aligns with the [vision statement](#vision-statement) should always be included, with additional aspects such as importance in [information architecture](#information-architecture) or metrics for the feature or content type.
+
+### Iterations
+
+Work should be divided up into 2 week iterations. Each iteration represents a set of user stories that [designers](#designer), [developers](#developer), and [QA](#quality-assurance) have agreed that they can accomplish in that period of time based on how much time each individual has available (often called **capacity**, measured not in hours but in unitless numbers similar to size and value) and how difficult each user story is. Each two week iteration is often referred to as a **sprint**.
+
+Once a day during each sprint, all [team members](#roles-and-responsibilities) should get together, either by phone, in person, or both, to quickly discuss progress so far. These meetings are called **scrum** meetings. During these meetings, [designers](#designer), [developers](#developer), and [QA](#quality-assurance) give a quick overview of what they have accomplished, what they are going to accomplish, if anything is impeding their progress (often called **blockers**), and arrange to meet with individuals that can help to lift those blockers. Scurm meetings should be fast, no more than 15 minutes, and should not include the writing of stories or prolonged discussion; follow-up meetings are encouraged.
+
+Towards the end of each iteration the team should come together to determine what stories to work on for the next iteration. This is called **commitment**. When determining capacity, remember to take into account meetings an individual may need to take part in, including time spent sizing user stories and this, and the acceptance, meeting.
+
+At the end of each iteration, the team should come together to present the work they have accomplished to the product owner. At this time, the work done should be compared to the stories committed to. For each story committed to, if what was produced matches the requirements laid out in the story, the [product owner](#product-owner) should accept the story as complete. If the result was not what was expected by the product owner but meets all requirements as laid out in the story, the product owner should still accept the story and create a new story for changes. If all stories are complete and accepted, the iteration passes, if not, the iteration fails. It is OKAY to fail an iteration, it just means estimations were off and need to be adjusted for the next iteration.
+
+### Backlog
+
+The backlog is the list of prioritized user stories that have not been worked on yet. It is up to the [product owner](#product-owner) to prioritize the user stories in the backlog. Prioritizing the backlog allows the [team](#roles-and-responsibilities) to know what the most important items are to work on and therefore what to size. Product owners should use each user story's value as a guide. While they do not need to explicitly order the backlog based on the the value of each user story, the value provides an unbiased look at each feature in the overall scheme of the build, so it should be used to guide decisions on backlog priority.
+
+## Version Control
+
+All projects, no matter how big, no matter how small, should be put under a [version control system](http://en.wikipedia.org/wiki/Version_control)(VCS) before work begins on the project. Introducing version control early and enforcing its use will ensure a solid understanding of where code comes from in a project and eliminates the need for user-centric naming conventions such as `item-final.js`, `item-final-really.js`, `item-really-really-final.js`. It makes it easy to track how an item has changed over time and roll changes back if need be. Using version control systems also allows gates to be put up to allow for processes to be put in place before an item becomes finalized.
+
+The version control system of choice is [Git](http://en.wikipedia.org/wiki/Git_(software)), allowing for a fully decentralized VCS that is designed for non-linear, distributed development. It has very strong safeguards against corruption of the chain of changes and can version just about any file type that can be thrown at it. It is open source and works across all major platforms. For a full introduction to Git, see the freely-available [Pro Git](http://git-scm.com/book) book.
+
+### Feature Branches
+
+When developing using Git, there should be one canonical branch, usually called `master`. No developer should ever commit code directly into `master`; instead, each developer should branch off of `master` named after the feature they are working (usually from a [user story](#user-story)) and develop in that branch. These are called **feature branches**. Feature branches should only contain once feature. When a feature is complete, a request to merge that branch into `master` should take place (in [GitHub](https://github.com/) parlance, a *pull request*). At that point, a developer who did not write the code should review the request and make sure it meets the development standards of the group and, primarily, that it works. Assuming it meets all of the basic requirements, it should be merged by the reviewing developer. A [continuous integration system](http://en.wikipedia.org/wiki/Continuous_integration) can assist greatly in this merge request process by automating most of it, including running tests against the developed code. At no point should a developer merge their own code into `master`.
+
+### Tags and Releases
+
+When a section of work has been completed (usually after a [sprint](#sprint)), whatever code is ready to be released (the current state of `master`, usually after quality assurance testing has taken place) should be tagged for release. Tags should be created using [SEMVER](http://semver.org/) versioning and should begin with the letter **v**. A single designated member of the team, usually the Lead Developer (when using a [continuous delivery system](http://en.wikipedia.org/wiki/Continuous_delivery), it should take care of this), should create the tag and push it to each Git remote. They should then release that tag (and only that tag) into production.
+
+### Preprocessed Languages
+
+When working with preprocessed languages, such as [Sass](#sass-and-compass), the compiled output should be ignored through Git's `.gitignore` file (in the case of Sass, compiled CSS should be ignored). If not using a [continuous delivery system](http://en.wikipedia.org/wiki/Continuous_delivery), the member of the team designated to [tag and release](#tags-and-releases) the code should force add the compiled output into the repository and commit that in (they should absolutely be the only ones to do this). If using a continuous delivery system, compiling preprocessed languages should be part of the build step and absolutely no compiled code should be put under version control.
+
+## Brooks's Law
+
+> Nine women can't make a baby in one month
+> 
+> *Fred Brooks*
+
+[Brooks's Law](http://en.wikipedia.org/wiki/Brooks's_law), which was coined in his 1975 book [The Mythical Man-Month](http://en.wikipedia.org/wiki/The_Mythical_Man-Month), states that "adding manpower to a late software project makes it later". The law, while described even by Brooks as an oversimplification, captures two factors of a general rule of software development (as from the Wikipedia article):
+
+1. It takes some time for the people added to a project to become productive. Brooks calls this the "ramp up" time. Software projects are complex engineering endeavors, and new workers on the project must first become educated about the work that has preceded them; this education requires diverting resources already working on the project, temporarily diminishing their productivity while the new workers are not yet contributing meaningfully. Each new worker also needs to integrate with a team composed of multiple engineers who must educate the new worker in their area of expertise in the code base, day by day. In addition to reducing the contribution of experienced workers (because of the need to train), new workers may even have negative contributions – for example, if they introduce bugs that move the project further from completion.
+2. Communication overheads increase as the number of people increases. The number of different communication channels increases rapidly with the number of people. Everyone working on the same task needs to keep in sync, so as more people are added they spend more time trying to find out what everyone else is doing.
+
+To combat these issues with large and expanding teams, those individuals involved with a project, from [project managers](#project-manager) to [product owners](#product-owner) to [designers](#visual-designer) and [developers](#developer), should remain as constant as possible throughout each major release of a project. They should each stay on a project for the duration of a project, from the kick off of a project to a major release. The team should be kept small and flexible and communication channels between all involved should be open and available throughout the duration of a project.
 
 # Content Strategy
 
-Content strategy is the process by which content is analyzed, sorted, constructed, and placed. Users come to a site for its content first and foremost, so it is the most important part of a site. Before any discussion of [design](#visual-design) or [development](#website-building-blocks), an understanding of a product owner's content is imperative in order to produce not only an effective website, but lay an effective foundation for any and all future endeavors, from apps to ads to printed material. The entirety of a finished product is determined by this initial step, from what content actually is put onto pages to what [components](#components) get built to what the final site [looks like](#visual-design).
+Content strategy is the process by which content is analyzed, sorted, constructed, and placed. Users come to a site for its content first and foremost, so it is the most important part of a site. Before any discussion of [design](#visual-design) or [development](#website-building-blocks), an understanding of a [product owner's](#product-owner) content is imperative in order to produce not only an effective website, but lay an effective foundation for any and all future endeavors, from apps to ads to printed material. The entirety of a finished product is determined by this initial step, from what content actually is put onto pages to what [components](#components) get built to what the final site [looks like](#visual-design).
 
 ## Project Vision
 
@@ -116,7 +206,7 @@ Vision statement provide a single grounding point for all decisions needed to cr
 
 ## User Personas
 
-User personas are a tool to distill different types of people who may interact with a product into caricatures in order to work with the different types of people effectively. *Product owner*, *editor*, and *user* personas should be built for each product, with additional user personas or expanded base user personas as needed. In order to create user personas, interviews (ideally in person one-on-one or focus groups) should be conducted with different types of users in order to get a statistically relevant overview of each user type. The creation of user personas can happen in parallel along with the creation of a product's [vision statement](#vision-statement), [content inventory](#content-inventory), and [content audit](#content-audit).
+User personas are a tool to distill different types of people who may interact with a product into caricatures in order to work with the different types of people effectively. *[product owner](#product-owner)*, *editor*, and *user* personas should be built for each product, with additional user personas or expanded base user personas as needed. In order to create user personas, interviews (ideally in person one-on-one or focus groups) should be conducted with different types of users in order to get a statistically relevant overview of each user type. The creation of user personas can happen in parallel along with the creation of a product's [vision statement](#vision-statement), [content inventory](#content-inventory), and [content audit](#content-audit).
 
 User persona research should begin with a hypothesis of what the various final user types will be and what those user types wants and needs are. These hypotheses should be based on analytics of the current site (if available) and demographic information of target audience. Analytics will provide insight into what is important to users, but not why. Similarly, demographic information will provide insight into who to start with, but not necessarily describe everyone who may use a product.
 
@@ -132,6 +222,15 @@ When creating user personas, do not fall into the trap of assigning stereotypes 
 ## Content Inventory
 
 A content inventory takes an objective, broad strokes look at content that is currently available. If content is not currently available, create a content inventory based on perceived content needs. Built as a spreadsheet, it can include both intrinsic (title, owner, last updated) and analytics (page views, rank, notes) data. Content inventories are not just about pages or screens but rather the different pieces, or chunks, that go into making those larger items. Content is not just about long blobs of text; content is also images, videos, charts, and any other form of information a user may want. It is important to understand that not every single piece of content available must be inventoried, but rather the enough representative pieces to get a holistic view of each type of content available. By inventorying all the different types of content as well as the chunks that make up the content, a deep understanding of the content can be achieved that will make [modeling the content](#content-modeling) easier.
+
+When building content inventories, it's often convenient to include limits for each widget or content chunk. Each item can have multiple limits, each separated by a space. The most prevalent limit (often character count) can have its type excluded. Other types include total number of items and dimensions. The following are some useful shorthand for describing limits:
+
+* `*` - Required
+* `(0)` - Soft limit, when a known limit isn't known, but a known minimum is
+* `000x00` - Dimensions. Width before height
+* `^foo` - Begins with (in this case, foo)
+* `$bar` - Ends with (in this case, bar)
+* `.jpg|png` - Multiple options (in this case either jpg or png file extensions)
 
 ![Content Inventory](https://dl.dropboxusercontent.com/u/12410559/content%20inventory.png)
 
@@ -158,8 +257,8 @@ A content model is an overview of the different types of content available for t
 
 * **Title** of the content type
 * **Description** of the content type
-* **Benefit Statement** written in the form of *As [persona], I want [desire] so that [rationale]*. The persona comes from the compiled [user personas](#user-personas). Each content type can have multiple benefit statements for multiple personas.
-* **Value** of the content type. This is used to aid in creating a [backlog](#backlog) during the development process. Determine a [value](#value) for the aspects of the content. A determination of how closely each benefit statement aligns with the [vision statement](#vision-statement) should always be included. Additional aspects could include advertising revenue, page rank, page views, and resources requires to build versus value built (which if included, should be counted as negative value)
+* **Benefit Statement** written in the form of *As [persona], I want [desire] so that [rationale]* (similar to [user stories](#user-story)). The persona comes from the compiled [user personas](#user-personas). Each content type can have multiple benefit statements for multiple personas.
+* **Value** of the content type. This is used to aid in creating a [backlog](#backlog) during the development process. Determine a [value](#size-and-value) for the aspects of the content. A determination of how closely each benefit statement aligns with the [vision statement](#vision-statement) should always be included. Additional aspects could include advertising revenue, page rank, page views, and resources requires to build versus value built (which if included, should be counted as negative value)
 * **Attributes** that make up the content type. Each attribute should that attribute's data limits, such as character limit or date format.
 * **Relationships** that the content type has to other types of content.
 
@@ -330,7 +429,7 @@ Relationships
 
 Information architecture (IA) is a process that determines what pieces of what content gets used when, where, and why. Each presentation (native app, web site, etc…) has its own IA, but each should share the same underlying content.
 
-Architectures should be constructed so that the [most valuable content](#content-modeling) is most prominent, with less valuable content less prominent. When devising architectures, make sure they are [consistent and predictable](#consistency-and-predictability). They should be [comprehensible](#complexity-and-complication), [uncluttered](#signal-to-noise-ratio), and follow the [hierarchy of website needs](#website-needs). Like with [visual design](#visual-design), pictures are not requirements; architectures should be sketched in outlines and [HTML](#design-in-browser). Determine why content items should be where they are and how they interact with each other; don't just start drawing pictures or playing with cutouts. One important thing to keep in mind when creating IAs, the product owner is not the audience. Lean upon what [users](#user-personas) actually want.
+Architectures should be constructed so that the [most valuable content](#content-modeling) is most prominent, with less valuable content less prominent. When devising architectures, make sure they are [consistent and predictable](#consistency-and-predictability). They should be [comprehensible](#complexity-and-complication), [uncluttered](#signal-to-noise-ratio), and follow the [hierarchy of website needs](#website-needs). Like with [visual design](#visual-design), pictures are not requirements; architectures should be sketched in outlines and [HTML](#design-in-browser). Determine why content items should be where they are and how they interact with each other; don't just start drawing pictures or playing with cutouts. One important thing to keep in mind when creating IAs, the [product owner](#product-owner) is not the audience. Lean upon what [users](#user-personas) actually want.
 
 While building out an IA, the product's [content mode](#content-mode) may need to be revised. When building IAs, especially when the content model needs to be revised, keep the following rules of thumb in mind.
 
@@ -553,7 +652,7 @@ Eventually, the designer should be allowed to take over full responsibility of c
 
 ### Sketching
 
-While designing in browser is the standard to achieve for, many times a designer will want to work out design ideas outside of browser. This may include a static graphic design tool, pencil and paper, tablet sketching app, or anything else a designer may find handy. This is encouraged! However, what is produced through these design sessions should be considered sketches and should not be a deliverable to be signed off on by the client. A picture is not a requirement statement. They are not useful to those building the final site as they are not an accurate representation of what will be built to the product owners and fail to capture the nuance actually required to produce what is being sketched. Pictures are nothing more than a good idea; they are not requirements until they are [prototyped](#rapid-prototyping), and prototypes are not production ready until they are [built to be so](#component-guide). Pictures and sketches are great ways to come up with ideas, but final sign off can only happen in browser.
+While designing in browser is the standard to achieve for, many times a designer will want to work out design ideas outside of browser. This may include a static graphic design tool, pencil and paper, tablet sketching app, or anything else a designer may find handy. This is encouraged! However, what is produced through these design sessions should be considered sketches and should not be a deliverable to be signed off on by the client. A picture is not a requirement statement. They are not useful to those building the final site as they are not an accurate representation of what will be built to the [product owner](#product-owner)s and fail to capture the nuance actually required to produce what is being sketched. Pictures are nothing more than a good idea; they are not requirements until they are [prototyped](#rapid-prototyping), and prototypes are not production ready until they are [built to be so](#component-guide). Pictures and sketches are great ways to come up with ideas, but final sign off can only happen in browser.
 
 ## Rapid Prototyping
 
@@ -1093,6 +1192,10 @@ The `partials` directory should be divided up into 3 sub directories, `global`, 
 Both your components and your layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for `variables`, `functions`, `mixins`, and `extendables`. Each of these partials should hold styling knowledge specific to that component; for instance, `variables` could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in in the example `sass` folder.
 
 All extendable classes should be wrapped in a solution to only have the selector written once to ensure that selectors don't get needlessly duplicated. Mixins should share their naming convention with the object they are used to style. The solution provided by the North Compass extension is derived from Wilson Page's [Sass Import Once](https://github.com/wilsonpage/sass-import-once) partial.
+
+#### Variable Naming
+
+Global, private variables (ones that users should not touch but are needed to hold information for functions or mixins) should start with a capital letter as Sass variables are case sensitive. 
 
 ## Interaction
 
