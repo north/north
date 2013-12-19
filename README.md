@@ -101,6 +101,7 @@ North is meant to be a living document. Standards and best practices change, and
   * [Interaction](#interaction)
 	  * [Style and Syntax](#style-and-syntax)
 	  * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
+7. [License and Acknowledgements](#license-and-acknowledgements)
 
 # Development Process
 
@@ -1251,3 +1252,18 @@ When building site, very often a point will come when a decision must be made as
 * If a script does not come with a minified version, determine if it can be minified. All scripts should be minified, so if a script being evaluated cannot, that should be taken into consideration.
 * Is the script performant? Does it have performance benchmarks? If not, can it be benchmarked? If a script, regardless of weight, slows down a site significantly its use should be reconsidered.
 * Given browser support, is a heavy JavaScript library like jQuery or Dojo needed? Can paired down versions of those libraries be used? Does usage require the full support behind one of these libraries, or can a small DOM/AJAX library such as [Chibi](https://github.com/kylebarrow/chibi) be effective?
+
+# License and Acknowledgements
+
+Copyright © Sam Richard (Snugug) and made available under the [MIT License (MIT)](https://github.com/Snugug/north/blob/master/LICENSE).
+
+One of the primary goals of North was to create a set of development standards that not only were designed for a modern workflow and process in mind, but also that came from the learnings and understandings of multiple industry leading experts, not a single person. These standards reach across multiple verticals, so having experts from each vertical is critical to the success of these standards. The following individuals assisted in brainstorming and developing North or otherwise directly influenced North and have not otherwise been acknowledged in the document itself, and for that I am grateful:
+
+* [Mason Wendell](https://github.com/canarymason)
+* [Eric Duran](https://github.com/ericduran)
+* [Scott Rigby](https://github.com/scottrigby)
+* [Scott Nath](https://github.com/scottnath)
+* [Nicole Henninger](https://github.com/nikkiana)
+* [Marianne Maguire Flanagan](http://www.linkedin.com/in/mariannemaguire)
+* [Miguel Blanco](http://www.mikho.com/)
+* [Adam Asch](http://www.linkedin.com/pub/adam-asch/2/135/973)
