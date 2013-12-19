@@ -1,0 +1,22 @@
+{
+  "name": "north-page",
+  "version": "0.1.0",
+  "description": "Website for North project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Snugug/north.git"
+  },
+  "author": "Sam Richard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Snugug/north/issues"
+  },
+  "devDependencies": {
+    "matchdep": "~0.3.0",
+    "grunt": "~0.4.2"
+  }
+}
