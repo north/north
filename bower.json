@@ -1,0 +1,22 @@
+{
+  "name": "north-page",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Snugug/north",
+  "authors": [
+    "Sam Richard <snugug@gmail.com>"
+  ],
+  "description": "Website for North project",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "north": "~0.1.0"
+  }
+}
