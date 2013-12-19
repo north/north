@@ -1,0 +1,24 @@
+//////////////////////////////
+// Variables
+//////////////////////////////
+$north-state-contains: false !default;
+
+//////////////////////////////
+// Functions
+//////////////////////////////
+@function state($name, $contains: $north-state-contains) {
+  $selector: '=';
+  @if $contains {
+    $selector: '~=';
+  }
+  @return '[data-state#{$selector}"#{$name}"]';
+}
+
+//////////////////////////////
+// Mixins
+//////////////////////////////
+@mixin state($name, $contains: $north-state-contains) {
+  @at-root &#{state($name, $contains)} {
+    @content;
+  }
+}
