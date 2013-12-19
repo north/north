@@ -1012,6 +1012,7 @@ When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://co
 * [Jacket](https://github.com/Team-Sass/jacket) - Tool for deciding what gets printed in a given stylesheet
 * [Color Schemer](https://github.com/Team-Sass/color-schemer) - Advanced color functions
 * [Modular Scale](https://github.com/Team-Sass/modular-scale) - Numeric relationships, especially for typography
+* [Import Once](https://github.com/chriseppstein/compass/blob/master/import-once/README.md) - Changes the way `@import` works so that imports only happen once. Useful for deep nested or shared dependencies
 
 The following should be using the standard [Compass configuration](http://compass-style.org/help/tutorials/configuration-reference/) for all projects:
 
@@ -1209,7 +1210,7 @@ The `partials` directory should be divided up into 3 sub directories, `global`, 
 
 Both your components and your layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for `variables`, `functions`, `mixins`, and `extendables`. Each of these partials should hold styling knowledge specific to that component; for instance, `variables` could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in in the example `sass` folder.
 
-All extendable classes should be wrapped in a solution to only have the selector written once to ensure that selectors don't get needlessly duplicated. Mixins should share their naming convention with the object they are used to style. The solution provided by the North Compass extension is derived from Wilson Page's [Sass Import Once](https://github.com/wilsonpage/sass-import-once) partial.
+The Import Once extension should be utilized to prevent duplication of selectors for extendable classes. Mixins should share their naming convention with the object they are used to style.
 
 #### Variable Naming
 
