@@ -586,7 +586,7 @@ Spiral based grids are similar to ratio based grids in that they are likewise ba
 
 ## Anti Patterns
 
-Anti patterns are patterns, many times common patterns, that even if popular, should be avoided as go against either best user intentions, best technological intentions, best business intentions, or a combination of all three. There are three big places where anti patterns tend to pop up, these are:
+Anti patterns are patterns, many times common patterns, that even if popular, should be avoided as they go against either best user intentions, best technological intentions, best business intentions, or a combination of all three. There are three big places where anti patterns tend to pop up, these are:
 
 * [Dark Patterns](#dark-patterns)
 * [Signal to Noise Ratio](#signal-to-noise-ratio)
