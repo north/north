@@ -1,0 +1,19 @@
+## Contributing to North
+
+We love contributors! Yes we do! If you would like to contribute to North, please follow the following guidelines:
+
+### Documentation
+
+* **Spelling and Grammar** may be made updated as a simple pull requests without related issues as long as they do not change the substantive nature of the text they are updating.
+* **Additions, Deletions, and Changes** must be discussed in an issue in the [issue queue](https://github.com/Snugug/north/issues) and an agreement must be made on any changes before a pull request is made. Any pull request no specifically for spelling and/or grammar changes created that does not reference an issue will be closed.
+* Do not mix pull requests. Do not issue a single pull request that both fixes spelling and/or grammar changes and has additions/deletions/or changes. Any pull request that mixes changes will be closed.
+* Contributions that are not in the form of a pull request will not be considered.
+* Follow the writing style as defined in the current documentation. Any changes that do not follow the existing writing style wille be asked to be re-written to follow said style.
+
+### Code
+
+* **DO NOT ISSUE A PULL REQUEST WITHOUT RELATED ISSUE!!** All pull requests must reference an issue in the [issue queue](https://github.com/Snugug/north/issues) and will only be looked at after discussion about that issue has taken place. Any pull request created that does not reference an issue will be closed.
+* Each individual feature you would like add, or bug you would like to squash, should be an individual pull request. Each pull request should be from an individual feature branch to either the latest stable or development branch. **The current *stable* branch is master. The current *development* branch is master**.
+* Contributions that are not in the form of a pull request will not be considered.
+* If your pull request does not apply cleanly we will ask you to fix that before we will look into pulling it in. We may ask you to update or make changes to the code you've submitted, please don't take this the wrong way. If a pull request smells (such as if a large amount of code is all within a single commit, or the coding standards aren't in line with what currently exists in North) we may ask you to rewrite your commit.
+* Follow all coding standards as defined in the current code base. Any code that does not follow the existing coding standards will be asked to be re-written to follow said standards.
