@@ -125,7 +125,7 @@ The individual in charge of the ensuring the product cycle is being kept on trac
 
 ### Designer
 
-There are two types of [designs](#visual-design) that need to happen during a typical product lifecycle: user interface design, the look and feel of a product, and user experience design, how users interact with the product. User experience designers should be working with [rapid prototypes](#rapid-prototyping) to flush out interaction patterns and create rough flows, where user interface designers should be working with [style prototypes](#style-prototyping) to determine the look and feel of components that are developed by user experience designers' work. Both should work closely with developers. User experience designers should take their queues and be part of the creation process of a product's [content strategy](#content-strategy)
+There are two types of [designs](#visual-design) that need to happen during a typical product lifecycle: user interface design, the look and feel of a product; and user experience design, how users interact with the product. User experience designers should be working with [rapid prototypes](#rapid-prototyping) to flush out interaction patterns and create rough flows, where user interface designers should be working with [style prototypes](#style-prototyping) to determine the look and feel of components that are developed by user experience designers' work. Both should work closely with developers. User experience designers should take their cues and be part of the creation process of a product's [content strategy](#content-strategy).
 
 ### Developer
 
@@ -153,7 +153,7 @@ The functional requirements of a user story are based on the desired user experi
 
 The size of a story is how much effort it will take to complete based on a relative scale of other similar features built, whereas value is a relative determination of how aligned with business needs a given feature is. Both size and value should be a [Fibonacci number](http://en.wikipedia.org/wiki/Fibonacci_sequence).
 
-For sizes, any size above 21 is usually too much to work on in a single iteration and the work should be split into smaller pieces and an epic, or overarching story, should be created. Size is not just baed on development difficulty; it includes difficulty for all [team members](#roles-and-responsibilities) that would work on a feature for an iteration, including design and QA. Size should also account for risk, which could increase size for features that otherwise require little actual work to do. The size of a story should be agreed upon by consensus by all team members working on a feature. Sizing should happen throughout an iteration.
+For sizes, any size above 21 is usually too much to work on in a single iteration and the work should be split into smaller pieces and an epic, or overarching story, should be created. Size is not just based on development difficulty; it includes difficulty for all [team members](#roles-and-responsibilities) that would work on a feature for an iteration, including design and QA. Size should also account for risk, which could increase size for features that otherwise require little actual work to do. The size of a story should be agreed upon by consensus by all team members working on a feature. Sizing should happen throughout an iteration.
 
 Value should be determined for each aspect that provides value, generally not to exceed 13 per aspect. A determination of how closely each benefit statement aligns with the [vision statement](#vision-statement) should always be included, with additional aspects such as importance in [information architecture](#information-architecture) or metrics for the feature or content type.
 
@@ -165,7 +165,7 @@ Once a day during each sprint, all [team members](#roles-and-responsibilities) s
 
 Towards the end of each iteration the team should come together to determine what stories to work on for the next iteration. This is called **commitment**. When determining capacity, remember to take into account meetings an individual may need to take part in, including time spent sizing user stories and this, and the acceptance, meeting.
 
-At the end of each iteration, the team should come together to present the work they have accomplished to the product owner. At this time, the work done should be compared to the stories committed to. For each story committed to, if what was produced matches the requirements laid out in the story, the [product owner](#product-owner) should accept the story as complete. If the result was not what was expected by the product owner but meets all requirements as laid out in the story, the product owner should still accept the story and create a new story for changes. If all stories are complete and accepted, the iteration passes, if not, the iteration fails. It is OKAY to fail an iteration, it just means estimations were off and need to be adjusted for the next iteration.
+At the end of each iteration, the team should come together to present the work they have accomplished to the product owner. At this time, the work done should be compared to the stories committed to. For each story committed to, if what was produced matches the requirements laid out in the story, the [product owner](#product-owner) should accept the story as complete. If the result was not what was expected by the product owner but meets all requirements as laid out in the story, the product owner should still accept the story and create a new story for changes. If all stories are complete and accepted, the iteration passes; if not, the iteration fails. It is OKAY to fail an iteration, it just means estimations were off and need to be adjusted for the next iteration.
 
 ### Backlog
 
@@ -173,9 +173,9 @@ The backlog is the list of prioritized user stories that have not been worked on
 
 ## Version Control
 
-All projects, no matter how big, no matter how small, should be put under a [version control system](http://en.wikipedia.org/wiki/Version_control)(VCS) before work begins on the project. Introducing version control early and enforcing its use will ensure a solid understanding of where code comes from in a project and eliminates the need for user-centric naming conventions such as `item-final.js`, `item-final-really.js`, `item-really-really-final.js`. It makes it easy to track how an item has changed over time and roll changes back if need be. Using version control systems also allows gates to be put up to allow for processes to be put in place before an item becomes finalized.
+All projects, no matter how big, no matter how small, should be put under a [version control system](http://en.wikipedia.org/wiki/Version_control) (VCS) before work begins on the project. Introducing version control early and enforcing its use will ensure a solid understanding of where code comes from in a project and eliminates the need for user-centric naming conventions such as `item-final.js`, `item-final-really.js`, `item-really-really-final.js`. It makes it easy to track how an item has changed over time and roll changes back if need be. Using version control systems also allows gates to be put up to allow for processes to be put in place before an item becomes finalized.
 
-The version control system of choice is [Git](http://en.wikipedia.org/wiki/Git_(software)), allowing for a fully decentralized VCS that is designed for non-linear, distributed development. It has very strong safeguards against corruption of the chain of changes and can version just about any file type that can be thrown at it. It is open source and works across all major platforms. For a full introduction to Git, see the freely-available [Pro Git](http://git-scm.com/book) book.
+The version control system of choice is [Git](http://en.wikipedia.org/wiki/Git_\(software\)), allowing for a fully decentralized VCS that is designed for non-linear, distributed development. It has very strong safeguards against corruption of the chain of changes and can version just about any file type that can be thrown at it. It is open source and works across all major platforms. For a full introduction to Git, see the freely-available [Pro Git](http://git-scm.com/book) book.
 
 ### Feature Branches
 
@@ -191,7 +191,7 @@ When working with preprocessed languages, such as [Sass](#sass-and-compass), the
 
 ## Brooks's Law
 
-> Nine women can't make a baby in one month
+> Nine women can't make a baby in one month.
 > 
 > *Fred Brooks*
 
@@ -224,13 +224,13 @@ Vision statement provide a single grounding point for all decisions needed to cr
 
 ## User Personas
 
-User personas are a tool to distill different types of people who may interact with a product into caricatures in order to work with the different types of people effectively. *[product owner](#product-owner)*, *editor*, and *user* personas should be built for each product, with additional user personas or expanded base user personas as needed. In order to create user personas, interviews (ideally in person one-on-one or focus groups) should be conducted with different types of users in order to get a statistically relevant overview of each user type. The creation of user personas can happen in parallel along with the creation of a product's [vision statement](#vision-statement), [content inventory](#content-inventory), and [content audit](#content-audit).
+User personas are a tool to distill different types of people who may interact with a product into caricatures in order to work with the different types of people effectively. *[Product owner](#product-owner)*, *editor*, and *user* personas should be built for each product, with additional user personas or expanded base user personas as needed. In order to create user personas, interviews (ideally in person one-on-one or focus groups) should be conducted with different types of users in order to get a statistically relevant overview of each user type. The creation of user personas can happen in parallel along with the creation of a product's [vision statement](#vision-statement), [content inventory](#content-inventory), and [content audit](#content-audit).
 
 User persona research should begin with a hypothesis of what the various final user types will be and what those user types wants and needs are. These hypotheses should be based on analytics of the current site (if available) and demographic information of target audience. Analytics will provide insight into what is important to users, but not why. Similarly, demographic information will provide insight into who to start with, but not necessarily describe everyone who may use a product.
 
 Once rough sketches of starting user types are determined, it is time for interviews. Ask users questions about what they find most valuable about the existing product and similar, including competitors', products. Determine if anything of value is missing from the existing product and the similar products. Ask how they most often access the product, gather pain points and demographic information. Interview not only users that meet the starting user types, but users from outside those initial types as it may come to light that users outside of the initial types actually make use of the product. Once all user interviews have been finished, it is time to create final user personas.
 
-When creating user personas, do not fall into the trap of assigning stereotypes to personas, such as young adults only know how to write through text message shorthand or that [mobile users](#mobile-first) are rushed and distracted. Personas should be generated based on statistically analysis of the interviews performed. Take all of the information gathered from all of the interviews and, based on analysis, break up the results into similar groups of people. What should divide users into similar groups are significant areas where multiple users use the product in similar ways, not small differences (or potentially even seemingly large differences like demographic). User personas are about how users *use* a product and what they expect from it. Finally, create a profile representing each group to be used as a final user persona. Each profile should contain the following information:
+When creating user personas, do not fall into the trap of assigning stereotypes to personas, such as that young adults only know how to write through text message shorthand or that [mobile users](#mobile-first) are rushed and distracted. Personas should be generated based on statistically analysis of the interviews performed. Take all of the information gathered from all of the interviews and, based on analysis, break up the results into similar groups of people. What should divide users into similar groups are significant areas where multiple users use the product in similar ways, not small differences (or potentially even seemingly large differences like demographic). User personas are about how users *use* a product and what they expect from it. Finally, create a profile representing each group to be used as a final user persona. Each profile should contain the following information:
 
 * Name
 * Description of typical use of the product
@@ -534,7 +534,7 @@ With a want to reduce often the Siren's cry of usability studies, a lot of empha
 
 Where the challenge lies is in creating complex but comprehensible systems. Having a strong [content strategy](#content-strategy) and interfaces that are [consistent and predictable](#consistency-and-predictability) are the first steps to creating complex but comprehensible systems. Build rich and complex interaction up from small and easy to comprehend [components](#components) instead of attempting to build large complex monoliths all at once. Draw upon humans' natural, rich tradition of story telling and conversation to assist in reducing complication in a complex system.
 
-For generations, humans have used conversation to pass down stories and learn about the world. Leverage this tradition. Instead of providing all information at once, allow a user to explore through the content, inviting conversation with them. This is often referred to as **Progressive Disclosure**. Respond to users as they ask for more information, don't throw it all at them at once. Focus on one item at a time and push secondary items off to the sides, waiting for user interaction. Jus as clarity will always trump density, tap or click quality will always trump quantity.
+For generations, humans have used conversation to pass down stories and learn about the world. Leverage this tradition. Instead of providing all information at once, allow a user to explore through the content, inviting conversation with them. This is often referred to as **Progressive Disclosure**. Respond to users as they ask for more information, don't throw it all at them at once. Focus on one item at a time and push secondary items off to the sides, waiting for user interaction. Just as clarity will always trump density, tap or click quality will always trump quantity.
 
 ## Grids
 
@@ -580,13 +580,13 @@ Ratio based grids are grids where each column is based on a ratio of the previou
 
 #### Spiral Based Grids
 
-Spiral based grids are similar to ratio based grids in that they are likewise based on a ratio, but instead of each column getting progressively larger or smaller, the columns are determined based on parallel lines running through a spiral that degrades based on the ratio. Twitter for a time [used a golden ratio based spiral design](http://mashable.com/2010/09/29/new-twitter-golden-ratio/). The 
+Spiral based grids are similar to ratio based grids in that they are likewise based on a ratio, but instead of each column getting progressively larger or smaller, the columns are determined based on parallel lines running through a spiral that degrades based on the ratio. Twitter for a time [used a golden ratio based spiral design](http://mashable.com/2010/09/29/new-twitter-golden-ratio/).
 
 ![Spiral Based Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-spiral.png)
 
 ## Anti Patterns
 
-Anti patterns are patterns, many times common patters, that even if popular, are patterns that should be avoided as they are patterns that go against either best user intentions, best technological intentions, best business intentions, or a combination of all three. There are three big places where anti patterns tend to pop up, those are:
+Anti patterns are patterns, many times common patterns, that even if popular, should be avoided as go against either best user intentions, best technological intentions, best business intentions, or a combination of all three. There are three big places where anti patterns tend to pop up, these are:
 
 * [Dark Patterns](#dark-patterns)
 * [Signal to Noise Ratio](#signal-to-noise-ratio)
@@ -662,7 +662,7 @@ Using mobile as a focusing lens will also help to inform a site's [information a
 
 ### Pair Design
 
-One proven method of transitioning design teams from designing in bitmap tools to designing in browser is to pair designers with front end developers in a method similar to [pair programing](http://en.wikipedia.org/wiki/Pair_programming). With pair design, the front end developer acts as hands and the designer acts as the eyes. The two then work together to create a design. As this is happening, the developer should encourage the designer write code and the designer should encourage the developer to give input into the design and suggest technical solutions to design challenges or decisions.
+One proven method of transitioning design teams from designing in bitmap tools to designing in browser is to pair designers with front end developers in a method similar to [pair programming](http://en.wikipedia.org/wiki/Pair_programming). With pair design, the front end developer acts as hands and the designer acts as the eyes. The two then work together to create a design. As this is happening, the developer should encourage the designer write code and the designer should encourage the developer to give input into the design and suggest technical solutions to design challenges or decisions.
 
 During this process, it is also helpful for front end developers to create reusable patters in CSS (especially around creating functions and mixins in [Sass](#sass-and-compass)) and explain to and work with the designer to enhance these patterns, allowing the designer to get comfortable writing pattern-based code. This also lays the foundation for rapid iteration of a design idea.
 
@@ -702,7 +702,7 @@ A layout guide is a listing of each [layout](#layouts) for a project , grouped b
 
 # Responsive Web Design
 
-> 'Responsive' is not a line item. It's Design
+> 'Responsive' is not a line item. It's Design.
 >
 > *Jason Pamental*
 
