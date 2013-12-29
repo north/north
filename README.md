@@ -25,7 +25,7 @@ North is meant to be a living document. Standards and best practices change, and
 		* [Backlog](#backlog)
 	* [Version Control](#version-control)
 		* [Feature Branches](#feature-branches)
-		* [Tags and Releases](#feature-branches)
+		* [Tags and Releases](#tags-and-releases)
 		* [Preprocessed Languages](#preprocessed-languages)
 	* [Brooks's Law](#brookss-law)
 2. [Content Strategy](#content-strategy)
@@ -192,7 +192,7 @@ When working with preprocessed languages, such as [Sass](#sass-and-compass), the
 ## Brooks's Law
 
 > Nine women can't make a baby in one month.
-> 
+>
 > *Fred Brooks*
 
 [Brooks's Law](http://en.wikipedia.org/wiki/Brooks's_law), which was coined in Fred Brooks's 1975 book [The Mythical Man-Month](http://en.wikipedia.org/wiki/The_Mythical_Man-Month), states that "adding manpower to a late software project makes it later". The law, while described even by Brooks as an oversimplification, captures two factors of a general rule of software development (as from the Wikipedia article):
@@ -229,7 +229,7 @@ User personas are a tool to distill different types of people who may interact w
 User persona research should begin with a hypothesis of what the various final user types will be and what those user types wants and needs are. These hypotheses should be based on analytics of the current site (if available) and demographic information of target audience. Analytics will provide insight into what is important to users, but not why. Similarly, demographic information will provide insight into who to start with, but not necessarily describe everyone who may use a product.
 
 Once rough sketches of starting user types are determined, it is time for interviews. Ask users questions such as:
-* What do you find most valuable about the existing product and similar, including competitors', products? 
+* What do you find most valuable about the existing product and similar, including competitors', products?
 * Is anything of value is missing from the existing product and the similar products?
 * How do you most often access the product?
 * What are the pain points?
@@ -293,7 +293,7 @@ The following is an example of two content types related to the example [vision 
 
 Description:
 
-* Short to long form text with possible accompanying images of recent factual stories 
+* Short to long form text with possible accompanying images of recent factual stories
 
 Benefits:
 
@@ -364,7 +364,7 @@ Attributes:
   * Minimum: 1
   * Maximum: 5
   * Description: Taxonomy allows content types to be related to each other in a meta sense
-  
+
 
 Relationships
 
@@ -438,7 +438,7 @@ Attributes:
   * Minimum: 1
   * Maximum: 5
   * Description: Taxonomy allows content types to be related to each other in a meta sense
-  
+
 Relationships
 
 * Person
@@ -485,7 +485,7 @@ While building out an IA, the product's [content mode](#content-mode) may need t
 	* Provide [alternative formats of content](#progressive-enhancement) if one format can't be made available, such as through device capabilities or business needs
 	* Do not store content as HTML, but rather as raw attributes that can be presented in multiple ways. This is especially true for tabular data and images related to long copy
 	* Make all content available and in a way best suited for the display at hand
-	
+
 # Visual Design
 
 <a href="http://en.wikipedia.org/wiki/The_Treachery_Of_Images" style="padding-left: 2em"><img alt="The Treachery of Images, René Magritte" src="https://github-camo.global.ssl.fastly.net/dcd607b42abcde7f1a96394f797a700270f6e7db/687474703a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f656e2f622f62392f4d61677269747465506970652e6a7067" align="right"></a>
@@ -510,7 +510,7 @@ In much the same vein of [Maslow's hierarchy of needs](http://en.wikipedia.org/w
 4. **Esteem** - Respect and evaluation of self. In humans this includes confidence and respect by and of others.
 5. **Self-Actualization** - To become the most one can be. In humans this includes morality, creativity, and problem solving.
 
-This hierarchy can be be applied to websites as well. 
+This hierarchy can be be applied to websites as well.
 
 1. **Physiological** - Basic core needs for survival. For websites, this is [content](#content-strategy) and navigation.
 2. **Safety** - A sense of security. For websites, this is [information architecture](#information-architecture) and [predictability](#consistency-and-predictability).
@@ -667,7 +667,7 @@ Mobile first is a term used to describe designing and building sites from a mini
 Instead of thinking about mobile first as designing for a mobile device first, think of it as using mobile as a focusing lens. Luke Wroblewski has a phrase he uses when [describing this lens](http://alistapart.com/article/organizing-mobile): **One Eye, One Thumb**.
 
 > Mobile devices require software development teams to [focus on only the most important data and actions](http://www.lukew.com/ff/entry.asp?870) in an application. There simply isn't room in a 320 by 480 pixel screen for extraneous, unnecessary elements. You have to prioritize.
-> 
+>
 > So when a team designs mobile first, the end result is an experience focused on the key tasks users want to accomplish without the extraneous detours and general interface debris that litter today's desktop-accessed Web sites. That's good user experience and good for business.
 
 Using mobile as a focusing lens will also help to inform a site's [information architecture](#information-architecture) and help to create [complex, but not complicated](#complexity-and-complication) interfaces. It is important to keep in mind that larger screens do not mean that the learnings gained by the mobile lens can be tossed away simply because there is more screen real estate. The goal is to improve the UX for *all* sizes of a site, not just the small version. Do not give in to the desire to fill up whitespace on larger screens with additional, unneeded items simply because there is more room that should be filled.
@@ -815,7 +815,7 @@ Iconography is usually an integral part of complex designs and therefore it is i
 
 ### Images
 
-Images, usually either content images or background images in CSS, need to be handled slightly differently depending on the situation. For all images, if they can be expressed as an `.svg` (logos are a good place to use an `.svg`), they should be, with a [fallback](#graceful-degradation). If they cannot be, or if a fallback needs to be generated, an [optimized](http://www.smashingmagazine.com/2009/07/15/clever-png-optimization-techniques/) and compressed `.png` file should be used if transparency is needed, an [optimized](http://www.smashingmagazine.com/2009/07/01/clever-jpeg-optimization-techniques/) and compressed [progressive](http://calendar.perfplanet.com/2012/progressive-jpegs-a-new-best-practice/) `.jpg` should be used. 
+Images, usually either content images or background images in CSS, need to be handled slightly differently depending on the situation. For all images, if they can be expressed as an `.svg` (logos are a good place to use an `.svg`), they should be, with a [fallback](#graceful-degradation). If they cannot be, or if a fallback needs to be generated, an [optimized](http://www.smashingmagazine.com/2009/07/15/clever-png-optimization-techniques/) and compressed `.png` file should be used if transparency is needed, an [optimized](http://www.smashingmagazine.com/2009/07/01/clever-jpeg-optimization-techniques/) and compressed [progressive](http://calendar.perfplanet.com/2012/progressive-jpegs-a-new-best-practice/) `.jpg` should be used.
 
 * **High Pixel Density Images** - Instead of serving different sized images for pixel densities, utilize [compressive images](http://filamentgroup.com/lab/rwd_img_compression/) to serve low weight and crisp images.
 * **Content Images** - Content images should be loaded in using a responsive image solution. Unfortunately, there is currently no standard for responsive images, so one of two responsive image solutions should be used. The primary solution should be [Borealis](https://github.com/Snugug/borealis) which provides for element query based, lazy loaded responsive images. Because it is element query based, it may not work for all instances where an image is needed. For those instances, use [Picturefill](https://github.com/scottjehl/picturefill).
@@ -1129,12 +1129,12 @@ $message-extend: true !default;
   @if not $extend {
     box-sizing: border-box;
     padding: $padding;
-    
+
     width: $width;
     margin: 0 auto;
-    
-    // Border's color is based off of the `color` property, so we can write valid 
-    //  shorthand without the color. Border options aren't dynamic to clearly show a 
+
+    // Border's color is based off of the `color` property, so we can write valid
+    //  shorthand without the color. Border options aren't dynamic to clearly show a
     //  succinctly show this short hand method.
     border: 2px solid;
   }
@@ -1208,7 +1208,7 @@ $message-extend: true !default;
 }
 ```
 
-While this approach certainly requires more work up front to build the mixins and extendables, it produces much more controlled and succinct output CSS, which is what we're aiming to write. 
+While this approach certainly requires more work up front to build the mixins and extendables, it produces much more controlled and succinct output CSS, which is what we're aiming to write.
 
 #### Partial Structure
 
@@ -1218,7 +1218,7 @@ At the root of our Sass folder is our `style.scss` file, which holds the core of
 
 Each feature you're enhancing with or providing a fallback for should be named `feature.scss` and be placed into their respective folder; for instance if you were to provide enhancements and fallback for CSS Animations, you would have a folder structure that looked something like `sass/enhancements/css-animations.scss` and `sass/fallbacks/css-animations.scss`.
 
-The `partials` directory should be divided up into 3 sub directories, `global`, `components`, and `layouts`. Inside of `global`, you should have a  folder a piece for `variables`, `functions`, `mixins`, and `extendables`, with partials to match. Inside each of those folders should go partials whose content should be made available globally and aren't component specific. For instance, global color and typographic variables, background/text color contrast mixins, ligature extendables, etc… 
+The `partials` directory should be divided up into 3 sub directories, `global`, `components`, and `layouts`. Inside of `global`, you should have a  folder a piece for `variables`, `functions`, `mixins`, and `extendables`, with partials to match. Inside each of those folders should go partials whose content should be made available globally and aren't component specific. For instance, global color and typographic variables, background/text color contrast mixins, ligature extendables, etc…
 
 Both your components and your layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for `variables`, `functions`, `mixins`, and `extendables`. Each of these partials should hold styling knowledge specific to that component; for instance, `variables` could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in in the example `sass` folder.
 
@@ -1226,7 +1226,7 @@ The Import Once extension should be utilized to prevent duplication of selectors
 
 #### Variable Naming
 
-Global, private variables (ones that users should not touch but are needed to hold information for functions or mixins) should start with a capital letter as Sass variables are case sensitive. 
+Global, private variables (ones that users should not touch but are needed to hold information for functions or mixins) should start with a capital letter as Sass variables are case sensitive.
 
 ## Interaction
 
@@ -1244,11 +1244,11 @@ A most reasonable approach to JavaScript is the [Airbnb JavaScript Style Guide](
   var intro = 'Once upon a time, ',
       $princess = $('#princess'),
       $button = $('#button');
-  
+
   function fairytale(name) {
     $princess.html(intro + name + '…');
   }
-  
+
   $button.click(function() {
     fairytale($princess.text());
   });
