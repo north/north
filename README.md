@@ -774,7 +774,7 @@ When building sites, they should always be built content first. Once the content
 
 ### Feature Detection
 
-Progressive Enhancement isn't regulated to broad features like all styling or all interactions, but can and should be done on a feature-by-feature level as well. They best way to determine what level of support a given browser has is to ask it. The most widely used feature detection library is [Modernizr](http://modernizr.com/). Modernizr is a tool built and maintained by some of the leading minds in web development today, and should be considered the go-to solution for feature detection.
+Progressive Enhancement isn't regulated to broad features like all styling or all interactions, but can and should be done on a feature-by-feature level as well. The best way to determine what level of support a given browser has is to ask it. The most widely used feature detection library is [Modernizr](http://modernizr.com/). Modernizr is a tool built and maintained by some of the leading minds in web development today, and should be considered the go-to solution for feature detection.
 
 Where feature detection based progressive enhancement differs from standard progressive enhancement is that where standard progressive enhancement is concerned with the whole site and the overall user experience, feature detection based progressive enhancement is generally based around a single user experience enhancement, such as a flexbox powered layout or a location based enhancement to search.
 
@@ -791,7 +791,7 @@ Advertising on responsive sites is hard. Most ads are still sold fixed size and 
 Fortunately, some advertising companies, such as Google, have started to offer [responsive ad units](https://support.google.com/adsense/answer/3213689?hl=en) that should be used. If asynchronous responsive ad units are not available, the following best practices should be followed:
 
 * **Device Specific Ads** - Do not do [device detection](#device-detection) to place ads sold for "mobile" or "desktop". Instead, even though it goes against the device detection best practice, determine a screen size that constitutes the switch between "mobile" ads and "desktop" ads and swap load ads based on that size instead. Work with ad sales to stop selling ads targeted to devices and instead sell general advertising.
-* **Asynchronously Ads** - A [performance](#performance) best practice, do not load ads in-line, load them asynchronously
+* **Asynchronous Ads** - A [performance](#performance) best practice, do not load ads in-line, load them asynchronously
 * **Background Ads** - Ads that are placed outside of the content area of a page, such as background ads or rail ads, encounter all of the same issues as [large background images](#outdated-ux-patterns) do and should be avoided for the same reason.
 
 ## Resolution Independence
@@ -823,13 +823,13 @@ Images, usually either content images or background images in CSS, need to be ha
 
 # Performance
 
-When building modern websites, performance is a real design and development constraint and must be taken into account at every level of the development process. The reason it is a design and development constraint is fairly simple: with the explosion of an everything-conencted world and the rise of the mobile-only user, the chances that a site is going to be viewed primarily by someone sitting at a workstation with a high speed internet connection diminishes daily. This constraint isn't new either; way back in 2006, Amazon reported that a [100ms delay cost them 1% of sales](https://sites.google.com/site/glinden/Home/StanfordDataMining.2006-11-28.ppt?attredirects=0). This was before the great reach of broadband took hold and before the current mobile computing boom came full swing, which have only lessened the patience of consumers. As [Compuware reports](http://e-commercefacts.com/research/2011/07/what-usrs-want-from-mobil/19986_WhatMobileUsersWant_Wp.pdf), *75% of mobile web users expect a site to load as fast or faster* on their mobile devices as they do their desktop computers, with *60% of mobile web users leaving a site and not coming back if it takes more than 3 seconds to load, with 78% of users trying only one more time*. Moreover, if a user abandons your mobile site, *33% will go to a competitor's site*. What all this means is that **performance affects website revenue**. Google, helpfully, provides some interesting insight into how performance could have affected their 2011 revenue:
+When building modern websites, performance is a real design and development constraint and must be taken into account at every level of the development process. The reason it is a design and development constraint is fairly simple: with the explosion of an everything-connected world and the rise of the mobile-only user, the chances that a site is going to be viewed primarily by someone sitting at a workstation with a high speed internet connection diminishes daily. This constraint isn't new either; way back in 2006, Amazon reported that a [100ms delay cost them 1% of sales](https://sites.google.com/site/glinden/Home/StanfordDataMining.2006-11-28.ppt?attredirects=0). This was before the great reach of broadband took hold and before the current mobile computing boom came full swing, which have only lessened the patience of consumers. As [Compuware reports](http://e-commercefacts.com/research/2011/07/what-usrs-want-from-mobil/19986_WhatMobileUsersWant_Wp.pdf), *75% of mobile web users expect a site to load as fast or faster* on their mobile devices as they do their desktop computers, with *60% of mobile web users leaving a site and not coming back if it takes more than 3 seconds to load, with 78% of users trying only one more time*. Moreover, if a user abandons your mobile site, *33% will go to a competitor's site*. What all this means is that **performance affects website revenue**. Google, helpfully, provides some interesting insight into how performance could have affected their 2011 revenue:
 
 * Google made approximately [$18.8 Million](http://blog.hubspot.com/blog/tabid/6307/bid/33784/An-Industry-Breakdown-of-Google-s-100-Million-Per-Day-Advertising-Revenue-INFOGRAPHIC.aspx) per day on search advertising.
 * A 400ms delay (less than half of a second) [reduces average number of daily searches by 0.59%](http://www.igvita.com/slides/2013/breaking-1s-mobile-barrier.pdf) (and is about twice their warning threshold)
 * That amounts to a **daily loss of $111,000**, or about **$40.5 Million a year**
 
-When discussing and testing performance, it is important to do both with an eye toward mobile. This means that all performance testing needs to take place on actual devices, not just emulations, and on actual networks. Many of the standards have some wiggle room, but presented are the ideals and maximums for performance standards. The ideals and maximums have been chosen with an eye towards the realities of a media heavy site, including the realities of advertising and heavy multimedia usage. As [80% of the end-user response time is spend on the front-end](http://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-1-fewer-http-requests-7163.html), most of the performance suggestions are front-end based.
+When discussing and testing performance, it is important to do both with an eye toward mobile. This means that all performance testing needs to take place on actual devices, not just emulations, and on actual networks. Many of the standards have some wiggle room, but presented are the ideals and maximums for performance standards. The ideals and maximums have been chosen with an eye towards the realities of a media heavy site, including the realities of advertising and heavy multimedia usage. As [80% of the end-user response time is spent on the front-end](http://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-1-fewer-http-requests-7163.html), most of the performance suggestions are front-end based.
 
 ## Testing and Grading Performance
 
@@ -848,7 +848,7 @@ In addition to the below, sites should be able to hit and maintain certain perfo
 
 ## Payload Performance
 
-Load times, load sizes, and number of requests are extraordinary important and often overlooked or left to the end of a development cycle to start to optimize. Ideal statistics are presented first, with maximums presented second that should only be broached under edge circumstances. It is always best to keep actual performance as much under these numbers as possible.
+Load times, load sizes, and number of requests are extraordinarily important and often overlooked or left to the end of a development cycle to start to optimize. Ideal statistics are presented first, with maximums presented second that should only be broached under edge circumstances. It is always best to keep actual performance as much under these numbers as possible.
 
 * *Time To First Byte:* **200ms** - 350ms
 * *DOM Content Loaded:* **1000ms** - 2000ms
@@ -888,7 +888,7 @@ There are a number of optimization techniques that can be employed in order to e
 * Do not group CSS by media in `<link>` tags; all of the CSS gets downloaded anyway. Instead, reduce the number of aggregates and wrap internal CSS in media queries.
 * Use a CDN
 * Cache page requests
-* Utilize [progressive enhancement](http://alistapart.com/article/understandingprogressiveenhancement) with [feature detection](http://modernizr.com/) to server only what is needed to a user
+* Utilize [progressive enhancement](http://alistapart.com/article/understandingprogressiveenhancement) with [feature detection](http://modernizr.com/) to serve only what is needed to a user
 * Ensure that files that are only useful on particular pages only load on those pages, not all pages
 * Always load CSS before JavaScript
 
@@ -958,7 +958,7 @@ Layouts are the structure of an interface. Providing structure to pages and comp
 
 ### Aspects
 
-Aspects are a specific implementation of a component or layout. Components and layouts always should have an aspect when used to determine what kind implementation is being worked with. Aspects can be used as a way to pivot styling of elements if need be or to control implementation-specific styling, such as changing colors in a message component or determining exact sizing of a body element of a layout. It is preferable to use aspects as pivot points rather than to create unique classes for each element as it allows for the reuse of identical elements regardless of the aspect of a component or layout they are used in.
+Aspects are a specific implementation of a component or layout. Components and layouts always should have an aspect when used to determine what kind of implementation is being worked with. Aspects can be used as a way to pivot styling of elements if need be or to control implementation-specific styling, such as changing colors in a message component or determining exact sizing of a body element of a layout. It is preferable to use aspects as pivot points rather than to create unique classes for each element as it allows for the reuse of identical elements regardless of the aspect of a component or layout they are used in.
 
 ### Elements
 
@@ -1214,7 +1214,7 @@ While this approach certainly requires more work up front to build the mixins an
 
 Sass partials are a way for us to organize our styling knowledge into maintainable and easily grokable chunks. An example Sass partial structure is available in the folder `sass`.
 
-At the root of our Sass folder is our `style.scss` file, which holds the core of our styling, and a `no-script.scss` file to provide a CSS fallback if scripting isn't available. In the `sass` folder, create an `enhancements` folder a `fallbacks` folder, and a `partials` folder for your stylesheets that provide enhanced styling for powerful browsers, fallback styling less powerful browsers, and partials for all to draw from, each respectively.
+At the root of our Sass folder is our `style.scss` file, which holds the core of our styling, and a `no-script.scss` file to provide a CSS fallback if scripting isn't available. In the `sass` folder, create an `enhancements` folder, a `fallbacks` folder, and a `partials` folder for your stylesheets that provide enhanced styling for powerful browsers, fallback styling for less powerful browsers, and partials for all to draw from, each respectively.
 
 Each feature you're enhancing with or providing a fallback for should be named `feature.scss` and be placed into their respective folder; for instance if you were to provide enhancements and fallback for CSS Animations, you would have a folder structure that looked something like `sass/enhancements/css-animations.scss` and `sass/fallbacks/css-animations.scss`.
 
