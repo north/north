@@ -11,96 +11,96 @@ North is meant to be a living document. Standards and best practices change, and
 ## Table of Contents
 
 1. [Development Process](#development-process)
-	* [Roles and Responsibilities](#roles-and-responsibilities)
-		* [Product Owner](#product-owner)
-		* [Project Manager](#project-manager)
-		* [Designer](#designer)
-		* [Developer](#developer)
-		* [Quality Assurance](#quality-assurance)
-	* [User Stories](#user-stories)
-		* [Benefit Statement](#benefit-statement)
-		* [Requirements](#requirements)
-		* [Size and Value](#size-and-value)
-		* [Iterations](#iterations)
-		* [Backlog](#backlog)
-	* [Version Control](#version-control)
-		* [Feature Branches](#feature-branches)
-		* [Tags and Releases](#tags-and-releases)
-		* [Preprocessed Languages](#preprocessed-languages)
-	* [Brooks's Law](#brookss-law)
+  * [Roles and Responsibilities](#roles-and-responsibilities)
+    * [Product Owner](#product-owner)
+    * [Project Manager](#project-manager)
+    * [Designer](#designer)
+    * [Developer](#developer)
+    * [Quality Assurance](#quality-assurance)
+  * [User Stories](#user-stories)
+    * [Benefit Statement](#benefit-statement)
+    * [Requirements](#requirements)
+    * [Size and Value](#size-and-value)
+    * [Iterations](#iterations)
+    * [Backlog](#backlog)
+  * [Version Control](#version-control)
+    * [Feature Branches](#feature-branches)
+    * [Tags and Releases](#tags-and-releases)
+    * [Preprocessed Languages](#preprocessed-languages)
+  * [Brooks's Law](#brookss-law)
 2. [Content Strategy](#content-strategy)
-	* [Project Vision](#project-vision)
-	* [User Personas](#user-personas)
-	* [Content Inventory](#content-inventory)
-	* [Content Audit](#content-audit)
-	* [Content Modeling](#content-modeling)
-	* [Information Architecture](#information-architecture)
+  * [Project Vision](#project-vision)
+  * [User Personas](#user-personas)
+  * [Content Inventory](#content-inventory)
+  * [Content Audit](#content-audit)
+  * [Content Modeling](#content-modeling)
+  * [Information Architecture](#information-architecture)
 3. [Visual Design](#visual-design)
-	* [Website Needs](#website-needs)
-	* [Consistency and Predictability](#consistency-and-predictability)
-	* [Complexity and Complication](#complexity-and-complication)
-	* [Grids](#grids)
-		* [Parts of a Grid](#parts-of-a-grid)
-		* [Symmetric Grids](#symmetric-grids)
-		* [Asymmetric Grids](#asymmetric-grids)
-			* [Custom Grids](#custom-grids)
-			* [Compound Grids](#compound-grids)
-			* [Ratio Based Grids](#ratio-based-grids)
-			* [Spiral Based Grids](#spiral-based-grids)
-	* [Anti Patterns](#anti-patterns)
-		* [Dark Patterns](#dark-patterns)
-		* [Signal to Noise Ratio](#signal-to-noise-ratio)
-		* [Plugins](#plugins)
-		* [Outdated User Experience Patterns](#outdated-ux-patterns)
-	* [Design in Browser](#design-in-browser)
-		* [Mobile First](#mobile-first)
-		* [Pair Design](#pair-design)
-		* [Sketching](#sketching)
-	* [Rapid Prototyping](#rapid-prototyping)
-	* [Style Prototyping](#style-prototyping)
-		* [Style Tiles](#style-tiles)
-		* [Style Guide](#style-guide)
-		* [Component Guide](#component-guide)
-		* [Layout Guide](#layout-guide)
+  * [Website Needs](#website-needs)
+  * [Consistency and Predictability](#consistency-and-predictability)
+  * [Complexity and Complication](#complexity-and-complication)
+  * [Grids](#grids)
+    * [Parts of a Grid](#parts-of-a-grid)
+    * [Symmetric Grids](#symmetric-grids)
+    * [Asymmetric Grids](#asymmetric-grids)
+      * [Custom Grids](#custom-grids)
+      * [Compound Grids](#compound-grids)
+      * [Ratio Based Grids](#ratio-based-grids)
+      * [Spiral Based Grids](#spiral-based-grids)
+  * [Anti Patterns](#anti-patterns)
+    * [Dark Patterns](#dark-patterns)
+    * [Signal to Noise Ratio](#signal-to-noise-ratio)
+    * [Plugins](#plugins)
+    * [Outdated User Experience Patterns](#outdated-ux-patterns)
+  * [Design in Browser](#design-in-browser)
+    * [Mobile First](#mobile-first)
+    * [Pair Design](#pair-design)
+    * [Sketching](#sketching)
+  * [Rapid Prototyping](#rapid-prototyping)
+  * [Style Prototyping](#style-prototyping)
+    * [Style Tiles](#style-tiles)
+    * [Style Guide](#style-guide)
+    * [Component Guide](#component-guide)
+    * [Layout Guide](#layout-guide)
 4. [Responsive Web Design](#responsive-web-design)
-	* [Future Friendly](#future-friendly)
-	* [Device Detection](#device-detection)
-	* [Progressive Enhancement](#progressive-enhancement)
-		* [Feature Detection](#feature-detection)
-		* [Graceful Degradation](#graceful-degradation)
-	* [Advertising](#advertising)
-	* [Resolution Independence](#resolution-independence)
-		* [Media Queries](#media-queries)
-		* [Iconography](#iconography)
-		* [Images](#images)
+  * [Future Friendly](#future-friendly)
+  * [Device Detection](#device-detection)
+  * [Progressive Enhancement](#progressive-enhancement)
+    * [Feature Detection](#feature-detection)
+    * [Graceful Degradation](#graceful-degradation)
+  * [Advertising](#advertising)
+  * [Resolution Independence](#resolution-independence)
+    * [Media Queries](#media-queries)
+    * [Iconography](#iconography)
+    * [Images](#images)
 5. [Performance](#performance)
-	* [Testing and Grading Performance](#testing-and-grading-performance)
-	* [Payload Performance](#payload-performance)
-	* [Page Performance](#page-performance)
-	* [Front End Optimizations](#front-end-optimizations)
-		* [Critical Optimizations](#critical-optimizations)
-		* [Recommended Optimizations](#recommended-optimizations)
-		* [Experimental Optimizations](#experimental-optimizations)
+  * [Testing and Grading Performance](#testing-and-grading-performance)
+  * [Payload Performance](#payload-performance)
+  * [Page Performance](#page-performance)
+  * [Front End Optimizations](#front-end-optimizations)
+    * [Critical Optimizations](#critical-optimizations)
+    * [Recommended Optimizations](#recommended-optimizations)
+    * [Experimental Optimizations](#experimental-optimizations)
 6. [Website Building Blocks](#website-building-blocks)
   * [Markup](#markup)
-	  * [HTML Semantics](#html-semantics)
-	  * [Accessibility](#]accessibility)
-	  * [RDFa](#rdfa)
-	  * [Viewport Meta Tag](#viewport-meta-tag)
+    * [HTML Semantics](#html-semantics)
+    * [Accessibility](#]accessibility)
+    * [RDFa](#rdfa)
+    * [Viewport Meta Tag](#viewport-meta-tag)
   * [Styling](#styling)
-	  * [Base Browser Styling](#base-browser-styling)
-	  * [Components](#components)
-	  * [Layouts](#layouts)
-	  * [Aspects](#aspects)
-	  * [Elements](#elements)
-	  * [States](#states)
-	  * [CSS Naming Conventions](#css-naming-conventions)
-	  * [Sass and Compass](#sass-and-compass)
-	    * [Mixin/Extend Pattern](#mixinextend-pattern)
-	    * [Partial Structure](#partial-structure)
+    * [Base Browser Styling](#base-browser-styling)
+    * [Components](#components)
+    * [Layouts](#layouts)
+    * [Aspects](#aspects)
+    * [Elements](#elements)
+    * [States](#states)
+    * [CSS Naming Conventions](#css-naming-conventions)
+    * [Sass and Compass](#sass-and-compass)
+      * [Mixin/Extend Pattern](#mixinextend-pattern)
+      * [Partial Structure](#partial-structure)
   * [Interaction](#interaction)
-	  * [Style and Syntax](#style-and-syntax)
-	  * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
+    * [Style and Syntax](#style-and-syntax)
+    * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
 7. [License and Acknowledgements](#license-and-acknowledgements)
 
 # Development Process
@@ -458,33 +458,33 @@ Architectures should be constructed so that the [most valuable content](#content
 While building out an IA, the product's [content mode](#content-mode) may need to be revised. When building IAs, especially when the content model needs to be revised, keep the following rules of thumb in mind.
 
 * **Truncation is not a content strate…**
-	* Content that is truncated is usually not written for summary or reuse
-	* Truncated content usually doesn't contain [trigger words](#consistency-and-predictability)
-	* Never truncate headlines
-	* Always provide summaries for long copy
-	* Provide alternative copy when needed
+  * Content that is truncated is usually not written for summary or reuse
+  * Truncated content usually doesn't contain [trigger words](#consistency-and-predictability)
+  * Never truncate headlines
+  * Always provide summaries for long copy
+  * Provide alternative copy when needed
 * **Build systems of content**
-	* Content isn't always one-size-fits-all, allow for different sizes and styles of content attributes
-		* Small, medium, large images
-		* Short and long human readable and SEO friendly headlines
-	* *DO NOT* build content for [specific contexts](#device-detection) such as iPhones, Androids, Tablets, or Desktops
+  * Content isn't always one-size-fits-all, allow for different sizes and styles of content attributes
+    * Small, medium, large images
+    * Short and long human readable and SEO friendly headlines
+  * *DO NOT* build content for [specific contexts](#device-detection) such as iPhones, Androids, Tablets, or Desktops
 * **Content should be easy to navigate**
-	* Don't paginate long pieces of content unnecessarily
-	* Make it easy to navigate to sections in long pieces of content
-	* Always provide enough context for a user to make their own navigation decisions
-		* A user with location services might not exclusively want location-based information
-		* Provide plenty of [trigger words](#consistency-and-predictability)
-	* Keep navigation uncluttered
-		* More than 5 main navigation categories gets hard to scan
-		* Only provide secondary navigation when absolutely necessary
-		* Try to avoid having more than three levels of navigation
-		* If navigation gets cluttered, stop and rework to make the architecture more [comprehensible](#complexity-and-complication)
-	* Think about if headlines can be used as links, or if alternative copy should be used
+  * Don't paginate long pieces of content unnecessarily
+  * Make it easy to navigate to sections in long pieces of content
+  * Always provide enough context for a user to make their own navigation decisions
+    * A user with location services might not exclusively want location-based information
+    * Provide plenty of [trigger words](#consistency-and-predictability)
+  * Keep navigation uncluttered
+    * More than 5 main navigation categories gets hard to scan
+    * Only provide secondary navigation when absolutely necessary
+    * Try to avoid having more than three levels of navigation
+    * If navigation gets cluttered, stop and rework to make the architecture more [comprehensible](#complexity-and-complication)
+  * Think about if headlines can be used as links, or if alternative copy should be used
 * **Content should be available**
-	* Don't restrict content, especially [based on device](#device-detection)
-	* Provide [alternative formats of content](#progressive-enhancement) if one format can't be made available, such as through device capabilities or business needs
-	* Do not store content as HTML, but rather as raw attributes that can be presented in multiple ways. This is especially true for tabular data and images related to long copy
-	* Make all content available and in a way best suited for the display at hand
+  * Don't restrict content, especially [based on device](#device-detection)
+  * Provide [alternative formats of content](#progressive-enhancement) if one format can't be made available, such as through device capabilities or business needs
+  * Do not store content as HTML, but rather as raw attributes that can be presented in multiple ways. This is especially true for tabular data and images related to long copy
+  * Make all content available and in a way best suited for the display at hand
 
 # Visual Design
 
@@ -634,8 +634,8 @@ Just like how presentations deprecate, so do UX patterns. There are a plethora o
 * **Back Buttons** - Popularized by iOS, back buttons have become popular especially with designed that try to mimic app-like interfaces. Don't use them. Every browser has a native, easily accessible, well integrated back button; one that behaves better than any that could or should be built.
 * **Page Preloaders** - Users want to get to a site's content as quickly as possible. If instead of providing it a preloader is put up that is designed to halt a user from getting content until every piece that makes up that content is available, a user is likely to [leave and not come back](#performance)
 * **Social Integration** - While social integration is often seen as a great boon, more often than not the plethora of third party logos scattered throughout a page make a site look more like NASCAR than a finely crafted brand. While the effect of this hasn't been throughly researched yet, there is one truth; social integration provides free advertising for those social networks and ties the site's branding to those social networks, for better or worse.
-	* **Buttons** - Social share buttons are one of the worst additions one can make to a site. Besides being [terrible](http://zurb.com/article/883/small-painful-buttons-why-social-media-bu) for [performance](http://lastdropofink.co.uk/market-places/the-true-cost-of-adding-social-buttons/) (findings suggest that they bloat load times enough to break ideal and maybe even maximum [page load times](#payload-performance)), they have a tendency to add lots of clutter to a page; Facebook, Twitter, and Google+ for the page, the article, the gallery, and each image at a given URL? As pointed out by [Oliver Reichenstein](http://theoatmeal.com/comics/facebook_likes), users who use these social networks already know how to find content and certainly know how to share URLs. In fact, Smashing Magazine removed Facebook buttons from their site and traffic from Facebook increased because [users shared the content organically instead](https://twitter.com/smashingmag/status/204955763368660992). As stated in Oliver's article, and reinforced (humorously) by [Matthew Inman](http://theoatmeal.com/comics/facebook_likes), the best way to increase social traffic to a site is to have good content that people organically want to share, not to have social media buttons.
-	* **Login** - While less harmful than social share buttons, social login buttons should be approached with a similar amount of caution, but for different reasons. Social login buttons put security into the hands of a 3rd party and tie users to that 3rd party; if either go down or are compromised for any reason, there is nothing that can be done by a site owner. They also have the possibility of increasing cognitive load by making a user remember which method they used to log in last time. Finally, as MailChimp found out [after they added, then removed social login](http://blog.mailchimp.com/social-login-buttons-arent-worth-it/), that improving failed login attempts is more about good error handling and content than adding social login.
+  * **Buttons** - Social share buttons are one of the worst additions one can make to a site. Besides being [terrible](http://zurb.com/article/883/small-painful-buttons-why-social-media-bu) for [performance](http://lastdropofink.co.uk/market-places/the-true-cost-of-adding-social-buttons/) (findings suggest that they bloat load times enough to break ideal and maybe even maximum [page load times](#payload-performance)), they have a tendency to add lots of clutter to a page; Facebook, Twitter, and Google+ for the page, the article, the gallery, and each image at a given URL? As pointed out by [Oliver Reichenstein](http://theoatmeal.com/comics/facebook_likes), users who use these social networks already know how to find content and certainly know how to share URLs. In fact, Smashing Magazine removed Facebook buttons from their site and traffic from Facebook increased because [users shared the content organically instead](https://twitter.com/smashingmag/status/204955763368660992). As stated in Oliver's article, and reinforced (humorously) by [Matthew Inman](http://theoatmeal.com/comics/facebook_likes), the best way to increase social traffic to a site is to have good content that people organically want to share, not to have social media buttons.
+  * **Login** - While less harmful than social share buttons, social login buttons should be approached with a similar amount of caution, but for different reasons. Social login buttons put security into the hands of a 3rd party and tie users to that 3rd party; if either go down or are compromised for any reason, there is nothing that can be done by a site owner. They also have the possibility of increasing cognitive load by making a user remember which method they used to log in last time. Finally, as MailChimp found out [after they added, then removed social login](http://blog.mailchimp.com/social-login-buttons-arent-worth-it/), that improving failed login attempts is more about good error handling and content than adding social login.
 * **Content Pagination** - Users are very comfortable scrolling vertically on a page and have a tendency to get frustrated when content is paginated unnecessarily. Only paginate content if it is absolutely necessary, and even then provide users a way of viewing the full contents on a single page. If pagination is required, give users the ability to view the entire contents on a single page.
 * **Content Insertionals** - Seen often in article views, content insertionals are usually links to other tangentially related content in-between paragraphs as a stand-alone paragraph or as non-hyperlink "links" in an article that produce a hover or click modal of other, likewise tangentially related content. These items take the user's attention and prevent them from being immersed in the content.
 * **Auto Play Media** - Auto playing media, audio or video, is something a user never likes to see. The choice to play media should be triggered explicitly by the user.
@@ -728,12 +728,12 @@ The methodology of RWD is a methodology of creating sites that are [Future Frien
 
 1. Acknowledge and embrace unpredictability.
 2. Think and behave in a [future-friendly way](http://futurefriend.ly/thinking.html).
-	* We can't be all things to **all** devices.
-	* Create meaningful content and services.
-	* Design services and information architecture [content](http://adactio.com/journal/4523/) and [mobile](http://www.lukew.com/ff/entry.asp?933) first
-	* Design content models to be used across presentations (website, apps, APIs, etc…)
-	* Design content models around standards to be interoperable. Focus on its long term integrity
-	* Having well-structured content is essential to art direction. Structure and store content accordingly
+  * We can't be all things to **all** devices.
+  * Create meaningful content and services.
+  * Design services and information architecture [content](http://adactio.com/journal/4523/) and [mobile](http://www.lukew.com/ff/entry.asp?933) first
+  * Design content models to be used across presentations (website, apps, APIs, etc…)
+  * Design content models around standards to be interoperable. Focus on its long term integrity
+  * Having well-structured content is essential to art direction. Structure and store content accordingly
 3. Help others do the same.
 
 The set of suggestions from the Future Friendly manifesto that should not be followed as written are those dealing with device categorization and [device detection](#device-detection). The sentiment is correct, enhance any given device with a user experience that is tailored to its capabilities, but that should be done using [progressive enhancement](#progressive-enhancement) and [feature detection](#feature-detection) instead. Creating enhanced experiences this way, and encouraging users to take advantage of those enhanced experiences (as opposed to forcing them upon users based on their user agent string) allows for a more sustainable and future looking approach to delivering these experiences.
@@ -837,13 +837,13 @@ In addition to the below, sites should be able to hit and maintain certain perfo
 
 * [Page Speed](https://developers.google.com/speed/pagespeed/insights) - 85
 * [Web Page Test](http://www.webpagetest.org/)
-	* First Byte Time: 85
-	* Use persistent connection: 85
-	* Use gzip compression for transferring compressable responses: 90
-	* Compress Images: 90
-	* Use Progressive JPEGs: 90
-	* Leverage browser caching of static assets: 90
-	* Use a CDN for all static assets: 85
+  * First Byte Time: 85
+  * Use persistent connection: 85
+  * Use gzip compression for transferring compressable responses: 90
+  * Compress Images: 90
+  * Use Progressive JPEGs: 90
+  * Leverage browser caching of static assets: 90
+  * Use a CDN for all static assets: 85
 * [YSlow](http://developer.yahoo.com/yslow/) - 85
 
 ## Payload Performance
@@ -876,10 +876,10 @@ There are a number of optimization techniques that can be employed in order to e
 
 * Avoid page redirects
 * Provide proper headers for all files
-	* Static files (fonts, js, css) should have sufficiently long cache, at least 30 days
-	* Images should have a slightly shorter cache, at least 15 days
-	* HTML should have a short cache, around 15 minutes
-	* Internet Explorer Edge header should always be passed
+  * Static files (fonts, js, css) should have sufficiently long cache, at least 30 days
+  * Images should have a slightly shorter cache, at least 15 days
+  * HTML should have a short cache, around 15 minutes
+  * Internet Explorer Edge header should always be passed
 * All JavaScript should be moved to the footer
 * `document.write` should be avoided
 * Images with no transparency should be served as progressive JPEGs, not as PNG files
@@ -1003,13 +1003,13 @@ Components and layouts form prefixes the prefixes for aspects and elements, sepa
       <!-- Heading element of Related component -->
       <div class="related--heading">
         <!-- Tertiary Heading aspect of Typography component -->
-	     <h2 class="typography--TERTIARY-HEADING">Block Title</h2>
-	   </div>
-	   <!-- Body element of Related component -->
-	   <div class="related--body">
-	     <p>Yay Copy!</p>
-	   </div>
-	 </div>
+       <h2 class="typography--TERTIARY-HEADING">Block Title</h2>
+     </div>
+     <!-- Body element of Related component -->
+     <div class="related--body">
+       <p>Yay Copy!</p>
+     </div>
+   </div>
   <aside>
 </div>
 ```
