@@ -220,7 +220,7 @@ Before knowing what content will best serve a site, and therefore what features 
 
 Vision statement provide a single grounding point for all decisions needed to create a successful product. The following is an example vision statement for a made-up news organization:
 
-> In order to provide for a well-informed electorate who want to stay up-to-date and relate to high quality relevant worldwide news and information on an ever growing array of platforms, our editorial team will utilize an easy-to-use platform that can be accessed from any device from across the world to quickly and effortlessly updated and create new stories.
+> In order to provide for a well-informed electorate who want to stay up-to-date and relate to high quality relevant worldwide news and information on an ever growing array of platforms, our editorial team will utilize an easy-to-use platform that can be accessed from any device from across the world to quickly and effortlessly update and create new stories.
 
 ## User Personas
 
@@ -236,7 +236,7 @@ Once rough sketches of starting user types are determined, it is time for interv
 * What is the target demographic information?
 Interview not only users that meet the starting user types, but users from outside those initial types as it may come to light that users outside of the initial types actually make use of the product. Once all user interviews have been finished, it is time to create final user personas.
 
-When creating user personas, do not fall into the trap of assigning stereotypes to personas, such as that 'young adults only know how to write through text message shorthand' or that '[mobile users](#mobile-first) are rushed and distracted'. Personas should be generated based on statistically analysis of the interviews performed. Take all of the information gathered from all of the interviews and, based on analysis, break up the results into similar groups of people. What should divide users into similar groups are significant areas where multiple users use the product in similar ways, not small differences (or potentially even seemingly large differences like demographic). User personas are about how users *use* a product and what they expect from it. Finally, create a profile representing each group to be used as a final user persona. Each profile should contain the following information:
+When creating user personas, do not fall into the trap of assigning stereotypes to personas, such as that 'young adults only know how to write through text message shorthand' or that '[mobile users](#mobile-first) are rushed and distracted'. Personas should be generated based on statistical analysis of the interviews performed. Take all of the information gathered from all of the interviews and, based on analysis, break up the results into similar groups of people. What should divide users into similar groups are significant areas where multiple users use the product in similar ways, not small differences (or potentially even seemingly large differences like demographic). User personas are about how users *use* a product and what they expect from it. Finally, create a profile representing each group to be used as a final user persona. Each profile should contain the following information:
 
 * Name
 * Description of typical use of the product
