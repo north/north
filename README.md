@@ -8,7 +8,7 @@ North is meant to be a living document. Standards and best practices change, and
 
 *Currently open to review, [v0.1.0](https://github.com/Snugug/north/releases/tag/v0.1.0) is the first preview version. Once the review period is over, a branch for the current major version will be made.*
 
-## Table of Contents
+# Table of Contents
 
 1. [Development Process](#development-process)
   * [Roles and Responsibilities](#roles-and-responsibilities)
