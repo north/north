@@ -6,7 +6,7 @@ North is a set of standards and best practices for developing modern web based p
 
 North is meant to be a living document. Standards and best practices change, and as they do and have been vetted, North will grow and change with them. North will be versioned using [SEMVER](http://semver.org/) to provide a way for you to specify what version of North you are using for your project. Contributions are more than welcome, as long as the [Contribution Guidelines](https://github.com/Snugug/north/blob/master/CONTRIBUTING.md) are followed.
 
-*Currently open to review, [v0.1.0](https://github.com/Snugug/north/releases/tag/v0.1.0) is the first preview version. Once the review period is over, a branch for the current major version will be made.*
+*Currently open to review, [v0.1.1](https://github.com/Snugug/north/releases/tag/v0.1.1) is the first preview version. Once the review period is over, a branch for the current major version will be made.*
 
 # Table of Contents
 
