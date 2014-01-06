@@ -1,4 +1,4 @@
-North
+North [![Analytics](https://ga-beacon.appspot.com/UA-46859145-1/snugug/north?pixel)](https://github.com/snugug/north)
 ====================
 **Align and Guide Your Project**
 
