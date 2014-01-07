@@ -21,7 +21,7 @@ North is meant to be a living document. Standards and best practices change, and
     * [Benefit Statement](#benefit-statement)
     * [Requirements](#requirements)
     * [Size and Value](#size-and-value)
-    * [Iterations](#iterations)
+    * [Iterations](#iterations)a 
     * [Backlog](#backlog)
   * [Version Control](#version-control)
     * [Feature Branches](#feature-branches)
@@ -105,7 +105,7 @@ North is meant to be a living document. Standards and best practices change, and
 
 # Development Process
 
-Much like [visual design](#visual-design), the process of developing a product has changed as the understanding of the medium being worked in has changed from an extension of print design to a its own entity. Whereas in print design a final product was always the deliverable and designs for that product would be handed from one role to another without back and forth communication, the web requires a new process better suited for the complex and interactive nature of the final product.
+Much like [visual design](#visual-design), the process of developing a product has changed as the understanding of the medium being worked in has changed from an extension of print design to its own entity. Whereas in print design a final product was always the deliverable and designs for that product would be handed from one role to another without back and forth communication, the web requires a new process better suited for the complex and interactive nature of the final product.
 
 Often referred to as *waterfall*, the old method of a designer creating a static page, being approved by a product owner, then being handed off to developers without further communication channels will not produce results in the best interest of anyone involved. The product owner wouldn't see the final product until it was all finished and time for launch, much too late to make any corrections or alter the path of the project.
 
