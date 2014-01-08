@@ -21,7 +21,7 @@ North is meant to be a living document. Standards and best practices change, and
     * [Benefit Statement](#benefit-statement)
     * [Requirements](#requirements)
     * [Size and Value](#size-and-value)
-    * [Iterations](#iterations)a 
+    * [Iterations](#iterations)
     * [Backlog](#backlog)
   * [Version Control](#version-control)
     * [Feature Branches](#feature-branches)
