@@ -253,7 +253,7 @@ When building content inventories, it's often convenient to include limits for e
 * `(0)` - Soft limit, when a known limit isn't known, but a known minimum is
 * `000x00` - Dimensions. Width before height
 * `^foo` - Begins with (in this case, foo)
-* `$bar` - Ends with (in this case, bar)
+* `bar$` - Ends with (in this case, bar)
 * `.jpg|png` - Multiple options (in this case either jpg or png file extensions)
 
 ![Content Inventory](https://dl.dropboxusercontent.com/u/12410559/content%20inventory.png)
