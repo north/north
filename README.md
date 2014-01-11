@@ -839,7 +839,7 @@ In addition to the below, sites should be able to hit and maintain certain perfo
 * [Web Page Test](http://www.webpagetest.org/)
   * First Byte Time: 85
   * Use persistent connection: 85
-  * Use gzip compression for transferring compressable responses: 90
+  * Use gzip compression for transferring compressible responses: 90
   * Compress Images: 90
   * Use Progressive JPEGs: 90
   * Leverage browser caching of static assets: 90
@@ -898,7 +898,7 @@ There are a number of optimization techniques that can be employed in order to e
 * Employ a Responsive Image solution. Until a standard exists, look for one based on image width over viewport size.
 * `ASYNC` and `DEFER` all on-page scripts (for instance, DART tags). See [$script.js](https://github.com/ded/script.js) for a light weight async JavaScript loader
 * `ASYNC` all ads
-* When utilizing a CDN such as Akami, use it to serve scripts such as jQuery instead of Google's CDN as it will be faster on a cold cache
+* When utilizing a CDN such as Akamai, use it to serve scripts such as jQuery instead of Google's CDN as it will be faster on a cold cache
 * Inline small but important files (generally <3Kb) to reduce HTTP requests. Aggregate other small files to reduce HTTP requests
 
 ### Experimental Optimizations
