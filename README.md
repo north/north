@@ -724,7 +724,7 @@ When starting projects, RWD should not be a line item, something to throw on at 
 
 ## Future Friendly
 
-The methodology of RWD is a methodology of creating sites that are [Future Friendly](http://futurefriend.ly/). The core tenants of being future friendly are as follows:
+The methodology of RWD is a methodology of creating sites that are [Future Friendly](http://futurefriend.ly/). The core tenets of being future friendly are as follows:
 
 1. Acknowledge and embrace unpredictability.
 2. Think and behave in a [future-friendly way](http://futurefriend.ly/thinking.html).
