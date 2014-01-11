@@ -839,7 +839,7 @@ In addition to the below, sites should be able to hit and maintain certain perfo
 * [Web Page Test](http://www.webpagetest.org/)
   * First Byte Time: 85
   * Use persistent connection: 85
-  * Use gzip compression for transferring compressable responses: 90
+  * Use gzip compression for transferring compressible responses: 90
   * Compress Images: 90
   * Use Progressive JPEGs: 90
   * Leverage browser caching of static assets: 90
