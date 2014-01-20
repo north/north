@@ -1,0 +1,44 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    breakpoint (2.4.0)
+      compass (~> 1.0.0.alpha.13)
+      sass (~> 3.3.0.rc.2)
+      sassy-maps (< 1.0.0)
+    chunky_png (1.2.9)
+    compass (1.0.0.alpha.17)
+      chunky_png (~> 1.2)
+      compass-core (~> 1.0.0.alpha.16)
+      compass-import-once (~> 1.0.1)
+      json
+      listen (~> 1.1.0)
+      sass (~> 3.3.0.rc.1)
+    compass-core (1.0.0.alpha.16)
+      multi_json (~> 1.0)
+      sass (>= 3.3.rc.1)
+    compass-import-once (1.0.2)
+    ffi (1.9.3)
+    json (1.8.1)
+    listen (1.1.6)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
+    multi_json (1.8.2)
+    rb-fsevent (0.9.4)
+    rb-inotify (0.9.3)
+      ffi (>= 0.5.0)
+    rb-kqueue (0.2.0)
+      ffi (>= 0.5.0)
+    sass (3.3.0.rc.2)
+      listen (~> 1.1.0)
+    sassy-maps (0.3.1)
+      compass (~> 1.0.0.alpha.13)
+      sass (~> 3.3.0.rc.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  breakpoint (~> 2.4.0)
+  compass (~> 1.0.0.alpha.13)
+  sassy-maps (~> 0.3.1)

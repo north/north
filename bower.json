@@ -17,6 +17,11 @@
     "tests"
   ],
   "devDependencies": {
-    "north": "~0.1.0"
+    "north": "~0.1.1"
+  },
+  "dependencies": {
+    "angular": "~1.2.6",
+    "prism": "gh-pages",
+    "angular-sanitize": "~1.2.7"
   }
 }

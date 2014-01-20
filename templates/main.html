@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="northApp">
+<head>
+  <meta charset="UTF-8">
+  <title>North: Standards to Align and Guide Your Project</title>
+<!-- build:css css/style.css?__inline=true -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/bower_components/prism/themes/prism-okaidia.css">
+<!-- endbuild -->
+</head>
+<body ng-controller="NorthCtrl">
+  <header>
+    Search: <input ng-model="search">
+  </header>
+  <article class="base--STYLED">
+    {{content}}
+  </article>
+
+    <!-- build:js js/app.js?__inline=true -->
+    <script src="/bower_components/prism/prism.js"></script>
+    <script src="/bower_components/prism/components/prism-javascript.min.js"></script>
+    <script src="/bower_components/prism/components/prism-markup.min.js"></script>
+    <script src="/bower_components/prism/components/prism-ruby.min.js"></script>
+    <script src="/bower_components/prism/components/prism-scss.min.js"></script>
+    <script src="/js/working.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

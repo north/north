@@ -1,0 +1,181 @@
+//////////////////////////////
+// Compass Cross-Browser Configuration
+//////////////////////////////
+// This will print out how Compass came to its conclusions on prefixing. Set to `false` to disable
+$debug-browser-support: true;
+
+// When using $browser-minimum-versions, we can set these to 100 to force our browser versions to dictate prefixing
+$graceful-usage-threshold: 100;
+$critical-usage-threshold: 100;
+
+$browser-minimum-versions: (
+  "ie": "9",
+  "chrome": "30",
+  "firefox": "17",
+  "safari": "6",
+  "opera": "17",
+  "ios-safari":  "7",
+  "android": "2.3",
+  "opera-mobile": "12.1",
+  "blackberry": "7",
+  "ie-mobile": "10"
+);
+
+//////////////////////////////
+// Compass Imports
+//////////////////////////////
+@import "compass/support";
+@import "compass/reset";
+
+@import "compass/css3/box-sizing";
+@import "compass/css3/box-shadow";
+
+@import "memo";
+@import "breakpoint";
+
+//////////////////////////////
+// Scratch
+//////////////////////////////
+
+*, *:before, *:after {
+  @include box-sizing('border-box');
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+$golden: 1.61803398875;
+
+html {
+  font-size: 100%;
+  @include breakpoint(543px) {
+    font-size: 125%;
+  }
+  line-height: $golden * 1em;
+}
+
+*::selection {
+  text-shadow: none;
+  background: rgba(lightblue, .4);
+}
+
+._slider--PANELS {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+._slider--pane:nth-of-type(1) {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-bottom: 100vh;
+  @include box-shadow(0 5px 10px rgba(black, .35));
+}
+
+._slider--pane {
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  display: block;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  @for $i from 1 through 8 {
+    &:nth-of-type(#{$i}) {
+      z-index: $i * -1;
+    }
+  }
+}
+
+._slider--pane:nth-of-type(odd) {
+  background: red;
+}
+
+._slider--pane:nth-of-type(even) {
+  background: white;
+}
+
+.highlighted {
+  background: yellow;
+}
+
+// pre[class*="language-"] {
+//   position: relative;
+//   width: 100vw;
+//   padding: {
+//     left: .5rem;
+//     right: .5rem;
+//   }
+//   margin-left: -50vw;
+// }
+
+.base--STYLED {
+  // overflow: hidden;
+  max-width: 738px;
+  padding: {
+    left: .5rem;
+    right: .5rem;
+  }
+  margin: 0 auto;
+
+  @for $i from 1 through 6 {
+    h#{$i} {
+      font-size: 3em - .5em * $i;
+    }
+  }
+
+  h1, h2 {
+    border-bottom: 1px solid #eee;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1em 0 1rem;
+    padding: 0;
+    font-weight: bold;
+    position: relative;
+    float: left;
+    width: 100%;
+  }
+
+  ul, ol {
+    padding-left: 1.5rem;
+    clear: both;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+  }
+
+  li {
+    display: list-item;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol ul,
+  ul ul {
+    list-style-type: circle;
+  }
+
+  ol ul ul,
+  ul ul ul {
+    list-style-type: square;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-size: bold;
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+}
