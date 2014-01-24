@@ -117,7 +117,7 @@ In any given project, there are a variety of roles that each play a part in the 
 
 ### Product Owner
 
-Either the individual who directly owns the product or company the product is being developed for, or a designated representative for the product or company who has been given direct permission to make decisions for the product being developed. This individual needs to be able to make decisions on their own without consulting others and acts a fully involved individual in the lifecycle of a project. They are responsible for prioritizing the [backlog](#backlog) and determine [requirements](#requirements) for, and assist in writing [user stories](#user-stories). There should only be a single product owner per project.
+Either the individual who directly owns the product or company the product is being developed for, or a designated representative for the product or company who has been given direct permission to make decisions for the product being developed. This individual needs to be able to make decisions on their own without consulting others and acts as a fully involved individual in the lifecycle of a project. They are responsible for prioritizing the [backlog](#backlog) of, determining [requirements](#requirements) for, and assisting in writing [user stories](#user-stories). There should only be a single product owner per project.
 
 ### Project Manager
 
