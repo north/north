@@ -121,7 +121,7 @@ Either the individual who directly owns the product or company the product is be
 
 ### Project Manager
 
-The individual in charge of the ensuring the product cycle is being kept on track. They take charge in managing expectations of  product owners, ensuring that designers and developers are able to deliver what they have [committed to](#commitment) during a [sprint](#iterations), and working with the product owner to ensure there are enough defined, consumable, prioritized [user stories](#user-stories) to work on for the upcoming [iterations](#iterations). Project managers often run [scrums](#scrum) if there is not a dedicated person to do so. There should only be a single project manager per project.
+The individual in charge of ensuring the product cycle is being kept on track. They take charge in managing expectations of  product owners, ensuring that designers and developers are able to deliver what they have [committed to](#commitment) during a [sprint](#iterations), and working with the product owner to ensure there are enough defined, consumable, prioritized [user stories](#user-stories) to work on for the upcoming [iterations](#iterations). Project managers often run [scrums](#scrum) if there is not a dedicated person to do so. There should only be a single project manager per project.
 
 ### Designer
 
