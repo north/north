@@ -246,25 +246,25 @@
             sizes: [
               {
                 name: 'small',
-                width: 320,
-                quality: 0,
-                upscale: true
-              },
-              {
-                name: 'medium',
                 width: 480,
                 quality: 0,
                 upscale: true
               },
               {
-                name: 'large',
+                name: 'medium',
                 width: 720,
                 quality: 0,
                 upscale: true
               },
               {
-                name: 'xl',
+                name: 'large',
                 width: 1080,
+                quality: 0,
+                upscale: true
+              },
+              {
+                name: 'xl',
+                width: 1620,
                 quality: 0,
                 upscale: true
               }
@@ -408,8 +408,9 @@
     // Use matchdep to load all Grunt tasks from package.json
     matchdep.filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-    // Custom Grunt tasks go here.
-    // This is the special `default` task
+    //////////////////////////////
+    // Grunt Build HTML
+    //////////////////////////////
     grunt.registerTask('build-html', function () {
       var file = grunt.file.read(readme);
       var template = grunt.file.read('templates/main.html');
@@ -449,13 +450,15 @@
         var ext = filename.split('.').pop();
         var replaceString = 'src="' + image +'"';
 
+        console.log(filename);
+
         if (ext !== 'jpg' && ext !== 'png') {
           var replaceWith = 'src="images/' + filename + '"';
 
         }
         else {
-          var replaceWith = 'src="images/large/' + filename + '"';
-          // var replaceWith = 'src="images/blank.png" data-images="320: images/small/' + filename + ', 480: images/medium/' + filename + ', 720: images/large/' + filename + ', 1080: images/xl/' + filename + '"';
+          // var replaceWith = 'src="images/large/' + filename + '"';
+          var replaceWith = 'data-borealis-srcs="images/small/' + filename + ', 320: images/medium/' + filename + ', 480: images/large/' + filename + ', 720: images/xl/' + filename + '"';
         }
 
         file = file.replace(replaceString, replaceWith);
