@@ -17,12 +17,13 @@ North is meant to be a living document. Standards and best practices change, and
     * [Designer](#designer)
     * [Developer](#developer)
     * [Quality Assurance](#quality-assurance)
-  * [User Stories](#user-stories)
-    * [Benefit Statement](#benefit-statement)
-    * [Requirements](#requirements)
-    * [Size and Value](#size-and-value)
-    * [Iterations](#iterations)
+  * [Agile Scrum](#agile-scrum)
+	  * [User Stories](#user-stories)
+	    * [Benefit Statement](#benefit-statement)
+	    * [Requirements](#requirements)
+	    * [Size and Value](#size-and-value)
     * [Backlog](#backlog)
+    * [Iterations](#iterations)
   * [Version Control](#version-control)
     * [Feature Branches](#feature-branches)
     * [Tags and Releases](#tags-and-releases)
@@ -111,6 +112,8 @@ Often referred to as *waterfall*, the old method of a static page being created 
 
 Instead, a more *agile* process, where product owners, designers, and developers all work in conjunction with one another to build value in a product throughout its development cycle, is needed. One where a small amount of work and constant feedback between all parties can build a large project out of small parts. One where the final project may not have every bell and whistle hoped for, but rather has an array of features that fulfill the maximum potential of the cost of development based on business and user needs. This is a large change in the way most individuals and organizations have done this type of work in the past, but by sticking to this process, a better product will be built in the long run, and those involved in the building will not be exhausted or burnt out by the process.
 
+There are many different agile methodologies that all fulfill the same purpose of building projects in a more collaborative environment with constant communication between all roles involved in a project. The Scrum methodology described below is one such methodology that has found much success across many teams and organizations.
+
 ## Roles and Responsibilities
 
 In any given project, there are a variety of roles that each play a part in the success of a project. The following is a list of the basic roles required to accomplish a project. Some individuals may fall into multiple categories, that's okay. The key is that each role has certain responsibilities and these roles need to have members throughout the entire development process, ideally with each role filled by the [same individuals](#brookss-law) for the duration of a project. Projects work best when the total number of individuals are kept to a minimum (but that is not to say that it is better to have one of each, rather make sure that there aren't too many individuals on a project at once).
@@ -135,27 +138,33 @@ Much like designers, there are two types of developers, front end developers and
 
 Individuals working on quality assurance (QA) ensure that new code created during a [sprint](#iterations) matches the [requirements](#requirements) of the [user story](#user-stories) and does not break the functionality already in place from previous sprints. QA needs to understand how functionality may differ across platforms (on the web, [browsers and devices](#progresive-enhancement)) and work with developers when this is unclear. No code should be [released](#tags-and-releases) until QA has given sign off.
 
-## User Stories
+## Agile Scrum
+
+### User Stories
 
 A user story describes work that needs to be done for a feature of a particular product. User stories contain [benefit statements](#benefit-statement), [requirements](#requirements), [a size, and a value](#size-and-value). [Project Managers](#project-manager) and [product owners](#product-owner) should work together to create the basics of a user story ([benefit statements](#benefit-statement), [requirements](#requirements), [value](#size-and-value); often called a **stub**), flush out [requirements](#requirements) with a [user experience designer](#designer), and have work with the team to ensure stories are [sized](#size-and-value). Once all of these items are complete, a user story is considered **defined**. Once a product owner has prioritized them in the [backlog](#backlog), they are considered **consumable**. It behooves teams to have enough user stories defined and consumable to cover the current [iteration](#iterations) and one to two iterations in the future at any given time.
 
 When determining what user stories to stub out first, it is important to look to the [content strategy](#content-strategy) of a product. [Content types](#content-modeling) that are most valuable should have their features prioritized when it comes to creating user stories. The [information architecture](#information-architecture) will also assist in determining what features are needed and therefore what user stories should be generated. Features based off of content strategy should have the value of their content types associated to them in order to provide insight into overall value being generated by a given feature.
 
-### Benefit Statement
+#### Benefit Statement
 
 Benefit statements describe why a feature is important to be built based on [user personas](#user-personas) and business needs. Useful in helping to determine value for a feature and can thus help in organizing the [backlog](#backlog), benefit statements are written in the form *As [persona], I want [desire] so that [rationale].*
 
-### Requirements
+#### Requirements
 
 The functional requirements of a user story are based on the desired user experience of a feature and should be thorough enough to be completed by a [designer](#designer) or [developer](#developer) without additional question. An example of incomplete requirements would be "Create a photo gallery". On the other hand, "Create a rotating display that holds five items, paginates with swipe or mouse click, draws in an image from the Image content type displayed at a 16:9 ratio with the title and short description and can resize fluidly, ordered by most recent item" is much more thorough and can be built and designed without further input.
 
-### Size and Value
+#### Size and Value
 
 The size of a story is how much effort it will take to complete based on a relative scale of other similar features built, whereas value is a relative determination of how aligned with business needs a given feature is. Both size and value should be a [Fibonacci number](http://en.wikipedia.org/wiki/Fibonacci_sequence).
 
 For sizes, any size above 21 is usually too much to work on in a single iteration and the work should be split into smaller pieces and an epic, or overarching story, should be created. Size is not just based on development difficulty; it includes difficulty for all [team members](#roles-and-responsibilities) that would work on a feature for an iteration, including design and QA. Size should also account for risk, which could increase size for features that otherwise require little actual work to do. The size of a story should be agreed upon by consensus by all team members working on a feature. Sizing should happen throughout an [iteration](#iterations).
 
 Value should be determined for each aspect that provides value, generally not to exceed 13 per aspect. A determination of how closely each [benefit statement](#benefit-statement) aligns with the [vision statement](#vision-statement) should always be included, with additional aspects such as importance in [information architecture](#information-architecture) or metrics for the feature or content type.
+
+### Backlog
+
+The backlog is the list of prioritized user stories that have not been worked on yet. It is up to the [product owner](#product-owner) to prioritize the user stories in the backlog. Prioritizing the backlog allows the [team](#roles-and-responsibilities) to know what the most important items are to work on and therefore what to size. Product owners should use each user story's value as a guide. While they do not need to explicitly order the backlog based on the value of each user story, the value provides an unbiased look at each feature in the overall scheme of the build, so it should be used to guide decisions on backlog priority.
 
 ### Iterations
 
@@ -166,10 +175,6 @@ Once a day during each sprint, all [team members](#roles-and-responsibilities) s
 Towards the end of each iteration the team should come together to determine what stories to work on for the next iteration. This is called **commitment**. When determining capacity, remember to take into account meetings an individual may need to take part in, including time spent sizing user stories and this, and the acceptance, meeting.
 
 At the end of each iteration, the team should come together to present the work they have accomplished to the product owner. At this time, the work done should be compared to the stories committed to. For each story committed to, if what was produced matches the [requirements](#requirements) laid out in the story, the [product owner](#product-owner) should accept the story as complete. If the result was not what was expected by the product owner but meets all requirements as laid out in the story, the product owner should still accept the story and create a new story for changes. If all stories are complete and accepted, the iteration passes; if not, the iteration fails. It is OKAY to fail an iteration, it just means estimations were off and need to be adjusted for the next iteration.
-
-### Backlog
-
-The backlog is the list of prioritized user stories that have not been worked on yet. It is up to the [product owner](#product-owner) to prioritize the user stories in the backlog. Prioritizing the backlog allows the [team](#roles-and-responsibilities) to know what the most important items are to work on and therefore what to size. Product owners should use each user story's value as a guide. While they do not need to explicitly order the backlog based on the value of each user story, the value provides an unbiased look at each feature in the overall scheme of the build, so it should be used to guide decisions on backlog priority.
 
 ## Version Control
 
