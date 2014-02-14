@@ -54,6 +54,7 @@ North is meant to be a living document. Standards and best practices change, and
     * [Plugins](#plugins)
     * [Outdated User Experience Patterns](#outdated-ux-patterns)
   * [Design in Browser](#design-in-browser)
+    * [Parallel Design](#parallel-design)
     * [Mobile First](#mobile-first)
     * [Pair Design](#pair-design)
     * [Sketching](#sketching)
@@ -664,6 +665,26 @@ To combat these inaccuracies, instead of designing websites in static graphic de
 Designing in browser also allows for creative opportunities that would otherwise be missed by designing in static drawing environments. From hover states to animation, text shadowing and drawing with CSS, there are many places where actually working in the medium of the web affords greater creative control and creative expression than simply working in static single-state environments. When building [responsive sites](#responsive-web-design), designs should be built [mobile first](#mobile-first) which simply cannot be done in static environments.
 
 Because design decisions will need to be made throughout the lifespan of a project, the designers (both UI and UX) responsible for the design of a site need to be part of the full lifecycle of a project and cannot simply hand off initial designs and walk away from a project when development starts.
+
+### Parallel Design
+
+When designing in browser, the process of design changes from a purely visual one to a combined team effort. The following roles are involved in the visual design process. Like in the general [roles and responsibilities](#roles-and-responsibilities), these roles may be filled by the same person, and should be the same set of individuals throughout the duration of a project. This process is for designing and implementing a project simultaneously:
+
+* The [product owners](#product-owner) and [project managers](#project-manager) help to prioritize what gets designed and what the requirements of the design should be.
+* The [designers](#designer) do the visual and user experience design. During the transition phase before all of a team's designers can code and work in browser, designers are divided into *visual designers* and *production designers*. Visual designers are designers who cannot code and work directly in browser, and production designers are those who can.
+* The [developers](#developer) do the production development work. There are two types of developers involved in this, *back end developers* and *front end developers*. Back end developers generally work with server side languages and front end developers on the client side languages (although this depends on the actual implementation).
+* The [qa members](#quality-assurance) test the work developed to ensure it works as expected.
+
+1. **Story** - The product owners, project managers, visual and production designers, front and back end developers, and QA members agree upon the requirements for a given item. In Agile Scrum, this is a [user story](#user-stories). Each story should be for a single [component](#components), a single [layout](#layouts), or placing components and layouts together. The story should be based on the project's [information architecture](#information-architecture) and should include information about where content is coming from based on the project's [content models](#content-modeling).
+2. **HTML** - The visual and production designers and front and back end developers agree upon the [markup](#markup) to use for the story they are working on, including the [classes](#css-naming-conventions) that will be used. The markup used needs to work for both the [in-browser design](#style-prototyping) and the implementation. [Rapid prototyping](#rapid-prototyping) can be employed to suss out the markup.
+3. **Design** - The visual and production designers work on creating the look, feel, and [interaction](#interaction) for the story. This can be done at the same time as development.
+4. **Development** - The front and back end developers work together in the actual implementation of the project to output the agreed upon markup. This can be done at the same time as design.
+5. **Cross-browser QA** - The visual and production designers and QA team ensures that the in-browser design works cross-browser to the best of the browser's capabilities. What features any given browser supports, and therefore what features should be supported, can be referenced using [Can I Use…](http://caniuse.com/). This happens after a story's design is complete and is part of that story's design cycle.
+6. **Feature QA** - The front and back end developers and QA team ensure that the implementation has the correct markup and the content is being drawn from the correct places. They also make sure story related code functions properly. This happens after a story's development is complete and is part of that story's design cycle.
+7. **Integration** - The visual and production designers and the front and back end developers work together to integrate the in-browser design with the implementation, resolving any issues that may arise.
+8. **Regression QA** - The visual and production designers, front and back end developers, and QA team ensure that the in-browser design have been fully integrated into the implementation and that no previous work has broken by doing so.
+
+![Design and Development Cycle](http://snugug.github.io/images/Design-Dev-Cycle.svg)
 
 ### Mobile First
 
