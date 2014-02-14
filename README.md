@@ -1,4 +1,4 @@
-North [![Analytics](https://ga-beacon.appspot.com/UA-46859145-1/snugug/north?pixel)](https://github.com/snugug/north)
+North
 ====================
 **Align and Guide Your Project**
 
@@ -256,7 +256,7 @@ When building content inventories, it's often convenient to include limits for e
 * `bar$` - Ends with (in this case, bar)
 * `.jpg|png` - Multiple options (in this case either jpg or png file extensions)
 
-![Content Inventory](https://dl.dropboxusercontent.com/u/12410559/content%20inventory.png)
+![Content Inventory](http://snugug.github.io/images/content-inventory.png)
 
 ## Content Audit
 
@@ -488,7 +488,7 @@ While building out an IA, the product's [content mode](#content-mode) may need t
 
 # Visual Design
 
-[![The Treachery of Images, René Magritte](https://github-camo.global.ssl.fastly.net/dcd607b42abcde7f1a96394f797a700270f6e7db/687474703a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f656e2f622f62392f4d61677269747465506970652e6a7067)](http://en.wikipedia.org/wiki/The_Treachery_Of_Images)
+[![The Treachery of Images, René Magritte](http://snugug.github.io/images/The_Treachery_Of_Images.jpeg)](http://en.wikipedia.org/wiki/The_Treachery_Of_Images)
 
 As the web comes into its own as a medium and the [rituals of print design](http://snugug.github.io/designing-the-modern-web/#/ritual) are cast off, websites can no longer be designed in the same tools built for print design. Websites have interaction, states change, items come in and out. The [differences in browsers](#progressive-enhancement) force designs to change based on capabilities available. Even something as simple as screen size is not static. As [Brad Frost put it](https://twitter.com/brad_frost/status/195241868383092736), "You can't articulate fluidity on paper." The reality of the web has always been that a single, static bitmap representation of a page isn't what a final site will be, it's just taken the push of [responsive web design](#responsive-web-design) to bring the web into its own as a medium. In order to accommodate for the fluidity and flexibility of the medium of the web, new tools and techniques are needed to create a site's look and feel.
 
@@ -520,7 +520,7 @@ This hierarchy can be applied to websites as well.
 
 As with Maslow's hierarchy of needs as it relates to humans, a website's base needs must be fulfilled in order for self-actualization to occur. If any step negatively affects a step below it, that needs to be rethought. Self-actualization cannot have a negative impact on esteem, belonging, safety, or physiological needs, and so on.
 
-![Website Hierarchy of Needs](http://snugug.github.io/designing-the-modern-web/images/Website_Hierarchy-dark.svg)
+![Website Hierarchy of Needs](http://snugug.github.io/images/Website_Hierarchy_dark.svg)
 
 
 ## Consistency and Predictability
@@ -564,7 +564,7 @@ There are three parts that make up a grid; they are the columns, the gutters, an
 
 The most common type of grid is a symmetric grid. A symmetric grid is defined as a grid where each column is the same size. The most common type of symmetric grid is the 12 column symmetric grid. Symmetric grids have a tendency to constrain creativity in negative ways mostly due to the fact that for the most part designs built on symmetric grids have a tendency to look the same. There is an interesting mix of freedom and constraint in symmetric grids that, when used to lay out content on anything other than a column-by-column basis (4 columns, 4 identically sized pieces of content), provides enough flexibility to allow designs to meander.
 
-![Symmetric Grid](http://snugug.github.io/responsive-grids/images/symmetric-grid-bootstrap.png)
+![Symmetric Grid](http://snugug.github.io/images/symmetric-grid-bootstrap.png)
 
 ### Asymmetric Grids
 
@@ -574,25 +574,25 @@ Unlike the common symmetric grid, the uncommon asymmetric grid provides for inte
 
 Custom asymmetric grids are asymmetric grids where column sizes are determined by the designer. Any set of columns of differing sizes can be used to create an asymmetric grid. This example shows a split gutter grid with columns in relation of `1 4 1`.
 
-![Custom Asymmetric Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-custom.png)
+![Custom Asymmetric Grid](http://snugug.github.io/images/asymmetric-grid-custom.png)
 
 #### Compound Grids
 
 Compound grids are asymmetric grids that are created by overlaying two or more symmetric girds on top of each other to create a new asymmetric grid. The example shows a 3-4 compound grid, where a 3 column symmetric and a 4 column symmetric grid are overlaid to create a 6 column asymmetric grid. Why not simply use a 12 column grid? With this compound grid, spans are constrained to multiples of 1/4 and 1/3, meaning that a span of 5/12 or 7/12 could not happen. The orange is the final grid, with the red showing the 3 column grid and blue showing the 4 column grid.
 
-![Compound Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-compound.png)
+![Compound Grid](http://snugug.github.io/images/asymmetric-grid-compound.png)
 
 #### Ratio Based Grids
 
 Ratio based grids are grids where each column is based on a ratio of the previous column. This allows for interesting constraints, such as allowing the ratios for vertical rhythm (font size, line height) to also be used for horizontal rhythm (the grid).
 
-![Ratio Based Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-ratio.png)
+![Ratio Based Grid](http://snugug.github.io/images/asymmetric-grid-ratio.png)
 
 #### Spiral Based Grids
 
 Spiral based grids are similar to ratio based grids in that they are likewise based on a ratio, but instead of each column getting progressively larger or smaller, the columns are determined based on parallel lines running through a spiral that degrades based on the ratio. Twitter for a time [used a golden ratio based spiral design](http://mashable.com/2010/09/29/new-twitter-golden-ratio/).
 
-![Spiral Based Grid](http://snugug.github.io/responsive-grids/images/asymmetric-grid-spiral.png)
+![Spiral Based Grid](http://snugug.github.io/images/asymmetric-grid-spiral.png)
 
 ## Anti Patterns
 
