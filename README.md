@@ -271,7 +271,7 @@ When building content inventories, it's often convenient to include limits for e
 A content audit provides a first look at what content is available and how it is written as a way of sussing out if what is currently available is worth keeping, editing, or removing. Ask the following questions about the content and content types gathered from a [content inventory](#content-inventory).
 
 * Is the content too long, too short, or just right? Can longer content be cut into shorter chunks and still make sense?
-* Is the copy wordy? Does it ramble? Can it be cleaned up without loosing its meaning?
+* Is the copy wordy? Does it ramble? Can it be cleaned up without losing its meaning?
 * Does each page or chunk get to the point quickly?
 * Is content even broken up into chunks?
 * Is the content relevant and important?
