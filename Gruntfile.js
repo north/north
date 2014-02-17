@@ -445,16 +445,15 @@
       foundImages = foundImages.split(',');
 
       _.forEach(foundImages, function(image) {
-        console.log(image);
         var filename = image.replace(/^.*[\\\/]/, '');
         var ext = filename.split('.').pop();
         var replaceString = 'src="' + image +'"';
 
-        console.log(filename);
-
         if (ext !== 'jpg' && ext !== 'png') {
           var replaceWith = 'src="images/' + filename + '"';
-
+          if (ext === 'svg') {
+            replaceWith += ' style: {width: 100%; height: auto}';
+          }
         }
         else {
           // var replaceWith = 'src="images/large/' + filename + '"';
