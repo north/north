@@ -9,7 +9,7 @@
 // Mixins
 //////////////////////////////
 @mixin aspect($name) {
-  @at-root #{&}--#{aspect($name)} {
+  &--#{aspect($name)} {
     @content;
   }
 }

@@ -9,7 +9,7 @@
 // Mixins
 //////////////////////////////
 @mixin component($name) {
-  @at-root #{component($name)} {
+  @at-root .#{component($name)} {
     @content;
   }
 }

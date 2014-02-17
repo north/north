@@ -1,7 +1,7 @@
 //////////////////////////////
 // Functions
 //////////////////////////////
-@function element($name) {
+@function n-element($name) {
   @return to-lower-case($name);
 }
 
@@ -9,7 +9,7 @@
 // Mixins
 //////////////////////////////
 @mixin element($name) {
-  @at-root #{&}--#{element($name)} {
+  &--#{n-element($name)} {
     @content;
   }
 }
