@@ -414,14 +414,50 @@
     grunt.registerTask('build-html', function () {
       var file = grunt.file.read(readme);
       var template = grunt.file.read('templates/main.html');
+      var regex = new RegExp(/<h1[^>]*id=["'](.*?)["']>(.*?)<\/h1>/gi);
+      var matches, match, parts, replace = '';
+
 
       file = marked(file);
+
+      //////////////////////////////
+      // Parse out syntax highlighting
+      //////////////////////////////
       file = file.replace(/lang-html/g, "language-markup");
       file = file.replace(/lang-/g, "language-");
       file = file.replace(/<pre><code>/g, '<pre><code class="language-markup">');
 
-      template = template.replace("{{content}}", file);
+      //////////////////////////////
+      // Parse into sections
+      //////////////////////////////
+      matches = file.match(regex);
+      for (var i in matches) {
+        match = matches[i];
+        regex = new RegExp(/<h1[^>]*id=["'](.*?)["']>(.*?)<\/h1>/gi);
+        parts = regex.exec(match);
 
+        if (i > 0) {
+          replace = '\n</section>\n';
+        }
+        else {
+          replace = '';
+        }
+
+        replace += '<section id="' + parts[1] + '">\n';
+        if (i > 0) {
+          replace += '<h1>' + parts[2] + '</h1>';
+        }
+
+        file = file.replace(parts[0], replace);
+      }
+
+      file += '\n</section>';
+
+
+      //////////////////////////////
+      // Put content into place
+      //////////////////////////////
+      template = template.replace("{{content}}", file);
       grunt.file.write('./build/index.html', template);
     });
 
