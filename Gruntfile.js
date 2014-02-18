@@ -5,6 +5,7 @@
   var request = require('request');
   var fs = require('fs');
   var mkdirp = require('mkdirp');
+  var chalk = require('chalk');
 
   var jsdom = require('jsdom');
 
@@ -15,6 +16,8 @@
       fontsDir = 'fonts',
       rootDir = './',
       distDir = 'dist';
+
+  var imageThreshold = 1.05;
 
   var _ = require("lodash");
   var _s = require('underscore.string');
@@ -213,6 +216,13 @@
             stream: true
           },
           tasks: ['uglify:distSource', 'uglify:distMin']
+        },
+        images: {
+          options: {
+            grunt: true,
+            stream: true
+          },
+          tasks: ['imagemin:build', 'svgmin:build']
         }
       },
       //////////////////////////////
@@ -274,7 +284,7 @@
             expand: true,
             src: '**.{jpg,png}',
             cwd: './build/.tmp/images',
-            custom_dest: './build/images/{%= name %}'
+            custom_dest: './build/.tmp/rwd-images/{%= name %}'
           }]
         }
       },
@@ -290,30 +300,17 @@
       // Imagemin
       //////////////////////////////
       imagemin: {
-        from_build: {
+        build: {
           options: {
-            optimizationLevel: 7,
+            optimizationLevel: 10,
             progressive: true,
             pngquant: true
           },
           files: [{
             expand: true,
-            cwd: './build/images/',
-            src: ['**/*.{jpg,gif,png}'],
-            dest: './build/images/'
-          }]
-        },
-        deploy: {
-          options: {
-            optimizationLevel: 7,
-            progressive: true,
-            pngquant: true
-          },
-          files: [{
-            expand: true,
-            cwd: './images/',
-            src: ['**/*.{jpg,gif,png}'],
-            dest: './images/'
+            cwd: './build/.tmp/rwd-images/',
+            src: ['**/*.{jpg,jpeg,gif,png}'],
+            dest: './build/.tmp/optim'
           }]
         }
       },
@@ -341,7 +338,7 @@
           files: [{
             expand: true,
             flatten: true,
-            src: ['./build/.tmp/images/*.{svg,gif}'],
+            src: ['./build/.tmp/images/*.gif'],
             dest: './build/images/'
           }]
         }
@@ -350,12 +347,12 @@
       // SVG Min
       //////////////////////////////
       svgmin: {
-        deploy: {
+        build: {
           files: [{
             expand: true,
-            cwd: './images/',
+            cwd: './build/.tmp/images/',
             src: ['**/*.svg'],
-            dest: './images/'
+            dest: './build/images/'
           }]
         }
       },
@@ -459,6 +456,8 @@
       //////////////////////////////
       template = template.replace("{{content}}", file);
       grunt.file.write('./build/index.html', template);
+
+      grunt.log.writeln('Converted ' + chalk.cyan(readme) + ' to ' + chalk.cyan('./build/index.html'));
     });
 
     //////////////////////////////
@@ -479,6 +478,8 @@
       var file = grunt.file.read('./build/index.html');
       var foundImages = grunt.template.process('<%= dom_munger.data.images %>');
       foundImages = foundImages.split(',');
+      var replaceWith = '';
+      var replaceText = '';
 
       _.forEach(foundImages, function(image) {
         var filename = image.replace(/^.*[\\\/]/, '');
@@ -486,22 +487,104 @@
         var replaceString = 'src="' + image +'"';
 
         if (ext !== 'jpg' && ext !== 'png') {
-          var replaceWith = 'src="images/' + filename + '"';
+          replaceWith = 'src="images/' + filename + '"';
+          replaceText = 'local';
           if (ext === 'svg') {
             replaceWith += ' style: {width: 100%; height: auto}';
+            replaceText += ', style added for svg';
           }
+          grunt.log.writeln(chalk.green('✔ ') + chalk.cyan(image) + ' replaced' + chalk.grey(' (' + replaceText + ')'));
         }
         else {
-          // var replaceWith = 'src="images/large/' + filename + '"';
-          var replaceWith = 'data-borealis-srcs="images/small/' + filename + ', 320: images/medium/' + filename + ', 480: images/large/' + filename + ', 720: images/xl/' + filename + '"';
+          replaceWith = 'data-borealis-srcs="images/small/' + filename + ', 320: images/medium/' + filename + ', 480: images/large/' + filename + ', 720: images/xl/' + filename + '"';
+          replaceText = 'borealis';
+          grunt.log.writeln(chalk.green('✔ ') + chalk.cyan(image) + ' replaced' + chalk.grey(' (borealis)'));
         }
 
         file = file.replace(replaceString, replaceWith);
       });
 
       grunt.file.write('./build/index.html', file);
+      grunt.log.writeln('Updated ' + chalk.cyan('./build/index.html'));
     });
 
+    //////////////////////////////
+    // Copy by File Size
+    //////////////////////////////
+    grunt.registerTask('image-copy', function() {
+      var foundImages = grunt.template.process('<%= dom_munger.data.images %>');
+      foundImages = foundImages.split(',');
+
+      var optim = './build/.tmp/optim/';
+      var rwd = './build/.tmp/rwd-images/';
+      var build = './build/images/';
+      var sizes = ['small', 'medium', 'large', 'xl'];
+      var szLngth = sizes.length;
+      var base = '';
+      var opt = '';
+      var buildUrl, rwdUrl, optUrl, baseKb, optKb = '';
+      var totalOptim = 0;
+      var totalBase = 0;
+      var totalOther = 0;
+      var totalSize = {};
+
+      for (var i = 0; i < szLngth; i++) {
+        var size = sizes[i];
+        totalSize[size] = 0;
+      }
+
+      _.forEach(foundImages, function(image) {
+        var filename = image.replace(/^.*[\\\/]/, '');
+        var ext = filename.split('.').pop();
+
+        if (ext === 'jpg' || ext === 'png') {
+          for (var i = 0; i < szLngth; i++) {
+            var size = sizes[i];
+            var url =  size + '/' + filename;
+
+            buildUrl = build + url;
+            rwdUrl = rwd + url;
+            optUrl = optim + url;
+
+
+            base = fs.statSync(rwdUrl);
+            opt = fs.statSync(optUrl);
+
+            base = base["size"];
+            opt = opt["size"];
+
+            baseKb = (base / 1024).toFixed(2);
+            optKb = (opt / 1024).toFixed(2);
+
+            if (base * imageThreshold < opt) {
+              grunt.file.copy(rwdUrl, buildUrl);
+              grunt.log.writeln(chalk.gray('✔ ') + filename + ' (' + size + ')' + chalk.gray(' (' + baseKb + 'kB vs ' + optKb + 'kB)'));
+              totalBase++;
+              totalSize[size] += base;
+            }
+            else {
+              grunt.file.copy(optUrl, buildUrl);
+              grunt.log.writeln(chalk.green('✔ ') + filename + ' (' + size + ')' + chalk.gray(' (' + optKb + 'kB vs ' + baseKb + 'kB)'));
+              totalOptim++;
+              totalSize[size] += opt;
+            }
+          }
+        }
+        else {
+          var url = build + '/' + filename;
+          base = fs.statSync(url);
+          totalOther += base["size"];
+        }
+      });
+
+      grunt.log.writeln('Used ' + totalOptim + ' optimized images' + chalk.gray(' (' + totalBase + ' unoptimized images)'));
+      grunt.log.writeln('');
+
+      for (var i = 0; i < szLngth; i++) {
+        grunt.log.writeln(chalk.yellow((totalSize[sizes[i]] / 1024).toFixed(2) + 'kb') + ' Total file size' + chalk.gray(' (' + sizes[i] + ')'));
+      }
+      grunt.log.writeln(chalk.yellow((totalOther / 1024).toFixed(2) + 'kb') + ' Total file size' + chalk.gray(' (non-responsive)'));
+    });
     //////////////////////////////
     // Build Minified Source
     //////////////////////////////
@@ -510,7 +593,12 @@
     //////////////////////////////
     // Build Responsive Images
     //////////////////////////////
-    grunt.registerTask('build-images', 'clean:build_images dom_munger:find_links curl-dir responsive_images:build copy:build imagemin:from_build replace-images:dom_munger.data.images');
+    grunt.registerTask('build-images', 'clean:build_images dom_munger:find_links curl-dir responsive_images:build copy:build parallel:images image-copy:dom_munger.data.images replace-images:dom_munger.data.images');
+
+    //////////////////////////////
+    // Refresh Task
+    //////////////////////////////
+    grunt.registerTask('refresh', 'build-html build-images');
 
     //////////////////////////////
     // Build Task
