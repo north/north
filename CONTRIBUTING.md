@@ -18,3 +18,12 @@ We love contributors! Yes we do! If you would like to contribute to North, pleas
 * Contributions that are not in the form of a pull request will not be considered.
 * If your pull request does not apply cleanly we will ask you to fix that before we will look into pulling it in. We may ask you to update or make changes to the code you've submitted, please don't take this the wrong way. If a pull request smells (such as if a large amount of code is all within a single commit, or the coding standards aren't in line with what currently exists in North) we may ask you to rewrite your commit.
 * Follow all coding standards as defined in the current code base. Any code that does not follow the existing coding standards will be asked to be re-written to follow said standards.
+ 
+### Translations
+
+I would love North translated into your native language! If you would like to translate North into your native language, please do the following:
+
+* [Create an issue](https://github.com/Snugug/north/issues?state=open) stating your intent to translate North. The issue should be titled `Translate North to {Language}`. If an issue already exists for your language, work with those in the issue queue on the translation
+* Fork North
+* Create your translation titled `README` with a suffix for your [language code](http://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx). For instance, an Italian translation would be titled `README-it.md`
+* Include underneath the title what version of North the translation is tracking
