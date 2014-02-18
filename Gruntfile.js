@@ -434,13 +434,13 @@
         parts = regex.exec(match);
 
         if (i > 0) {
-          replace = '\n</section>\n';
+          replace = '\n</article>\n';
         }
         else {
           replace = '';
         }
 
-        replace += '<section id="' + parts[1] + '">\n';
+        replace += '<article id="' + parts[1] + '" class="base--STYLED">\n';
         if (i > 0) {
           replace += '<h1>' + parts[2] + '</h1>';
         }
@@ -448,7 +448,7 @@
         file = file.replace(parts[0], replace);
       }
 
-      file += '\n</section>';
+      file += '\n</article>';
 
 
       //////////////////////////////
@@ -463,7 +463,7 @@
     //////////////////////////////
     // Server Task
     //////////////////////////////
-    grunt.registerTask('server', 'Development server', function() {
+    grunt.registerTask('serve', 'Development server', function() {
       grunt.task.run(['connect', 'build-html', 'build-images']);
       if (grunt.option('launch')) {
         grunt.task.run(['open:dev']);
