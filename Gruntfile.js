@@ -411,8 +411,9 @@
     grunt.registerTask('build-html', function () {
       var file = grunt.file.read(readme);
       var template = grunt.file.read('templates/main.html');
-      var regex = new RegExp(/<h1[^>]*id=["'](.*?)["']>(.*?)<\/h1>/gi);
+      var regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
       var matches, match, parts, replace = '';
+      var sectionCount = 0;
 
 
       file = marked(file);
@@ -430,25 +431,47 @@
       matches = file.match(regex);
       for (var i in matches) {
         match = matches[i];
-        regex = new RegExp(/<h1[^>]*id=["'](.*?)["']>(.*?)<\/h1>/gi);
+        // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
+        regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
         parts = regex.exec(match);
 
-        if (i > 0) {
-          replace = '\n</article>\n';
-        }
-        else {
-          replace = '';
-        }
+        if (parts[1] === 'h1') {
+          if (sectionCount > 0) {
+            replace = '</section>\n';
+          }
+          else {
+            replace = '';
+          }
 
-        replace += '<article id="' + parts[1] + '" class="base--STYLED">\n';
-        if (i > 0) {
-          replace += '<h1>' + parts[2] + '</h1>';
-        }
+          if (i > 0) {
+            replace += '</article>\n';
+          }
+          else {
+            replace += '';
+          }
 
-        file = file.replace(parts[0], replace);
+          replace += '<article id="' + parts[2] + '" class="base--STYLED">\n';
+          if (i > 0) {
+            replace += '<h1>' + parts[3] + '</h1>';
+          }
+          sectionCount = 0;
+          file = file.replace(parts[0], replace);
+        }
+        else if (parts[1] === 'h2') {
+          if (sectionCount > 0) {
+            replace = '</section>\n';
+          }
+          else {
+            replace = '';
+          }
+          replace += '<section id="' + parts[2] + '">\n';
+          replace += '<' + parts[1] + '>' + parts[3] + '</' + parts[1] + '>';
+          sectionCount++;
+          file = file.replace(parts[0], replace);
+        }
       }
 
-      file += '\n</article>';
+      file += '\n</section></article>';
 
 
       //////////////////////////////
