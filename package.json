@@ -50,6 +50,7 @@
     "grunt-contrib-cssmin": "~0.7.0",
     "jsdom": "~0.8.10",
     "grunt-dom-munger": "~3.1.0",
-    "grunt-inline": "~0.2.0"
+    "grunt-inline": "~0.2.0",
+    "chalk": "~0.4.0"
   }
 }
