@@ -496,7 +496,7 @@ While building out an IA, the product's [content mode](#content-mode) may need t
 
 # Visual Design
 
-[![The Treachery of Images, René Magritte](http://snugug.github.io/images/The_Treachery_Of_Images.jpeg)](http://en.wikipedia.org/wiki/The_Treachery_Of_Images)
+[![The Treachery of Images, René Magritte](http://snugug.github.io/images/The_Treachery_Of_Images.jpg)](http://en.wikipedia.org/wiki/The_Treachery_Of_Images)
 
 As the web comes into its own as a medium and the [rituals of print design](http://snugug.github.io/designing-the-modern-web/#/ritual) are cast off, websites can no longer be designed in the same tools built for print design. Websites have interaction, states change, items come in and out. The [differences in browsers](#progressive-enhancement) force designs to change based on capabilities available. Even something as simple as screen size is not static. As [Brad Frost put it](https://twitter.com/brad_frost/status/195241868383092736), "You can't articulate fluidity on paper." The reality of the web has always been that a single, static bitmap representation of a page isn't what a final site will be, it's just taken the push of [responsive web design](#responsive-web-design) to bring the web into its own as a medium. In order to accommodate for the fluidity and flexibility of the medium of the web, new tools and techniques are needed to create a site's look and feel.
 
