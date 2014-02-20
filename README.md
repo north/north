@@ -237,7 +237,7 @@ User personas are a tool to distill different types of people who may interact w
 User persona research should begin with a hypothesis of what the various final user types will be and what those user types wants and needs are. These hypotheses should be based on analytics of the current site (if available) and demographic information of target audience. Analytics will provide insight into what is important to users, but not why. Similarly, demographic information will provide insight into who to start with, but not necessarily describe everyone who may use a product.
 
 Once rough sketches of starting user types are determined, it is time for interviews. Ask users questions such as:
-* What do you find most valuable about the existing product and similar, including competitors', products?
+* What do you find most valuable about the existing product and similar, including competitors' products?
 * Is anything of value is missing from the existing product and the similar products?
 * How do you most often access the product?
 * What are the pain points?
