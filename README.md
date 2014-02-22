@@ -576,7 +576,7 @@ The most common type of grid is a symmetric grid. A symmetric grid is defined as
 
 ### Asymmetric Grids
 
-Unlike the common symmetric grid, the uncommon asymmetric grid provides for interesting design constraints based on content and design by having columns that are different sizes from each other. This allows for grids and design to align without the providing wiggle room to break a design. There are four types of asymmetric grids, custom, compound, ratio based, and spiral based. [Singularity Extras](https://github.com/team-sass/singularity-extras) provides an easy to create these different kinds of asymmetric grids for use in Singularity.
+Unlike the common symmetric grid, the uncommon asymmetric grid provides for interesting design constraints based on content and design by having columns that are different sizes from each other. This allows for grids and design to align without the providing wiggle room to break a design. There are four types of asymmetric grids, custom, compound, ratio based, and spiral based. [Singularity Extras](https://github.com/team-sass/singularity-extras) provides an easy way to create these different kinds of asymmetric grids for use in Singularity.
 
 #### Custom Grids
 
