@@ -702,7 +702,7 @@ Using mobile as a focusing lens will also help to inform a site's [information a
 
 ### Pair Design
 
-One proven method of transitioning design teams from designing in bitmap tools to designing in browser is to pair designers with front end developers in a method similar to [pair programming](http://en.wikipedia.org/wiki/Pair_programming). With pair design, the front end developer acts as hands and the designer acts as the eyes. The two then work together to create a design. As this is happening, the developer should encourage the designer write code and the designer should encourage the developer to give input into the design and suggest technical solutions to design challenges or decisions.
+One proven method of transitioning design teams from designing in bitmap tools to designing in browser is to pair designers with front end developers in a method similar to [pair programming](http://en.wikipedia.org/wiki/Pair_programming). With pair design, the front end developer acts as hands and the designer acts as the eyes. The two then work together to create a design. As this is happening, the developer should encourage the designer to write code and the designer should encourage the developer to give input into the design and suggest technical solutions to design challenges or decisions.
 
 During this process, it is also helpful for front end developers to create reusable patterns in CSS (especially around creating functions and mixins in [Sass](#sass-and-compass)) and explain to and work with the designer to enhance these patterns, allowing the designer to get comfortable writing pattern-based code. This also lays the foundation for rapid iteration of a design idea.
 
