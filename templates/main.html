@@ -1,27 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{lang}}" dir="{{dir}}">
 <head>
   <meta charset="UTF-8">
-  <title>North: Standards to Align and Guide Your Project</title>
+  <title>North</title>
 <!-- build:css css/style.css?__inline=true -->
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/bower_components/prism/themes/prism-okaidia.css">
 <!-- endbuild -->
 </head>
 <body>
-  <header>
-    <h1>North</h1>
+  <header class="banner __banner">
+    <h1 class="banner-title">North</h1>
   </header>
+  <main class="__main">
     {{content}}
+  </main>
+
 
     <!-- build:js js/app.js?__inline=true -->
+    <script src="/bower_components/borealis/dist/borealis.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/toggle.js"></script>
     <script src="/bower_components/prism/prism.js"></script>
     <script src="/bower_components/prism/components/prism-javascript.min.js"></script>
     <script src="/bower_components/prism/components/prism-markup.min.js"></script>
     <script src="/bower_components/prism/components/prism-ruby.min.js"></script>
     <script src="/bower_components/prism/components/prism-scss.min.js"></script>
-    <script src="/bower_components/borealis/dist/borealis.min.js"></script>
-    <script src="/js/working.js"></script>
     <!-- endbuild -->
 </body>
 </html>
