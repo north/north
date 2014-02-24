@@ -1,5 +1,5 @@
 {
-    "browser": false,
+    "browser": true,
     "bitwise": false,
     "devel": false,
     "curly": false,
