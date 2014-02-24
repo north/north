@@ -17,8 +17,7 @@
     "tests"
   ],
   "devDependencies": {
-    "north": "~0.2.0",
-    "Singularity.wiki": "git@github.com:Team-Sass/Singularity.wiki.git"
+    "north": "~0.2.0"
   },
   "dependencies": {
     "prism": "gh-pages",
