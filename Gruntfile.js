@@ -1,35 +1,43 @@
 (function() {
   'use strict';
-
-  var http = require('http');
-  var request = require('request');
-  var fs = require('fs');
-  var mkdirp = require('mkdirp');
-  var chalk = require('chalk');
-
-  var jsdom = require('jsdom');
-
-  var jsDir = 'js',
-      sassDir = 'sass',
-      cssDir = 'css',
-      imgDir = 'img',
-      fontsDir = 'fonts',
-      rootDir = './',
-      distDir = 'dist';
-
-  var imageThreshold = 1.05;
-
-  var _ = require("lodash");
-  var _s = require('underscore.string');
-  var matchdep = require('matchdep');
-
-  var markdown = require( "markdown" ).markdown;
-  var marked = require("marked");
-
-  var readme = "./build/bower_components/north/README.md";
-  var images = [];
-
   module.exports = function (grunt) {
+    var http = require('http');
+    var request = require('request');
+    var fs = require('fs');
+    var mkdirp = require('mkdirp');
+    var chalk = require('chalk');
+
+    var jsdom = require('jsdom');
+
+    var jsDir = 'js',
+        sassDir = 'sass',
+        cssDir = 'css',
+        imgDir = 'img',
+        fontsDir = 'fonts',
+        rootDir = './',
+        distDir = 'dist';
+
+    var imageThreshold = 1.05;
+
+    var _ = require("lodash");
+    var _s = require('underscore.string');
+    var matchdep = require('matchdep');
+
+    var markdown = require( "markdown" ).markdown;
+    var marked = require("marked");
+    var images = [];
+
+    var settings = grunt.file.readYAML('./config.yml');
+    var bower = grunt.file.readJSON('./.bowerrc');
+    var northPath = bower.directory + '/north/';
+    var buildHTML = [];
+    var outputHTML = [];
+
+    _.forEach(settings.docs, function(settings) {
+      buildHTML.push('./build/' + settings.file + '.html');
+      outputHTML.push('./' + settings.file + '.html');
+    });
+
     // Grunt task configuration
     grunt.initConfig({
       //////////////////////////////
@@ -60,21 +68,17 @@
           livereload: 9016
         },
         html: {
-          files: ['index.html']
+          files: buildHTML
         },
         gruntfile: {
-          files: ['Gruntfile.js'],
-          // tasks: ['build-index']
+          files: ['Gruntfile.js']
         },
         css: {
-          files: [cssDir + '/**/*.css']
+          files: ['./build/' + cssDir + '/**/*.css']
         },
         js: {
           files: [jsDir + '/**/*.js'],
-          tasks: ['jshint'],
-          options: {
-            livereload: true
-          }
+          tasks: ['jshint', 'uglify:dev']
         }
       },
       //////////////////////////////
@@ -137,7 +141,7 @@
             expand: true,
             cwd: rootDir + jsDir,
             src: ['**/*.js', '!**/*.min.js'],
-            dest: rootDir + jsDir,
+            dest: './build/' + jsDir,
             ext: '.js'
           }]
         },
@@ -330,7 +334,7 @@
           files: [{
             expand: true,
             flatten: true,
-            src: ['./build/index.html'],
+            src: buildHTML,
             dest: './'
           }]
         },
@@ -360,13 +364,13 @@
       // Usemin
       //////////////////////////////
       useminPrepare: {
-        html: './build/index.html',
+        html: buildHTML,
         options: {
           dest: './'
         }
       },
       usemin: {
-        html: './index.html',
+        html: outputHTML,
         options: {
           dest: './'
         }
@@ -391,7 +395,7 @@
       //////////////////////////////
       inline: {
         dist: {
-          src: ['./index.html']
+          src: outputHTML
         }
       },
       //////////////////////////////
@@ -409,85 +413,109 @@
     // Grunt Build HTML
     //////////////////////////////
     grunt.registerTask('build-html', function () {
-      var file = grunt.file.read(readme);
-      var template = grunt.file.read('templates/main.html');
-      var regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
-      var matches, match, parts, replace = '';
-      var sectionCount = 0;
 
+      _.forEach(settings.docs, function(settings, doc) {
+        var filename = settings.file;
+        var toc = settings.toc;
+        var lang = settings.lang;
+        var dir = settings.dir;
 
-      file = marked(file);
+        var file = grunt.file.read(northPath + doc);
+        var template = grunt.file.read('templates/main.html');
+        var regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
+        var matches, match, parts, replace = '';
+        var sectionCount = 0;
+        var isNav = false;
 
-      //////////////////////////////
-      // Parse out syntax highlighting
-      //////////////////////////////
-      file = file.replace(/lang-html/g, "language-markup");
-      file = file.replace(/lang-/g, "language-");
-      file = file.replace(/<pre><code>/g, '<pre><code class="language-markup">');
+        file = marked(file);
 
-      //////////////////////////////
-      // Parse into sections
-      //////////////////////////////
-      matches = file.match(regex);
-      for (var i in matches) {
-        match = matches[i];
-        // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
-        regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
-        parts = regex.exec(match);
+        //////////////////////////////
+        // Parse out syntax highlighting
+        //////////////////////////////
+        file = file.replace(/lang-html/g, "language-markup");
+        file = file.replace(/lang-/g, "language-");
+        file = file.replace(/<pre><code>/g, '<pre><code class="language-markup">');
 
-        if (parts[1] === 'h1') {
-          if (sectionCount > 0) {
-            replace = '</section>\n';
+        //////////////////////////////
+        // Parse into sections
+        //////////////////////////////
+        matches = file.match(regex);
+        for (var i in matches) {
+          match = matches[i];
+          // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
+          regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
+          parts = regex.exec(match);
+
+          if (parts[1] === 'h1') {
+            if (sectionCount > 0) {
+              replace = '</section>\n';
+            }
+            else {
+              replace = '';
+            }
+
+            if (i > 0 && !isNav) {
+              replace += '</article>\n';
+            }
+            else if (isNav) {
+              replace += '</nav>\n';
+              isNav = false;
+            }
+            else {
+              replace += '';
+            }
+
+            if (parts[3].toLowerCase() !== toc.toLowerCase()) {
+              replace += '<article id="' + parts[2] + '" class="__main--article base--STYLED">\n';
+            }
+            else {
+              replace += '<nav id="' + parts[2] + '" class="__main--nav">\n';
+              isNav = true;
+            }
+
+            if (i > 0) {
+              replace += '<h1>' + parts[3] + '</h1>';
+            }
+            sectionCount = 0;
+            file = file.replace(parts[0], replace);
           }
-          else {
-            replace = '';
+          else if (parts[1] === 'h2') {
+            if (sectionCount > 0) {
+              replace = '</section>\n';
+            }
+            else {
+              replace = '';
+            }
+            replace += '<section id="' + parts[2] + '" class="__main--section">\n';
+            replace += '<' + parts[1] + '>' + parts[3] + '</' + parts[1] + '>';
+            sectionCount++;
+            file = file.replace(parts[0], replace);
           }
-
-          if (i > 0) {
-            replace += '</article>\n';
-          }
-          else {
-            replace += '';
-          }
-
-          replace += '<article id="' + parts[2] + '" class="base--STYLED">\n';
-          if (i > 0) {
-            replace += '<h1>' + parts[3] + '</h1>';
-          }
-          sectionCount = 0;
-          file = file.replace(parts[0], replace);
         }
-        else if (parts[1] === 'h2') {
-          if (sectionCount > 0) {
-            replace = '</section>\n';
-          }
-          else {
-            replace = '';
-          }
-          replace += '<section id="' + parts[2] + '">\n';
-          replace += '<' + parts[1] + '>' + parts[3] + '</' + parts[1] + '>';
-          sectionCount++;
-          file = file.replace(parts[0], replace);
-        }
-      }
 
-      file += '\n</section></article>';
+        file += '\n</section></article>';
 
 
-      //////////////////////////////
-      // Put content into place
-      //////////////////////////////
-      template = template.replace("{{content}}", file);
-      grunt.file.write('./build/index.html', template);
+        //////////////////////////////
+        // Put content into place
+        //////////////////////////////
+        template = template.replace("{{lang}}", lang);
+        template = template.replace("{{dir}}", dir);
+        template = template.replace("{{content}}", file);
+        grunt.file.write('./build/' + filename + '.html', template);
 
-      grunt.log.writeln('Converted ' + chalk.cyan(readme) + ' to ' + chalk.cyan('./build/index.html'));
+        grunt.log.writeln('Converted ' + chalk.cyan(doc) + ' to ' + chalk.cyan(filename + '.html'));
+      });
     });
 
     //////////////////////////////
     // Server Task
     //////////////////////////////
     grunt.registerTask('serve', 'Development server', function() {
-      grunt.task.run(['connect', 'build-html', 'build-images']);
+      grunt.task.run(['connect']);
+      if (grunt.option('build')) {
+        grunt.task.run(['build-html', 'build-images']);
+      }
       if (grunt.option('launch')) {
         grunt.task.run(['open:dev']);
       }
@@ -498,37 +526,39 @@
     // Image Replace
     //////////////////////////////
     grunt.registerTask('replace-images', function() {
-      var file = grunt.file.read('./build/index.html');
-      var foundImages = grunt.template.process('<%= dom_munger.data.images %>');
-      foundImages = foundImages.split(',');
-      var replaceWith = '';
-      var replaceText = '';
+      _.forEach(buildHTML, function(filePath) {
+        var file = grunt.file.read(filePath);
+        var foundImages = grunt.template.process('<%= dom_munger.data.images %>');
+        foundImages = foundImages.split(',');
+        var replaceWith = '';
+        var replaceText = '';
 
-      _.forEach(foundImages, function(image) {
-        var filename = image.replace(/^.*[\\\/]/, '');
-        var ext = filename.split('.').pop();
-        var replaceString = 'src="' + image +'"';
+        _.forEach(foundImages, function(image) {
+          var filename = image.replace(/^.*[\\\/]/, '');
+          var ext = filename.split('.').pop();
+          var replaceString = 'src="' + image +'"';
 
-        if (ext !== 'jpg' && ext !== 'png') {
-          replaceWith = 'src="images/' + filename + '"';
-          replaceText = 'local';
-          if (ext === 'svg') {
-            replaceWith += ' style: {width: 100%; height: auto}';
-            replaceText += ', style added for svg';
+          if (ext !== 'jpg' && ext !== 'png') {
+            replaceWith = 'src="images/' + filename + '"';
+            replaceText = 'local';
+            if (ext === 'svg') {
+              replaceWith += ' style="width: 100%; height: auto"';
+              replaceText += ', style added for svg';
+            }
+            grunt.log.writeln(chalk.green('✔ ') + chalk.cyan(image) + ' replaced' + chalk.grey(' (' + replaceText + ')'));
           }
-          grunt.log.writeln(chalk.green('✔ ') + chalk.cyan(image) + ' replaced' + chalk.grey(' (' + replaceText + ')'));
-        }
-        else {
-          replaceWith = 'data-borealis-srcs="images/small/' + filename + ', 320: images/medium/' + filename + ', 480: images/large/' + filename + ', 720: images/xl/' + filename + '"';
-          replaceText = 'borealis';
-          grunt.log.writeln(chalk.green('✔ ') + chalk.cyan(image) + ' replaced' + chalk.grey(' (borealis)'));
-        }
+          else {
+            replaceWith = 'data-borealis-srcs="images/small/' + filename + ', 320: images/medium/' + filename + ', 480: images/large/' + filename + ', 720: images/xl/' + filename + '"';
+            replaceText = 'borealis';
+            grunt.log.writeln(chalk.green('✔ ') + chalk.cyan(image) + ' replaced' + chalk.grey(' (borealis)'));
+          }
 
-        file = file.replace(replaceString, replaceWith);
+          file = file.replace(replaceString, replaceWith);
+        });
+
+        grunt.file.write(filePath, file);
+        grunt.log.writeln('Updated ' + chalk.cyan(filePath));
       });
-
-      grunt.file.write('./build/index.html', file);
-      grunt.log.writeln('Updated ' + chalk.cyan('./build/index.html'));
     });
 
     //////////////////////////////
@@ -622,6 +652,8 @@
     // Refresh Task
     //////////////////////////////
     grunt.registerTask('refresh', 'build-html build-images');
+
+    grunt.registerTask('test', '');
 
     //////////////////////////////
     // Build Task
