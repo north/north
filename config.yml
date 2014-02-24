@@ -1,0 +1,6 @@
+docs:
+  README.md:
+    file: index
+    toc: Table of Contents
+    lang: en
+    dir: ltr
