@@ -1,0 +1,16 @@
+@import "main/variables";
+@import "main/mixins";
+@import "main/extendables";
+
+.__main {
+  position: relative;
+}
+
+.__main--nav {
+  position: absolute;
+  top: 0;
+  width: 320px;
+  @include translateX(0);
+  z-index: 5;
+  background: white;
+}

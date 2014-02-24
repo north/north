@@ -29,9 +29,15 @@ $browser-minimum-versions: (
 
 @import "compass/css3/box-sizing";
 @import "compass/css3/box-shadow";
+@import "compass/css3/transform";
 
 @import "memo";
 @import "breakpoint";
+
+//////////////////////////////
+// Layout Imports
+//////////////////////////////
+@import "partials/layouts/main";
 
 //////////////////////////////
 // Scratch
@@ -177,5 +183,13 @@ html {
 
   p {
     margin: 1rem 0;
+  }
+}
+
+img[data-borealis-srcs*="The_Treachery_Of_Images"] {
+  @include breakpoint(522px) {
+    float: right;
+    padding-left: .5em;
+    width: 50% !important;
   }
 }
