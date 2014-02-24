@@ -26,11 +26,9 @@
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-parallel": "~0.2.0",
-    "grunt-contrib-connect": "~0.5.0",
     "deepmerge": "~0.2.5",
     "grunt-bump": "0.0.6",
     "grunt-contrib-compress": "~0.5.2",
-    "connect-livereload": "~0.3.1",
     "grunt-open": "~0.2.2",
     "markdown": "~0.5.0",
     "lodash": "~2.4.1",
@@ -51,6 +49,7 @@
     "jsdom": "~0.8.10",
     "grunt-dom-munger": "~3.1.0",
     "grunt-inline": "~0.2.0",
-    "chalk": "~0.4.0"
+    "chalk": "~0.4.0",
+    "grunt-contrib-connect": "~0.6.0"
   }
 }
