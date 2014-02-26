@@ -23,8 +23,25 @@
 
     var anchor = document.querySelectorAll('[data-toggle-anchor="' + target + '"');
     var anchorLength = anchor.length;
+
+    state = state.split('|');
     for (var i = 0; i < anchorLength; i++) {
-      anchor[i].setAttribute('data-state', state);
+      if (state.length === 1) {
+        anchor[i].setAttribute('data-state', state[0]);
+      }
+      else {
+        var anchorState = anchor[i].getAttribute('data-state');
+        var statePos = state.indexOf(anchorState);
+
+        if (statePos < state.length - 1) {
+          _this.setAttribute('data-state-active', state[statePos + 1]);
+          anchor[i].setAttribute('data-state', state[statePos + 1]);
+        }
+        else {
+          _this.setAttribute('data-state-active', state[0]);
+          anchor[i].setAttribute('data-state', state[0]);
+        }
+      }
     }
   }
 
