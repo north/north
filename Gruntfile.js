@@ -71,7 +71,8 @@
           files: buildHTML
         },
         gruntfile: {
-          files: ['Gruntfile.js']
+          files: ['Gruntfile.js', 'templates/*'],
+          tasks: ['refresh']
         },
         css: {
           files: ['./build/' + cssDir + '/**/*.css']
@@ -261,25 +262,25 @@
               {
                 name: 'small',
                 width: 480,
-                quality: 0,
+                quality: 50,
                 upscale: true
               },
               {
                 name: 'medium',
                 width: 720,
-                quality: 0,
+                quality: 50,
                 upscale: true
               },
               {
                 name: 'large',
                 width: 1080,
-                quality: 0,
+                quality: 50,
                 upscale: true
               },
               {
                 name: 'xl',
                 width: 1620,
-                quality: 0,
+                quality: 50,
                 upscale: true
               }
             ]
@@ -424,8 +425,20 @@
         var template = grunt.file.read('templates/main.html');
         var regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
         var matches, match, parts, replace = '';
-        var sectionCount = 0;
+        var sectionCount = 0,
+            articleCount = 0,
+            subCount = 0;
         var isNav = false;
+        var builtNav = new Object();
+            builtNav.items = new Array();
+        var currentArticle = '',
+            currentSection = '';
+        var navOutput = '';
+        var navHolder = '';
+        var navToRemove = 'opennav',
+            navToRemoveStart = 0,
+            navToRemoveEnd = 0;
+        // var ids = new Array();
 
         file = marked(file);
 
@@ -456,9 +469,10 @@
 
             if (i > 0 && !isNav) {
               replace += '</article>\n';
+              currentArticle = '';
             }
             else if (isNav) {
-              replace += '</nav>\n';
+              replace += '</' + navToRemove + '>\n';
               isNav = false;
             }
             else {
@@ -467,10 +481,19 @@
 
             if (parts[3].toLowerCase() !== toc.toLowerCase()) {
               replace += '<article id="' + parts[2] + '" class="__main--article base--STYLED">\n';
+              // console.log(chalk.cyan(articleCount) + ' ' + parts[2] + chalk.grey(' (article)'));
+              currentArticle = parts[2];
+              builtNav['items'][currentArticle] = {};
+              builtNav['items'][currentArticle].name = parts[3];
+              builtNav['items'][currentArticle].sections = [];
+              articleCount++;
             }
             else {
-              replace += '<nav id="' + parts[2] + '" class="__main--nav">\n';
+              replace += '<' + navToRemove + '>\n';
               isNav = true;
+              builtNav['id'] = parts[2];
+              builtNav['name'] = parts[3];
+              // ids.push(parts[2]);
             }
 
             if (i > 0) {
@@ -482,18 +505,94 @@
           else if (parts[1] === 'h2') {
             if (sectionCount > 0) {
               replace = '</section>\n';
+              subCount = 0;
             }
             else {
               replace = '';
             }
             replace += '<section id="' + parts[2] + '" class="__main--section">\n';
             replace += '<' + parts[1] + '>' + parts[3] + '</' + parts[1] + '>';
+            // console.log('  ' + chalk.cyan(sectionCount) + ' ' + parts[2] + chalk.grey(' (section)'));
+            currentSection = parts[2];
+            builtNav['items'][currentArticle].sections[currentSection] = {};
+            builtNav['items'][currentArticle].sections[currentSection].name = parts[3];
+            builtNav['items'][currentArticle].sections[currentSection].sections = [];
+            // ids.push(parts[2]);
+            // builtNav['items'][currentArticle].section[currentSection] = new Array();
             sectionCount++;
             file = file.replace(parts[0], replace);
+          }
+          else {
+            // if (parts[2]) {
+            //   ids.push(parts[2]);
+            //   // console.log(parts[2]);
+            //   builtNav['items'][currentArticle].sections[currentSection].sections[parts[2]] = {};
+            //   builtNav['items'][currentArticle].sections[currentSection].sections[parts[2]].name = parts[3];
+            //   // console.log('    ' + chalk.cyan(subCount) + ' ' + parts[2] + chalk.grey(' (sub)'));
+            //   subCount++;
+            // }
+            // builtNav['items'][articleCount][sectionCount].push(part[2]);
           }
         }
 
         file += '\n</section></article>';
+
+        //////////////////////////////
+        // Update internal links
+        //////////////////////////////
+        // console.log(ids);
+        // regex = new RegExp(/<([^\s]+).*?href="#([^"]*?)".*?>(.+?)<\/\1>/gi);
+        // matches = file.match(regex);
+
+        // for (var i in matches) {
+        //   match = matches[i];
+        //   // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
+        //   regex = new RegExp(/<([^\s]+).*?href="#([^"]*?)".*?>(.+?)<\/\1>/gi);
+        //   parts = regex.exec(match);
+        //   console.log(parts);
+        // }
+
+        // console.log(_s.levenshtein('mixinextend-pattern', 'mixin-extend-pattern'));
+
+        //////////////////////////////
+        // Build Navigation
+        //////////////////////////////
+        navHolder = builtNav['items'];
+
+        navOutput = '<nav id="' + builtNav['id'] + '" class="nav">\n<ol>';
+        for (var i in navHolder) {
+          navOutput += '<li class="nav--primary-item"><a href="#' + i + '" class="nav--link">' + navHolder[i].name;
+          var sections = navHolder[i].sections;
+
+          if (Object.keys(sections).length > 0) {
+            navOutput += '<ul class="nav--sub-sections">';
+            for (var j in sections) {
+              navOutput += '<li class="nav--secondary-item"><a href="#' + j + '" class="nav--link">' + sections[j].name;
+              var subsections = sections[j].sections;
+
+              if (Object.keys(subsections).length > 0) {
+                navOutput += '<ul class="nav--sub-sections">';
+                for (var k in subsections) {
+                  navOutput += '<li class="nav--tertiary-item"><a href="#' + k + '" class="nav--link">' + subsections[k].name + '</li>';
+                }
+                navOutput += '</ul>';
+              }
+              navOutput += '</li>'
+            }
+            navOutput += '</ul>';
+          }
+          navOutput += '</li>';
+        }
+        navOutput += '</ol></nav>';
+
+
+        //////////////////////////////
+        // Remove old navigation
+        //////////////////////////////
+        navToRemoveStart = file.indexOf('<' + navToRemove + '>');
+        navToRemoveEnd = file.indexOf('</' + navToRemove + '>') + navToRemove.length + 3;
+        file = file.slice(0, navToRemoveStart) + file.slice(navToRemoveEnd);
+
 
 
         //////////////////////////////
@@ -502,6 +601,7 @@
         template = template.replace("{{lang}}", lang);
         template = template.replace("{{dir}}", dir);
         template = template.replace("{{content}}", file);
+        template = template.replace("{{nav}}", navOutput);
         grunt.file.write('./build/' + filename + '.html', template);
 
         grunt.log.writeln('Converted ' + chalk.cyan(doc) + ' to ' + chalk.cyan(filename + '.html'));
