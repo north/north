@@ -13,14 +13,11 @@
     }
   }
 
-  function northNav(e) {
-    e.preventDefault();
-
-    var _this = this;
-    var target = _this.getAttribute('href');
-    var targetID = target;
+  function sectionTarget(target) {
     var articles = document.querySelectorAll('.__main--article');
+    var navLinks = document.querySelectorAll('.nav--primary-item');
     var anchor = '';
+    var link = '';
 
     target = document.querySelector(target);
 
@@ -33,18 +30,34 @@
     while (anchor.tagName.toLowerCase() !== 'article') {
       anchor = anchor.parentNode;
     }
+    link = document.querySelector('.nav--link[href="#' + anchor.getAttribute('id') + '"]').parentNode;
 
     for (var i = 0; i < articles.length; i++) {
       articles[i].setAttribute('data-target', 'false');
     }
+    for (i = 0; i < navLinks.length; i++) {
+      navLinks[i].removeAttribute('data-active');
+    }
+
+    link.setAttribute('data-active', 'true');
     anchor.setAttribute('data-target', 'true');
-    target.scrollIntoView(true);
-    // console.log(targetID);
-    history.pushState(null, null, targetID);
+
+    return target;
+  }
+
+  function northNav(e) {
+    e.preventDefault();
+
+    var _this = this;
+    var target = _this.getAttribute('href');
+    var section = sectionTarget(target);
+
+    section.scrollIntoView(true);
+    history.pushState(null, null, target);
   }
 
   function attachEventListeners() {
-    var toc = document.querySelectorAll('.__main--nav a');
+    var toc = document.querySelectorAll('a[href^="#"]');
     var tocLength = toc.length;
 
     for (var i = 0; i < tocLength; i++) {
@@ -53,6 +66,12 @@
   }
 
   addEvent(window, 'DOMContentLoaded', function () {
+    document.querySelector('html').className = 'js';
+
+    var location = window.location.hash || '#' + document.querySelector('article[id]').getAttribute('id');
+    sectionTarget(location);
+
     attachEventListeners();
+
   });
 })();
