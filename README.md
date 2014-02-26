@@ -586,7 +586,7 @@ Custom asymmetric grids are asymmetric grids where column sizes are determined b
 
 #### Compound Grids
 
-Compound grids are asymmetric grids that are created by overlaying two or more symmetric girds on top of each other to create a new asymmetric grid. The example shows a 3-4 compound grid, where a 3 column symmetric and a 4 column symmetric grid are overlaid to create a 6 column asymmetric grid. Why not simply use a 12 column grid? With this compound grid, spans are constrained to multiples of 1/4 and 1/3, meaning that a span of 5/12 or 7/12 could not happen. The orange is the final grid, with the red showing the 3 column grid and blue showing the 4 column grid.
+Compound grids are asymmetric grids that are created by overlaying two or more symmetric girds on top of each other to create a new asymmetric grid. The example shows a 3-4 compound grid, where a 3 column symmetric and a 4 column symmetric grid are overlaid to create a 6 column asymmetric grid. Why not simply use a 12 column grid? With this compound grid, spans are constrained to multiples of 1/4 and 1/3, meaning that a span of 5/12 or 7/12 could not happen. The top section shows the final compound grid, with the middle section showing the grid split into thirds and bottom section showing the grid split into quarters..
 
 ![Compound Grid](http://snugug.github.io/images/asymmetric-grid-compound.png)
 
