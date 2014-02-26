@@ -4,13 +4,104 @@
 
 .__main {
   position: relative;
+  max-width: $nav-sideline;
+  margin: 0 auto;
 }
 
-.__main--nav {
-  position: absolute;
-  top: 0;
-  width: 320px;
-  @include translateX(0);
-  z-index: 5;
-  background: white;
+.js {
+  .nav {
+    position: relative;
+  }
+
+  [data-target] {
+    @include single-transition(opacity .5s);
+    @include transition-delay(0s);
+  }
+
+  [data-target="false"] {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  [data-target="true"] {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+.nav {
+  font-size: 1em;
+
+  &--sub-sections {
+    height: 0;
+    overflow: hidden;
+    margin-left: .75rem;
+    font-size: .9em;
+
+    [data-active] & {
+      height: auto;
+    }
+  }
+
+  @include breakpoint(max-width ($nav-inline - 1px)) {
+    box-shadow: inset 0 0 10px 1px rgba(black, .3);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    padding-left: .5rem;
+    padding-right: .5rem;
+
+    // @include single-transition(tra)
+
+    [data-state="open"] & {
+      height: auto;
+    }
+
+    [data-state="closed"] & {
+      height: 0;
+      padding: 1px;
+    }
+  }
+
+  $border-size: 1px;
+  $border-color: #eee;
+
+  @include breakpoint($nav-inline) {
+    background: white;
+    width: 320px;
+    float: left;
+    margin: .5rem;
+    z-index: 5;
+    border-right: $border-size solid $border-color;
+  }
+
+  @include breakpoint($nav-inline 1380px) {
+
+
+    &:before, &:after {
+      opacity: 1;
+      content: "";
+      position: absolute;
+      left: -$border-size;
+    }
+
+    &:before {
+      top: -$border-size;
+      right: -$border-size;
+      height: $border-size;
+      @include background-image(
+        linear-gradient(right, $border-color, transparent)
+      );
+    }
+
+    &:after {
+      bottom: -$border-size;
+      right: -$border-size;
+      height: $border-size;
+      @include background-image(
+        linear-gradient(right, $border-color, transparent)
+      );
+    }
+  }
 }
