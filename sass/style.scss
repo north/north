@@ -24,14 +24,9 @@ $browser-minimum-versions: (
 //////////////////////////////
 // Compass Imports
 //////////////////////////////
-@import "compass/support";
+@import "compass";
 @import "compass/reset";
 
-@import "compass/css3/box-sizing";
-@import "compass/css3/box-shadow";
-@import "compass/css3/transform";
-
-@import "memo";
 @import "breakpoint";
 
 //////////////////////////////
@@ -126,6 +121,7 @@ html {
   }
   margin: 0 auto;
 
+
   @for $i from 1 through 6 {
     h#{$i} {
       font-size: 3em - .5em * $i;
@@ -137,12 +133,15 @@ html {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin: 1em 0 1rem;
+    margin: 0 0 1rem;
     padding: 0;
+    padding-top: .5rem;
     font-weight: bold;
     position: relative;
-    float: left;
+    // float: left;
     width: 100%;
+    line-height: 1em;
+    word-wrap: break-word;
   }
 
   ul, ol {
@@ -184,11 +183,20 @@ html {
   p {
     margin: 1rem 0;
   }
+
+  blockquote {
+    border-left: 4px solid #ddd;
+    padding: 0 1rem;
+    color: #777;
+    > :first-child {
+      margin-top: 0;
+    }
+  }
 }
 
 img[data-borealis-srcs*="The_Treachery_Of_Images"] {
-  @include breakpoint(522px) {
-    float: right;
+  @include breakpoint(400px) {
+    // float: right;
     padding-left: .5em;
     width: 50% !important;
   }
