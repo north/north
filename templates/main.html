@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="{{lang}}" dir="{{dir}}">
+<html lang="{{lang}}" dir="{{dir}}" class="no-js">
 <head>
   <meta charset="UTF-8">
   <title>North</title>
+  <meta name="viewport" content="initial-scale=1.0">
 <!-- build:css css/style.css?__inline=true -->
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/bower_components/prism/themes/prism-okaidia.css">
@@ -11,8 +12,10 @@
 <body>
   <header class="banner __banner">
     <h1 class="banner-title">North</h1>
+    <a href="#nav" class="toggle--MENU" data-toggle-target="main" data-toggle-state="open|closed">Menu</a>
   </header>
-  <main class="__main">
+  <main class="__main" data-toggle-anchor="main" data-state="open">
+    {{nav}}
     {{content}}
   </main>
 
