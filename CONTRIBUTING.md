@@ -9,7 +9,7 @@ We love contributors! Yes we do! If you would like to contribute to North, pleas
 * Issue pull requests for only the smallest amount of writing that is needed. If there are spelling and/or grammar updates, issue pull requests for words, sentences, or paragraphs only. If content is being added, deleted, or changed, only issue a pull request for one at a time. This will reduce potential merge conflicts and make it easier and faster to handle changes.
 * Do not mix pull requests. Do not issue a single pull request that both fixes spelling and/or grammar changes and has additions/deletions/or changes. Any pull request that mixes changes will be closed.
 * Contributions that are not in the form of a pull request will not be considered.
-* Follow the writing style as defined in the current documentation. Any changes that do not follow the existing writing style wille be asked to be re-written to follow said style. Use a professional instructional tone, not a conversational one. This includes not using words or phrases directed at the current reader, the biggest one being the use of `you`.
+* Follow the writing style as defined in the current documentation. Any changes that do not follow the existing writing style will be asked to be re-written to follow said style. Use a professional instructional tone, not a conversational one. This includes not using words or phrases directed at the current reader, the biggest one being the use of `you`.
 
 ### Code
 
