@@ -688,7 +688,7 @@ When designing in browser, the process of design changes from a purely visual on
 
 ### Mobile First
 
-Mobile first is a term used to describe designing and building sites from a minimal base first. At its core, mobile first is about [progressive enhancement](#progressive-enhancement), but on a site-wide, design-up. But it's more than just a mobile device (in fact, it's [not about devices at all](#device-detection)), mobile first is really an attempt to describe design and development in a content-centric way. As [Jeffery Zeldman puts it](http://www.ripariandata.com/mail-room-blog/blog/an-event-apart-sf-recap-the-message-is-the-medium):
+Mobile first is a term used to describe designing and building sites from a minimal base first. At its core, mobile first is about [progressive enhancement](#progressive-enhancement), but on a site-wide, design-up. But it's more than just a mobile device (in fact, it's [not about devices at all](#device-detection)), mobile first is really an attempt to describe design and development in a content-centric way. As [Jeffery Zeldman puts it](http://skimbox.co/blog/an-event-apart-sf-recap-the-message-is-the-medium):
 
 > It's not about mobile first (or just small screen first) - it's about content first. But it happens that thinking about what works for mobile does work for other things as well.
 
