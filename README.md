@@ -84,6 +84,7 @@ North is meant to be a living document. Standards and best practices change, and
     * [Recommended Optimizations](#recommended-optimizations)
     * [Experimental Optimizations](#experimental-optimizations)
 6. [Website Building Blocks](#website-building-blocks)
+  * [General Coding Syntax](#general-coding-syntax)
   * [Markup](#markup)
     * [HTML Semantics](#html-semantics)
     * [Accessibility](#]accessibility)
@@ -939,6 +940,18 @@ There are a number of optimization techniques that can be employed in order to e
 # Website Building Blocks
 
 No matter what back end technology is used to generate a website, when it gets rendered to a page it always becomes HTML, CSS, and JavaScript when displayed in browser. As such, a common set of best practices can be employed to ensure that what the user gets is as good as it can be, regardless of the device or method they choose to browse the site with. The methodology described below presents a content focused, component based, semantic, and accessible approach for building web sites. Designing this way is challenging, and requires a different approach than traditional desktop-sized Photoshop documents. That will be covered in other sections of this document, but one of the best ways to design this way is in the browser using [Style Prototypes](https://github.com/Team-Sass/generator-style-prototype).
+
+## General Coding Syntax
+
+[Mark Otto's Code Guide](http://mdo.github.io/code-guide/) is a set of best practices for writing coding syntax. They should be used with the following adendums:
+
+* Use North's [styling guidelines](#styling) for specific class naming conventions. This includes North's conventions on component/layout naming as well as using data attributes instead of `.js-*` classes.
+* If there is a conflict between the Coding Guide's standards and North's standards, defer to North's standards.
+* Generally, there should not be multiple CSS files unless it will absolutely benefit [performance](#performance). Use North's [partial structure](#partial-structure) standards instead.
+* In addition to the nesting rules present, the [inception rule](http://thesassway.com/beginner/the-inception-rule) for nesting should be followed
+* Prefixed CSS properties should be handled by mixins, not written by hand, and based on browser support. Compass 1.0's [Cross-Browser Support](http://beta.compass-style.org/reference/compass/support/) in conjunction with its [CSS3 Mixins](http://beta.compass-style.org/reference/compass/css3/) or [Autoprefixer](https://github.com/ai/autoprefixer) should be utalized to accomplish this (choose one or the other at the beginning of a project).
+* Mixins that affect multiple properties (such as grid mixins), should come before any individual properties to ensure declared styles are not overridden.
+* Extends should be declared first before any other properties are declared, including mixins.
 
 ## Markup
 
