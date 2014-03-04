@@ -561,19 +561,19 @@
 
         navOutput = '<nav id="' + builtNav['id'] + '" class="nav">\n<ol>';
         for (var i in navHolder) {
-          navOutput += '<li class="nav--primary-item"><a href="#' + i + '" class="nav--link">' + navHolder[i].name;
+          navOutput += '<li class="nav--primary-item"><a href="#' + i + '" class="nav--link">' + navHolder[i].name + '</a>';
           var sections = navHolder[i].sections;
 
           if (Object.keys(sections).length > 0) {
             navOutput += '<ul class="nav--sub-sections">';
             for (var j in sections) {
-              navOutput += '<li class="nav--secondary-item"><a href="#' + j + '" class="nav--link">' + sections[j].name;
+              navOutput += '<li class="nav--secondary-item"><a href="#' + j + '" class="nav--link">' + sections[j].name + '</a>';
               var subsections = sections[j].sections;
 
               if (Object.keys(subsections).length > 0) {
                 navOutput += '<ul class="nav--sub-sections">';
                 for (var k in subsections) {
-                  navOutput += '<li class="nav--tertiary-item"><a href="#' + k + '" class="nav--link">' + subsections[k].name + '</li>';
+                  navOutput += '<li class="nav--tertiary-item"><a href="#' + k + '" class="nav--link">' + subsections[k].name + '</a></li>';
                 }
                 navOutput += '</ul>';
               }
