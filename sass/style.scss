@@ -196,8 +196,29 @@ html {
 
 img[data-borealis-srcs*="The_Treachery_Of_Images"] {
   @include breakpoint(400px) {
-    // float: right;
     padding-left: .5em;
     width: 50% !important;
+
+    @include breakpoint(max-width ($nav-inline - 1px)) {
+      float: right;
+    }
+  }
+
+  @include breakpoint($nav-inline) {
+    padding-left: 0;
+    max-width: 400px;
+  }
+
+
+  @include breakpoint(1069px) {
+    float: right;
+  }
+}
+
+a[href*="The_Treachery_Of_Images"] {
+  @include breakpoint($nav-inline 1068px) {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }
