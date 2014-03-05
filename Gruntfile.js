@@ -323,12 +323,20 @@
       // Copy
       //////////////////////////////
       copy: {
-        deploy: {
+        deployImages: {
           files: [{
             expand: true,
             flatten: true,
-            src: ['./build/images/*.{svg,gif}'],
+            src: ['./build/images/**/*'],
             dest: './images/'
+          }]
+        },
+        deployHTML: {
+          files: [{
+            expand: true,
+            flatten: true,
+            src: ['./build/**/*.html', '!./' + bower.directory + '/**/*.html'],
+            dest: './'
           }]
         },
         usemin: {
@@ -403,7 +411,9 @@
       // Clean
       //////////////////////////////
       clean: {
-        build_images: ['./build/images', './build/.tmp/images']
+        build_images: ['./build/images', './build/.tmp/images'],
+        deploy_images: ['./images'],
+        deploy_html: ['./*.html', '!./build/**/*.html']
       }
     });
 
@@ -774,8 +784,9 @@
     // Build Task
     //////////////////////////////
     grunt.registerTask('deploy', function() {
-      mkdirp('./build');
-      grunt.task.run(['url_crawler', 'copy:deploy', 'imagemin:deploy', 'svgmin:deploy']);
+      grunt.task.run('clean:deploy_images', 'clean:deploy_html', 'copy:deployImages', 'copy:deployHTML');
+
+      // grunt.task.run(['url_crawler', 'copy:deploy', 'imagemin:deploy', 'svgmin:deploy']);
     });
   };
 }());
