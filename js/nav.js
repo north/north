@@ -56,12 +56,35 @@
     history.pushState(null, null, target);
   }
 
+  function northImages(e) {
+    var _this = this;
+    var srcs = null;
+    var src = null;
+    console.log('Hello World');
+
+    try {
+      srcs = _this.getAttribute('data-borealis-srcs').split(', ');
+      src = srcs[srcs.length - 1].split(': ')[1];
+    }
+    catch (err) {
+      src = _this.getAttribute('src');
+    }
+
+    window.location.href = src;
+  }
+
   function attachEventListeners() {
     var toc = document.querySelectorAll('a[href^="#"]');
+    var images = document.querySelectorAll('main img');
     var tocLength = toc.length;
+    var imgLength = images.length;
 
     for (var i = 0; i < tocLength; i++) {
       addEvent(toc[i], 'click', northNav);
+    }
+
+    for (i = 0; i < imgLength; i++) {
+      addEvent(images[i], 'click', northImages);
     }
   }
 
