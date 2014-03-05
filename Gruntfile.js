@@ -423,7 +423,8 @@
 
         var file = grunt.file.read(northPath + doc);
         var template = grunt.file.read('templates/main.html');
-        var regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
+        var regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi),
+            replaceRegex = '';
         var matches, match, parts, replace = '';
         var sectionCount = 0,
             articleCount = 0,
@@ -438,16 +439,20 @@
         var navToRemove = 'opennav',
             navToRemoveStart = 0,
             navToRemoveEnd = 0;
-        // var ids = new Array();
+        var ids = new Array();
 
+        grunt.log.writeln('  ' + chalk.underline('Rendering markdown'));
         file = marked(file);
+        grunt.log.writeln(chalk.green('✰ ') + chalk.yellow('Markdown converted to HTML'));
 
         //////////////////////////////
         // Parse out syntax highlighting
         //////////////////////////////
+        grunt.log.writeln('  ' + chalk.underline('Updating markup code'));
         file = file.replace(/lang-html/g, "language-markup");
         file = file.replace(/lang-/g, "language-");
         file = file.replace(/<pre><code>/g, '<pre><code class="language-markup">');
+        grunt.log.writeln(chalk.green('♻ ') + chalk.yellow('Code markup updated'));
 
         //////////////////////////////
         // Parse into sections
@@ -493,7 +498,7 @@
               isNav = true;
               builtNav['id'] = parts[2];
               builtNav['name'] = parts[3];
-              // ids.push(parts[2]);
+              ids.push(parts[2]);
             }
 
             if (i > 0) {
@@ -517,42 +522,25 @@
             builtNav['items'][currentArticle].sections[currentSection] = {};
             builtNav['items'][currentArticle].sections[currentSection].name = parts[3];
             builtNav['items'][currentArticle].sections[currentSection].sections = [];
-            // ids.push(parts[2]);
+            ids.push(parts[2]);
             // builtNav['items'][currentArticle].section[currentSection] = new Array();
             sectionCount++;
             file = file.replace(parts[0], replace);
           }
           else {
-            // if (parts[2]) {
-            //   ids.push(parts[2]);
+            if (parts[2]) {
+              ids.push(parts[2]);
             //   // console.log(parts[2]);
             //   builtNav['items'][currentArticle].sections[currentSection].sections[parts[2]] = {};
             //   builtNav['items'][currentArticle].sections[currentSection].sections[parts[2]].name = parts[3];
             //   // console.log('    ' + chalk.cyan(subCount) + ' ' + parts[2] + chalk.grey(' (sub)'));
             //   subCount++;
-            // }
+            }
             // builtNav['items'][articleCount][sectionCount].push(part[2]);
           }
         }
 
         file += '\n</section></article>';
-
-        //////////////////////////////
-        // Update internal links
-        //////////////////////////////
-        // console.log(ids);
-        // regex = new RegExp(/<([^\s]+).*?href="#([^"]*?)".*?>(.+?)<\/\1>/gi);
-        // matches = file.match(regex);
-
-        // for (var i in matches) {
-        //   match = matches[i];
-        //   // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
-        //   regex = new RegExp(/<([^\s]+).*?href="#([^"]*?)".*?>(.+?)<\/\1>/gi);
-        //   parts = regex.exec(match);
-        //   console.log(parts);
-        // }
-
-        // console.log(_s.levenshtein('mixinextend-pattern', 'mixin-extend-pattern'));
 
         //////////////////////////////
         // Build Navigation
@@ -589,15 +577,42 @@
         //////////////////////////////
         // Remove old navigation
         //////////////////////////////
+        grunt.log.writeln('  ' + chalk.underline('Replacing main navigation'));
+
         navToRemoveStart = file.indexOf('<' + navToRemove + '>');
         navToRemoveEnd = file.indexOf('</' + navToRemove + '>') + navToRemove.length + 3;
         file = file.slice(0, navToRemoveStart) + file.slice(navToRemoveEnd);
 
+        grunt.log.writeln(chalk.green('♻ ') + chalk.yellow('Navigation updated'));
 
+        //////////////////////////////
+        // Update internal links
+        //////////////////////////////
+        // console.log(ids);
+        regex = new RegExp(/href="#([^"]*?)"/gi);
+        matches = file.match(regex);
+
+        grunt.log.writeln('  ' + chalk.underline('Updating internal links'));
+
+        for (var i in matches) {
+          match = matches[i];
+          regex = new RegExp(/href="#([^"]*?)"/gi);
+          parts = regex.exec(match);
+
+          for (var j in ids) {
+            var distance = _s.levenshtein(ids[j], parts[1]);
+            if (distance < 3 && distance > 0) {
+              replaceRegex = new RegExp(parts[0], 'gi');
+              file = file.replace(replaceRegex, 'href="#' + ids[j] + '"');
+              grunt.log.writeln(chalk.green('♻ ') + chalk.yellow(parts[1]) + chalk.white(' ➔ ') + chalk.yellow(ids[j]) + chalk.gray(' (original ➔ current, ' + distance + ')'));
+            }
+          }
+        }
 
         //////////////////////////////
         // Put content into place
         //////////////////////////////
+        grunt.log.writeln('  ' + chalk.underline('Writing file content'));
         template = template.replace("{{lang}}", lang);
         template = template.replace("{{dir}}", dir);
         template = template.replace("{{content}}", file);
