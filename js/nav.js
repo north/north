@@ -91,6 +91,12 @@
     document.querySelector('html').className = 'js';
 
     var location = window.location.hash || '#' + document.querySelector('article[id]').getAttribute('id');
+
+    if (document.querySelector(location) === null) {
+      location = '#' + document.querySelector('article[id]').getAttribute('id');
+      window.location.hash = '';
+    }
+
     sectionTarget(location);
 
     attachEventListeners();
