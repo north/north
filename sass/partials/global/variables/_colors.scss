@@ -1,0 +1,8 @@
+$primary: #5ea9d0;
+$black: black($primary);
+$white: white($primary);
+$secondary: secondary($primary);
+
+$background: $white;
+$foreground: $black;
+$thin: mix($white, $black, 80%);

@@ -32,76 +32,60 @@
 
 .nav {
   font-size: 1em;
+  margin-bottom: .75em;
 
   &--sub-sections {
     height: 0;
     overflow: hidden;
-    margin-left: .75rem;
-    font-size: .9em;
+    margin-left: .5rem;
+    font-size: 1em;
+    border-left: 2px solid rgba($white, .5);
+    @include breakpoint($nav-inline) {
+      border-color: rgba($secondary, .5);
+    }
+
+    padding-left: .5em;
 
     [data-active] & {
       height: auto;
     }
   }
 
+  &--link {
+    font-weight: normal;
+    text-decoration: none;
+    text-transform: lowercase;
+    @include breakpoint($nav-inline) {
+      color: $secondary;
+    }
+
+  }
+
   @include breakpoint(max-width ($nav-inline - 1px)) {
-    box-shadow: inset 0 0 10px 1px rgba(black, .3);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    overflow: hidden;
+    // box-shadow: inset 0 0 10px 1px rgba($black, .3);
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    // overflow: hidden;
+    background: $primary;
+
+
+    &--link {
+      color: $white;
+    }
     padding-left: .5rem;
     padding-right: .5rem;
-
-    // @include single-transition(tra)
-
-    [data-state="open"] & {
-      height: auto;
-    }
-
-    [data-state="closed"] & {
-      height: 0;
-      padding: 1px;
-    }
+    padding: .75em;
+    padding-bottom: .75em;
   }
 
   $border-size: 1px;
-  $border-color: #eee;
 
   @include breakpoint($nav-inline) {
-    background: white;
+    background: $background;
     width: 320px;
     float: left;
     margin: .5rem;
     z-index: 5;
-    border-right: $border-size solid $border-color;
-  }
-
-  @include breakpoint($nav-inline 1380px) {
-
-
-    &:before, &:after {
-      opacity: 1;
-      content: "";
-      position: absolute;
-      left: -$border-size;
-    }
-
-    &:before {
-      top: -$border-size;
-      right: -$border-size;
-      height: $border-size;
-      @include background-image(
-        linear-gradient(right, $border-color, transparent)
-      );
-    }
-
-    &:after {
-      bottom: -$border-size;
-      right: -$border-size;
-      height: $border-size;
-      @include background-image(
-        linear-gradient(right, $border-color, transparent)
-      );
-    }
+    border-right: $border-size solid $thin;
   }
 }

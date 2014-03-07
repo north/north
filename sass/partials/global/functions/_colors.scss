@@ -1,0 +1,11 @@
+@function white($color) {
+  @return adjust-color($color, $hue: 5.18797, $saturation: -8.82867, $lightness: 38.62745);
+}
+
+@function black($color) {
+  @return adjust-color($color, $hue: -0.76401, $saturation: 17.28533, $lightness: -50.78431);
+}
+
+@function secondary($color) {
+  @return adjust-color($color, $hue: 3.91813, $saturation: 21.24865, $lightness: -31.37255);
+}
