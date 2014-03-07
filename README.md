@@ -265,7 +265,7 @@ When building content inventories, it's often convenient to include limits for e
 * `bar$` - Ends with (in this case, bar)
 * `.jpg|png` - Multiple options (in this case either jpg or png file extensions)
 
-![Content Inventory](http://snugug.github.io/images/content-inventory.png)
+![Content Inventory](http://snugug.github.io/images/content-inventory.jpg)
 
 ## Content Audit
 
