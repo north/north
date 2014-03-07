@@ -949,7 +949,7 @@ No matter what back end technology is used to generate a website, when it gets r
 * If there is a conflict between the Coding Guide's standards and North's standards, defer to North's standards.
 * Generally, there should not be multiple CSS files unless it will absolutely benefit [performance](#performance). Use North's [partial structure](#partial-structure) standards instead.
 * In addition to the nesting rules present, the [inception rule](http://thesassway.com/beginner/the-inception-rule) for nesting should be followed
-* Prefixed CSS properties should be handled by mixins, not written by hand, and based on browser support. Compass 1.0's [Cross-Browser Support](http://beta.compass-style.org/reference/compass/support/) in conjunction with its [CSS3 Mixins](http://beta.compass-style.org/reference/compass/css3/) or [Autoprefixer](https://github.com/ai/autoprefixer) should be utalized to accomplish this (choose one or the other at the beginning of a project).
+* Prefixed CSS properties should be handled by mixins, not written by hand, and based on browser support. Compass 1.0's [Cross-Browser Support](http://beta.compass-style.org/reference/compass/support/) in conjunction with its [CSS3 Mixins](http://beta.compass-style.org/reference/compass/css3/) or [Autoprefixer](https://github.com/ai/autoprefixer) should be utilized to accomplish this (choose one or the other at the beginning of a project).
 * Mixins that affect multiple properties (such as grid mixins), should come before any individual properties to ensure declared styles are not overridden.
 * Extends should be declared first before any other properties are declared, including mixins.
 
