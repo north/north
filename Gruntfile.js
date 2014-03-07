@@ -99,7 +99,8 @@
           require: [
             'compass/import-once/activate',
             'breakpoint',
-            'sassy-maps'
+            'sassy-maps',
+            'toolkit'
           ]
         },
         dev: {
@@ -326,8 +327,9 @@
         deployImages: {
           files: [{
             expand: true,
-            flatten: true,
-            src: ['./build/images/**/*'],
+            flatten: false,
+            cwd: './build/images/',
+            src: '{,**/}*.*',
             dest: './images/'
           }]
         },
@@ -335,7 +337,7 @@
           files: [{
             expand: true,
             flatten: true,
-            src: ['./build/**/*.html', '!./' + bower.directory + '/**/*.html'],
+            src: buildHTML,
             dest: './'
           }]
         },
@@ -370,7 +372,7 @@
         }
       },
       //////////////////////////////
-      // Usemin
+      // Inline CSS
       //////////////////////////////
       useminPrepare: {
         html: buildHTML,
@@ -404,6 +406,9 @@
       //////////////////////////////
       inline: {
         dist: {
+          options: {
+            tag: ''
+          },
           src: outputHTML
         }
       },
@@ -413,7 +418,8 @@
       clean: {
         build_images: ['./build/images', './build/.tmp/images'],
         deploy_images: ['./images'],
-        deploy_html: ['./*.html', '!./build/**/*.html']
+        deploy_html: ['./*.html', '!./build/**/*.html'],
+        deploy_assets: ['./css', './js/app.js']
       }
     });
 
@@ -446,6 +452,7 @@
             currentSection = '';
         var navOutput = '';
         var navHolder = '';
+        var link = '';
         var navToRemove = 'opennav',
             navToRemoveStart = 0,
             navToRemoveEnd = 0;
@@ -473,6 +480,8 @@
           // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
           regex = new RegExp(/<([^\s]+).*?id="([^"]*?)".*?>(.+?)<\/\1>/gi);
           parts = regex.exec(match);
+
+          link = '<a href="#' + parts[2] + '" class="deep-link">';
 
           if (parts[1] === 'h1') {
             if (sectionCount > 0) {
@@ -512,7 +521,7 @@
             }
 
             if (i > 0) {
-              replace += '<h1>' + parts[3] + '</h1>';
+              replace += '<h1>' + link + parts[3] + '</a></h1>';
             }
             sectionCount = 0;
             file = file.replace(parts[0], replace);
@@ -526,7 +535,7 @@
               replace = '';
             }
             replace += '<section id="' + parts[2] + '" class="__main--section">\n';
-            replace += '<' + parts[1] + '>' + parts[3] + '</' + parts[1] + '>';
+            replace += '<' + parts[1] + '>' + link + parts[3] + '</a></' + parts[1] + '>';
             // console.log('  ' + chalk.cyan(sectionCount) + ' ' + parts[2] + chalk.grey(' (section)'));
             currentSection = parts[2];
             builtNav['items'][currentArticle].sections[currentSection] = {};
@@ -540,6 +549,10 @@
           else {
             if (parts[2]) {
               ids.push(parts[2]);
+              replace = '<' + parts[1] + ' id="' + parts[2] + '">' + link + parts[3] + '</a></' + parts[1] + '>';
+              // grunt.log.writeln(chalk.yellow(parts[0]) + chalk.white(' ➔ ') + chalk.yellow(replace));
+
+              file = file.replace(parts[0], replace);
             //   // console.log(parts[2]);
             //   builtNav['items'][currentArticle].sections[currentSection].sections[parts[2]] = {};
             //   builtNav['items'][currentArticle].sections[currentSection].sections[parts[2]].name = parts[3];
@@ -599,22 +612,24 @@
         // Update internal links
         //////////////////////////////
         // console.log(ids);
-        regex = new RegExp(/href="#([^"]*?)"/gi);
+        regex = new RegExp(/href="#([^"]*?)"(\sclass="deep-link")?/gi);
         matches = file.match(regex);
 
         grunt.log.writeln('  ' + chalk.underline('Updating internal links'));
 
         for (var i in matches) {
           match = matches[i];
-          regex = new RegExp(/href="#([^"]*?)"/gi);
+          regex = new RegExp(/href="#([^"]*?)"(\sclass="deep-link")?/gi);
           parts = regex.exec(match);
 
-          for (var j in ids) {
-            var distance = _s.levenshtein(ids[j], parts[1]);
-            if (distance < 3 && distance > 0) {
-              replaceRegex = new RegExp(parts[0], 'gi');
-              file = file.replace(replaceRegex, 'href="#' + ids[j] + '"');
-              grunt.log.writeln(chalk.green('♻ ') + chalk.yellow(parts[1]) + chalk.white(' ➔ ') + chalk.yellow(ids[j]) + chalk.gray(' (original ➔ current, ' + distance + ')'));
+          if (parts[2] === undefined) {
+            for (var j in ids) {
+              var distance = _s.levenshtein(ids[j], parts[1]);
+              if (distance < 3 && distance > 0) {
+                replaceRegex = new RegExp(parts[0], 'gi');
+                file = file.replace(replaceRegex, 'href="#' + ids[j] + '"');
+                grunt.log.writeln(chalk.green('♻ ') + chalk.yellow(parts[1]) + chalk.white(' ➔ ') + chalk.yellow(ids[j]) + chalk.gray(' (original ➔ current, ' + distance + ')'));
+              }
             }
           }
         }
@@ -784,7 +799,7 @@
     // Build Task
     //////////////////////////////
     grunt.registerTask('deploy', function() {
-      grunt.task.run('clean:deploy_images', 'clean:deploy_html', 'copy:deployImages', 'copy:deployHTML');
+      grunt.task.run('clean:deploy_images', 'clean:deploy_html', 'copy:deployImages', 'build-min', 'clean:deploy_assets');
 
       // grunt.task.run(['url_crawler', 'copy:deploy', 'imagemin:deploy', 'svgmin:deploy']);
     });
