@@ -1,0 +1,95 @@
+{
+	"IcoMoonType": "selection",
+	"icons": [
+		{
+			"icon": {
+				"paths": [
+					"M906.938 906.985c-90.903 90.81-238.22 90.81-329.123 0l-98.723-98.816c-30.068-30.022-49.152-66.374-59.345-104.634 30.627-3.724 60.788-11.729 89.553-24.204 6.097 23.087 17.594 45.009 35.654 63.023l98.723 98.816c54.551 54.458 142.941 54.458 197.492 0 54.505-54.551 54.505-142.988 0-197.539l-98.769-98.723c-42.915-42.915-106.636-51.526-158.487-26.857l92.672 92.672c18.199 18.199 18.199 47.616 0 65.815s-47.616 18.199-65.815 0l-102.028-101.981c-90.345 59.811-213.271 49.99-292.911-29.603l-98.769-98.769c-90.857-90.903-90.857-238.266 0-329.123s238.22-90.903 329.123 0l98.723 98.769c30.068 30.022 49.199 66.42 59.345 104.727-30.627 3.724-60.788 11.729-89.553 24.111-6.097-23.040-17.594-44.916-35.654-63.023l-98.676-98.769c-54.551-54.505-142.941-54.505-197.492 0-54.505 54.551-54.505 142.941 0 197.492l98.723 98.769c42.961 42.915 106.682 51.526 158.534 26.857l-92.672-92.719c-18.199-18.199-18.199-47.663 0-65.862s47.616-18.199 65.815 0l102.028 102.074c90.345-59.857 213.271-50.036 292.911 29.603l98.723 98.723c90.903 90.903 90.903 238.266 0 329.169z"
+				],
+				"tags": [
+					"link",
+					"anchor",
+					"chain"
+				],
+				"grid": 22
+			},
+			"properties": {
+				"id": 16,
+				"order": 1,
+				"prevSize": 22,
+				"code": 58880,
+				"name": "link2",
+				"ligatures": "link"
+			},
+			"setIdx": 1,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M413.84 155.177l-329.859 786.726c-5 12 6.834 24.337 19.001 19.668l324.693-123.175 324.693 123.175c12.166 4.667 24.168-7.667 19.001-19.668l-329.859-786.726c-5.166-12.166-22.501-12.166-27.67 0zM121.32 928.9l306.356-740.888v594.045l-306.356 146.844z"
+				],
+				"width": 855,
+				"grid": 32,
+				"tags": [
+					"North"
+				]
+			},
+			"properties": {
+				"order": 2,
+				"id": 0,
+				"prevSize": 32,
+				"code": 58882,
+				"name": "North",
+				"ligatures": "north"
+			},
+			"setIdx": 1,
+			"iconIdx": 1
+		}
+	],
+	"height": 1024,
+	"metadata": {
+		"name": "north"
+	},
+	"preferences": {
+		"fontPref": {
+			"prefix": "icon-",
+			"metadata": {
+				"fontFamily": "north",
+				"majorVersion": 1,
+				"minorVersion": 0
+			},
+			"showGlyphs": true,
+			"metrics": {
+				"emSize": 512,
+				"baseline": 6.25,
+				"whitespace": 50
+			},
+			"resetPoint": 58880,
+			"showQuickUse": true,
+			"quickUsageToken": false,
+			"showMetrics": true,
+			"showMetadata": false,
+			"showVersion": false,
+			"autoHost": true
+		},
+		"imagePref": {
+			"color": 0,
+			"height": 32,
+			"columns": 16,
+			"margin": 16,
+			"png": false,
+			"sprites": true
+		},
+		"historySize": 100,
+		"showCodes": false,
+		"gridSize": 16,
+		"showLiga": true,
+		"showGrid": true,
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"quickUsageToken": {
+			"UntitledProject6": "OTZjYzlkZjRlM2JkMjgzMGM2NGFlMmU1NWJiZjJlM2MjMiMxMzk0MjA4NjQyIyMj"
+		}
+	}
+}
