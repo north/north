@@ -56,11 +56,10 @@
     history.pushState(null, null, target);
   }
 
-  function northImages(e) {
+  function northImages() {
     var _this = this;
     var srcs = null;
     var src = null;
-    console.log('Hello World');
 
     try {
       srcs = _this.getAttribute('data-borealis-srcs').split(', ');
