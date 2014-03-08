@@ -417,7 +417,7 @@
         build_images: ['./build/images', './build/.tmp/images'],
         deploy_images: ['./images'],
         deploy_html: ['./*.html', '!./build/**/*.html'],
-        deploy_assets: ['./css', './js/app.js']
+        deploy_assets: ['./css/style.css', './js/app.js']
       }
     });
 
@@ -844,7 +844,7 @@
     //////////////////////////////
     grunt.registerTask('deploy', function() {
 
-      grunt.task.run('clean:deploy_images', 'clean:deploy_html', 'copy:deployImages', 'build-min', 'inline-setup', 'inline:dist', 'clean:deploy_assets');
+      grunt.task.run('clean:deploy_images', 'clean:deploy_html', 'copy:deployImages', 'compass:dist', 'build-min', 'inline-setup', 'inline:dist', 'clean:deploy_assets');
 
     });
   };
