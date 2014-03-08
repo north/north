@@ -1,3 +1,6 @@
+$serif: 'Century Gothic', 'Tw Cen MT', Futura, 'URW Gothic L', Arial, sans-serif;
+$sans: 'PT Sans', Verdana, Tahoma, 'Trebuchet MS', 'DejuVu Sans', 'Bitstream Vera Sans', sans-serif;
+
 %icon {
   @include enable-ligatures;
   color: $secondary;
