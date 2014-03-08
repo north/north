@@ -34,6 +34,8 @@ $browser-minimum-versions: (
 @import "partials/global/functions";
 @import "partials/global/variables";
 
+@import "partials/components/prism-okaidia";
+
 //////////////////////////////
 // Layout Imports
 //////////////////////////////
@@ -372,6 +374,11 @@ h1, h2 {
   &--copyright {
     float: right;
     text-align: right;
+  }
+
+  &--icon {
+    @extend %icon;
+    border-bottom: none !important;
   }
 
 }
