@@ -29,6 +29,7 @@
 
     var settings = grunt.file.readYAML('./config.yml');
     var bower = grunt.file.readJSON('./.bowerrc');
+    var bowerJSON = grunt.file.readJSON('bower.json');
     var northPath = bower.directory + '/north/';
     var buildHTML = [];
     var outputHTML = [];
@@ -642,6 +643,7 @@
         template = template.replace("{{dir}}", dir);
         template = template.replace("{{content}}", file);
         template = template.replace("{{nav}}", navOutput);
+        template = template.replace("{{version}}", bowerJSON.version);
         grunt.file.write('./build/' + filename + '.html', template);
 
         grunt.log.writeln('Converted ' + chalk.cyan(doc) + ' to ' + chalk.cyan(filename + '.html'));
