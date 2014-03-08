@@ -407,9 +407,6 @@
       //////////////////////////////
       inline: {
         dist: {
-          options: {
-            tag: ''
-          },
           src: outputHTML
         }
       },
@@ -780,10 +777,55 @@
       }
       grunt.log.writeln(chalk.yellow((totalOther / 1024).toFixed(2) + 'kb') + ' Total file size' + chalk.gray(' (non-responsive)'));
     });
+
+    //////////////////////////////
+    // Set up inline assets
+    //////////////////////////////
+    grunt.registerTask('inline-setup', function() {
+      var file = '';
+      var matches, match, parts, replace = '';
+      var regex = new RegExp(/<([^\s]+).*?href="([^"]*?)".*?\/>/gi);
+
+      for (var i in outputHTML) {
+        file = grunt.file.read(outputHTML[i]);
+
+        // Inline CSS
+        regex = new RegExp(/<([^\s]+).*?href="([^"]*?)".*?\/>/gi);
+        matches = file.match(regex);
+        for (var j in matches) {
+          match = matches[j];
+          // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
+          regex = new RegExp(/<([^\s]+).*?href="([^"]*?)".*?>/gi);
+          parts = regex.exec(match);
+          replace = parts[2] + '?__inline=true';
+          replace = parts[0].replace(parts[2], replace);
+          file = file.replace(parts[0], replace);
+        }
+
+        // Inline JS
+        regex = new RegExp(/<([^\s]+).*?src="([^"]*?)".*?>/gi);
+        matches = file.match(regex);
+        for (var j in matches) {
+          match = matches[j];
+          // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
+          regex = new RegExp(/<([^\s]+).*?src="([^"]*?)".*?>/gi);
+          parts = regex.exec(match);
+          if (parts[1] === 'script') {
+            replace = parts[2] + '?__inline=true';
+            replace = parts[0].replace(parts[2], replace);
+            file = file.replace(parts[0], replace);
+          }
+        }
+
+        // Write File
+        grunt.file.write(outputHTML[i], file);
+      }
+    });
+
     //////////////////////////////
     // Build Minified Source
     //////////////////////////////
-    grunt.registerTask('build-min', 'dom_munger:find_links useminPrepare concat cssmin uglify copy:usemin usemin uglify:deploy inline:dist');
+    grunt.registerTask('build-min', 'dom_munger:find_links useminPrepare concat cssmin uglify copy:usemin usemin uglify:deploy');
 
     //////////////////////////////
     // Build Responsive Images
@@ -801,9 +843,9 @@
     // Build Task
     //////////////////////////////
     grunt.registerTask('deploy', function() {
-      grunt.task.run('clean:deploy_images', 'clean:deploy_html', 'copy:deployImages', 'build-min', 'clean:deploy_assets');
 
-      // grunt.task.run(['url_crawler', 'copy:deploy', 'imagemin:deploy', 'svgmin:deploy']);
+      grunt.task.run('clean:deploy_images', 'clean:deploy_html', 'copy:deployImages', 'build-min', 'inline-setup', 'inline:dist', 'clean:deploy_assets');
+
     });
   };
 }());
