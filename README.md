@@ -4,9 +4,13 @@ North
 
 North is a set of standards and best practices for developing modern web based properties. Included are standards and best practices for all aspects of a project, from kick off through development. North encourages an agile, content-first, approach to product development and a mobile-first, in-browser, system based approach to design and development.
 
-North is meant to be a living document. Standards and best practices change, and as they do and have been vetted, North will grow and change with them. North will be versioned using [SEMVER](http://semver.org/) to provide a way for you to specify what version of North you are using for your project. Contributions are more than welcome, as long as the [Contribution Guidelines](https://github.com/Snugug/north/blob/master/CONTRIBUTING.md) are followed.
+North is meant to be a living document. Standards and best practices change, and as they do and have been vetted, North will grow and change with them. North is versioned using [SEMVER](http://semver.org/) in order to provide a way to specify what version of North is being followed for any given project.  The easiest way to ensure these standards are tracked as part of your project is to pull in North as a [Bower](http://bower.io/) dependency.
 
-*Currently open to review, [v0.2.0](https://github.com/Snugug/north/releases/tag/v0.2.0) is the first preview version. Once the review period is over, a branch for the current major version will be made.*
+```bash
+bower install north --save-dev
+```
+
+*Currently open to review, [v0.2.0](https://github.com/Snugug/north/releases/tag/v0.2.0) is the first preview version. Once the review period is over, a branch for the current major version will be made. Contributions are more than welcome, as long as the [Contribution Guidelines](https://github.com/Snugug/north/blob/master/CONTRIBUTING.md) are followed.*
 
 # Table of Contents
 
