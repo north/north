@@ -1,15 +1,4 @@
 @font-face {
-  font-family: 'north';
-  src: font-url('north/north.eot');
-  src: font-url('north/north.eot') format('embedded-opentype'),
-    inline-font-files('north/north.woff'),
-    font-url('north/north.ttf') format('truetype'),
-    font-url('north/north.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'homestead-one';
   src: font-url('homestead/homestead-one.eot');
   src: font-url('homestead/homestead-one.eot') format('embedded-opentype'),
@@ -53,7 +42,7 @@
   font-family: 'pt';
   src: font-url('pt/pt.eot');
   src: font-url('pt/pt.eot') format('embedded-opentype'),
-    inline-font-files('pt/pt.woff'),
+    font-url('pt/pt.woff') format('woff'),
     font-url('pt/pt.ttf') format('truetype'),
     font-url('pt/pt.svg') format('svg');
   font-weight: normal;
@@ -64,7 +53,7 @@
   font-family: 'pt';
   src: font-url('pt/pt-italic.eot');
   src: font-url('pt/pt-italic.eot') format('embedded-opentype'),
-    inline-font-files('pt/pt-italic.woff'),
+    font-url('pt/pt-italic.woff') format('woff'),
     font-url('pt/pt-italic.ttf') format('truetype'),
     font-url('pt/pt-italic.svg') format('svg');
   font-weight: normal;
@@ -75,7 +64,7 @@
   font-family: 'pt';
   src: font-url('pt/pt-bold.eot');
   src: font-url('pt/pt-bold.eot') format('embedded-opentype'),
-    inline-font-files('pt/pt-bold.woff'),
+    font-url('pt/pt-bold.woff') format('woff'),
     font-url('pt/pt-bold.ttf') format('truetype'),
     font-url('pt/pt-bold.svg') format('svg');
   font-weight: bold;
@@ -86,7 +75,7 @@
   font-family: 'pt';
   src: font-url('pt/pt-bolditalic.eot');
   src: font-url('pt/pt-bolditalic.eot') format('embedded-opentype'),
-    inline-font-files('pt/pt-bolditalic.woff'),
+    font-url('pt/pt-bolditalic.woff') format('woff'),
     font-url('pt/pt-bolditalic.ttf') format('truetype'),
     font-url('pt/pt-bolditalic.svg') format('svg');
   font-weight: bold;
@@ -97,7 +86,7 @@
   font-family: 'scp';
   src: font-url('scp/scp.eot');
   src: font-url('scp/scp.eot') format('embedded-opentype'),
-    inline-font-files('scp/scp.woff'),
+    font-url('scp/scp.woff') format('woff'),
     font-url('scp/scp.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
