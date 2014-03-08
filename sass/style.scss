@@ -34,6 +34,7 @@ $browser-minimum-versions: (
 @import "partials/global/functions";
 @import "partials/global/variables";
 
+@import "partials/components/fonts";
 @import "partials/components/prism-okaidia";
 
 //////////////////////////////
@@ -48,7 +49,7 @@ $browser-minimum-versions: (
 body {
   background: $background;
   color: $foreground;
-  font-family: 'pt';
+  font-family: 'pt', $sans;
   font-weight: normal;
 }
 
@@ -106,16 +107,6 @@ html {
 .highlighted {
   background: yellow;
 }
-
-// pre[class*="language-"] {
-//   position: relative;
-//   width: 100vw;
-//   padding: {
-//     left: .5rem;
-//     right: .5rem;
-//   }
-//   margin-left: -50vw;
-// }
 
 .base--STYLED {
   // overflow: hidden;
@@ -299,15 +290,15 @@ img:hover {
   text-align: left;
   display: inline-block;
 
-  font-family: 'homestead-regular';
+  font-family: 'homestead-regular', $serif;
 
   @include breakpoint($wordmark-swap) {
-    font-family: 'homestead-one';
+    font-family: 'homestead-one', $serif;
 
     &:before {
       content: 'north';
       text-transform: uppercase;
-      font-family: 'homestead-two';
+      font-family: 'homestead-two', $serif;
       color: mix($black, $primary, 10%);
       position: absolute;
       left: 0;
@@ -316,7 +307,7 @@ img:hover {
     &:after {
       content: 'north';
       text-transform: uppercase;
-      font-family: 'homestead-three';
+      font-family: 'homestead-three', $serif;
       color: mix($white, $primary, 10%);
       position: absolute;
       left: 0;
