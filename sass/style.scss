@@ -162,8 +162,6 @@ html {
 
   h1 {
     @include breakpoint($nav-sideline) {
-      padding-left: 1rem;
-      @include translateX(-1rem);
       @include box-sizing(content-box);
     }
   }
@@ -217,11 +215,14 @@ html {
       margin-top: 0;
     }
   }
+
+  small {
+    font-size: .75em;
+  }
 }
 
 img[data-borealis-srcs*="The_Treachery_Of_Images"] {
   @include breakpoint(400px) {
-    padding-left: .5em;
     width: 50% !important;
 
     @include breakpoint(max-width ($nav-inline - 1px)) {
@@ -236,11 +237,14 @@ img[data-borealis-srcs*="The_Treachery_Of_Images"] {
 
 
   @include breakpoint(1069px) {
+    padding-left: .5em;
+    padding-bottom: .5em;
     float: right;
   }
 }
 
 a[href*="The_Treachery_Of_Images"] {
+  border: none;
   @include breakpoint($nav-inline 1068px) {
     display: block;
     width: 100%;
@@ -335,10 +339,39 @@ a.deep-link {
   display: block;
   border: none;
   color: $secondary;
+
+  @include breakpoint($nav-sideline) {
+
+    h1 & {
+      @include translateX(-1rem);
+      padding-left: 1rem;
+      @include box-sizing(content-box);
+    }
+  }
 }
 
 h1, h2 {
   .deep-link {
     border-bottom: 1px solid $thin;
   }
+}
+
+.footer {
+  margin-top: .5rem;
+  padding-top: .25rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid $thin;
+
+  &--top {
+    font-size: .75em;
+    display: inine-block;
+    text-transform: lowercase;
+    float: left;
+  }
+
+  &--copyright {
+    float: right;
+    text-align: right;
+  }
+
 }
