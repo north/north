@@ -93,12 +93,24 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'scp';
+  src: font-url('scp/scp.eot');
+  src: font-url('scp/scp.eot') format('embedded-opentype'),
+    inline-font-files('scp/scp.woff'),
+    font-url('scp/scp.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 %icon {
   @include enable-ligatures;
   color: $secondary;
   font-family: 'north';
   text-transform: lowercase;
   display: inline-block;
+  border: none;
 }
 
 * {
