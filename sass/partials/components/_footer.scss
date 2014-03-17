@@ -10,8 +10,8 @@
   &--copyright {
     @extend %footer--copyright;
   }
+}
 
-  &--icon {
-    @extend %footer--icon;
-  }
+a.footer--icon {
+  @extend %footer--icon;
 }
