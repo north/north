@@ -101,5 +101,10 @@
 
     attachEventListeners();
 
+    var copyright = document.querySelector('.footer--copyright');
+    var year = new Date().getFullYear();
+    copyright.innerHTML = copyright.innerHTML.replace('{{year}}', year);
+
+
   });
 })();
