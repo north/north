@@ -568,27 +568,30 @@
         //////////////////////////////
         navHolder = builtNav['items'];
 
-        navOutput = '<nav id="' + builtNav['id'] + '" class="nav">\n<ol>';
+        navOutput = '<nav id="' + builtNav['id'] + '" class="nav" role="navigation">\n<ol role="menu">';
         for (var i in navHolder) {
-          navOutput += '<li class="nav--primary-item"><a href="#' + i + '" class="nav--link">' + navHolder[i].name + '</a>';
           var sections = navHolder[i].sections;
 
           if (Object.keys(sections).length > 0) {
-            navOutput += '<ul class="nav--sub-sections">';
+            navOutput += '<li class="nav--primary-item" role="menuitem" aria-haspopup="true"><a href="#' + i + '" class="nav--link">' + navHolder[i].name + '</a>';
+            navOutput += '<ul class="nav--sub-sections" role="menu">';
             for (var j in sections) {
-              navOutput += '<li class="nav--secondary-item"><a href="#' + j + '" class="nav--link">' + sections[j].name + '</a>';
+              navOutput += '<li class="nav--secondary-item" role="menuitem"><a href="#' + j + '" class="nav--link">' + sections[j].name + '</a>';
               var subsections = sections[j].sections;
 
               if (Object.keys(subsections).length > 0) {
-                navOutput += '<ul class="nav--sub-sections">';
+                navOutput += '<ul class="nav--sub-sections" role="menu">';
                 for (var k in subsections) {
-                  navOutput += '<li class="nav--tertiary-item"><a href="#' + k + '" class="nav--link">' + subsections[k].name + '</a></li>';
+                  navOutput += '<li class="nav--tertiary-item" role="menuitem"><a href="#' + k + '" class="nav--link">' + subsections[k].name + '</a></li>';
                 }
                 navOutput += '</ul>';
               }
               navOutput += '</li>'
             }
             navOutput += '</ul>';
+          }
+          else {
+            navOutput += '<li class="nav--primary-item" role="menuitem"><a href="#' + i + '" class="nav--link">' + navHolder[i].name + '</a>';
           }
           navOutput += '</li>';
         }
