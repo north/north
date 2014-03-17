@@ -1,0 +1,180 @@
+%base--html {
+  font-size: 100%;
+  @include breakpoint(543px) {
+    font-size: 125%;
+  }
+  line-height: 1.618em;
+}
+
+%base--body {
+  background: $background;
+  color: $foreground;
+  font-family: 'pt', $sans;
+  font-weight: normal;
+}
+
+%base--selection {
+  text-shadow: none;
+  background: rgba($primary, .2);
+}
+
+%base {
+  max-width: $max-width;
+  padding: {
+    left: .5rem;
+    right: .5rem;
+  }
+  margin: 0 auto;
+}
+
+@for $i from 1 through 6 {
+  %base--h#{$i} {
+    font-size: 3em - .5em * $i;
+  }
+}
+
+%base--header {
+  margin: 0 0 1rem;
+  padding: 0;
+  padding-top: .5rem;
+  font-weight: bold;
+  position: relative;
+  // float: left;
+  width: 100%;
+  line-height: 1em;
+  word-wrap: break-word;
+  color: $secondary;
+  border: none;
+}
+
+%base--header-border {
+  border-bottom: $border;
+}
+
+%base--h1 {
+  @include breakpoint($nav-sideline) {
+    @include translateX(-1rem);
+    padding-left: 1rem;
+    @include box-sizing(content-box);
+  }
+}
+
+%base--a {
+  text-decoration: none;
+  color: $primary;
+  border-bottom: 1px solid mix($white, $primary, 75%);
+
+  &:hover {
+    color: $secondary;
+    border-color: mix($white, $secondary, 75%)
+  }
+}
+
+%base--list {
+  padding-left: 1.5rem;
+  clear: both;
+}
+
+%base--ol {
+  display: block;
+  list-style-type: decimal;
+}
+
+%base--ul {
+  list-style-type: disc;
+}
+
+%base--li {
+  display: list-item;
+}
+
+%base--first-nested-list {
+  list-style-type: circle;
+}
+
+%base--second-nested-list {
+  list-style-type: square;
+}
+
+%base--em {
+  font-style: italic;
+}
+
+%base--strong {
+  font-weight: bold;
+}
+
+%base--p {
+  margin: 1rem 0;
+}
+
+%base--blockquote {
+  border-right: 4px solid $secondary;
+  text-align: right;
+  padding: 0 1rem;
+  color: mix($white, $secondary, 25%);
+  > :first-child {
+    margin-top: 0;
+  }
+}
+
+%base--small {
+  font-size: .75em;
+}
+
+%base--code {
+  font-family: $mono;
+}
+
+%base--inline-code {
+  background: rgba($secondary, .2);
+}
+
+%base--deeplink {
+  display: block;
+  border: none;
+  color: $secondary;
+
+  @include breakpoint($nav-sideline) {
+    h1 & {
+      @include translateX(-1rem);
+      padding-left: 1rem;
+      @include box-sizing(content-box);
+    }
+  }
+}
+
+%base--image {
+  cursor: pointer;
+}
+
+%base--floated-content-image {
+  @include breakpoint(400px) {
+    width: 50% !important;
+
+    @include breakpoint(max-width ($nav-inline - 1px)) {
+      float: right;
+    }
+  }
+
+  @include breakpoint($nav-inline) {
+    padding-left: 0;
+    max-width: 400px;
+  }
+
+
+  @include breakpoint(1069px) {
+    padding-left: .5em;
+    padding-bottom: .5em;
+    float: right;
+  }
+}
+
+%base--image-link {
+  border: none;
+  @include breakpoint($nav-inline 1068px) {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}

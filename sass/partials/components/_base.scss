@@ -1,0 +1,103 @@
+@import "base/extends";
+
+
+
+html {
+  @extend %base--html;
+}
+
+body {
+  @extend %base--body;
+}
+
+*::selection {
+  @extend %base--selection;
+}
+
+.base--STYLED {
+  @extend %base;
+
+  @for $i from 1 through 6 {
+    h#{$i} {
+      @extend %base--header;
+      @extend %base--h#{$i};
+    }
+  }
+
+  h1, h2 {
+    @extend %base--header-border;
+
+
+  }
+
+  a {
+   @extend %base--a;
+  }
+
+  ul {
+    @extend %base--list;
+    @extend %base--ul;
+  }
+
+  ol {
+    @extend %base--list;
+    @extend %base--ol;
+  }
+
+  li {
+    @extend %base--ol;
+  }
+  ol ul,
+  ul ul {
+    @extend %base--first-nested-list;
+  }
+
+  ol ul ul,
+  ul ul ul {
+    @extend %base--second-nested-list;
+  }
+
+  em {
+    @extend %base--em;
+  }
+
+  strong {
+    @extend %base--strong;
+  }
+
+  p {
+    @extend %base--p;
+
+    code {
+      @extend %base--inline-code;
+    }
+  }
+
+  blockquote {
+    @extend %base--blockquote;
+  }
+
+  small {
+    @extend %base--small;
+  }
+
+  code {
+    @extend %base--code;
+  }
+
+  img {
+    @extend %base--image;
+  }
+}
+
+a.deep-link {
+  @extend %base--deeplink;
+}
+
+img[data-borealis-srcs*="The_Treachery_Of_Images"] {
+  @extend %base--floated-content-image;
+}
+
+a[href*="The_Treachery_Of_Images"] {
+  @extend %base--image-link;
+}

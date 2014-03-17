@@ -1,0 +1,20 @@
+%footer {
+  @extend %base;
+  margin-top: .5rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  border-top: $border;
+  font-size: .75em;
+}
+
+%footer--copyright {
+  font-family: 'pt', $sans;
+  font-weight: normal;
+  float: right;
+  text-align: right;
+}
+
+%footer--icon {
+  @extend %icon;
+  border-bottom: none;
+}

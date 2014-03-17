@@ -1,0 +1,17 @@
+@import "footer/extends";
+
+.footer {
+  @extend %footer;
+
+  a {
+    @extend %base--a;
+  }
+
+  &--copyright {
+    @extend %footer--copyright;
+  }
+
+  &--icon {
+    @extend %footer--icon;
+  }
+}

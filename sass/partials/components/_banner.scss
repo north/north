@@ -1,0 +1,17 @@
+@import "banner/extends";
+
+.banner {
+  @extend %banner;
+
+  &--title {
+    @extend %banner--title;
+  }
+
+  &--logo {
+    @extend %banner--logo;
+  }
+
+  &--wordmark {
+    @extend %banner--wordmark;
+  }
+}

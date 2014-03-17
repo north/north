@@ -1,0 +1,74 @@
+%banner {
+  float: left;
+  width: 100%;
+  padding: .5rem;
+  @include clearfix;
+  overflow: hidden;
+}
+
+%banner--title {
+  $start-font-size: 2.5rem;
+  $end-font-size: 12.75rem;
+  $min: 400px;
+  $max: 2560px;
+  $diff: ($max - $min) / 1px / 20;
+  $fontDiff: ($end-font-size - $start-font-size) / ($diff);
+
+  font-size: 2.5rem;
+  line-height: 1em;
+
+  @for $i from 1 through $diff {
+    @include breakpoint($min + ($i * 20px)) {
+      font-size: $start-font-size + ($fontDiff * $i);
+    }
+  }
+
+  text-align: left;
+  @include breakpoint($nav-inline) {
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
+%banner--logo {
+  @extend %icon;
+  padding-right: .16em;
+  @include translateY(.119402985em);
+}
+
+%banner--wordmark {
+  @extend %icon;
+  font-size: .75em;
+
+  color: $primary;
+  text-transform: uppercase;
+  position: relative;
+
+  text-align: left;
+  display: inline-block;
+
+  font-family: 'homestead-regular', $serif;
+
+  @include breakpoint($wordmark-swap) {
+    font-family: 'homestead-one', $serif;
+
+    &:before {
+      content: 'north';
+      text-transform: uppercase;
+      font-family: 'homestead-two', $serif;
+      color: mix($black, $primary, 10%);
+      position: absolute;
+      left: 0;
+      top: -0.07em;
+    }
+    &:after {
+      content: 'north';
+      text-transform: uppercase;
+      font-family: 'homestead-three', $serif;
+      color: mix($white, $primary, 10%);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
