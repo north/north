@@ -1,93 +1,69 @@
-@font-face {
-  font-family: 'homestead-one';
-  src: font-url('homestead/homestead-one.eot');
-  src: font-url('homestead/homestead-one.eot') format('embedded-opentype'),
-    inline-font-files('homestead/homestead-one.woff'),
-    font-url('homestead/homestead-one.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+@import "toolkit";
 
-@font-face {
-  font-family: 'homestead-two';
-  src: font-url('homestead/homestead-two.eot');
-  src: font-url('homestead/homestead-two.eot') format('embedded-opentype'),
-    inline-font-files('homestead/homestead-two.woff'),
-    font-url('homestead/homestead-two.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+//////////////////////////////
+// Homestead
+//////////////////////////////
+@include font-face('homestead-one', (
+  'eot': 'homestead/homestead-one.eot',
+  'woff': 'homestead/homestead-one.woff',
+  'ttf': 'homestead/homestead-one.ttf'
+), $inline-woff: true);
 
-@font-face {
-  font-family: 'homestead-three';
-  src: font-url('homestead/homestead-three.eot');
-  src: font-url('homestead/homestead-three.eot') format('embedded-opentype'),
-    inline-font-files('homestead/homestead-three.woff'),
-    font-url('homestead/homestead-three.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+@include font-face('homestead-two', (
+  'eot': 'homestead/homestead-two.eot',
+  'woff': 'homestead/homestead-two.woff',
+  'ttf': 'homestead/homestead-two.ttf'
+), $inline-woff: true);
 
-@font-face {
-  font-family: 'homestead-regular';
-  src: font-url('homestead/homestead-regular.eot');
-  src: font-url('homestead/homestead-regular.eot') format('embedded-opentype'),
-    inline-font-files('homestead/homestead-regular.woff'),
-    font-url('homestead/homestead-regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+@include font-face('homestead-three', (
+  'eot': 'homestead/homestead-three.eot',
+  'woff': 'homestead/homestead-three.woff',
+  'ttf': 'homestead/homestead-three.ttf'
+), $inline-woff: true);
 
-@font-face {
-  font-family: 'pt';
-  src: font-url('pt/pt.eot');
-  src: font-url('pt/pt.eot') format('embedded-opentype'),
-    font-url('pt/pt.woff') format('woff'),
-    font-url('pt/pt.ttf') format('truetype'),
-    font-url('pt/pt.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 
-@font-face {
-  font-family: 'pt';
-  src: font-url('pt/pt-italic.eot');
-  src: font-url('pt/pt-italic.eot') format('embedded-opentype'),
-    font-url('pt/pt-italic.woff') format('woff'),
-    font-url('pt/pt-italic.ttf') format('truetype'),
-    font-url('pt/pt-italic.svg') format('svg');
-  font-weight: normal;
-  font-style: italic;
-}
+@include font-face('homestead-regular', (
+  'eot': 'homestead/homestead-regular.eot',
+  'woff': 'homestead/homestead-regular.woff',
+  'ttf': 'homestead/homestead-regular.ttf'
+), $inline-woff: true);
 
-@font-face {
-  font-family: 'pt';
-  src: font-url('pt/pt-bold.eot');
-  src: font-url('pt/pt-bold.eot') format('embedded-opentype'),
-    font-url('pt/pt-bold.woff') format('woff'),
-    font-url('pt/pt-bold.ttf') format('truetype'),
-    font-url('pt/pt-bold.svg') format('svg');
-  font-weight: bold;
-  font-style: normal;
-}
+//////////////////////////////
+// PT Sans
+//////////////////////////////
+@include font-face('pt', (
+  'eot': 'pt/pt.eot',
+  'woff': 'pt/pt.woff',
+  'ttf': 'pt/pt.ttf',
+  'svg': 'pt/pt.svg'
+));
 
-@font-face {
-  font-family: 'pt';
-  src: font-url('pt/pt-bolditalic.eot');
-  src: font-url('pt/pt-bolditalic.eot') format('embedded-opentype'),
-    font-url('pt/pt-bolditalic.woff') format('woff'),
-    font-url('pt/pt-bolditalic.ttf') format('truetype'),
-    font-url('pt/pt-bolditalic.svg') format('svg');
-  font-weight: bold;
-  font-style: italic;
-}
+@include font-face('pt', (
+  'eot': 'pt/pt-italic.eot',
+  'woff': 'pt/pt-italic.woff',
+  'ttf': 'pt/pt-italic.ttf',
+  'svg': 'pt/pt-italic.svg'
+), $style: italic);
 
-@font-face {
-  font-family: 'scp';
-  src: font-url('scp/scp.eot');
-  src: font-url('scp/scp.eot') format('embedded-opentype'),
-    font-url('scp/scp.woff') format('woff'),
-    font-url('scp/scp.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+@include font-face('pt', (
+  'eot': 'pt/pt-bold.eot',
+  'woff': 'pt/pt-bold.woff',
+  'ttf': 'pt/pt-bold.ttf',
+  'svg': 'pt/pt-bold.svg'
+), $weight: bold);
+
+@include font-face('pt', (
+  'eot': 'pt/pt-bolditalic.eot',
+  'woff': 'pt/pt-bolditalic.woff',
+  'ttf': 'pt/pt-bolditalic.ttf',
+  'svg': 'pt/pt-bolditalic.svg'
+), bold, italic);
+
+//////////////////////////////
+// Source Code Pro
+//////////////////////////////
+@include font-face('scp', (
+  'eot': 'scp/scp.eot',
+  'woff': 'scp/scp.woff',
+  'ttf': 'scp/scp.ttf'
+));
