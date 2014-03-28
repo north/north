@@ -50,12 +50,12 @@
   font-family: 'homestead-regular', $serif;
 
   @include breakpoint($wordmark-swap) {
-    font-family: 'homestead-one', $serif;
+    font-family: 'homestead-one', 'homestead-regular', $serif;
 
     &:before {
       content: 'north';
       text-transform: uppercase;
-      font-family: 'homestead-two', $serif;
+      font-family: 'homestead-two', 'homestead-regular', $serif;
       color: mix($black, $primary, 10%);
       position: absolute;
       left: 0;
@@ -64,7 +64,7 @@
     &:after {
       content: 'north';
       text-transform: uppercase;
-      font-family: 'homestead-three', $serif;
+      font-family: 'homestead-three', 'homestead-regular', $serif;
       color: mix($white, $primary, 10%);
       position: absolute;
       left: 0;

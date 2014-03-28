@@ -21,13 +21,6 @@
   'ttf': 'homestead/homestead-three.ttf'
 ), $inline-woff: true);
 
-
-@include font-face('homestead-regular', (
-  'eot': 'homestead/homestead-regular.eot',
-  'woff': 'homestead/homestead-regular.woff',
-  'ttf': 'homestead/homestead-regular.ttf'
-), $inline-woff: true);
-
 //////////////////////////////
 // PT Sans
 //////////////////////////////

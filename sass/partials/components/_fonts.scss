@@ -4,3 +4,9 @@
   'ttf': 'north/north.ttf',
   'svg': 'north/north.svg'
 ), $inline-woff: true);
+
+@include font-face('homestead-regular', (
+  'eot': 'homestead/homestead-regular.eot',
+  'woff': 'homestead/homestead-regular.woff',
+  'ttf': 'homestead/homestead-regular.ttf'
+), $inline-woff: true);
