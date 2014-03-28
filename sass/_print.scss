@@ -1,0 +1,25 @@
+@include breakpoint(print) {
+  body {
+    background: none;
+  }
+
+  #table-of-contents,
+  .footer {
+    display: none;
+  }
+
+  .js [data-target="false"] {
+    height: auto;
+    opacity: 1;
+    overflow: auto;
+  }
+
+  .__main--article {
+    page-break-after: always;
+  }
+
+  pre[class*="language-"] {
+    page-break-inside: avoid;
+    border: 1px solid black;
+  }
+}
