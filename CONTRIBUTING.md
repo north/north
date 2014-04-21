@@ -4,7 +4,7 @@ We love contributors! Yes we do! If you would like to contribute to North, pleas
 
 ### Documentation
 
-* **Spelling and Grammar** may be made updated as a simple pull requests without related issues as long as they do not change the substantive nature of the text they are updating.
+* **Spelling and Grammar** may be updated with simple pull requests without related issues as long as they do not change the substantive nature of the text they are updating.
 * **Additions, Deletions, and Changes** must be discussed in an issue in the [issue queue](https://github.com/Snugug/north/issues) and an agreement must be made on any changes before a pull request is made. Any pull request not specifically for spelling and/or grammar changes created that does not reference an issue will be closed.
 * Issue pull requests for only the smallest amount of writing that is needed. If there are spelling and/or grammar updates, issue pull requests for words, sentences, or paragraphs only. If content is being added, deleted, or changed, only issue a pull request for one at a time. This will reduce potential merge conflicts and make it easier and faster to handle changes.
 * Do not mix pull requests. Do not issue a single pull request that both fixes spelling and/or grammar changes and has additions/deletions/or changes. Any pull request that mixes changes will be closed.
