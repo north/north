@@ -1071,11 +1071,11 @@ When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://co
 * [Modular Scale](https://github.com/Team-Sass/modular-scale) - Numeric relationships, especially for typography
 * [Import Once](https://github.com/chriseppstein/compass/blob/master/import-once/README.md) - Changes the way `@import` works so that imports only happen once. Useful for deep nested or shared dependencies
 
-The following should be using the standard [Compass configuration](http://compass-style.org/help/tutorials/configuration-reference/) for all projects:
+The following should be using the standard [Compass configuration](http://compass-style.org/help/tutorials/configuration-reference/) for all projects (`http_path` is likely to change on a project-to-project basis):
 
 ```ruby
 # Set this to the root of your project when deployed:
-http_path = "/"
+http_path = "./"
 css_dir = "css"
 sass_dir = "sass"
 images_dir = "images"
