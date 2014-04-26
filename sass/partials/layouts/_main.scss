@@ -56,11 +56,17 @@
     font-weight: normal;
     text-decoration: none;
     text-transform: lowercase;
+
+    &:hover {
+      @include underline($primary, rgba($white, .5));
+    }
+
     @include breakpoint($nav-inline) {
       color: $secondary;
 
       &:hover {
         color: $primary;
+        @include underline($background, mix($white, $primary, 65%));
       }
     }
 
