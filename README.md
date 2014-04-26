@@ -1324,7 +1324,7 @@ When building site, very often a point will come when a decision must be made as
 
 # License and Acknowledgements
 
-Copyright © Sam Richard (Snugug) and made available under the [MIT License (MIT)](https://github.com/Snugug/north/blob/master/LICENSE).
+Copyright © [Sam Richard](https://github.com/snugug) (Snugug) and made available under the [MIT License (MIT)](https://github.com/Snugug/north/blob/master/LICENSE).
 
 One of the primary goals of North was to create a set of development standards that not only were designed for a modern workflow and process in mind, but also that came from the learnings and understandings of multiple industry leading experts, not a single person. These standards reach across multiple verticals, so having experts from each vertical is critical to the success of these standards. The following individuals assisted in brainstorming and developing North or otherwise directly influenced North and have not otherwise been acknowledged in the document itself, and for that I am grateful:
 
