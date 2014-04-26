@@ -27,6 +27,17 @@
   margin: 0 auto;
 }
 
+%base--a {
+  text-decoration: none;
+  color: $primary;
+  @include underline($background, mix($white, $primary, 65%));
+
+  &:hover {
+    color: $secondary;
+    @include underline($background, mix($white, $secondary, 65%));
+  }
+}
+
 @for $i from 1 through 6 {
   %base--h#{$i} {
     font-size: 3em - .5em * $i;
@@ -45,6 +56,14 @@
   word-wrap: break-word;
   color: $secondary;
   border: none;
+
+  a {
+    background: none;
+
+    &:hover {
+      background: none;
+    }
+  }
 }
 
 %base--header-border {
@@ -56,17 +75,6 @@
     @include translateX(-1rem);
     padding-left: 1rem;
     @include box-sizing(content-box);
-  }
-}
-
-%base--a {
-  text-decoration: none;
-  color: $primary;
-  border-bottom: 1px solid mix($white, $primary, 75%);
-
-  &:hover {
-    color: $secondary;
-    border-color: mix($white, $secondary, 75%)
   }
 }
 
@@ -171,7 +179,13 @@
 }
 
 %base--image-link {
-  border: none;
+
+  background: none;
+
+  &:hover {
+    background: none;
+  }
+
   @include breakpoint($nav-inline 1068px) {
     display: block;
     width: 100%;
