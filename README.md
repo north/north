@@ -21,6 +21,7 @@ bower install north --save-dev
     * [Designer](#designer)
     * [Developer](#developer)
     * [Quality Assurance](#quality-assurance)
+    * [Leads](#leads)
   * [Agile Scrum](#agile-scrum)
 	  * [User Stories](#user-stories)
 	    * [Benefit Statement](#benefit-statement)
