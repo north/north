@@ -109,7 +109,10 @@ bower install north --save-dev
   * [Interaction](#interaction)
     * [Style and Syntax](#style-and-syntax)
     * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
-7. [License and Acknowledgements](#license-and-acknowledgements)
+7. [Tools and Resources](#tools-and-resources)
+	* [Intake Center](#intake-center)
+	* [Generator North](#generator-north)
+8. [License and Acknowledgements](#license-and-acknowledgements)
 
 # Development Process
 
@@ -1321,6 +1324,19 @@ When building site, very often a point will come when a decision must be made as
 * If a script does not come with a minified version, determine if it can be minified. All scripts should be minified, so if a script being evaluated cannot, that should be taken into consideration.
 * Is the script performant? Does it have performance benchmarks? If not, can it be benchmarked? If a script, regardless of weight, slows down a site significantly, its use should be reconsidered.
 * Given browser support, is a heavy JavaScript library like jQuery or Dojo needed? Can paired down versions of those libraries be used? Does usage require the full support behind one of these libraries, or can a small DOM/AJAX library such as [Chibi](https://github.com/kylebarrow/chibi) be effective?
+
+# Tools and Resources
+
+There have been a handful of tools that have been created in order to assist in working with the North standards, making building awesome things easier.
+
+## Intake Center
+
+[Intake.Center](https://github.com/Snugug/intake) is a webapp developed to assist with [role definitions](https://github.com/Snugug/north#roles-and-responsibilities) and [content strategy](https://github.com/Snugug/north#content-strategy). It includes tools for developing and recording [project vision](#project-vision), [user personas](#user-personas), and [content models](#content-modeling) based on [Schema.org](http://schema.org/) schemas. [Content inventory](#content-inventory) and [audit](#content-audit) should be performed before modeling takes place.
+
+## Generator North
+
+[Generator North](https://github.com/Snugug/generator-north) is a [Yeoman](http://yeoman.io/) generator designed to quickly spin up new North based projects, including integrations with [Sass and Compass](#sass-and-compass), [Bower](http://bower.io/), and [JSHint](http://www.jshint.com/), with an option to include [BrowserSync](http://browsersync.io/) server and live reloading. Either [Grunt](http://gruntjs.com/) or [Gulp](http://gulpjs.com/) can be chosen as a task runner. Generator North also provides an easy way scaffold out new components and layouts, reducing the overhead needed to create each new component or layout.
+
 
 # License and Acknowledgements
 
