@@ -575,27 +575,37 @@ For generations, humans have used conversation to pass down stories and learn ab
 
 ## Grids
 
-Grids should be utilized to keep order on a page. As described in [Responsive Grids](http://snugug.github.io/responsive-grids/#/), grids enforce proportion and constraint on a design and provide order and structure to information. The best grid is specific to the content and design of a site, as it is an extension of both. In print, grids are easy as everything from the display size to the reading mode is fixed, but this is not true on the web, so a one-size-fits-all approach to grids doesn't work. While the [960 Grid](http://960.gs/) may have been a useful stopgap as the web was treated like print, but as it evolves, so must the grids used. The grids from Twitter Bootstrap or Zurb Foundation are no better; they are a single (if flexible) grid meant to cover everything in a generic way. Instead of using another designer's grid, create grids for the design and the content of the current site. The preferred grid framework to work in is [Singularity](https://github.com/team-sass/singularity) as it provides the flexibility needed to create complex and responsive grids that are truly custom to design and content.
+Grids should be utilized to keep order on a page. As described in [Responsive Grids](http://snugug.github.io/responsive-grids/#/), grids enforce proportion and constraint on a design and provide order and structure to information. Ideally a grid is specific to the content and design of a site, as it should be an extension of both.
 
-Grids are primarily [layouts](#layouts) in CSS.
+> Grids do not exist in a vacuum. They exist in relation to the content. We never start with a grid. We start with an idea which is then translated into a form, a structure.
+> *Linda van Deursen*
+
+Grid Systems (Twitter Bootstrap, Zurb Foundation) flow content in a generic way that may be usable, but are not recommended as they neither an extension of a site's content nor its design.
+
+Instead of using generic grids, [content-out layouts](http://alistapart.com/article/content-out-layout) are recommended. Grid Frameworks ([Singularity](https://github.com/team-sass/singularity), [Susy](https://github.com/ericam/susy), [Gridset App](https://gridsetapp.com/) (paid service)) are excellent as they provide the flexibility needed to create complex and robust content-out responsive grids.
+
+Grids are primarily used in [layouts](#layouts) in CSS.
+
+The following grid examples are based on the Singularity Grid Framework.
 
 ### Parts of a Grid
 
 There are three parts that make up a grid; they are the columns, the gutters, and the gutter style:
 
-* **Columns** - In Singularity defined by the `$grids` variable, columns represent the relationship between each major piece of a grid. When attaching items to a grid, they are attached to whole pieces of a column or multiple columns (which would then include gutters).
-* **Gutters** - In Singularity defined by the `$gutters` variable, gutters are the whitespace between each column. Content is never snapped to a gutter, and each gutter is the same width.
-* **Gutter Styles** - In Singularity defined by the `$gutter-styles` variable, gutters can either be placed opposite each column with the last column not receiving a gutter (`|C|G|C|G|C|`) or split in half with each column getting one half of a gutter's width on either side, including the first and last columns (`|g|C|g|C|g|C|g`). Gutters can also either be fluid or fixed in width.
+* **Columns** - An individual section of a grid. Columns that are based on relationships between each other work best for content-out responsive grids and being able to create these types of columns are one of the hallmarks of a Grid Framework. Columns that are all equally sized are generic and what are usually found in Grid Systems.
+* **Grids** - Grids are a collection of columns. When attaching items to a grid, they are either attached to a whole column or multiple columns. If attached to multiple columns, the total span includes all of the gutters spanned.
+* **Gutters** - Gutters are the whitespace between each column. Content is never snapped to a gutter, and each gutter is the same width. Gutters can fluid in relation to column width or fixed (either a fixed value or a fixed percentage).
+* **Gutter Styles** - Gutters can either be placed opposite each column with the last column not receiving a gutter (`|C|G|C|G|C|`) or split in half with each column getting one half of a gutter's width on either side, including the first and last columns (`|g|C|g|C|g|C|g`).
 
 ### Symmetric Grids
 
-The most common type of grid is a symmetric grid. A symmetric grid is defined as a grid where each column is the same size. The most common type of symmetric grid is the 12 column symmetric grid. Symmetric grids have a tendency to constrain creativity in negative ways mostly due to the fact that for the most part designs built on symmetric grids have a tendency to look the same. There is an interesting mix of freedom and constraint in symmetric grids that, when used to lay out content on anything other than a column-by-column basis (4 columns, 4 identically sized pieces of content), provides enough flexibility to allow designs to meander.
+The most common type of grid is a symmetric grid, and usually what is defined by Grid Systems. A symmetric grid is defined as a grid where each column is the same size. The most common type of symmetric grid is the 12 column symmetric grid. Symmetric grids have a tendency to constrain creativity in negative ways mostly due to the fact that design then starts with the grid instead of with the content. There is also an interesting mix of freedom and constraint in symmetric grids that, when used to lay out content on anything other than a column-by-column basis (4 columns, 4 identically sized pieces of content), provides enough flexibility to allow designs to meander.
 
 ![Symmetric Grid](http://snugug.github.io/images/symmetric-grid-bootstrap.png)
 
 ### Asymmetric Grids
 
-Unlike the common symmetric grid, the uncommon asymmetric grid provides for interesting design constraints based on content and design by having columns that are different sizes from each other. This allows for grids and design to align without the providing wiggle room to break a design. There are four types of asymmetric grids, custom, compound, ratio based, and spiral based. [Singularity Extras](https://github.com/team-sass/singularity-extras) provides an easy way to create these different kinds of asymmetric grids for use in Singularity.
+Unlike the common symmetric grid, the uncommon asymmetric grid provides for interesting design constraints allowing for content-out layouts and design by having columns that are different sizes from each other. This allows for grids and design to align without the providing wiggle room to break a design. There are four types of asymmetric grids: custom, compound, ratio based, and spiral based. [Singularity Extras](https://github.com/team-sass/singularity-extras) provides an easy way to create these different kinds of asymmetric grids for use in Singularity.
 
 #### Custom Grids
 
