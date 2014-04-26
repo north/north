@@ -10,7 +10,7 @@ North is meant to be a living document. Standards and best practices change, and
 bower install north --save-dev
 ```
 
-*Currently open to review, [v0.2.0](https://github.com/Snugug/north/releases/tag/v0.2.0) is the first preview version. Once the review period is over, a branch for the current major version will be made. Contributions are more than welcome, as long as the [Contribution Guidelines](https://github.com/Snugug/north/blob/master/CONTRIBUTING.md) are followed.*
+*Currently open to review, [v0.3.0](https://github.com/Snugug/north/releases/tag/v0.3.0) is a preview version of North. Once the review period is over, a branch for the current major version will be made. Contributions are more than welcome, as long as the [Contribution Guidelines](https://github.com/Snugug/north/blob/master/CONTRIBUTING.md) are followed.*
 
 # Table of Contents
 
