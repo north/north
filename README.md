@@ -144,6 +144,10 @@ Much like designers, there are two types of developers, front end developers and
 
 Individuals working on quality assurance (QA) ensure that new code created during a [sprint](#iterations) matches the [requirements](#requirements) of the [user story](#user-stories) and does not break the functionality already in place from previous sprints. QA needs to understand how functionality may differ across platforms (on the web, [browsers and devices](#progresive-enhancement)) and work with developers when this is unclear. No code should be [released](#tags-and-releases) until QA has given sign off.
 
+### Leads
+
+It is often useful, although not necessary, for an individual Designer, Developer, or QA member be designated as a lead for each discipline. This can take the form of a Lead Designer, Lead Developer, and lead QA, or it can be more specific, taking the form of Lead Visual Designer, Lead UX Designer, Lead Front End Developer, Lead Back End Developer, Lead Functional QA, Lead Cross Browser QA, etc…. No matter how it is divided, leads all share the same extra responsibilities; leads are responsible for and have final say over direction (and if appropriate, architecture) for their discipline, communicating that direction to and mentoring the other individuals in their discipline, and communicating and explaining that direction to the product owner and project manager.
+
 ## Agile Scrum
 
 ### User Stories
