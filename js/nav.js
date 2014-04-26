@@ -101,6 +101,21 @@
 
     attachEventListeners();
 
+    //////////////////////////////
+    // Header Nav
+    //////////////////////////////
+    var headlink = document.querySelector('.banner--title a');
+    var firstnav = document.querySelector('#table-of-contents li:first-of-type a');
+    firstnav = firstnav.href.replace(window.location.origin, '');
+    firstnav = firstnav.charAt(0) === '/' ? firstnav.substr(1) : firstnav;
+
+    addEvent(headlink, 'click', function (e) {
+      e.preventDefault();
+      console.log(firstnav);
+      sectionTarget(firstnav);
+      history.pushState(null, null, firstnav);
+    });
+
     var copyright = document.querySelector('.footer--copyright');
     var year = new Date().getFullYear();
     copyright.innerHTML = copyright.innerHTML.replace('{{year}}', year);
