@@ -58,6 +58,10 @@
     text-transform: lowercase;
     @include breakpoint($nav-inline) {
       color: $secondary;
+
+      &:hover {
+        color: $primary;
+      }
     }
 
   }
