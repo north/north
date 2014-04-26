@@ -45,7 +45,7 @@ body {
   }
 
   li {
-    @extend %base--ol;
+    @extend %base--li;
   }
   ol ul,
   ul ul {
@@ -88,16 +88,12 @@ body {
   img {
     @extend %base--image;
   }
-}
 
-a.deep-link {
-  @extend %base--deeplink;
-}
+  img[data-borealis-srcs*="The_Treachery_Of_Images"] {
+    @extend %base--floated-content-image;
+  }
 
-img[data-borealis-srcs*="The_Treachery_Of_Images"] {
-  @extend %base--floated-content-image;
-}
-
-a[href*="The_Treachery_Of_Images"] {
-  @extend %base--image-link;
+  a[href*="The_Treachery_Of_Images"] {
+    @extend %base--image-link;
+  }
 }
