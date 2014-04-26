@@ -1005,19 +1005,19 @@ Due to lack of standards around it, each browser manufacturer creates their own 
 
 ### Components
 
-Components are the primary building block of any interface. They are the bits and bobs that combine to form a cohesive user interface; from menus to messages, pagers to pictures, and everything else in between. Components should be written to be able to be dropped in to any position in a layout. The way to accomplish this is to build components using [**eq.js**](https://github.com/snugug/eq.js). This will allow a component and its elements to respond appropriately regardless of where they land in a given document flow. Components should be simple layouts to position elements inside of themselves either through extends or by constructing a component with elements placed inside an internal layout (decide before starting a project and carry that decision through the lifespan of the project) if the layout is not component specific. They may choose to control their overall sizing and one-off sizing and positioning, but those choices should be relative the container they are dropped in to and not layout or position specific.
+Components are the primary building block of any interface. They are the bits and bobs that combine to form a cohesive user interface; from menus to messages, pagers to pictures, and everything else in between. If a component can be used in multiple positions in a layout (such as a message or a promoted item), [**eq.js**](https://github.com/snugug/eq.js) should be utilized to adapt their layouts (where appropriate) instead of media queries. This will allow a component and its elements to respond appropriately regardless of where they land in a given document flow. If a component will only be used in a single position (such as global headers or footers), media queries can be used. Basically, use what is most appropriate.
 
 #### Base Component
 
-Each project should contain a `base` component which contains base styling for raw tags (`h2`, `blockquote`, `p`, etc…). The `base` component's elements should be named after the tag they style, so basic styling for `h2` would provide both an extendable and full class `.base--h2`. To apply these styles, create a `styled` aspect, providing a `.base--STYLED` class. This aspect should have raw elements styled without classes, allowing it to be dropped into any section of a site and provide basic styling. Additional aspects can be created to create different base stylings.
+Each project should contain a `base` component which contains base styling for raw tags (`h2`, `blockquote`, `p`, etc…). The `base` component's elements should be named after the tag they style, so basic styling for `h2` would provide both an extendable and full class `.base--h2`. To apply these styles, create a `styled` aspect, providing a `.base--STYLED` class. This aspect should have raw elements styled without classes, allowing it to be dropped into any section of a site and provide basic styling. Additional aspects can be created to create different base stylings, such as `form` for base form styling.
 
 ### Layouts
 
-Layouts are the structure of an interface. Providing structure to pages and components, layouts are responsible for sizing and positioning of their elements. There are two kinds of layouts, simple and complex. The distinguishing factor between simple and complex layouts is that complex layouts adapt and change their sizing and positioning based on media queries whereas simple layouts do not. Complex layouts are generally used for laying out pages and regions within pages, with simple layouts being used for laying out sub-sections inside complex layouts and providing common layouts for components. While simple layouts may be used within components or even within other simple or complex layouts, complex layouts should never be used within one another.
+Layouts are the structure of an interface. Providing structure to pages and components, layouts are responsible for sizing and positioning of their elements. Layouts are generally used for laying out pages and regions within pages. Layouts that include viewport based media queries (`width`, `height`, etc…) should never be nested inside each other
 
 ### Aspects
 
-Aspects are a specific implementation of a component or layout. Components and layouts always should have an aspect when used to determine what kind of implementation is being worked with. Aspects can be used as a way to pivot styling of elements if need be or to control implementation-specific styling, such as changing colors in a message component or determining exact sizing of a body element of a layout. It is preferable to use aspects as pivot points rather than to create unique classes for each element as it allows for the reuse of identical elements regardless of the aspect of a component or layout they are used in.
+Aspects are a specific implementation of a component or layout. Aspects can be used as a way to pivot styling of elements if need be or to control implementation-specific styling, such as changing colors in a message component or determining exact sizing of a body element of a layout. It is preferable to use aspects as pivot points rather than to create unique classes for each element as it allows for the reuse of identical elements regardless of the aspect of a component or layout they are used in. Elements should only pivot off of aspects, not off of an aspect-less component or layout.
 
 ### Elements
 
@@ -1025,24 +1025,24 @@ Elements are the individual pieces that make up a component or layout, each bein
 
 ### States
 
-States provide a way to alter how a component, layout, element, or aspect behaves. Common states include `active`, `open`, and `closed`. Because states live in the in-between world of JavaScript and CSS, often changing with interactions from the user, states are controlled by data attributes and get attached to the components, layouts, elements, or aspects they are modifying. This provides easy to maintain states on a per-object basis without needing per-object states.
+States provide a way to alter how a component, layout, element, or aspect behaves. Common states include `active`, `open`, and `closed`. Because states live in the in-between world of JavaScript and CSS, often changing with interactions from the user, states are controlled by data attributes (`[data-state="active"]`) and get attached to the components, layouts, elements, or aspects they are modifying. This provides easy to maintain states on a per-object basis without needing per-object states.
 
 ### CSS Naming Conventions
 
-Components and layouts form prefixes for aspects and elements, separated by double dash (`--`). Simple layouts start with an underscore (`_`) and complex layouts start with two underscores (`__`) to distinguish them from components, and aspects are written in all caps (`CAPS`) to distinguish them from elements, written in all lowercase (`lowercase`). States are applied to the state data attribute (`data-state`) and queried using attribute selectors as they have the strong tendency to either be manipulated by JavaScript or be used as a hook for JavaScript. If an object has multiple states, each state should be space (`' '`) separated in the `data-state` data attribute. A sample document written up using this naming convention could look like the following:
+Components and layouts form prefixes for aspects and elements, separated by double dash (`--`). Layouts start with an underscore (`_`) to distinguish them from components. Aspects are written in all caps (`CAPS`) to distinguish them from elements, written in all lowercase (`lowercase`). States are applied to the state data attribute (`data-state`) and queried using attribute selectors as they have the strong tendency to either be manipulated by JavaScript or be used as a hook for JavaScript. If an object has multiple states, each state should be space (`' '`) separated in the `data-state` data attribute. A sample document written up using this naming convention could look like the following:
 
 ```html
 <!-- Article layout with Big Media aspect -->
-<div class="__article--BIG-MEDIA">
+<div class="_article--BIG-MEDIA">
   <!-- Main element of Article layout -->
-  <article class="__article--main">
+  <article class="_article--main">
     <!-- Heading element of Article layout -->
-    <div class="__article--heading">
+    <div class="_article--heading">
       <!-- PRIMARY Heading aspect of Typography component -->
       <h1 class="typography--PRIMARY-HEADING">Article Title</h1>
     </div>
     <!-- Media element of Article layout -->
-    <figure class="__article--media">
+    <figure class="_article--media">
       <!-- Video components, Full HD aspect -->
       <div class="video--FULL-HD">
         <!-- Video element of Video component -->
@@ -1050,13 +1050,13 @@ Components and layouts form prefixes for aspects and elements, separated by doub
       </div>
     </figure>
     <!-- Body element of Article layout, Area aspect of Typography component  -->
-    <div class="__article--body typography--AREA">
+    <div class="_article--body typography--AREA">
       <h2>Some user entered copy goes here</h2>
       <p>Yay Copy!</p>
     </div>
   </article>
   <!-- Secondary element of Article layout  -->
-  <aside class="__article--secondary">
+  <aside class="_article--secondary">
     <!-- Popular aspect of Related component -->
     <div class="related--POPULAR">
       <!-- Heading element of Related component -->
