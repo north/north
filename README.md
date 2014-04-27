@@ -110,8 +110,9 @@ bower install north --save-dev
     * [Style and Syntax](#style-and-syntax)
     * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
 7. [Tools and Resources](#tools-and-resources)
-	* [Intake Center](#intake-center)
+  * [North Sass Plugin](#north-sass-plugin)
 	* [Generator North](#generator-north)
+  * [Intake Center](#intake-center)
 8. [License and Acknowledgements](#license-and-acknowledgements)
 
 # Development Process
@@ -1339,13 +1340,71 @@ When building site, very often a point will come when a decision must be made as
 
 There have been a handful of tools that have been created in order to assist in working with the North standards, making building awesome things easier.
 
-## Intake Center
+## North Sass Plugin
 
-[Intake.Center](https://github.com/Snugug/intake) is a webapp developed to assist with [role definitions](https://github.com/Snugug/north#roles-and-responsibilities) and [content strategy](https://github.com/Snugug/north#content-strategy). It includes tools for developing and recording [project vision](#project-vision), [user personas](#user-personas), and [content models](#content-modeling) based on [Schema.org](http://schema.org/) schemas. [Content inventory](#content-inventory) and [audit](#content-audit) should be performed before modeling takes place.
+Available both as a [Bower](http://bower.io/) component (`bower install north --save-dev`) or as a Compass extension (`gem 'north', '~> 0.3.1'` in your [Gemfile](http://bundler.io/)), the North Sass plugin is designed to make working with North's [CSS Naming Conventions](#css-naming-conventions) easy. The North Sass Plugin requires at least *Sass 3.3*. Simply import into a project and have the following mixins and functions available for use:
+
+#### component($name)
+#### @include component($name) { @content }
+#### @include components($names...) { @content }
+
+#### layout($name)
+#### @include layout($name) { @content }
+#### @include layoutss($names...) { @content }
+
+#### aspect($name)
+#### @include aspect($name) { @content }
+#### @include aspects($names...) { @content }
+
+#### element($name)
+#### @include element($name) { @content }
+#### @include elements($names...) { @content }
+
+#### state($name)
+#### @include state($name) { @content }
+#### @include states($names...) { @content }
+
+Each function (save `state`) will return their given part of a selector (`aspect` will only return the capitalized half of a selector, `layout` will only return the lowercased name with leading underscore, etc…). `state` will return a full attribute selector to be used. Mixins must contain content. The plural versions of each mixin allow multiple names to be passed, each getting comma separated in the output. Usage of the mixins can look something like the following:
+
+**Sass**
+
+```scss
+.message {
+  @include aspect(warning) {
+    background: yellow;
+  }
+  @include aspect(error) {
+    background: red;
+  }
+
+  @include element(title) {
+    font-size: 2em;
+  }
+}
+```
+
+**CSS**
+
+
+```css
+.message--WARNING {
+  background: yellow;
+}
+.message--ERROR {
+  background: red;
+}
+.message--title {
+  font-size: 2em;
+}
+```
 
 ## Generator North
 
 [Generator North](https://github.com/Snugug/generator-north) is a [Yeoman](http://yeoman.io/) generator designed to quickly spin up new North based projects, including integrations with [Sass and Compass](#sass-and-compass), [Bower](http://bower.io/), and [JSHint](http://www.jshint.com/), with an option to include [BrowserSync](http://browsersync.io/) server and live reloading. Either [Grunt](http://gruntjs.com/) or [Gulp](http://gulpjs.com/) can be chosen as a task runner. Generator North also provides an easy way scaffold out new components and layouts, reducing the overhead needed to create each new component or layout.
+
+## Intake Center
+
+[Intake.Center](https://github.com/Snugug/intake) is a webapp developed to assist with [role definitions](https://github.com/Snugug/north#roles-and-responsibilities) and [content strategy](https://github.com/Snugug/north#content-strategy). It includes tools for developing and recording [project vision](#project-vision), [user personas](#user-personas), and [content models](#content-modeling) based on [Schema.org](http://schema.org/) schemas. [Content inventory](#content-inventory) and [audit](#content-audit) should be performed before modeling takes place.
 
 
 # License and Acknowledgements
