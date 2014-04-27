@@ -1352,32 +1352,29 @@ There have been a handful of tools that have been created in order to assist in 
 
 ## North Sass Plugin
 
-Available both as a [Bower](http://bower.io/) component (`bower install north --save-dev`) or as a Compass extension (`gem 'north', '~> 0.3.1'` in your [Gemfile](http://bundler.io/)), the North Sass plugin is designed to make working with North's [CSS Naming Conventions](#css-naming-conventions) easy. The North Sass Plugin requires at least *Sass 3.3*. Simply import into a project and have the following mixins and functions available for use:
+Available both as a [Bower](http://bower.io/) component (`bower install north --save-dev`) or as a Compass extension (`gem 'north', '~> 0.3.2'` in your [Gemfile](http://bundler.io/)), the North Sass plugin is designed to make working with North's [CSS Naming Conventions](#css-naming-conventions) easy. The North Sass Plugin requires at least *Sass 3.3*. Simply import into a project and have the following mixins and functions available for use:
 
-**component($name)**
-**@include component($name) { @content }**
-**@include components($names...) { @content }**
+```scss
+component($name)
+@include component($name) { @content }
+@include components($names...) { @content }
 
+layout($name)
+@include layout($name) { @content }
+@include layoutss($names...) { @content }
 
-**layout($name)**
-**@include layout($name) { @content }**
-**@include layoutss($names...) { @content }**
+aspect($name)
+@include aspect($name) { @content }
+@include aspects($names...) { @content }
 
+element($name)
+@include element($name) { @content }
+@include elements($names...) { @content }
 
-**aspect($name)**
-**@include aspect($name) { @content }**
-**@include aspects($names...) { @content }**
-
-
-**element($name)**
-**@include element($name) { @content }**
-**@include elements($names...) { @content }**
-
-
-**state($name)**
-**@include state($name) { @content }**
-**@include states($names...) { @content }**
-
+state($name)
+@include state($name) { @content }
+@include states($names...) { @content }
+```
 
 Each function (save `state`) will return their given part of a selector (`aspect` will only return the capitalized half of a selector, `layout` will only return the lowercased name with leading underscore, etc…). `state` will return a full attribute selector to be used. Mixins must contain content. The plural versions of each mixin allow multiple names to be passed, each getting comma separated in the output. Usage of the mixins can look something like the following:
 
