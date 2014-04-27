@@ -10,7 +10,7 @@ North is meant to be a living document. Standards and best practices change, and
 bower install north --save-dev
 ```
 
-*Currently open to review, [v0.3.0](https://github.com/Snugug/north/releases/tag/v0.3.0) is a preview version of North. Once the review period is over, a branch for the current major version will be made. Contributions are more than welcome, as long as the [Contribution Guidelines](https://github.com/Snugug/north/blob/master/CONTRIBUTING.md) are followed.*
+*Currently open to review, [v0.3.1](https://github.com/Snugug/north/releases/tag/v0.3.0) is a preview version of North. Once the review period is over, a branch for the current major version will be made. Contributions are more than welcome, as long as the [Contribution Guidelines](https://github.com/Snugug/north/blob/master/CONTRIBUTING.md) are followed.*
 
 # Table of Contents
 
@@ -1000,9 +1000,11 @@ The accessibility of a web site's content, including its source order without an
 
 ### Viewport Meta Tag
 
-When building responsive websites, for the time being, a non-standard meta tag needs to be used in order to tell browsers how to react. This is colloquy known as a "viewport tag". While there are many options that can go in to the viewport tag, the tag, in its entirety, that should be used is as follows:
+When building responsive websites, for the time being, a non-standard meta tag needs to be used in order to tell browsers how to react. This is colloquy known as a "viewport tag". While there are [many options](http://www.quirksmode.org/mobile/metaviewport/) that can go in to the viewport tag, the tag, in its entirety, that should be used is as follows:
 
-`<meta name="viewport" content="initial-scale=1.0">`
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
 
 There is currently a [CSS Device Adaptation](http://dev.w3.org/csswg/css-device-adapt/) development specification in the works which, when done, will move this from a markup tag to a CSS directive known as the [`@viewport`](http://dev.w3.org/csswg/css-device-adapt/#the-atviewport-rule) directive. Currently, Internet Explorer 10 and up, including on mobile devices, does not use the viewport meta tag, but rather the viewport CSS directive, so both should be included on all projects.
 
@@ -1126,6 +1128,8 @@ Mixins should also be divided up by purpose. While an omni mixin may be easier t
 
 Let's take a look at a typical message component mixin as an example of how to re-write it using our mixin/extend pattern.
 
+**Sass**
+
 ```scss
 // Sass
 @mixin message($color, $padding: .25em .5em, $width: 80%) {
@@ -1152,6 +1156,8 @@ Let's take a look at a typical message component mixin as an example of how to r
     @include message(red);
 }
 ```
+
+**CSS**
 
 ```css
 /* CSS */
@@ -1187,6 +1193,8 @@ Let's take a look at a typical message component mixin as an example of how to r
 ```
 
 While the single mixin may allow us to easily get the output we want, it does so at the cost of duplicating properties, and thus vastly bloating, our output CSS. This can be remedied almost entirely simply by rewriting our original mixin using our new mixin/extend pattern.
+
+**Sass*
 
 ```scss
 // Sass
@@ -1248,6 +1256,8 @@ $message-extend: true !default;
   @include message-coloring(red);
 }
 ```
+
+**CSS**
 
 ```css
 /* CSS */
@@ -1344,25 +1354,30 @@ There have been a handful of tools that have been created in order to assist in 
 
 Available both as a [Bower](http://bower.io/) component (`bower install north --save-dev`) or as a Compass extension (`gem 'north', '~> 0.3.1'` in your [Gemfile](http://bundler.io/)), the North Sass plugin is designed to make working with North's [CSS Naming Conventions](#css-naming-conventions) easy. The North Sass Plugin requires at least *Sass 3.3*. Simply import into a project and have the following mixins and functions available for use:
 
-#### component($name)
-#### @include component($name) { @content }
-#### @include components($names...) { @content }
+**component($name)**
+**@include component($name) { @content }**
+**@include components($names...) { @content }**
 
-#### layout($name)
-#### @include layout($name) { @content }
-#### @include layoutss($names...) { @content }
 
-#### aspect($name)
-#### @include aspect($name) { @content }
-#### @include aspects($names...) { @content }
+**layout($name)**
+**@include layout($name) { @content }**
+**@include layoutss($names...) { @content }**
 
-#### element($name)
-#### @include element($name) { @content }
-#### @include elements($names...) { @content }
 
-#### state($name)
-#### @include state($name) { @content }
-#### @include states($names...) { @content }
+**aspect($name)**
+**@include aspect($name) { @content }**
+**@include aspects($names...) { @content }**
+
+
+**element($name)**
+**@include element($name) { @content }**
+**@include elements($names...) { @content }**
+
+
+**state($name)**
+**@include state($name) { @content }**
+**@include states($names...) { @content }**
+
 
 Each function (save `state`) will return their given part of a selector (`aspect` will only return the capitalized half of a selector, `layout` will only return the lowercased name with leading underscore, etc…). `state` will return a full attribute selector to be used. Mixins must contain content. The plural versions of each mixin allow multiple names to be passed, each getting comma separated in the output. Usage of the mixins can look something like the following:
 
