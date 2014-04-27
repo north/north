@@ -6,6 +6,6 @@ stylesheets_dir = File.join(base_directory, 'north')
 Compass::Frameworks.register("north", :path => base_directory, :stylesheets_directory => stylesheets_dir)
 
 module North
-  VERSION = "0.3.0"
+  VERSION = "0.3.1"
   DATE = "2014-04-27"
 end

@@ -15,8 +15,15 @@
       }
     }
     @each $name in $names {
-      &--#{call($type, $name)} {
-        @extend %#{$extend};
+      @if $type == 'state' {
+        &#{call($type, $name)} {
+          @extend %#{$extend};
+        }
+      }
+      @else {
+        &--#{call($type, $name)} {
+          @extend %#{$extend};
+        }
       }
     }
   }
