@@ -1,67 +1,21 @@
 //////////////////////////////
-// Variables
-//////////////////////////////
-$north-layout-type: 'simple' !default;
-
-//////////////////////////////
 // Functions
 //////////////////////////////
-@function simple-layout($name) {
+@function layout($name) {
   @return '_#{to-lower-case($name)}';
 }
 
-@function complex-layout($name) {
-  @return '__#{to-lower-case($name)}';
-}
-
-@function layout($name, $type: $north-layout-type) {
-  $type: to-lower-case($type);
-  $prefix: null;
-
-  @if $type == 'simple' {
-    @return simple-layout($name);
-  }
-  @else if $type == 'complex' {
-    @return complex-layout($name);
-  }
-  @else {
-    @warn '#{$type} is not a valid North layout type. Please use either `simple` or `complex`';
-    @return $name;
-  }
-}
-
 //////////////////////////////
-// Layout Mixins
+// Mixins
 //////////////////////////////
-@mixin simple-layout($name) {
-  @at-root .#{simple-layout($name)} {
+@mixin layout($name) {
+  @include layouts($name) {
     @content;
   }
 }
 
-@mixin complex-layout($name) {
-  @at-root .#{complex-layout($name)} {
+@mixin layouts($names...) {
+  @include north--core('layout', $names) {
     @content;
   }
 }
-
-@mixin layout($name, $type: $north-layout-type) {
-  $type: to-lower-case($type);
-  $prefix: null;
-
-  @if $type == 'simple' {
-    @include simple-layout($name) {
-      @content;
-    }
-  }
-  @else if $type == 'complex' {
-    @include complex-layout($name) {
-      @content;
-    }
-  }
-  @else {
-    @warn '#{$type} is not a valid North layout type. Please use either `simple` or `complex`';
-    @content;
-  }
-}
-

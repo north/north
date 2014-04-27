@@ -1,24 +1,21 @@
 //////////////////////////////
-// Variables
-//////////////////////////////
-$north-state-contains: false !default;
-
-//////////////////////////////
 // Functions
 //////////////////////////////
-@function state($name, $contains: $north-state-contains) {
-  $selector: '=';
-  @if $contains {
-    $selector: '~=';
-  }
-  @return '[data-state#{$selector}"#{$name}"]';
+@function state($name) {
+  @return '[data-state~="#{$name}"]';
 }
 
 //////////////////////////////
 // Mixins
 //////////////////////////////
-@mixin state($name, $contains: $north-state-contains) {
-  @at-root &#{state($name, $contains)} {
+@mixin state($name) {
+  @include layouts($name) {
+    @content;
+  }
+}
+
+@mixin states($names...) {
+  @include north--core('state', $names) {
     @content;
   }
 }

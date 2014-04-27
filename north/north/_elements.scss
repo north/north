@@ -9,8 +9,13 @@
 // Mixins
 //////////////////////////////
 @mixin element($name) {
-  &--#{n-element($name)} {
+  @include aspects($name) {
     @content;
   }
 }
 
+@mixin elements($names...) {
+  @include north--core('element', $names) {
+    @content;
+  }
+}

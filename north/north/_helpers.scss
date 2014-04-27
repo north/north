@@ -1,0 +1,23 @@
+@mixin north--core($type, $names) {
+  @if (length($names) == 0) {
+    @if str-index($type, 'a') == 1 or str-index($type, 'e') == 1 {
+      @warn 'You need to include an #{$type}!';
+    }
+    @else {
+      @warn 'You need to include a #{$type}!';
+    }
+  }
+  @else {
+    $extend: unique-id();
+    @at-root {
+      %#{$extend} {
+        @content;
+      }
+    }
+    @each $name in $names {
+      &--#{call($type, $name)} {
+        @extend %#{$extend};
+      }
+    }
+  }
+}

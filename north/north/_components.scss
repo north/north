@@ -8,9 +8,14 @@
 //////////////////////////////
 // Mixins
 //////////////////////////////
-@mixin component($name) {
-  @at-root .#{component($name)} {
+@mixin components($name) {
+  @include aspects($name) {
     @content;
   }
 }
 
+@mixin components($names...) {
+  @include north--core('component', $names) {
+    @content;
+  }
+}
