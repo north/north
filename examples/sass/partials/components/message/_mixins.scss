@@ -10,7 +10,6 @@
 }
 
 @mixin message--static($extend: $message-extend) {
-  $message-selector: map-get($Placeholder-Selectors, 'message');
 
   @if $extend == true {
     @include dynamic-extend('message') {

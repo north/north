@@ -1202,31 +1202,24 @@ $message-padding: .25em .5em !default;
 $message-width: 80% !default;
 $message-extend: true !default;
 
-@mixin message--CORE($padding: $message-padding, $width: $message-width, $extend: $message-extend) {
-  // If we're not extending ($extend == false), we write properties directly
-  @if not $extend {
-    box-sizing: border-box;
-    padding: $padding;
+@mixin message($padding: $message-padding, $width: $message-width, $extend: $message-extend) {
+  padding: $padding;
+  width: $width;
 
-    width: $width;
-    margin: 0 auto;
+  @include message--static($extend);
+}
 
-    // Border's color is based off of the `color` property, so we can write valid
-    //  shorthand without the color. Border options aren't dynamic to clearly show a
-    //  succinctly show this short hand method.
-    border: 2px solid;
+@mixin message--static($extend: $message-extend) {
+
+  @if $extend == true {
+    @include dynamic-extend('message') {
+      @include message--static(false);
+    }
   }
   @else {
-    // If we are extending ($extend == true), we extend the placeholder selector
-    @extend %message--CORE;
-    // If $padding is different than our default padding, we write that property
-    @if $padding != $message-padding {
-        padding: $padding;
-    }
-    // If $width is different than our default width, we write that property
-    @if $width != $message-width {
-      width: $width;
-    }
+    @include box-sizing(border-box);
+    margin: 0 auto;
+    border: 2px solid;
   }
 }
 
@@ -1238,21 +1231,21 @@ $message-extend: true !default;
 
 %message--CORE {
   // We include the message-core mixin with $extend == false to force the properties to be written
-  @include message--CORE($extend: false);
+  @include message();
 }
 
 .message--STATUS {
-  @include message--CORE;
+  @extend %message--CORE;
   @include message-coloring(green);
 }
 
 .message--WARNING {
-  @include message--CORE;
+  @extend %message--CORE;
   @include message-coloring(yellow);
 }
 
 .message--ERROR {
-  @include message--CORE;
+  @extend %message--CORE;
   @include message-coloring(red);
 }
 ```
@@ -1261,10 +1254,16 @@ $message-extend: true !default;
 
 ```css
 /* CSS */
-.message--STATUS, .message--WARNING, .message--ERROR {
-  box-sizing: border-box;
+.message--STATUS,
+.message--WARNING,
+.message--ERROR {
   padding: 0.25em 0.5em;
   width: 80%;
+}
+.message--STATUS,
+.message--WARNING,
+.message--ERROR {
+  box-sizing: border-box;
   margin: 0 auto;
   border: 2px solid;
 }
