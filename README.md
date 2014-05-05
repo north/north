@@ -1291,7 +1291,7 @@ While this approach certainly requires more work up front to build the mixins an
 
 #### Partial Structure
 
-Sass partials are a way for us to organize our styling knowledge into maintainable and easily grokable chunks. An example Sass partial structure is available in the folder `sass`.
+Sass partials are a way for us to organize our styling knowledge into maintainable and easily grokable chunks. An example North project, including this partial structure, is available in the [examples](https://github.com/north/north/tree/master/examples) folder.
 
 At the root of our Sass folder is our `style.scss` file, which holds the core of our styling, and a `no-script.scss` file to provide a CSS fallback if scripting isn't available. In the `sass` folder, create an `enhancements` folder, a `fallbacks` folder, and a `partials` folder for stylesheets that provide enhanced styling for powerful browsers, fallback styling for less powerful browsers, and partials for all to draw from, each respectively.
 
