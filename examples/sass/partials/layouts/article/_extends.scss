@@ -1,0 +1,20 @@
+//////////////////////////////
+// Article Layout Extendable Classes
+//////////////////////////////
+
+%_article {
+  max-width: $article-max-width;
+  margin: 0 auto;
+}
+
+@include layout($article-grid, $article-gutters, 'calc') {
+
+  %_article--primary {
+    @include grid-span(1, 2);
+  }
+
+  %_article--secondary {
+    @include grid-span(1, 1);
+  }
+
+}

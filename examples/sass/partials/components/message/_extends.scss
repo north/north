@@ -1,23 +1,22 @@
 //////////////////////////////
-// Message Component Extends
+// Message Component Extendable Classes
 //////////////////////////////
 
 %message--CORE {
-  // We include the message-core mixin with $extend == false to force the properties to be written
-  @include message--CORE($extend: false);
+  @include message();
 }
 
 %message--STATUS {
-  @include message--CORE;
+  @extend %message--CORE;
   @include message--coloring($message-color-status);
 }
 
 %message--WARNING {
-  @include message--CORE;
+  @extend %message--CORE;
   @include message--coloring($message-color-warning);
 }
 
 %message--ERROR {
-  @include message--CORE;
+  @extend %message--CORE;
   @include message--coloring($message-color-error);
 }

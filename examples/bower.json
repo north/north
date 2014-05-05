@@ -1,0 +1,19 @@
+{
+  "name": "examples",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eq.js": "~1.4.1",
+    "borealis": "~1.0.1"
+  },
+  "devDependencies": {
+    "north": "~0.2.0"
+  }
+}
+

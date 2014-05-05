@@ -1,6 +1,9 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
-
-gem 'sass', '~>3.3.0.rc.1'
-gem 'compass', '~>0.13.alpha.10'
-gem 'ffi', '~>1.9.3'
+gem 'sass', '~>3.3.0'
+gem 'breakpoint', '~>2.4.0'
+gem 'singularitygs', '~>1.2.0'
+gem 'toolkit', '~>2.0.0'
+gem 'modular-scale', '~> 2.0.4'
+gem 'color-schemer', '~> 0.2.8'
+gem 'compass', '~>1.0.0.alpha.17'
