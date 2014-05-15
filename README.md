@@ -483,7 +483,7 @@ Information architecture (IA) is a process that determines what pieces of what c
 
 Architectures should be constructed so that the [most valuable content](#content-modeling) is most prominent, with less valuable content less prominent. When devising architectures, make sure they are [consistent and predictable](#consistency-and-predictability). They should be [comprehensible](#complexity-and-complication), [uncluttered](#signal-to-noise-ratio), and follow the [hierarchy of website needs](#website-needs). Like with [visual design](#visual-design), pictures are not requirements; architectures should be sketched in outlines and [HTML](#design-in-browser). Determine why content items should be where they are and how they interact with each other; don't just start drawing pictures or playing with cutouts. One important thing to keep in mind when creating IAs, the [product owner](#product-owner) is not the audience. Lean upon what [users](#user-personas) actually want.
 
-While building out an IA, the product's [content mode](#content-mode) may need to be revised. When building IAs, especially when the content model needs to be revised, keep the following rules of thumb in mind.
+While building out an IA, the product's [content model](#content-modeling) may need to be revised. When building IAs, especially when the content model needs to be revised, keep the following rules of thumb in mind.
 
 * **Truncation is not a content strate…**
   * Content that is truncated is usually not written for summary or reuse
@@ -616,7 +616,7 @@ Custom asymmetric grids are asymmetric grids where column sizes are determined b
 
 #### Compound Grids
 
-Compound grids are asymmetric grids that are created by overlaying two or more symmetric girds on top of each other to create a new asymmetric grid. The example shows a 3-4 compound grid, where a 3 column symmetric and a 4 column symmetric grid are overlaid to create a 6 column asymmetric grid. Why not simply use a 12 column grid? With this compound grid, spans are constrained to multiples of 1/4 and 1/3, meaning that a span of 5/12 or 7/12 could not happen. The top section shows the final compound grid, with the middle section showing the grid split into thirds and bottom section showing the grid split into quarters.
+Compound grids are asymmetric grids that are created by overlaying two or more symmetric grids on top of each other to create a new asymmetric grid. The example shows a 3-4 compound grid, where a 3 column symmetric and a 4 column symmetric grid are overlaid to create a 6 column asymmetric grid. Why not simply use a 12 column grid? With this compound grid, spans are constrained to multiples of 1/4 and 1/3, meaning that a span of 5/12 or 7/12 could not happen. The top section shows the final compound grid, with the middle section showing the grid split into thirds and bottom section showing the grid split into quarters.
 
 ![Compound Grid](http://snugug.github.io/images/asymmetric-grid-compound.png)
 
