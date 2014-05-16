@@ -234,6 +234,8 @@ To combat these issues with large and expanding teams, those individuals involve
 
 Content strategy is the process by which content is analyzed, sorted, constructed, and placed. Users come to a site for its content first and foremost, so it is the most important part of a site. Before any discussion of [design](#visual-design) or [development](#website-building-blocks), an understanding of a [product owner's](#product-owner) content is imperative in order to produce not only an effective website, but lay an effective foundation for any and all future endeavors, from apps to ads to printed material. The entirety of a finished product is determined by this initial step, from what content actually is put onto pages to what [components](#components) get built to what the final site [looks like](#visual-design).
 
+The following examples [are available](http://pointnorth.io/downloads/global-news-org.intake) as an [Intake Center](#intake-center) export. To view them in Intake Center, download the `.intake` file and import it.
+
 ## Project Vision
 
 Before knowing what content will best serve a site, and therefore what features will best serve the content, a goal for the project should be decided upon. This can be accomplished by writing a **Vision Statement**, and should be the first content strategy deliverable. Vision statements should answer the following questions:
