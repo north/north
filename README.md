@@ -250,7 +250,7 @@ Before knowing what content will best serve a site, and therefore what features 
 
 Vision statement provide a single grounding point for all decisions needed to create a successful product. The following is an example vision statement for a made-up news organization:
 
-> In order to provide for a well-informed electorate who want to stay up-to-date and relate to high quality relevant worldwide news and information on an ever growing array of platforms, our editorial team will utilize an easy-to-use platform that can be accessed from any device from across the world to quickly and effortlessly update and create new stories.
+> In order to provide for a well-informed electorate who want to stay up-to-date and relate to high quality relevant worldwide news and information on an ever growing array of platforms, our editorial team will utilize an easy-to-use platform that can be accessed from any device from across the world to quickly and effortlessly update and create news stories.
 
 ## User Personas
 
