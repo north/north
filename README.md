@@ -106,6 +106,8 @@ bower install north --save-dev
     * [Sass and Compass](#sass-and-compass)
       * [Mixin/Extend Pattern](#mixinextend-pattern)
       * [Partial Structure](#partial-structure)
+      * [Enhanced and Degraded Styling](#enhanced-and-degraded-styling)
+      * [Variable Naming](#variable-naming)
   * [Interaction](#interaction)
     * [Style and Syntax](#style-and-syntax)
     * [Libraries, Plugins, and Frameworks](#libraries-plugins-and-frameworks)
@@ -1099,7 +1101,6 @@ When writing CSS, use [Sass](http://sass-lang.com/) with the [Compass](http://co
 * [Singularity](https://github.com/Team-Sass/Singularity) - Grid framework
 * [Breakpoint](https://github.com/Team-Sass/breakpoint) - Media query framework
 * [Toolkit](https://github.com/team-sass/toolkit) - Variety of useful tools for web design and development
-* [Jacket](https://github.com/Team-Sass/jacket) - Tool for deciding what gets printed in a given stylesheet
 * [Color Schemer](https://github.com/Team-Sass/color-schemer) - Advanced color functions
 * [Modular Scale](https://github.com/Team-Sass/modular-scale) - Numeric relationships, especially for typography
 * [Import Once](https://github.com/chriseppstein/compass/blob/master/import-once/README.md) - Changes the way `@import` works so that imports only happen once. Useful for deep nested or shared dependencies
@@ -1299,15 +1300,17 @@ While this approach certainly requires more work up front to build the mixins an
 
 Sass partials are a way for us to organize our styling knowledge into maintainable and easily grokable chunks. An example North project, including this partial structure, is available in the [examples](https://github.com/north/north/tree/master/examples) folder.
 
-At the root of our Sass folder is our `style.scss` file, which holds the core of our styling, and a `no-script.scss` file to provide a CSS fallback if scripting isn't available. In the `sass` folder, create an `enhancements` folder, a `fallbacks` folder, and a `partials` folder for stylesheets that provide enhanced styling for powerful browsers, fallback styling for less powerful browsers, and partials for all to draw from, each respectively.
+At the root of our Sass folder is our `style.scss` file, which holds the core of our styling, and a `partials` directory to hold our various partials.
 
-Each feature being enhanced with or fallback being provided for should be named `feature.scss` and be placed into their respective folder; for instance, enhancements and fallbacks for CSS Animations  would have a folder structure that looked something like `sass/enhancements/css-animations.scss` and `sass/fallbacks/css-animations.scss`.
+The `partials` directory should be divided up into 4 sub directories, `global`, `base`, `components`, and `layouts`. Inside of `global`, there should be a folder a piece for `variables`, `functions`, `mixins`, and `extendables`, with partials to match. Inside each of those folders should go partials whose content should be made available globally and aren't component specific. For instance, global color and typographic variables, background/text color contrast mixins, ligature extendables, etc…
 
-The `partials` directory should be divided up into 3 sub directories, `global`, `components`, and `layouts`. Inside of `global`, there should be a  folder a piece for `variables`, `functions`, `mixins`, and `extendables`, with partials to match. Inside each of those folders should go partials whose content should be made available globally and aren't component specific. For instance, global color and typographic variables, background/text color contrast mixins, ligature extendables, etc…
-
-Both components and layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for `variables`, `functions`, `mixins`, and `extendables`. Each of these partials should hold styling knowledge specific to that component; for instance, `variables` could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in the example `sass` folder.
+Base, components, and layouts should be built using the same partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for `variables`, `functions`, `mixins`, and `extends`. Each of these partials should hold styling knowledge specific to that component; for instance, `variables` could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in the example `sass` folder.
 
 The Import Once extension should be utilized to prevent duplication of selectors for extendable classes. Mixins should share their naming convention with the object they are used to style.
+
+#### Enhanced and Degraded Styling
+
+It is important to be able to provide enhanced (or degraded) styling based on the [progressive enhancement](#progressive-enhancement) needs of a project. The recommended way to do this is through post-processing a stylesheet with [Gulp CSS Target](http://snugug.com/musings/target-your-css). Using this method will spin multiple stylesheets out of a main one based on defined comment blocks, allowing for easy maintainability. It is recommended that styles are placed in CSS Target comments not extend other selectors as extends are unreliably spun out.
 
 #### Variable Naming
 
