@@ -934,6 +934,8 @@ Once a site has been downloaded, performance of the user interactions is importa
 * Group JavaScript document reads and writes separately. Use [`requestAnimationFrame` to reduce layout thrashing](http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/) when reading and writing to the DOM
 * Avoid Internet Explorer's CSS expression selectors
 
+A more comprehensive resource for learning about in-page performance optimization, including articles, posts, guides, talks, and more, is available at [Jank Free](http://jankfree.org/).
+
 ## Front End Optimizations
 
 There are a number of optimization techniques that can be employed in order to enhance overall performance on a site. Some of these are battle-hardened optimizations that should be employed on all sites, while others are more experimental. As such, they will be divided into categories based on which are most critical for success, and which can be played with.
