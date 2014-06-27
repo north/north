@@ -80,6 +80,11 @@ bower install north --save-dev
     * [Media Queries](#media-queries)
     * [Iconography](#iconography)
     * [Images](#images)
+  * [Design Constraints](#design-constraints)
+    * [One Code base](#one-code-base)
+    * [HTML Source Order Cannot Change](#html-source-order-cannot-change)
+    * [No Hiding Content](#no-hiding-content)
+    * [Design and Content Performance](#design-and-content-performance)
 5. [Performance](#performance)
   * [Testing and Grading Performance](#testing-and-grading-performance)
   * [Payload Performance](#payload-performance)
@@ -92,7 +97,7 @@ bower install north --save-dev
   * [General Coding Syntax](#general-coding-syntax)
   * [Markup](#markup)
     * [HTML Semantics](#html-semantics)
-    * [Accessibility](#]accessibility)
+    * [Accessibility](#accessibility)
     * [RDFa](#rdfa)
     * [Viewport Meta Tag](#viewport-meta-tag)
   * [Styling](#styling)
@@ -882,6 +887,48 @@ Images, usually either content images or background images in CSS, need to be ha
 * **High Pixel Density Images** - Instead of serving different sized images for pixel densities, utilize [compressive images](http://filamentgroup.com/lab/rwd_img_compression/) to serve low weight and crisp images.
 * **Content Images** - Content images should be loaded in using a responsive image solution. Unfortunately, there is currently no standard for responsive images, so one of two responsive image solutions should be used. The primary solution should be [Borealis](https://github.com/Snugug/borealis) which provides for element query based, lazy loaded responsive images. Because it is element query based, it may not work for all instances where an image is needed. For those instances, use [Picturefill](https://github.com/scottjehl/picturefill).
 * **CSS Images** - Utilize one of the approaches outlined in the [media query asset downloading test](http://timkadlec.com/2012/04/media-query-asset-downloading-results/) that has the least amount of additional requests. Be consistent with choice in solution.
+
+## Design Constraints
+
+> Design depends largely on constraints
+> 
+>  [*Charles Eames*](www.scielo.cl/pdf/arq/n49/art11.pdf)
+
+There are a number of design constraints when creating projects that are responsive. Designing for the web and designing for print have a different set of initial constraints and a different set of ongoing constraints, so when [designing for the web](#visual-design) the constraints and process of print design [likely won't work](#design-in-browser). The following is an explanation of some of the new design constraints of designing for the web.
+
+### One Code Base
+
+> …[T]here is no mobile web… There are plenty of mobile devices. And equally there is no desktop web. It is just the web… one web.
+> 
+> [*Jeremy Keith*](http://adactio.com/articles/5826/)
+
+When designing for the web, [no matter the screen size or device](#device-detection) a user chooses to access a site with, that is not a "different web". It's not the "mobile web" on an iPhone or the "tablet web" on a Nexus or a "desktop web". The user is always the same, always wants to do the same thing.
+
+As such, when designing for the web, there design is limited to a single codebase that gets served to the end user. No mobile templates for mobile users and desktop templates for desktop users. One single codebase.
+
+### HTML Source Order Cannot Change
+
+The HTML source order that makes up a site is pretty sacred. It is the grounding for a solidly [accessible](#accessibility) site and for [search engine optimization](#rdfa). As it is the single source of truth for a website, it cannot change across [different devices](#device-detection).
+
+This is not to say that visual source order cannot change, and why this constraint is not so hard to work with. Tools like [grids](#grids) and [flexbox](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes) all aid in decoupling visual source order from HTML source order to allow for [semantic](#html-semantics), accessible HTML with a design to fit the content.
+
+### No Hiding Content
+
+[Users come to a site for its content first and foremost](#content-strategy). In fact, it is the [most basic need](#website-needs) of a user. Hiding content based on [screen size or device](#device-detection) precludes users from getting the content they came to the site for.
+
+> Any time you say somebody won't want that on their phone, you're wrong.
+
+Both [information architecture](#information-architecture) and [visual design](#visual-design) must start [mobile first](#mobile-first) and not make assumptions about content or [user capabilities](#progressive-enhancement) based on screen size or device. All content needs to be available regardless of device a user chooses to access a site with.
+
+This is not to say that systems of content cannot be employed. If only a small amount of space is available, pulling in a short headline instead of a long headline is fine, as is bringing in smaller or larger content images. The caution here is to not tie these content choices to [devices](#device-detection) but rather the layout and the needs of the content itself.
+
+### Design and Content Performance
+
+> It's not just what it looks like and feels like. Design is how it works.
+> 
+> [*Steve Jobs*](http://www.nytimes.com/2003/11/30/magazine/30IPOD.html)
+
+[Performance is a design constraint](#performance). From the [download size](#payload-performance) to [how the page works](#page-performance). Unlike print design, where there are few if any performance constraints of the final product and anything that can be imagined can be placed onto the page, everything from the fonts and icons to the layout and ornamentation have the potential to negatively affect performance on the web. The performance constraints placed on a site are not only for the design of the site, but for its content a well. Moving out of print design tools and [into the web](#design-in-browser) will allow for instant feedback to how design decisions influence performance of a site.
 
 # Performance
 
