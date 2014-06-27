@@ -203,7 +203,7 @@ At the end of each iteration, the team should come together to present the work 
 
 All projects, no matter how big, no matter how small, should be put under a [version control system](http://en.wikipedia.org/wiki/Version_control) (VCS) before work begins on the project. Introducing version control early and enforcing its use will ensure a solid understanding of where code comes from in a project and eliminates the need for user-centric naming conventions such as `item-final.js`, `item-final-really.js`, `item-really-really-final.js`. It makes it easy to track how an item has changed over time and roll changes back if need be. Using version control systems also allows gates to be put up to allow for processes to be put in place before an item becomes finalized.
 
-The version control system of choice is [Git](http://en.wikipedia.org/wiki/Git_\(software\)), allowing for a fully decentralized VCS that is designed for non-linear, distributed development. It has very strong safeguards against corruption of the chain of changes and can version just about any file type that can be thrown at it. It is open source and works across all major platforms. For a full introduction to Git, see the freely-available [Pro Git](http://git-scm.com/book) book.
+The version control system of choice is [Git](http://en.wikipedia.org/wiki/Git_(software)), allowing for a fully decentralized VCS that is designed for non-linear, distributed development. It has very strong safeguards against corruption of the chain of changes and can version just about any file type that can be thrown at it. It is open source and works across all major platforms. For a full introduction to Git, see the freely-available [Pro Git](http://git-scm.com/book) book.
 
 ### Feature Branches
 
