@@ -800,7 +800,7 @@
           // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
           regex = new RegExp(/<link rel="stylesheet" href="([^"]*?)".*?(\/)?>/gi);
           parts = regex.exec(match);
-          console.log(parts);
+          // console.log(parts);
           replace = parts[1] + '?__inline=true';
           replace = parts[0].replace(parts[1], replace);
           file = file.replace(parts[0], replace);
