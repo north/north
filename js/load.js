@@ -1,0 +1,1 @@
+loadCSS('css/fonts.css');

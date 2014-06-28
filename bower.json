@@ -17,7 +17,8 @@
     "tests"
   ],
   "devDependencies": {
-    "north": "0.4.0"
+    "north": "0.4.0",
+    "loadCSS": "git@github.com:filamentgroup/loadCSS.git"
   },
   "dependencies": {
     "prism": "gh-pages",

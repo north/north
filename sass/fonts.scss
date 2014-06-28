@@ -29,28 +29,28 @@
   'woff': 'pt/pt.woff',
   'ttf': 'pt/pt.ttf',
   'svg': 'pt/pt.svg'
-));
+), $inline-woff: true);
 
 @include font-face('pt', (
   'eot': 'pt/pt-italic.eot',
   'woff': 'pt/pt-italic.woff',
   'ttf': 'pt/pt-italic.ttf',
   'svg': 'pt/pt-italic.svg'
-), $style: italic);
+), $style: italic, $inline-woff: true);
 
 @include font-face('pt', (
   'eot': 'pt/pt-bold.eot',
   'woff': 'pt/pt-bold.woff',
   'ttf': 'pt/pt-bold.ttf',
   'svg': 'pt/pt-bold.svg'
-), $weight: bold);
+), $weight: bold, $inline-woff: true);
 
 @include font-face('pt', (
   'eot': 'pt/pt-bolditalic.eot',
   'woff': 'pt/pt-bolditalic.woff',
   'ttf': 'pt/pt-bolditalic.ttf',
   'svg': 'pt/pt-bolditalic.svg'
-), bold, italic);
+), bold, italic, $inline-woff: true);
 
 //////////////////////////////
 // Source Code Pro
@@ -59,4 +59,4 @@
   'eot': 'scp/scp.eot',
   'woff': 'scp/scp.woff',
   'ttf': 'scp/scp.ttf'
-));
+), $inline-woff: true);

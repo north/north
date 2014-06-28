@@ -417,7 +417,7 @@
         build_images: ['./build/images', './build/.tmp/images'],
         deploy_images: ['./images'],
         deploy_html: ['./*.html', '!./build/**/*.html'],
-        deploy_assets: ['./css/style.css', './js/app.js']
+        deploy_assets: ['./css/style.css', './js/app.js', './js/fonts.js']
       }
     });
 
