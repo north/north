@@ -643,7 +643,7 @@
         template = template.replace("{{dir}}", dir);
         template = template.replace("{{content}}", file);
         template = template.replace("{{nav}}", navOutput);
-        template = template.replace("{{version}}", bowerJSON.version);
+        template = template.replace("{{version}}", bowerJSON.devDependencies.north);
         grunt.file.write('./build/' + filename + '.html', template);
 
         grunt.log.writeln('Converted ' + chalk.cyan(doc) + ' to ' + chalk.cyan(filename + '.html'));
@@ -793,15 +793,16 @@
         file = grunt.file.read(outputHTML[i]);
 
         // Inline CSS
-        regex = new RegExp(/<([^\s]+).*?href="([^"]*?)".*?\/>/gi);
+        regex = new RegExp(/<link rel="stylesheet" href="([^"]*?)".*?(\/)?>/gi);
         matches = file.match(regex);
         for (var j in matches) {
           match = matches[j];
           // From http://stackoverflow.com/questions/3271061/regex-to-find-tag-id-and-content-javascript
-          regex = new RegExp(/<([^\s]+).*?href="([^"]*?)".*?>/gi);
+          regex = new RegExp(/<link rel="stylesheet" href="([^"]*?)".*?(\/)?>/gi);
           parts = regex.exec(match);
-          replace = parts[2] + '?__inline=true';
-          replace = parts[0].replace(parts[2], replace);
+          console.log(parts);
+          replace = parts[1] + '?__inline=true';
+          replace = parts[0].replace(parts[1], replace);
           file = file.replace(parts[0], replace);
         }
 
