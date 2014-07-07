@@ -1,0 +1,39 @@
+//////////////////////////////
+// Content Component
+//
+// The partial and folder structure for this component should be as follows:
+// _content.scss
+// content (folder)
+//   _extends.scss
+//   _mixins.scss
+//   _variables.scss
+//
+// Automatic Sass parsing is done through special comment blocks
+//  - Start styling block for base component: @{component}
+//  - End styling block for base component:   {component}@
+//
+//  - Start styling block for specific component aspect: @{component--aspect}
+//  - End styling block for specific component aspect:   {component--aspect}@
+//////////////////////////////
+
+@import "content/variables";
+@import "content/mixins";
+@import "content/extends";
+
+//////////////////////////////
+// @{base}
+// Styling for Content Component
+.base {
+
+}
+// {base}@
+//////////////////////////////
+
+//////////////////////////////
+// @{base--content}
+// Status styling for Message Component
+.base--CONTENT {
+
+}
+// {base--content}@
+//////////////////////////////
