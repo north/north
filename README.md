@@ -1250,7 +1250,7 @@ Let's take a look at a typical message component mixin as an example of how to r
 
 While the single mixin may allow us to easily get the output we want, it does so at the cost of duplicating properties, and thus vastly bloating, our output CSS. This can be remedied almost entirely simply by rewriting our original mixin using our new mixin/extend pattern.
 
-**Sass*
+**Sass**
 
 ```scss
 // Sass
