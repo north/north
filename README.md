@@ -592,7 +592,7 @@ Grids should be utilized to keep order on a page. As described in [Responsive Gr
 
 Grid Systems (Twitter Bootstrap, Zurb Foundation) flow content in a generic way that may be usable, but are not recommended as they neither an extension of a site's content nor its design.
 
-Instead of using generic grids, [content-out layouts](http://alistapart.com/article/content-out-layout) are recommended. Grid Frameworks ([Singularity](https://github.com/team-sass/singularity), [Susy](https://github.com/ericam/susy), [Gridset App](https://gridsetapp.com/) (paid service)) are excellent as they provide the flexibility needed to create complex and robust content-out responsive grids.
+Instead of using generic grids, [content-out layouts](http://alistapart.com/article/content-out-layout) are recommended. Grid Frameworks such as [Singularity](https://github.com/team-sass/singularity), [Susy](https://github.com/ericam/susy), and [Gridset App](https://gridsetapp.com/) (paid service) are excellent as they provide the flexibility needed to create complex and robust content-out responsive grids.
 
 Grids are primarily used in [layouts](#layouts) in CSS.
 
