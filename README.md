@@ -857,7 +857,7 @@ Advertising on responsive sites is hard. Most ads are still sold fixed size and 
 
 Fortunately, some advertising companies, such as Google, have started to offer [responsive ad units](https://support.google.com/adsense/answer/3213689?hl=en) that should be used. If asynchronous responsive ad units are not available, the following best practices should be followed:
 
-* **Device Specific Ads** - Do not do [device detection](#device-detection) to place ads sold for "mobile" or "desktop". Instead, even though it goes against the device detection best practice, determine a screen size that constitutes the switch between "mobile" ads and "desktop" ads and swap load ads based on that size instead. Work with ad sales to stop selling ads targeted to devices and instead sell general advertising.
+* **Device Specific Ads** - Do not do [device detection](#device-detection) to place ads sold for "mobile" or "desktop". Instead, even though it goes against the device detection best practice, determine a screen size that constitutes the switch between "mobile" and "desktop", then swap ads based on that size instead. Work with ad sales to stop selling ads targeted to devices and instead sell general advertising.
 * **Asynchronous Ads** - A [performance](#performance) best practice, do not load ads in-line, load them asynchronously
 * **Background Ads** - Ads that are placed outside of the content area of a page, such as background ads or rail ads, encounter all of the same issues as [large background images](#outdated-ux-patterns) do and should be avoided for the same reason.
 
