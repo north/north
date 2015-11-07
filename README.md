@@ -574,7 +574,7 @@ Users really like consistency in their design. Consistency and predictability in
 
 ## Complexity and Complication
 
-With a want to reduce often the Siren's cry of usability studies, a lot of emphasis recently has been recently put on the need to reduce complexity of interaction on sites. Complexity, however, is not the issue; it is complication. As [Josh Clark puts it](http://globalmoxie.com/jhc/prez/mobile-myths.pdf), there is a difference between complexity and complication:
+With a want to reduce often the Siren's cry of usability studies, a lot of emphasis has been recently put on the need to reduce complexity of interaction on sites. Complexity, however, is not the issue; it is complication. As [Josh Clark puts it](http://globalmoxie.com/jhc/prez/mobile-myths.pdf), there is a difference between complexity and complication:
 
 * **Complexity** - The richness of content and its experience
 * **Complication** - The difficulty of using and navigating content
